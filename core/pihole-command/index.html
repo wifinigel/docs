@@ -1,0 +1,2386 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://docs.pi-hole.net/core/pihole-command/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.1">
+    
+    
+      
+        <title>The pihole command - Pi-hole documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.982221ab.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#pi-hole-core" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://docs.pi-hole.net" title="Pi-hole documentation" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Pi-hole documentation
+            </span>
+            <span class="md-header-nav__topic">
+              The <samp>pihole</samp> command
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/pi-hole/pi-hole/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://docs.pi-hole.net" title="Pi-hole documentation" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Pi-hole documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/pi-hole/pi-hole/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      About Pi-hole
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        About Pi-hole
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../main/contact/" title="Contact Us" class="md-nav__link">
+      Contact Us
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../main/origins/" title="Pi-hole Origins" class="md-nav__link">
+      Pi-hole Origins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../main/presentations/" title="Presentation Support" class="md-nav__link">
+      Presentation Support
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../main/coverage/" title="On the Web" class="md-nav__link">
+      On the Web
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Getting Started
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Getting Started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../main/prerequesites/" title="Prerequisites" class="md-nav__link">
+      Prerequisites
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../main/basic-install/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../main/post-install/" title="Post-Install" class="md-nav__link">
+      Post-Install
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../main/update/" title="Updating" class="md-nav__link">
+      Updating
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Pi-hole Core
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Pi-hole Core
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        The <samp>pihole</samp> command
+      </label>
+    
+    <a href="./" title="The <samp>pihole</samp> command" class="md-nav__link md-nav__link--active">
+      The <samp>pihole</samp> command
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pi-hole-core" title="Pi-hole Core" class="md-nav__link">
+    Pi-hole Core
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-script" title="Core Script" class="md-nav__link">
+    Core Script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whitelisting-blacklisting-and-regex" title="Whitelisting, Blacklisting and Regex" class="md-nav__link">
+    Whitelisting, Blacklisting and Regex
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugger" title="Debugger" class="md-nav__link">
+    Debugger
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-flush" title="Log Flush" class="md-nav__link">
+    Log Flush
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reconfigure" title="Reconfigure" class="md-nav__link">
+    Reconfigure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tail" title="Tail" class="md-nav__link">
+    Tail
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin" title="Admin" class="md-nav__link">
+    Admin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chronometer" title="Chronometer" class="md-nav__link">
+    Chronometer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gravity" title="Gravity" class="md-nav__link">
+    Gravity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging" title="Logging" class="md-nav__link">
+    Logging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query" title="Query" class="md-nav__link">
+    Query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" title="Update" class="md-nav__link">
+    Update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version" title="Version" class="md-nav__link">
+    Version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uninstall" title="Uninstall" class="md-nav__link">
+    Uninstall
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" title="Status" class="md-nav__link">
+    Status
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-disable" title="Enable &amp; Disable" class="md-nav__link">
+    Enable &amp; Disable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restart-dns" title="Restart DNS" class="md-nav__link">
+    Restart DNS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkout" title="Checkout" class="md-nav__link">
+    Checkout
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pi-hole-web" title="Pi-hole Web" class="md-nav__link">
+    Pi-hole Web
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-script" title="Web Script" class="md-nav__link">
+    Web Script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#password" title="Password" class="md-nav__link">
+    Password
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temperature-unit" title="Temperature Unit" class="md-nav__link">
+    Temperature Unit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-record" title="Host Record" class="md-nav__link">
+    Host Record
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#email-address" title="Email Address" class="md-nav__link">
+    Email Address
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface" title="Interface" class="md-nav__link">
+    Interface
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      FTLDNS
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        FTLDNS
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ftldns/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ftldns/configfile/" title="Configuration" class="md-nav__link">
+      Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ftldns/dns-resolver/" title="DNS resolver" class="md-nav__link">
+      DNS resolver
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ftldns/dns-cache/" title="DNS cache" class="md-nav__link">
+      DNS cache
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ftldns/blockingmode/" title="Blocking mode" class="md-nav__link">
+      Blocking mode
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6">
+    
+    <label class="md-nav__link" for="nav-5-6">
+      RegEx blocking
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        RegEx blocking
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ftldns/regex/overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ftldns/regex/tutorial/" title="Tutorial" class="md-nav__link">
+      Tutorial
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ftldns/privacylevels/" title="Privacy levels" class="md-nav__link">
+      Privacy levels
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ftldns/database/" title="Long-term database" class="md-nav__link">
+      Long-term database
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ftldns/telnet-api/" title="Telnet API" class="md-nav__link">
+      Telnet API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ftldns/compatibility/" title="Compatibility" class="md-nav__link">
+      Compatibility
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ftldns/compile/" title="Install from source" class="md-nav__link">
+      Install from source
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ftldns/debugging/" title="Debugging FTLDNS" class="md-nav__link">
+      Debugging FTLDNS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ftldns/in-depth/" title="In-depth manual" class="md-nav__link">
+      In-depth manual
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Docker
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Docker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../docker/DHCP/" title="DHCP" class="md-nav__link">
+      DHCP
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Contributing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Contributing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/github/contributing/" title="Contributing on Github" class="md-nav__link">
+      Contributing on Github
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/github/how-to-signoff/" title="How to sign-off commits" class="md-nav__link">
+      How to sign-off commits
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Guides
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Guides
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/unbound/" title="Pi-hole as All-Around DNS Solution" class="md-nav__link">
+      Pi-hole as All-Around DNS Solution
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/dns-over-https/" title="Configuring DNS-Over-HTTPS on Pi-hole" class="md-nav__link">
+      Configuring DNS-Over-HTTPS on Pi-hole
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/upstream-dns-providers/" title="Upstream DNS Providers" class="md-nav__link">
+      Upstream DNS Providers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/whitelist-blacklist/" title="Editing Whitelist and Blacklist" class="md-nav__link">
+      Editing Whitelist and Blacklist
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/nginx-configuration/" title="Configuring NGINX for Pi-hole" class="md-nav__link">
+      Configuring NGINX for Pi-hole
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/caddy-configuration/" title="Configuring Caddy for Pi-hole" class="md-nav__link">
+      Configuring Caddy for Pi-hole
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-7" type="checkbox" id="nav-8-7">
+    
+    <label class="md-nav__link" for="nav-8-7">
+      Pi-hole and OpenVPN Server
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-7">
+        Pi-hole and OpenVPN Server
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/vpn/overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/vpn/installation/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/vpn/setup-openvpn-server/" title="Setup OpenVPN Server" class="md-nav__link">
+      Setup OpenVPN Server
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/vpn/firewall/" title="Firewall Configuration" class="md-nav__link">
+      Firewall Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-7-5" type="checkbox" id="nav-8-7-5">
+    
+    <label class="md-nav__link" for="nav-8-7-5">
+      Connecting clients
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-7-5">
+        Connecting clients
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/vpn/clients/" title="General" class="md-nav__link">
+      General
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/vpn/android-client/" title="Android" class="md-nav__link">
+      Android
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/vpn/only-dns-via-vpn/" title="Optional: Only route DNS via VPN" class="md-nav__link">
+      Optional: Only route DNS via VPN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/vpn/dual-operation/" title="Optional: Dual operation: LAN & VPN at the same time" class="md-nav__link">
+      Optional: Dual operation: LAN & VPN at the same time
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/vpn/dual-VPN/" title="Optional: Full and DNS-only" class="md-nav__link">
+      Optional: Full and DNS-only
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/vpn/dynDNS/" title="Optional: Dynamic DNS" class="md-nav__link">
+      Optional: Dynamic DNS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-8" type="checkbox" id="nav-8-8">
+    
+    <label class="md-nav__link" for="nav-8-8">
+      TOR & Pi-hole
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-8">
+        TOR & Pi-hole
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/tor/overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/tor/setup/" title="Basic Setup" class="md-nav__link">
+      Basic Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/tor/using-tor/" title="Using TOR" class="md-nav__link">
+      Using TOR
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/tor/performance-issues/" title="Performance and other issues" class="md-nav__link">
+      Performance and other issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/tor/dnssec/" title="Using DNSSEC" class="md-nav__link">
+      Using DNSSEC
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../main/projects/" title="Community Projects" class="md-nav__link">
+      Community Projects
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pi-hole-core" title="Pi-hole Core" class="md-nav__link">
+    Pi-hole Core
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-script" title="Core Script" class="md-nav__link">
+    Core Script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whitelisting-blacklisting-and-regex" title="Whitelisting, Blacklisting and Regex" class="md-nav__link">
+    Whitelisting, Blacklisting and Regex
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugger" title="Debugger" class="md-nav__link">
+    Debugger
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-flush" title="Log Flush" class="md-nav__link">
+    Log Flush
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reconfigure" title="Reconfigure" class="md-nav__link">
+    Reconfigure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tail" title="Tail" class="md-nav__link">
+    Tail
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin" title="Admin" class="md-nav__link">
+    Admin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chronometer" title="Chronometer" class="md-nav__link">
+    Chronometer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gravity" title="Gravity" class="md-nav__link">
+    Gravity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging" title="Logging" class="md-nav__link">
+    Logging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query" title="Query" class="md-nav__link">
+    Query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" title="Update" class="md-nav__link">
+    Update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version" title="Version" class="md-nav__link">
+    Version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uninstall" title="Uninstall" class="md-nav__link">
+    Uninstall
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" title="Status" class="md-nav__link">
+    Status
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-disable" title="Enable &amp; Disable" class="md-nav__link">
+    Enable &amp; Disable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restart-dns" title="Restart DNS" class="md-nav__link">
+    Restart DNS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkout" title="Checkout" class="md-nav__link">
+    Checkout
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pi-hole-web" title="Pi-hole Web" class="md-nav__link">
+    Pi-hole Web
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-script" title="Web Script" class="md-nav__link">
+    Web Script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#password" title="Password" class="md-nav__link">
+    Password
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temperature-unit" title="Temperature Unit" class="md-nav__link">
+    Temperature Unit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-record" title="Host Record" class="md-nav__link">
+    Host Record
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#email-address" title="Email Address" class="md-nav__link">
+    Email Address
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface" title="Interface" class="md-nav__link">
+    Interface
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>The <samp>pihole</samp> command</h1>
+                
+                <p>Pi-hole makes use of many commands, and here we will break down those required to administer the program via the Command Line Interface.</p>
+<table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Invocation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#pi-hole-core">Core Script</a></td>
+<td><code>pihole</code></td>
+</tr>
+<tr>
+<td><a href="#pi-hole-web">Web Script</a></td>
+<td><code>pihole -a</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="pi-hole-core">Pi-hole Core<a class="headerlink" href="#pi-hole-core" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Invocation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#core-script">Core</a></td>
+<td><code>pihole</code></td>
+</tr>
+<tr>
+<td><a href="#whitelisting-blacklisting-and-regex">Whitelisting, Blacklisting and Regex</a></td>
+<td><code>pihole -w</code>, <code>pihole -b</code>, <code>pihole -regex</code>, <code>pihole -wild</code></td>
+</tr>
+<tr>
+<td><a href="#debugger">Debugger</a></td>
+<td><code>pihole debug</code></td>
+</tr>
+<tr>
+<td><a href="#log-flush">Log Flush</a></td>
+<td><code>pihole flush</code></td>
+</tr>
+<tr>
+<td><a href="#reconfigure">Reconfigure</a></td>
+<td><code>pihole reconfigure</code></td>
+</tr>
+<tr>
+<td><a href="#tail">Tail</a></td>
+<td><code>pihole tail</code></td>
+</tr>
+<tr>
+<td><a href="#admin">Admin</a></td>
+<td><code>pihole -a</code></td>
+</tr>
+<tr>
+<td><a href="#chronometer">Chronometer</a></td>
+<td><code>pihole chronometer</code></td>
+</tr>
+<tr>
+<td><a href="#gravity">Gravity</a></td>
+<td><code>pihole updateGravity</code></td>
+</tr>
+<tr>
+<td><a href="#logging">Logging</a></td>
+<td><code>pihole logging</code></td>
+</tr>
+<tr>
+<td><a href="#query">Query</a></td>
+<td><code>pihole query</code></td>
+</tr>
+<tr>
+<td><a href="#update">Update</a></td>
+<td><code>pihole updatePihole</code></td>
+</tr>
+<tr>
+<td><a href="#version">Version</a></td>
+<td><code>pihole version</code></td>
+</tr>
+<tr>
+<td><a href="#uninstall">Uninstall</a></td>
+<td><code>pihole uninstall</code></td>
+</tr>
+<tr>
+<td><a href="#status">Status</a></td>
+<td><code>pihole status</code></td>
+</tr>
+<tr>
+<td><a href="#enable-disable">Enable &amp; Disable</a></td>
+<td><code>pihole enable</code></td>
+</tr>
+<tr>
+<td><a href="#restart-dns">Restart DNS</a></td>
+<td><code>pihole restartdns</code></td>
+</tr>
+<tr>
+<td><a href="#checkout">Checkout</a></td>
+<td><code>pihole checkout</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="core-script">Core Script<a class="headerlink" href="#core-script" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td><code>pihole --help</code></td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/pihole"><code>/usr/local/bin/pihole</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><code>pihole -b advertiser.example.com</code></td>
+</tr>
+</tbody>
+</table>
+<p>The core script of Pi-hole provides the ability to tie many DNS related functions into a simple and user friendly management system, so that one may easily block unwanted content such as advertisements. For both the Command Line Interface (CLI) and Web Interface, we achieve this through the <code>pihole</code> command (this helps minimise code duplication, and allows users to read exactly what's happening using <code>bash</code> scripting). This "wrapper" elevates the current user (whether it be your own user account, or <code>www-data</code>) using <code>sudo</code>, but restricts the elevation to solely what can be called through the wrapper.</p>
+<h3 id="whitelisting-blacklisting-and-regex">Whitelisting, Blacklisting and Regex<a class="headerlink" href="#whitelisting-blacklisting-and-regex" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td><code>pihole -w --help</code>, <code>pihole -b --help</code>, <code>pihole -regex --help</code>, <code>pihole -wild --help</code></td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/advanced/Scripts/list.sh"><code>/opt/pihole/list.sh</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><a href="https://discourse.pi-hole.net/t/the-pihole-command-with-examples/738#white-black-list"><code>pihole -regex '^example.com$' '.*\.example2.net'</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Administrators need to be able to manually add and remove domains for various purposes, and these commands serve that purpose.</p>
+<p>See <a href="/ftldns/regex/overview/">Regex Blocking</a> for more information about using Regex.</p>
+<p><strong>Basic Script Process</strong>:</p>
+<ul>
+<li>Each domain is validated using regex (except when using <code>-regex</code>), to ensure invalid domains and IDNs are not added</li>
+<li>A whitelisted domain gets added or removed from <code>/etc/pihole/whitelist.txt</code></li>
+<li>A blacklisted domain gets added or removed from <code>/etc/pihole/blacklist.txt</code></li>
+<li>On either list type, <code>gravity.sh</code> is then called to consolidate an updated copy of <code>gravity.list</code>, and the DNS server is reloaded</li>
+<li>A regex blacklisted domain gets added or removed from <code>/etc/pihole/regex.list</code></li>
+<li>A wildcard domain gets converted into regex and added or removed from <code>/etc/pihole/regex.list</code></li>
+<li>For both regex-based commands, <code>gravity.sh</code> is then called to restart the DNS server</li>
+</ul>
+<h3 id="debugger">Debugger<a class="headerlink" href="#debugger" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/advanced/Scripts/piholeDebug.sh"><code>/opt/pihole/piholeDebug.sh</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><a href="https://discourse.pi-hole.net/t/the-pihole-command-with-examples/738#debug"><code>pihole debug</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>The Pi-hole debugger will attempt to diagnose any issues, and link to an FAQ with instructions as to how an admin can rectify the issue. Once the debugger has finished, the admin has the option to upload the generated log to the <a href="https://github.com/orgs/pi-hole/teams/debug/members">Pi-hole developers</a>, who can help with diagnosing and rectifying persistent issues.</p>
+<h3 id="log-flush">Log Flush<a class="headerlink" href="#log-flush" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/advanced/Scripts/piholeLogFlush.sh"><code>/opt/pihole/piholeLogFlush.sh</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><a href="https://discourse.pi-hole.net/t/the-pihole-command-with-examples/738#flushing-the-log"><code>pihole flush</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>When invoked manually, this command will allow you to empty Pi-hole's log, which is located at <code>/var/log/pihole.log</code>. The command also serves to rotate the log daily, if the <code>logrotate</code> application is installed.</p>
+<h3 id="reconfigure">Reconfigure<a class="headerlink" href="#reconfigure" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/automated%20install/basic-install.sh"><code>/etc/.pihole/automated install/basic-install.sh</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><code>pihole reconfigure</code></td>
+</tr>
+</tbody>
+</table>
+<p>There are times where the administrator will need to repair or reconfigure the Pi-hole installation, which is performed via this command.</p>
+<p><strong>Basic Script Process</strong>:</p>
+<ul>
+<li><a href="https://github.com/pi-hole/pi-hole/blob/master/automated%20install/basic-install.sh"><code>basic-install.sh</code></a> will be run</li>
+<li><strong>Reconfigure</strong> will run through the first-time installation prompts, asking for upstream DNS provider, IP protocols, etc</li>
+<li><strong>Repair</strong> will retain your existing settings, and will attempt to repair any scripts or dependencies as necessary</li>
+<li>The rest of <code>basic-install.sh</code> will then run as appropriate</li>
+</ul>
+<h3 id="tail">Tail<a class="headerlink" href="#tail" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/pihole"><code>/usr/local/bin/pihole</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><a href="https://discourse.pi-hole.net/t/the-pihole-command-with-examples/738#tailing-the-log"><code>pihole tail</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Since Pi-hole will log DNS queries by default, using this command to watch the log in real-time can be useful for debugging a problematic site, or even just for sheer curiosities sake.</p>
+<h3 id="admin">Admin<a class="headerlink" href="#admin" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td><code>pihole -a --help</code></td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/advanced/Scripts/webpage.sh"><code>/opt/pihole/webpage.sh</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><code>pihole -a -p secretpassword</code></td>
+</tr>
+</tbody>
+</table>
+<p>Detailed information on this is <a href="#web-script">found here</a>.</p>
+<h3 id="chronometer">Chronometer<a class="headerlink" href="#chronometer" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td><code>pihole -c --help</code></td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/advanced/Scripts/chronometer.sh"><code>/opt/pihole/chronometer.sh</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><a href="https://discourse.pi-hole.net/t/the-pihole-command-with-examples/738#chronometer"><code>pihole -c -e</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Chronometer is a console dashboard of real-time stats, which can be displayed via <code>ssh</code> or on an LCD screen attached directly to your hardware. The script is capable of detecting the size of your screen, and adjusting output to try and best suit it.</p>
+<p><a href="https://i.imgur.com/NC9C4fT.jpg"><img src="https://i.imgur.com/NC9C4fT.jpg" width="450" height="600"/></a>
+<br/><sub><a href="https://www.reddit.com/r/pihole/comments/6ldjna/pihole_setup_went_so_well_at_home_for_the_1st/">Image courtesy of /u/super_nicktendo22</a></sub></p>
+<h3 id="gravity">Gravity<a class="headerlink" href="#gravity" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/advanced/Scripts/gravity.sh"><code>/opt/pihole/gravity.sh</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><a href="https://discourse.pi-hole.net/t/the-pihole-command-with-examples/738#gravity"><code>pihole -g</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Gravity is one of the most important scripts of Pi-hole. Its main purpose is to retrieve blocklists, and then consolidate them into one unique list for the built-in DNS server to use, but it also serves to complete the process of manual whitelisting, blacklisting and wildcard update. It is run automatically each week, but it can be invoked manually at any time.</p>
+<p><strong>Basic Script Process</strong>:</p>
+<ul>
+<li>It will determine Internet connectivity, and give time for <code>dnsmasq</code> to be resolvable on low-end systems if has just been restarted</li>
+<li>It extracts all URLs and domains from <code>/etc/pihole/adlists.list</code></li>
+<li>It runs through each URL, downloading it if necessary</li>
+<li><code>curl</code> checks the servers <code>Last-Modified</code> header to ensure it is getting a newer version</li>
+<li>It will attempt to parse the file into a domains-only format if necessary</li>
+<li>Lists are merged, comments removed, sorted uniquely and stored as <code>list.preEventHorizon</code></li>
+<li>Whitelisted entries within <code>/etc/pihole/whitelist.txt</code> are removed from <code>list.preEventHorizon</code> and saved into a temporary file</li>
+<li>Blacklisted, "localhost" and temporary file entries are added as seperate <code>.list</code> files</li>
+<li>Gravity cleans up temporary content and reloads the DNS server</li>
+</ul>
+<h3 id="logging">Logging<a class="headerlink" href="#logging" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td><code>pihole logging --help</code></td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/pihole"><code>/usr/local/bin/pihole</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><a href="https://discourse.pi-hole.net/t/the-pihole-command-with-examples/738#logging"><code>pihole logging off</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>This command specifies whether the Pi-hole log should be used, by commenting out <code>log-queries</code> within <code>/etc/dnsmasq.d/01-pihole.conf</code> and flushing the log.</p>
+<h3 id="query">Query<a class="headerlink" href="#query" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td><code>pihole query --help</code></td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/pihole"><code>/usr/local/bin/pihole</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><a href="https://discourse.pi-hole.net/t/the-pihole-command-with-examples/738#adlist-query"><code>pihole -q -exact -adlist example.domain.com</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>This command will query your whitelist, blacklist, wildcards and adlists for a specified domain.</p>
+<p><strong>Basic Script Process</strong>:</p>
+<ul>
+<li>User-specified options are handled</li>
+<li>Using <code>idn</code>, it will convert <a href="https://en.wikipedia.org/wiki/Internationalized_domain_name">Internationalized domain names</a> into <a href="https://en.wikipedia.org/wiki/Punycode">punycode</a></li>
+<li>The whitelist and the blacklist are searched</li>
+<li>The possible wildcard matches are then searched  (<code>/etc/dnsmasq.d/03-pihole-wildcard.conf</code>)</li>
+<li>The adlists are then searched (<code>/etc/pihole/list.*.domains</code>)</li>
+<li>Output is determined by the specified options, ensuring that a file name is only printed once</li>
+</ul>
+<h3 id="update">Update<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td><code>pihole update</code></td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/advanced/Scripts/update.sh"><code>/opt/pihole/update.sh</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><code>pihole -up</code></td>
+</tr>
+</tbody>
+</table>
+<p>Check Pi-hole Core, Web Interface and FTL repositories to determine what upgrade (if any) is required. It will then automatically update and reinstall if necessary.</p>
+<p><strong>Basic Script Process</strong>:</p>
+<ul>
+<li>Script determines if updates are available by querying GitHub</li>
+<li>Updated files are downloaded to the local filesystem using <code>git</code></li>
+<li><a href="https://github.com/pi-hole/pi-hole/blob/master/automated%20install/basic-install.sh"><code>basic-install.sh</code></a> is run</li>
+</ul>
+<h3 id="version">Version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td><code>pihole version</code></td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/advanced/Scripts/version.sh"><code>/opt/pihole/version.sh</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><code>pihole -v -c</code></td>
+</tr>
+</tbody>
+</table>
+<p>Shows installed versions of Pi-hole, Web Interface &amp; FTL. Also provides options to configure which details will be printed, such as current version, latest version, hash and subsystem.</p>
+<h3 id="uninstall">Uninstall<a class="headerlink" href="#uninstall" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/automated%20install/uninstall.sh"><code>/etc/.pihole/automated install/uninstall.sh</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><a href="https://discourse.pi-hole.net/t/the-pihole-command-with-examples/738#uninstall"><code>pihole uninstall</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Uninstall Pi-hole from your system, giving the option to remove each dependency individually.</p>
+<h3 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/pihole"><code>/usr/local/bin/pihole</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><a href="https://discourse.pi-hole.net/t/the-pihole-command-with-examples/738#status"><code>pihole status</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Display the running status of Pi-hole's DNS and blocking services.</p>
+<h3 id="enable-disable">Enable &amp; Disable<a class="headerlink" href="#enable-disable" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td><code>pihole disable --help</code></td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/pihole"><code>/usr/local/bin/pihole</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><a href="https://discourse.pi-hole.net/t/the-pihole-command-with-examples/738#toggle"><code>pihole disable 5m</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Toggle Pi-hole's ability to block unwanted domains. The disable option has the option to set a specified time before blocking is automatically re-enabled.</p>
+<h3 id="restart-dns">Restart DNS<a class="headerlink" href="#restart-dns" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/pihole"><code>/usr/local/bin/pihole</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><a href="https://discourse.pi-hole.net/t/the-pihole-command-with-examples/738#restartdns"><code>pihole restartdns</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Restart Pi-hole's DNS service.</p>
+<h3 id="checkout">Checkout<a class="headerlink" href="#checkout" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td><code>pihole checkout --help</code></td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/advanced/Scripts/piholeCheckout.sh"><code>/opt/pihole/piholeCheckout.sh</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><a href="https://discourse.pi-hole.net/t/the-pihole-command-with-examples/738#checkout"><code>pihole checkout dev</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Switch Pi-hole subsystems to a different GitHub branch. An admin can specify repositories as well as branches.</p>
+<hr />
+<h2 id="pi-hole-web">Pi-hole Web<a class="headerlink" href="#pi-hole-web" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Invocation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#web-script">Web Script</a></td>
+<td><code>pihole -a</code></td>
+</tr>
+<tr>
+<td><a href="#password">Password</a></td>
+<td><code>pihole -a password</code></td>
+</tr>
+<tr>
+<td><a href="#temperature-unit">Temperature Unit</a></td>
+<td><code>pihole -a celsius</code>, <code>pihole -a fahrenheit</code>, <code>pihole -a kelvin</code></td>
+</tr>
+<tr>
+<td><a href="#host-record">Host Record</a></td>
+<td><code>pihole -a hostrecord</code></td>
+</tr>
+<tr>
+<td><a href="#email-address">Email Address</a></td>
+<td><code>pihole -a email</code></td>
+</tr>
+<tr>
+<td><a href="#interface">Interface</a></td>
+<td><code>pihole -a interface</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="web-script">Web Script<a class="headerlink" href="#web-script" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td><code>pihole -a --help</code></td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/advanced/Scripts/webpage.sh"><code>/opt/pihole/webpage.sh</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><code>pihole -a -p secretpassword</code></td>
+</tr>
+</tbody>
+</table>
+<p>Set options for the Web Interface. This script is used to tie in all Web Interface features which are not already covered by the <a href="#core-script">Core Script</a>.</p>
+<h3 id="password">Password<a class="headerlink" href="#password" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/advanced/Scripts/webpage.sh"><code>/opt/pihole/webpage.sh</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><a href="https://discourse.pi-hole.net/t/the-pihole-command-with-examples/738#web-password"><code>pihole -a -p secretpassword</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Set Web Interface password. Password can be entered as an option (e.g: <code>pihole -a -p secretpassword</code>), or seperately as to not display on screen (e.g: <code>pihole -a -p</code>).</p>
+<h3 id="temperature-unit">Temperature Unit<a class="headerlink" href="#temperature-unit" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/advanced/Scripts/webpage.sh"><code>/opt/pihole/webpage.sh</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><a href="https://discourse.pi-hole.net/t/the-pihole-command-with-examples/738#temp-unit"><code>pihole -a -c</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Set specified temperature unit as preferred type. This preference will affect the Web Interface, as well as Chronometer.</p>
+<h3 id="host-record">Host Record<a class="headerlink" href="#host-record" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td><code>pihole -a hostrecord --help</code></td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/advanced/Scripts/webpage.sh"><code>/opt/pihole/webpage.sh</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><code>pihole -a hostrecord home.domain.com 192.168.1.1</code></td>
+</tr>
+</tbody>
+</table>
+<p>Add A &amp; AAAA records to the DNS, to be associated with an IPv4/IPv6 address.</p>
+<h3 id="email-address">Email Address<a class="headerlink" href="#email-address" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/advanced/Scripts/webpage.sh"><code>/opt/pihole/webpage.sh</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><code>pihole -a email admin@domain.com</code></td>
+</tr>
+</tbody>
+</table>
+<p>Set an administrative contact address for the Block Page. This will create a hyperlink on the Block Page to the specified email address.</p>
+<h3 id="interface">Interface<a class="headerlink" href="#interface" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help Command</td>
+<td><code>pihole -a interface --help</code></td>
+</tr>
+<tr>
+<td>Script Location</td>
+<td><a href="https://github.com/pi-hole/pi-hole/blob/master/advanced/Scripts/webpage.sh"><code>/opt/pihole/webpage.sh</code></a></td>
+</tr>
+<tr>
+<td>Example Usage</td>
+<td><a href="https://discourse.pi-hole.net/t/the-pihole-command-with-examples/738#interface"><code>pihole -a interface local</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Specify interface listening behavior for <code>dnsmasq</code>. When using <code>pihole -a interface all</code>, please ensure you use a firewall to prevent your Pi-hole from becoming an unwitting host to <a href="https://duckduckgo.com/?q=dns+amplification+attack">DNS amplification attackers</a>. You may want to consider running <a href="https://github.com/pi-hole/pi-hole/wiki/Pi-hole---OpenVPN-server">OpenVPN</a> to grant your mobile devices access to the Pi-hole.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../main/update/" title="Updating" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Updating
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../ftldns/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Overview
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 Pi-hole LLC
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://pi-hole.net" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/pi-hole" class="md-footer-social__link fa fa-github-alt"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.b806dc00.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>

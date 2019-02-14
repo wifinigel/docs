@@ -1,0 +1,1338 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://docs.pi-hole.net/guides/tor/overview/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.1">
+    
+    
+      
+        <title>Overview - Pi-hole documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.982221ab.css">
+      
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#contribute-to-the-tor-project" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://docs.pi-hole.net" title="Pi-hole documentation" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Pi-hole documentation
+            </span>
+            <span class="md-header-nav__topic">
+              Overview
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/pi-hole/pi-hole/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://docs.pi-hole.net" title="Pi-hole documentation" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Pi-hole documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/pi-hole/pi-hole/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      About Pi-hole
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        About Pi-hole
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../main/contact/" title="Contact Us" class="md-nav__link">
+      Contact Us
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../main/origins/" title="Pi-hole Origins" class="md-nav__link">
+      Pi-hole Origins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../main/presentations/" title="Presentation Support" class="md-nav__link">
+      Presentation Support
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../main/coverage/" title="On the Web" class="md-nav__link">
+      On the Web
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Getting Started
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Getting Started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../main/prerequesites/" title="Prerequisites" class="md-nav__link">
+      Prerequisites
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../main/basic-install/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../main/post-install/" title="Post-Install" class="md-nav__link">
+      Post-Install
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../main/update/" title="Updating" class="md-nav__link">
+      Updating
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Pi-hole Core
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Pi-hole Core
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../core/pihole-command/" title="The <samp>pihole</samp> command" class="md-nav__link">
+      The <samp>pihole</samp> command
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      FTLDNS
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        FTLDNS
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ftldns/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ftldns/configfile/" title="Configuration" class="md-nav__link">
+      Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ftldns/dns-resolver/" title="DNS resolver" class="md-nav__link">
+      DNS resolver
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ftldns/dns-cache/" title="DNS cache" class="md-nav__link">
+      DNS cache
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ftldns/blockingmode/" title="Blocking mode" class="md-nav__link">
+      Blocking mode
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6">
+    
+    <label class="md-nav__link" for="nav-5-6">
+      RegEx blocking
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        RegEx blocking
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ftldns/regex/overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ftldns/regex/tutorial/" title="Tutorial" class="md-nav__link">
+      Tutorial
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ftldns/privacylevels/" title="Privacy levels" class="md-nav__link">
+      Privacy levels
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ftldns/database/" title="Long-term database" class="md-nav__link">
+      Long-term database
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ftldns/telnet-api/" title="Telnet API" class="md-nav__link">
+      Telnet API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ftldns/compatibility/" title="Compatibility" class="md-nav__link">
+      Compatibility
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ftldns/compile/" title="Install from source" class="md-nav__link">
+      Install from source
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ftldns/debugging/" title="Debugging FTLDNS" class="md-nav__link">
+      Debugging FTLDNS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ftldns/in-depth/" title="In-depth manual" class="md-nav__link">
+      In-depth manual
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Docker
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Docker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../docker/DHCP/" title="DHCP" class="md-nav__link">
+      DHCP
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Contributing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Contributing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../github/contributing/" title="Contributing on Github" class="md-nav__link">
+      Contributing on Github
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../github/how-to-signoff/" title="How to sign-off commits" class="md-nav__link">
+      How to sign-off commits
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
+    
+    <label class="md-nav__link" for="nav-8">
+      Guides
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Guides
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../unbound/" title="Pi-hole as All-Around DNS Solution" class="md-nav__link">
+      Pi-hole as All-Around DNS Solution
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../dns-over-https/" title="Configuring DNS-Over-HTTPS on Pi-hole" class="md-nav__link">
+      Configuring DNS-Over-HTTPS on Pi-hole
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../upstream-dns-providers/" title="Upstream DNS Providers" class="md-nav__link">
+      Upstream DNS Providers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../whitelist-blacklist/" title="Editing Whitelist and Blacklist" class="md-nav__link">
+      Editing Whitelist and Blacklist
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../nginx-configuration/" title="Configuring NGINX for Pi-hole" class="md-nav__link">
+      Configuring NGINX for Pi-hole
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../caddy-configuration/" title="Configuring Caddy for Pi-hole" class="md-nav__link">
+      Configuring Caddy for Pi-hole
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-7" type="checkbox" id="nav-8-7">
+    
+    <label class="md-nav__link" for="nav-8-7">
+      Pi-hole and OpenVPN Server
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-7">
+        Pi-hole and OpenVPN Server
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../vpn/overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../vpn/installation/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../vpn/setup-openvpn-server/" title="Setup OpenVPN Server" class="md-nav__link">
+      Setup OpenVPN Server
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../vpn/firewall/" title="Firewall Configuration" class="md-nav__link">
+      Firewall Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-7-5" type="checkbox" id="nav-8-7-5">
+    
+    <label class="md-nav__link" for="nav-8-7-5">
+      Connecting clients
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-7-5">
+        Connecting clients
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../vpn/clients/" title="General" class="md-nav__link">
+      General
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../vpn/android-client/" title="Android" class="md-nav__link">
+      Android
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../vpn/only-dns-via-vpn/" title="Optional: Only route DNS via VPN" class="md-nav__link">
+      Optional: Only route DNS via VPN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../vpn/dual-operation/" title="Optional: Dual operation: LAN & VPN at the same time" class="md-nav__link">
+      Optional: Dual operation: LAN & VPN at the same time
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../vpn/dual-VPN/" title="Optional: Full and DNS-only" class="md-nav__link">
+      Optional: Full and DNS-only
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../vpn/dynDNS/" title="Optional: Dynamic DNS" class="md-nav__link">
+      Optional: Dynamic DNS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-8" type="checkbox" id="nav-8-8" checked>
+    
+    <label class="md-nav__link" for="nav-8-8">
+      TOR & Pi-hole
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-8">
+        TOR & Pi-hole
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Overview
+      </label>
+    
+    <a href="./" title="Overview" class="md-nav__link md-nav__link--active">
+      Overview
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contribute-to-the-tor-project" title="Contribute to the Tor project" class="md-nav__link">
+    Contribute to the Tor project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#warnings-considerations" title="⚠️ Warnings &amp; Considerations" class="md-nav__link">
+    ⚠️ Warnings &amp; Considerations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tracking" title="Tracking" class="md-nav__link">
+    Tracking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bad-relays-phishing-scam" title="Bad Relays, Phishing, Scam" class="md-nav__link">
+    Bad Relays, Phishing, Scam
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../setup/" title="Basic Setup" class="md-nav__link">
+      Basic Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../using-tor/" title="Using TOR" class="md-nav__link">
+      Using TOR
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../performance-issues/" title="Performance and other issues" class="md-nav__link">
+      Performance and other issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dnssec/" title="Using DNSSEC" class="md-nav__link">
+      Using DNSSEC
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../main/projects/" title="Community Projects" class="md-nav__link">
+      Community Projects
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contribute-to-the-tor-project" title="Contribute to the Tor project" class="md-nav__link">
+    Contribute to the Tor project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#warnings-considerations" title="⚠️ Warnings &amp; Considerations" class="md-nav__link">
+    ⚠️ Warnings &amp; Considerations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tracking" title="Tracking" class="md-nav__link">
+    Tracking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bad-relays-phishing-scam" title="Bad Relays, Phishing, Scam" class="md-nav__link">
+    Bad Relays, Phishing, Scam
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Overview</h1>
+                
+                <p><strong>This is an unsupported configuration created by the community</strong></p>
+<p>If you want to protect your - unencrypted by default - DNS requests from easily being collected by your ISP or another Adversary between you and your DNS server, you can easily setup Pi-hole to use <a href="https://www.torproject.org">Tor</a> for hostname resolving. Using DNS over Tor anonymizes your IP by using <a href="https://en.wikipedia.org/wiki/Onion_routing">Onion-Routing</a>.</p>
+<h4 id="contribute-to-the-tor-project">Contribute to the Tor project<a class="headerlink" href="#contribute-to-the-tor-project" title="Permanent link">&para;</a></h4>
+<p>If you got spare resources consider <a href="https://www.torproject.org/docs/tor-doc-relay.html.en">running a Tor Relay</a> (or <a href="https://blog.torproject.org/tips-running-exit-node">Exit</a>) Node to contribute back to the Tor Network. The default installation doesn't do either of these. And/Or consider <a href="https://donate.torproject.org">donating</a>.</p>
+<hr />
+<h3 id="warnings-considerations">⚠️ Warnings &amp; Considerations<a class="headerlink" href="#warnings-considerations" title="Permanent link">&para;</a></h3>
+<h4 id="tracking">Tracking<a class="headerlink" href="#tracking" title="Permanent link">&para;</a></h4>
+<p>Please be aware that <strong>your ISP or an Adversary still can collect what Websites you visit by capturing HTTP (plaintext) or HTTPS (<a href="https://en.wikipedia.org/wiki/Server_Name_Indication">SNI</a>) packets or by trying to <a href="https://en.wikipedia.org/wiki/Reverse_DNS_lookup">reverse lookup</a> or <a href="https://en.wikipedia.org/wiki/WHOIS">whois</a> the IPs you're connecting to</strong>. To avoid that you might want to consider to additionally <a href="#route-browser-traffic-over-tor">route your Browser traffic over Tor</a>.</p>
+<p>Also keep in mind that even Tor can't provide 100% anonymity, for example <a href="https://www.extremetech.com/extreme/211169-mit-researchers-figure-out-how-to-break-tor-anonymity-without-cracking-encryption">correlation</a> <a href="https://nakedsecurity.sophos.com/2016/10/05/unmasking-tor-users-with-dns/">attacks</a> are possible. Although it's almost impossible to execute such an attack for e.g. your ISP or a random service on the internet - you might need to <a href="https://www.torproject.org/download/download.html.en#warning">change some of your habits</a> to get the most out of Tor.</p>
+<h4 id="bad-relays-phishing-scam">Bad Relays, Phishing, Scam<a class="headerlink" href="#bad-relays-phishing-scam" title="Permanent link">&para;</a></h4>
+<p>Tor has the concept of <a href="https://trac.torproject.org/projects/tor/wiki/doc/ReportingBadRelays">Bad Relays</a> and tries to avoid that Tor Relays become Bad Exit Nodes (which are a form of Relay) by monitoring their behavior before declaring them as Exit Node. But it still can happen and since anyone can run a Tor Relay as Exit Node on the Tor Network, this means that an Exit Node owner could fake the answer to a DNS request and redirect you to a malicious website/IP. </p>
+<p>If you're in a recent Browser and only visit encrypted (HTTPS) sites, that isn't too bad, since the Browser would warn you with an invalid certificate warning (unless someone would hack a <a href="https://en.wikipedia.org/wiki/Certificate_authority">Certificate authority</a> or get a CA to issue a certificate without validation - which is both <a href="https://www.reddit.com/r/TOR/comments/5b416x/malicious_tor_exit_node_can_provide_fakephishing/d9lskni/">highly unlikely</a>). But other apps on your network that resolve DNS queries via DNS over Tor might either communicate unencrypted or don't validate certificates properly. </p>
+<p>Such apps could get malicious data injected and/or phish your data without your knowledge.</p>
+<p><strong>So, ideally, only use DNS over Tor if you know for a fact that the apps in your network communicate over a secure connection and properly validate certificates.</strong></p>
+<p>That being said, if you use DNS over Tor in the default configuration (meaning no custom <code>ExitNodes</code> in the torrc), this kind of attack requires a big portion of luck for the attacker (owner of a Bad Exit Node), because you would have to get a circuit routing over the Bad Exit Node in the same moment when using an insecure app (Tor switches the circuit at least every 10minutes in the default configuration). On top of that an attacker must first find an app that has this kind of vulnerability and has valuable data or attack vectors. This is unlikely since most apps out there that handle sensitive data at least communicate over encrypted connections that validate certificates based on system or manual root certs.</p>
+<p>To lower the chances of Bad Exit Nodes you could restrict <code>ExitNodes</code> to trusted ones (<a href="#solution-1---only-use-exit-nodes-from-specific-countries">country</a> and/or <a href="#solution-2---only-use-specific-exit-nodes">specific</a>). Choosing specific Exit Nodes would basically be the same as e.g. trusting specific <a href="#alternatives">DNSCrypt resolvers</a> or <a href="https://wikileaks.org/wiki/Alternative_DNS">Alternative DNS Servers</a>. They might be good, they might be bad, you can't know for sure (unless the DNS answers are <a href="#dnssec">DNSSEC</a> signed - but that's most likely not the case for the kinds of app that might get affected by this).</p>
+<p>So in the end it boils down to one of the following use cases.</p>
+<ul>
+<li>
+<p>Encrypt your DNS traffic using Tor so your ISP can't collect it (but still is able to <a href="#%EF%B8%8F-attention-%EF%B8%8F">collect what Websites/IPs you visit</a> unless you route that traffic also over Tor) and the DNS Server won't see your real IP for the price of maybe getting a Bad Exit Node that fakes answers to DNS queries.</p>
+</li>
+<li>
+<p>Use <a href="#alternatives">DNSCrypt</a> so your ISP can't collect DNS traffic (but still can collect the websites/IPs you visit unless you route that traffic over Tor), but you have to accept that the DNSCrypt resolver you've chosen might store your DNS queries together with your IP (unless you <a href="https://github.com/jedisct1/dnscrypt-proxy/issues/399#issuecomment-214329222">modify DNSCrypt to route over Tor</a>) and could also turn out to send faked answers to DNS queries. I guess you would call that a Bad DNSCrypt resolver then.</p>
+</li>
+<li>
+<p>Use an unencrypted alternative DNS server (there are a lot of lists out there). In this case your ISP easily can record your DNS traffic <em>and</em> the alternative DNS server can store your DNS queries together with your IP. On top of that your ISP or the alternative DNS could also fake the answer to the DNS queries. That would be a Bad Alternative DNS Server then.</p>
+</li>
+<li>
+<p>Use your ISP DNS server. In this case your ISP gets your DNS traffic for free. On top of that the ISP could also fake answers to DNS queries. Bad ISP DNS Server.<br />
+   The bottom line is that you have to weigh up who you trust the most and which risks you are willing to take.</p>
+</li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../vpn/dynDNS/" title="Optional: Dynamic DNS" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Optional: Dynamic DNS
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../setup/" title="Basic Setup" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Basic Setup
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 Pi-hole LLC
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
+    
+      <a href="https://pi-hole.net" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/pi-hole" class="md-footer-social__link fa fa-github-alt"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.b806dc00.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+    
+  </body>
+</html>
