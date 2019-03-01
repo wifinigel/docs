@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://docs.pi-hole.net/guides/whitelist-blacklist/">
+        <link rel="canonical" href="https://docs.pi-hole.net/guides/traefik-configuration-nodocker/">
       
       
       
@@ -38,7 +38,7 @@
     
     
       
-        <title>Editing Whitelist and Blacklist - Pi-hole documentation</title>
+        <title>Configuring Traefik for Pi-hole (not in Docker) - Pi-hole documentation</title>
       
     
     
@@ -98,7 +98,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#what-to-whitelist-or-blacklist" tabindex="1" class="md-skip">
+      <a href="#notes-warnings" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -123,7 +123,7 @@
               Pi-hole documentation
             </span>
             <span class="md-header-nav__topic">
-              Editing Whitelist and Blacklist
+              Configuring Traefik for Pi-hole (not in Docker)
             </span>
           
         </div>
@@ -780,72 +780,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Editing Whitelist and Blacklist
-      </label>
-    
-    <a href="./" title="Editing Whitelist and Blacklist" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../whitelist-blacklist/" title="Editing Whitelist and Blacklist" class="md-nav__link">
       Editing Whitelist and Blacklist
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-to-whitelist-or-blacklist" title="What to Whitelist or Blacklist" class="md-nav__link">
-    What to Whitelist or Blacklist
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-whitelist-or-blacklist" title="How to Whitelist or Blacklist" class="md-nav__link">
-    How to Whitelist or Blacklist
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-pihole-w-usages" title="Example pihole -w usages" class="md-nav__link">
-    Example pihole -w usages
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-pihole-b-usages" title="Example pihole -b usages" class="md-nav__link">
-    Example pihole -b usages
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -877,11 +816,52 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../traefik-configuration-nodocker/" title="Configuring Traefik for Pi-hole (not in Docker)" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Configuring Traefik for Pi-hole (not in Docker)
+      </label>
+    
+    <a href="./" title="Configuring Traefik for Pi-hole (not in Docker)" class="md-nav__link md-nav__link--active">
       Configuring Traefik for Pi-hole (not in Docker)
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#notes-warnings" title="Notes &amp; Warnings" class="md-nav__link">
+    Notes &amp; Warnings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-requirements" title="Basic requirements" class="md-nav__link">
+    Basic requirements
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -1173,36 +1153,16 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-to-whitelist-or-blacklist" title="What to Whitelist or Blacklist" class="md-nav__link">
-    What to Whitelist or Blacklist
+  <a href="#notes-warnings" title="Notes &amp; Warnings" class="md-nav__link">
+    Notes &amp; Warnings
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-whitelist-or-blacklist" title="How to Whitelist or Blacklist" class="md-nav__link">
-    How to Whitelist or Blacklist
+  <a href="#basic-requirements" title="Basic requirements" class="md-nav__link">
+    Basic requirements
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-pihole-w-usages" title="Example pihole -w usages" class="md-nav__link">
-    Example pihole -w usages
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-pihole-b-usages" title="Example pihole -b usages" class="md-nav__link">
-    Example pihole -b usages
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1223,80 +1183,87 @@
               
                 
                 
-                  <h1>Editing Whitelist and Blacklist</h1>
+                  <h1>Configuring Traefik for Pi-hole (not in Docker)</h1>
                 
-                <h3 id="what-to-whitelist-or-blacklist">What to Whitelist or Blacklist<a class="headerlink" href="#what-to-whitelist-or-blacklist" title="Permanent link">&para;</a></h3>
-<p><a href="https://chrome.google.com/webstore/detail/whitelist-assistant-by-dn/fdmpekabnlekabjlimjkfmdjajnddgpc">This extension for Google Chrome</a> can help you in finding out which domains you need to whitelist.</p>
-<h3 id="how-to-whitelist-or-blacklist">How to Whitelist or Blacklist<a class="headerlink" href="#how-to-whitelist-or-blacklist" title="Permanent link">&para;</a></h3>
-<p>There are scripts to aid users in adding or removing domains to the whitelist or blacklist. </p>
-<p>The scripts will first parse <code>whitelist.txt</code> or <code>blacklist.txt</code> for any changes, and if any additions or deletions are detected, it will reload <code>dnsmasq</code> so that they are effective immediately.</p>
-<p>Each script accepts the following parameters:</p>
-<table>
-  <tbody>
-      <tr>
-         <th><code>[domain]</code></th>
-         <td>Fully qualified domain name you wish to add or remove. You can pass any number of domains.</td>
-      </tr>     
-      <tr>
-         <th><code>-d</code></th>
-         <td>Removal mode. Domains will be removed from the list, rather than added</td>
-      </tr>     
-      <tr>
-         <th><code>-nr</code></th>
-         <td>Update blacklist without refreshing dnsmasq</td>
-      </tr>
-      <tr>
-         <th><code>-f</code></th>
-         <td>Force delete cached blocklist content</td>
-      </tr>
-      <tr>
-         <th><code>-q</code></th>
-         <td>Quiet mode. Console output is minimal. Useful for calling from another script (see <code>gravity.sh</code>)</td>
-      </tr>
-   </tbody>
-</table>
+                <h3 id="notes-warnings">Notes &amp; Warnings<a class="headerlink" href="#notes-warnings" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>This is an unsupported configuration created by the community</strong></li>
+<li>This describes on how to use traefik on a (possibly remote) machine to serve pi-hole via https and a different domain, not how to to this in docker (via docker-compose).</li>
+</ul>
+<h3 id="basic-requirements">Basic requirements<a class="headerlink" href="#basic-requirements" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Have a traefik server running anywhere where it can access port 80 of the pihole server. Technically it can run in a docker container though. For LetsEncrypt to work traefik must be reachable on port 80 and 443 from the internet and have the domain.tld pointed at its external address.</p>
+</li>
+<li>
+<p>The following traefik config (traefik.toml)
+<div class="codehilite"><pre><span></span>debug = false
+checkNewVersion = true
+logLevel = &quot;INFO&quot;
+defaultEntryPoints = [&quot;https&quot;,&quot;http&quot;]
 
-<p>Domains passed are parsed by the script to ensure they are valid domains. If a domain is invalid it will be ignored.</p>
-<h5 id="example-pihole-w-usages">Example <code>pihole -w</code> usages<a class="headerlink" href="#example-pihole-w-usages" title="Permanent link">&para;</a></h5>
-<table>
-  <tbody>
-      <tr>
-         <th><code>pihole -w domain1 [domain2...]</code></th>
-         <td>Attempt to add one or more domains to the whitelist and reload dnsmasq.</td>
-      </tr>     
-      <tr>
-         <th><code>pihole -w -nr domain1 [domain2...]</code></th>
-         <td>Attempt to add one or more domains to the whitelist, but do not reload dnsmasq.</td>
-      </tr>     
-      <tr>
-         <th><code>pihole -w -f domain1 [domain2...]</code></th>
-         <td>Attempt to add one or more domains to the whitelist and force dnsmasq to reload</td>
-      </tr>
-   </tbody>
-</table>
+[entryPoints]
+  [entryPoints.http]
+    address = &quot;:80&quot;
+    [entryPoints.http.redirect]
+      entryPoint = &quot;https&quot;
+  [entryPoints.https]
+    address = &quot;:443&quot;
+    [entryPoints.https.tls]
+      # Optional Security Settings
+[retry]
 
-<p>To remove domains from the whitelist:
-Add <code>-d</code> as an additional argument (e.g <code>pihole -w -d domain1 [domain2...]</code>)</p>
-<h5 id="example-pihole-b-usages">Example <code>pihole -b</code> usages<a class="headerlink" href="#example-pihole-b-usages" title="Permanent link">&para;</a></h5>
-<table>
-  <tbody>
-      <tr>
-         <th><code>pihole -b domain1 [domain2...]</code></th>
-         <td>Attempt to add one or more domains to the blacklist and reload dnsmasq.</td>
-      </tr>     
-      <tr>
-         <th><code>pihole -b -nr domain1 [domain2...]</code></th>
-         <td>Attempt to add one or more domains to the blacklist, but do not reload dnsmasq.</td>
-      </tr>     
-      <tr>
-         <th><code>pihole -b -f domain1 [domain2...]</code></th>
-         <td>Attempt to add one or more domains to the blacklist and force dnsmasq to reload</td>
-      </tr>
-   </tbody>
-</table>
+[docker]
+  endpoint = &quot;unix:///var/run/docker.sock&quot;
+  domain = &quot;domain.tld&quot;
+  watch = true
+  exposedbydefault = false
 
-<p>To remove domains from the blacklist:
-Add <code>-d</code> as an additional argument (e.g <code>pihole -b -d domain1 [domain2...]</code>)</p>
+[acme]
+  email = &quot;emailForLetsEncryptACME&quot;
+  storage = &quot;acme.json&quot;
+  storageFile = &quot;/etc/traefik/acme/acme.json&quot;
+  entryPoint = &quot;https&quot;
+  OnHostRule = true
+  [acme.tlsChallenge]
+  [[acme.domains]]
+    main = &quot;pihole.domain.tld&quot;
+
+[file]
+  watch = true
+
+[backends]
+  [backends.pihole]
+    [backends.pihole.servers.server1]
+    url = &quot;http://IP-Of-Pihole:80&quot;
+
+[frontends]
+  [frontends.pihole]
+  backend = &quot;pihole&quot;
+  passHostHeader = true
+    [frontends.pihole.headers]
+    STSSeconds = 31536000
+    [frontends.pihole.routes.route1]
+    rule = &quot;Host:pihole.domain.tld&quot;
+</pre></div></p>
+</li>
+<li>
+<p>Edit your /etc/lighthttpd/external.conf to
+<div class="codehilite"><pre><span></span>$SERVER[&quot;socket&quot;] == &quot;:80&quot; {
+  # Ensure the Pi-hole Block Page knows that this is not a blocked domain
+  setenv.add-environment = (&quot;fqdn&quot; =&gt; &quot;true&quot;)
+
+
+  $HTTP[&quot;host&quot;] =~ &quot;^pi\.hole&quot; {
+      url.redirect = (&quot;^/(.*)&quot; =&gt; &quot;https://pihole.domain.tld/$1&quot;)
+  }
+}
+</pre></div></p>
+</li>
+<li>
+<p>Restart pi-holes lighthttpd and traefik, then you should be able to access your pihole via <code>https://pihole.domain.tld/</code></p>
+</li>
+</ol>
                 
                   
                 
@@ -1317,7 +1284,7 @@ Add <code>-d</code> as an additional argument (e.g <code>pihole -b -d domain1 [d
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../upstream-dns-providers/" title="Upstream DNS Providers" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../caddy-configuration/" title="Configuring Caddy for Pi-hole" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1326,19 +1293,19 @@ Add <code>-d</code> as an additional argument (e.g <code>pihole -b -d domain1 [d
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Upstream DNS Providers
+                Configuring Caddy for Pi-hole
               </span>
             </div>
           </a>
         
         
-          <a href="../nginx-configuration/" title="Configuring NGINX for Pi-hole" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../vpn/overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Configuring NGINX for Pi-hole
+                Overview
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
