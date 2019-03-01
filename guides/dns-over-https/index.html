@@ -1300,8 +1300,8 @@ cloudflared -v
 <p>Here we are downloading the precompiled binary and copying it to the <code>/usr/local/bin/</code> directory to allow execution by the cloudflared user. Proceed to run the binary with the <code>-v</code> flag to check it is all working.</p>
 <div class="codehilite"><pre><span></span>wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz
 tar -xvzf cloudflared-stable-linux-arm.tgz
-cp ./cloudflared /usr/local/bin
-chmod +x /usr/local/bin/cloudflared
+sudo cp ./cloudflared /usr/local/bin
+sudo chmod +x /usr/local/bin/cloudflared
 cloudflared -v
 </pre></div>
 
