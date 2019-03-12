@@ -1277,13 +1277,42 @@
 Any hardware that runs one of the supported operating systems will do!</p>
 <h3 id="supported-operating-systems">Supported Operating Systems<a class="headerlink" href="#supported-operating-systems" title="Permanent link">&para;</a></h3>
 <p>The following operating systems are <strong>officially</strong> supported:</p>
-<ul>
-<li>Raspbian: Jessie / Stretch</li>
-<li>Ubuntu: 16.04 / 16.10</li>
-<li>Fedora: 28 / 29</li>
-<li>Debian: 8 / 9</li>
-<li>CentOS: 7 (not ARM)</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Distribution</th>
+<th>Release</th>
+<th>Architecture</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raspbian</td>
+<td>Jessie / Stretch</td>
+<td>ARM</td>
+</tr>
+<tr>
+<td>Ubuntu</td>
+<td>16.x / 18.x</td>
+<td>ARM / x86_64</td>
+</tr>
+<tr>
+<td>Debian</td>
+<td>8 / 9</td>
+<td>ARM / x86_64 / i386</td>
+</tr>
+<tr>
+<td>Fedora</td>
+<td>28 / 29</td>
+<td>ARM / x86_64</td>
+</tr>
+<tr>
+<td>CentOS</td>
+<td>7</td>
+<td>x86_64</td>
+</tr>
+</tbody>
+</table>
 <h3 id="ip-addressing"><abbr title="Internet protocol address">IP</abbr> Addressing<a class="headerlink" href="#ip-addressing" title="Permanent link">&para;</a></h3>
 <p>Pi-hole needs a static <abbr title="Internet protocol address">IP</abbr> address to properly function (a <abbr title="Dynamic Host Configuration Protocol (network management protocol for configuring Internet Protocol version 4 (IPv4) hosts with IP addresses)">DHCP</abbr> reservation is just fine).  Users may run into issues because <strong>we currently install <code>dhcpcd5</code>, which may conflict with other running network managers</strong> such as <code>dhclient</code>, <code>dhcpcd</code>, <code>networkmanager</code>, and <code>systemd-networkd</code>.</p>
 <p>As part of our install process, <strong>we append some lines to <code>/etc/dhcpcd.conf</code> in order to statically assign an <abbr title="Internet protocol address">IP</abbr> address</strong>, so take note of this prior to installing.</p>
