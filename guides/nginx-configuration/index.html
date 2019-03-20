@@ -1236,6 +1236,7 @@
         <span class="nt">location</span> <span class="o">~</span> <span class="err">\</span><span class="p">.</span><span class="nc">php</span><span class="o">$</span> <span class="p">{</span>
                 <span class="err">include</span> <span class="err">snippets/fastcgi-php.conf</span><span class="p">;</span>
                 <span class="err">fastcgi_pass</span> <span class="n">unix</span><span class="p">:</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">php</span><span class="o">/</span><span class="n">php7</span><span class="mf">.0</span><span class="o">-</span><span class="n">fpm</span><span class="o">.</span><span class="n">sock</span><span class="p">;</span>
+                <span class="err">fastcgi_param</span> <span class="err">FQDN</span> <span class="err">true</span><span class="p">;</span>
                 <span class="err">auth_basic</span> <span class="err">&quot;Restricted&quot;</span><span class="p">;</span> <span class="err">#For</span> <span class="err">Basic</span> <span class="err">Auth</span>
                 <span class="err">auth_basic_user_file</span> <span class="err">/etc/nginx/.htpasswd</span><span class="p">;</span>  <span class="err">#For</span> <span class="err">Basic</span> <span class="err">Auth</span>
         <span class="p">}</span>
@@ -1288,7 +1289,7 @@
 </li>
 <li>
 <p>If you want to use block page for any blocked domain subpage (aka Nginx 404), add this to Pi-hole server block in your Nginx configuration file:
-<div class="codehilite"><pre><span></span>error_page 404 /pihole/index.php
+<div class="codehilite"><pre><span></span>error_page 404 /pihole/index.php;
 </pre></div></p>
 </li>
 <li>When using nginx to serve Pi-hole, Let's Encrypt can be used to directly configure nginx. Make sure to use your hostname instead of _ in <code>server_name _;</code> line above.
