@@ -970,13 +970,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#iptables-restore-etcpiholerulesv4-ip6tables-restore-etcpiholerulesv6" title="iptables-restore &lt; /etc/pihole/rules.v4" class="md-nav__link">
-    iptables-restore &lt; /etc/pihole/rules.v4
-  </a>
-  
-</li>
-      
       
       
       
@@ -1080,6 +1073,18 @@
   <li class="md-nav__item">
     <a href="../dynDNS/" title="Optional: Dynamic DNS" class="md-nav__link">
       Optional: Dynamic DNS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../troubleshooting/" title="Troubleshooting" class="md-nav__link">
+      Troubleshooting
     </a>
   </li>
 
@@ -1269,13 +1274,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#iptables-restore-etcpiholerulesv4-ip6tables-restore-etcpiholerulesv6" title="iptables-restore &lt; /etc/pihole/rules.v4" class="md-nav__link">
-    iptables-restore &lt; /etc/pihole/rules.v4
-  </a>
-  
-</li>
-      
       
       
       
@@ -1362,10 +1360,10 @@ View the rules you just created</p>
 
 <p>and they should look something like this:</p>
 <div class="codehilite"><pre><span></span>Chain INPUT (policy DROP)
-num  target     prot opt source               destination         
-1    ACCEPT     all  --  anywhere             anywhere            
+num  target     prot opt source               destination
+1    ACCEPT     all  --  anywhere             anywhere
 2    ACCEPT     all  --  anywhere             anywhere             state RELATED,ESTABLISHED
-3    ACCEPT     all  --  anywhere             anywhere            
+3    ACCEPT     all  --  anywhere             anywhere
 4    ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:domain
 5    ACCEPT     udp  --  anywhere             anywhere             udp dpt:domain
 6    ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:http
@@ -1384,16 +1382,16 @@ num  target     prot opt source               destination
 19   REJECT     tcp  --  anywhere             anywhere             tcp dpt:https reject-with icmp-port-unreachable
 
 Chain FORWARD (policy ACCEPT)
-num  target     prot opt source               destination         
+num  target     prot opt source               destination
 
 Chain OUTPUT (policy ACCEPT)
-num  target     prot opt source               destination  
+num  target     prot opt source               destination
 </pre></div>
 
 <p>Similarly, <code>ip6tables -L --line-numbers</code> should look like this:</p>
 <div class="codehilite"><pre><span></span>Chain INPUT (policy DROP)
-num  target     prot opt source               destination         
-1    ACCEPT     all      anywhere             anywhere            
+num  target     prot opt source               destination
+1    ACCEPT     all      anywhere             anywhere
 2    ACCEPT     all      anywhere             anywhere             state RELATED,ESTABLISHED
 3    ACCEPT     tcp      anywhere             anywhere             tcp dpt:domain
 4    ACCEPT     udp      anywhere             anywhere             udp dpt:domain
@@ -1405,10 +1403,10 @@ num  target     prot opt source               destination
 10   REJECT     tcp      anywhere             anywhere             tcp dpt:https reject-with icmp6-port-unreachable
 
 Chain FORWARD (policy ACCEPT)
-num  target     prot opt source               destination         
+num  target     prot opt source               destination
 
 Chain OUTPUT (policy ACCEPT)
-num  target     prot opt source               destination  
+num  target     prot opt source               destination
 </pre></div>
 
 <h5 id="verify-the-rules-are-working">Verify the rules are working<a class="headerlink" href="#verify-the-rules-are-working" title="Permanent link">&para;</a></h5>
@@ -1420,9 +1418,9 @@ ip6tables-save &gt; /etc/pihole/rules.v6
 </pre></div>
 
 <p>Similarly, you can restore these rules:</p>
-<h2 id="iptables-restore-etcpiholerulesv4-ip6tables-restore-etcpiholerulesv6"><div class="codehilite"><pre><span></span>iptables-restore &lt; /etc/pihole/rules.v4
+<div class="codehilite"><pre><span></span>iptables-restore &lt; /etc/pihole/rules.v4
 ip6tables-restore &lt; /etc/pihole/rules.v6
-</pre></div><a class="headerlink" href="#iptables-restore-etcpiholerulesv4-ip6tables-restore-etcpiholerulesv6" title="Permanent link">&para;</a></h2>
+</pre></div>
                 
                   
                 

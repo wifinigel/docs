@@ -221,6 +221,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://docs.pi-hole.net/guides/vpn/troubleshooting/</loc>
+     <lastmod>2019-04-24</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://docs.pi-hole.net/guides/tor/overview/</loc>
      <lastmod>2019-04-24</lastmod>
      <changefreq>daily</changefreq>

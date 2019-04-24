@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://docs.pi-hole.net/guides/vpn/only-dns-via-vpn/">
+        <link rel="canonical" href="https://docs.pi-hole.net/guides/vpn/troubleshooting/">
       
       
       
@@ -38,7 +38,7 @@
     
     
       
-        <title>Optional: Only route DNS via VPN - Pi-hole documentation</title>
+        <title>Troubleshooting - Pi-hole documentation</title>
       
     
     
@@ -98,7 +98,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#optional-only-route-dns-via-vpn" tabindex="1" class="md-skip">
+      <a href="#crl-expired" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -123,7 +123,7 @@
               Pi-hole documentation
             </span>
             <span class="md-header-nav__topic">
-              Optional: Only route DNS via VPN
+              Troubleshooting
             </span>
           
         </div>
@@ -945,86 +945,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Optional: Only route DNS via VPN
-      </label>
-    
-    <a href="./" title="Optional: Only route DNS via VPN" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../only-dns-via-vpn/" title="Optional: Only route DNS via VPN" class="md-nav__link">
       Optional: Only route DNS via VPN
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#optional-only-route-dns-via-vpn" title="Optional: Only route DNS via VPN" class="md-nav__link">
-    Optional: Only route DNS via VPN
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-a-client-config-file" title="Using a client config file" class="md-nav__link">
-    Using a client config file
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-the-network-manager" title="Using the Network Manager" class="md-nav__link">
-    Using the Network Manager
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alternative-1-disable-network-managers-internal-dns-server" title="Alternative 1: Disable Network Manager's internal DNS server" class="md-nav__link">
-    Alternative 1: Disable Network Manager's internal DNS server
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#alternative-2-set-dns-server-address-of-your-pi-hole-manually-on-the-main-interface" title="Alternative 2: Set DNS server address of your Pi-hole manually on the main interface" class="md-nav__link">
-    Alternative 2: Set DNS server address of your Pi-hole manually on the main interface
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" title="Troubleshooting" class="md-nav__link">
-    Troubleshooting
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -1068,11 +993,45 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../troubleshooting/" title="Troubleshooting" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Troubleshooting
+      </label>
+    
+    <a href="./" title="Troubleshooting" class="md-nav__link md-nav__link--active">
       Troubleshooting
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#crl-expired" title="CRL expired" class="md-nav__link">
+    CRL expired
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -1201,49 +1160,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#optional-only-route-dns-via-vpn" title="Optional: Only route DNS via VPN" class="md-nav__link">
-    Optional: Only route DNS via VPN
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-a-client-config-file" title="Using a client config file" class="md-nav__link">
-    Using a client config file
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-the-network-manager" title="Using the Network Manager" class="md-nav__link">
-    Using the Network Manager
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alternative-1-disable-network-managers-internal-dns-server" title="Alternative 1: Disable Network Manager's internal DNS server" class="md-nav__link">
-    Alternative 1: Disable Network Manager's internal DNS server
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#alternative-2-set-dns-server-address-of-your-pi-hole-manually-on-the-main-interface" title="Alternative 2: Set DNS server address of your Pi-hole manually on the main interface" class="md-nav__link">
-    Alternative 2: Set DNS server address of your Pi-hole manually on the main interface
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" title="Troubleshooting" class="md-nav__link">
-    Troubleshooting
+  <a href="#crl-expired" title="CRL expired" class="md-nav__link">
+    CRL expired
   </a>
   
 </li>
@@ -1265,46 +1183,38 @@
               
                 
                 
-                  <h1>Optional: Only route DNS via VPN</h1>
+                  <h1>Troubleshooting</h1>
                 
-                <h3 id="optional-only-route-dns-via-vpn">Optional: Only route DNS via VPN<a class="headerlink" href="#optional-only-route-dns-via-vpn" title="Permanent link">&para;</a></h3>
-<p>With this setup, you will force connected clients to use <strong>only the DNS provided by the VPN connection, i.e. the Pi-hole.</strong>  Do this only if you <strong>don't</strong> want to tunnel all traffic from the client through the VPN, but only its DNS queries.</p>
-<p>Edit your <code>/etc/openvpn/server.conf</code> and remove (comment out) the following line:</p>
-<div class="codehilite"><pre><span></span># push &quot;redirect-gateway def1 bypass-dhcp&quot;
+                <h3 id="crl-expired">CRL expired<a class="headerlink" href="#crl-expired" title="Permanent link">&para;</a></h3>
+<p>OpenVPN 2.4 and newer check the validity of the Certificate Revocation List (CRL). This can result in a sudden malfunction of <code>openvpn</code> after an update even though no configuration files have changed. This error manifests in the following, not very helpful, error on the client side:
+<div class="codehilite"><pre><span></span>Wed Apr 24 11:19:07 2019 VERIFY OK: depth=0, CN=server
+Wed Apr 24 11:19:07 2019 Connection reset, restarting [0]
+Wed Apr 24 11:19:07 2019 SIGUSR1[soft,connection-reset] received, process restarting
+Wed Apr 24 11:19:07 2019 Restart pause, 5 second(s)
 </pre></div>
-
-<h3 id="using-a-client-config-file">Using a client config file<a class="headerlink" href="#using-a-client-config-file" title="Permanent link">&para;</a></h3>
-<p>This works pretty much out of the box with common <code>client.ovpn</code> files, like this provided one: <a href="http://www.dl6er.de/pi-hole/openVPN/client.ovpn">client.ovpn</a></p>
-<p>Remember to replace the locations of your keys and the address/host name of your server.</p>
-<h3 id="using-the-network-manager">Using the Network Manager<a class="headerlink" href="#using-the-network-manager" title="Permanent link">&para;</a></h3>
-<p>When using the Network Manager, you will have to do some additional setting on the client side of things:</p>
-<p><img alt="" src="../NetworkManager1.png" /></p>
-<h4 id="alternative-1-disable-network-managers-internal-dns-server">Alternative 1: Disable Network Manager's internal DNS server<a class="headerlink" href="#alternative-1-disable-network-managers-internal-dns-server" title="Permanent link">&para;</a></h4>
-<p>Edit <code>/etc/NetworkManager/NetworkManager.conf</code>:
-<div class="codehilite"><pre><span></span># dns=dnsmasq
+Android clients simply report: "Transport error, trying to reconnect..."</p>
+<blockquote>
+<p><img alt="" src="../Android-Transport-Error.png" /></p>
+</blockquote>
+<p>On the OpenVPN server, the following messages are logged:
+<div class="codehilite"><pre><span></span>Wed Apr 24 11:19:07 2019 aaa.bbb.ccc.ddd:pppp TLS: Initial packet from [AF_INET]aaa.bbb.ccc.ddd:pppp, sid=57719cb8 77945ae9
+Wed Apr 24 11:19:07 2019 aaa.bbb.ccc.ddd:pppp VERIFY ERROR: depth=0, error=CRL has expired: CN=client1
+Wed Apr 24 11:19:07 2019 aaa.bbb.ccc.ddd:pppp OpenSSL: error:11089086:SSL routines:ssl3_get_client_certificate:certificate verify failed
+Wed Apr 24 11:19:07 2019 aaa.bbb.ccc.ddd:pppp TLS_ERROR: BIO read tls_read_plaintext error
+Wed Apr 24 11:19:07 2019 aaa.bbb.ccc.ddd:pppp TLS Error: TLS object -&gt; incoming plaintext read error
+Wed Apr 24 11:19:07 2019 aaa.bbb.ccc.ddd:pppp TLS Error: TLS handshake failed
+Wed Apr 24 11:19:07 2019 aaa.bbb.ccc.ddd:pppp Fatal TLS error (check_tls_errors_co), restarting
+Wed Apr 24 11:19:07 2019 aaa.bbb.ccc.ddd:pppp SIGUSR1[soft,tls-error] received, client-instance restarting
 </pre></div>
-and restart the Network Manager:
-<div class="codehilite"><pre><span></span>sudo restart network-manager
-</pre></div></p>
-<p>When connecting your DNS server will now be properly picked up and used by your client.</p>
-<h4 id="alternative-2-set-dns-server-address-of-your-pi-hole-manually-on-the-main-interface">Alternative 2: Set DNS server address of your Pi-hole manually on the main interface<a class="headerlink" href="#alternative-2-set-dns-server-address-of-your-pi-hole-manually-on-the-main-interface" title="Permanent link">&para;</a></h4>
-<p>You can also set the address of the DNS server manually (use the device which actually connects to the internet, e.g. <code>eth0</code>):</p>
-<p><img alt="" src="../NetworkManager2.png" /></p>
-<p>After doing either alternative, you should see:
-<div class="codehilite"><pre><span></span>pi.hole has address W.X.Y.Z (outside address of your VPN server)
-pi.hole has IPv6 address A:B:C:D:E:F (outside address of your VPN server)
-</pre></div></p>
-<p>The web interface of your Pi-hole will be visible at <code>http://pi.hole/admin/</code> (even with the recommended firewall configuration mentioned on another subpage)</p>
-<p><img alt="" src="../VPNdashboard.png" /></p>
-<hr />
-<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<p>If your new DNS server configuration has not been activated (try restarting the interface / system) you will see
-<div class="codehilite"><pre><span></span>host pi.hole
-Host pi.hole not found: 3(NXDOMAIN)
-</pre></div></p>
-<p>If you are not connected to your VPN network you will see
-<div class="codehilite"><pre><span></span>host pi.hole
-;; connection timed out; no servers could be reached
+The error is <code>CRL has expired</code> and can be solved using the following commands:
+<div class="codehilite"><pre><span></span>sudo -s
+cd /etc/openvpn
+mv crl.pem crl.pem_old
+cd easy-rsa
+./easyrsa gen-crl
+cp pki/crl.pem ../
+service openvpn restart
+exit
 </pre></div></p>
                 
                   
@@ -1326,7 +1236,7 @@ Host pi.hole not found: 3(NXDOMAIN)
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../android-client/" title="Android" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../dynDNS/" title="Optional: Dynamic DNS" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1335,19 +1245,19 @@ Host pi.hole not found: 3(NXDOMAIN)
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Android
+                Optional: Dynamic DNS
               </span>
             </div>
           </a>
         
         
-          <a href="../dual-operation/" title="Optional: Dual operation: LAN & VPN at the same time" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../tor/overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Optional: Dual operation: LAN & VPN at the same time
+                Overview
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

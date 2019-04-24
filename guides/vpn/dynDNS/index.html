@@ -98,6 +98,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#setting-up-dyndns-update" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -985,10 +989,62 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Optional: Dynamic DNS
+      </label>
+    
     <a href="./" title="Optional: Dynamic DNS" class="md-nav__link md-nav__link--active">
       Optional: Dynamic DNS
     </a>
     
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-dyndns-update" title="Setting up DynDNS update" class="md-nav__link">
+    Setting up DynDNS update
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-strato-dyndns" title="Example: Strato DynDNS" class="md-nav__link">
+    Example: Strato DynDNS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../troubleshooting/" title="Troubleshooting" class="md-nav__link">
+      Troubleshooting
+    </a>
   </li>
 
         
@@ -1105,6 +1161,48 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-dyndns-update" title="Setting up DynDNS update" class="md-nav__link">
+    Setting up DynDNS update
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-strato-dyndns" title="Example: Strato DynDNS" class="md-nav__link">
+    Example: Strato DynDNS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -1126,7 +1224,62 @@
 <div class="codehilite"><pre><span></span>pihole -a hostrecord home.mydomain.de 192.168.1.10
 </pre></div>
 
-<p>If you don't do this, clients (like the Android OpenVPN client) will not able to connect to the VPN server when <em>inside the internal network</em> (while it will work from outside).  Afterwards, the client will be able to connect to the VPN server both from inside and outside you local network.</p>
+<p>If you don't do this, clients (like the Android OpenVPN client) will not able to connect to the VPN server when <em>inside the internal network</em> (while it will work from outside).  Afterwards, the client will be able to connect to the VPN server both from inside and outside your local network.</p>
+<h2 id="setting-up-dyndns-update">Setting up DynDNS update<a class="headerlink" href="#setting-up-dyndns-update" title="Permanent link">&para;</a></h2>
+<p>If your router cannot update the dynamic DNS record, you can use for example <code>ddclient</code>.
+<div class="codehilite"><pre><span></span>sudo apt install ddclient
+</pre></div></p>
+<p>This configuration file resides in <code>/etc/ddclient.conf</code>. During installation, <code>apt</code> probably already asked you some questions and prepared a useful config file. In general, configuration files look like:
+<div class="codehilite"><pre><span></span># /etc/ddclient.conf
+#
+protocol=dyndns2
+use=web
+login=mylogin
+password=mypassword
+myhost.dyndns.org
+</pre></div></p>
+<p>If you want to have <code>ddclient</code> running as daemon (recommended!), change also your <code>/etc/defaults/ddclient</code> to:
+<div class="codehilite"><pre><span></span># Configuration for ddclient scripts
+# generated from debconf on Do 9. Feb 22:29:13 CET 2017
+#
+# /etc/default/ddclient
+
+# Set to &quot;true&quot; if ddclient should be run every time DHCP client (&#39;dhclient&#39;
+# from package isc-dhcp-client) updates the systems IP address.
+run_dhclient=&quot;false&quot;
+
+# Set to &quot;true&quot; if ddclient should be run every time a new ppp connection is
+# established. This might be useful, if you are using dial-on-demand.
+run_ipup=&quot;false&quot;
+
+# Set to &quot;true&quot; if ddclient should run in daemon mode
+# If this is changed to true, run_ipup and run_dhclient must be set to false.
+run_daemon=&quot;true&quot;
+
+# Set the time interval between the updates of the dynamic DNS name in seconds.
+# This option only takes effect if the ddclient runs in daemon mode.
+daemon_interval=&quot;300&quot;
+</pre></div></p>
+<h3 id="example-strato-dyndns">Example: Strato DynDNS<a class="headerlink" href="#example-strato-dyndns" title="Permanent link">&para;</a></h3>
+<p>In the following, we give an example of how to setup <code>ddclient</code> using the German Internet hosting provider Strato. First, you need to create a subdomain. Then you need to enable DnyDNS for this domain:</p>
+<blockquote>
+<p><img alt="" src="../Strato-DynDNS-Domain.png" />
+<hr>
+<img alt="" src="../Strato-DynDNS-Enable.png" />
+<hr>
+<img alt="" src="../Strato-DynDNS-Password.png" /></p>
+</blockquote>
+<p>Afterwards, modify your <code>ddclient</code> config file to look like:
+<div class="codehilite"><pre><span></span>protocol=dyndns2
+use=if, if=eth0
+use=web, web=checkip.dyndns.org
+server=dyndns.strato.com/nic/update
+login=strato-login-name
+password=&#39;password1234&#39;
+
+meine.domain.de
+</pre></div>
+where you replace <code>strato-login-name</code> by your Strato login name (most likely your domain name, like <code>maxmustermann.de</code>), <code>password1234</code> by the password you configured above (see third screenshot), and <code>meine.domain.de</code> by the subdomain you created and enabled dynamic DNS for.</p>
                 
                   
                 
@@ -1162,13 +1315,13 @@
           </a>
         
         
-          <a href="../../tor/overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../troubleshooting/" title="Troubleshooting" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Overview
+                Troubleshooting
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
