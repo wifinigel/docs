@@ -1415,15 +1415,15 @@
 <p>This setting can be updated by sending <code>SIGHUP</code> to <code>pihole-FTL</code> (<code>sudo killall -SIGHUP pihole-FTL</code>).</p>
 <h2 id="pi-holes-unspecified-ip-blocking-default">Pi-hole's unspecified <abbr title="Internet protocol address">IP</abbr> blocking (default)<a class="headerlink" href="#pi-holes-unspecified-ip-blocking-default" title="Permanent link">&para;</a></h2>
 <p><code>/etc/pihole/pihole-FTL.conf</code> setting:
-<div class="codehilite"><pre><span></span>BLOCKINGMODE=NULL
+<div class="codehilite"><pre><span></span><span class="n">BLOCKINGMODE</span><span class="o">=</span><span class="k">NULL</span>
 </pre></div></p>
 <p>Blocked queries will be answered with the unspecified address
-<div class="codehilite"><pre><span></span>;; QUESTION SECTION:
-;doubleclick.net.               IN      ANY
+<div class="codehilite"><pre><span></span><span class="p">;;</span> <span class="n">QUESTION</span> <span class="n">SECTION</span><span class="p">:</span>
+<span class="p">;</span><span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>               <span class="k">IN</span>      <span class="k">ANY</span>
 
-;; ANSWER SECTION:
-doubleclick.net.        2       IN      A       0.0.0.0
-doubleclick.net.        2       IN      AAAA    ::
+<span class="p">;;</span> <span class="n">ANSWER</span> <span class="n">SECTION</span><span class="p">:</span>
+<span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>        <span class="mi">2</span>       <span class="k">IN</span>      <span class="n">A</span>       <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+<span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>        <span class="mi">2</span>       <span class="k">IN</span>      <span class="n">AAAA</span>    <span class="p">::</span>
 </pre></div></p>
 <p><strong>This blocking mode is the Pi-hole developers' recommendation.</strong></p>
 <p>Following <a href="https://tools.ietf.org/html/rfc3513#section-2.5.2">RFC 3513, Internet Protocol Version 6 (<abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr>) Addressing Architecture, section 2.5.2</a>, the address <code>0:0:0:0:0:0:0:0</code> (or <code>::</code> for short) is the unspecified address. It must never be assigned to any node and indicates the absence of an address. Following <a href="https://tools.ietf.org/html/rfc1122#section-3.2">RFC1122, section 3.2</a>, the address <code>0.0.0.0</code> can be understood as the <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> equivalent of <code>::</code>.</p>
@@ -1440,14 +1440,14 @@ doubleclick.net.        2       IN      AAAA    ::
 </ul>
 <h2 id="pi-holes-ip-ipv6-nodata-blocking">Pi-hole's <abbr title="Internet protocol address">IP</abbr> (<abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> NODATA) blocking<a class="headerlink" href="#pi-holes-ip-ipv6-nodata-blocking" title="Permanent link">&para;</a></h2>
 <p><code>/etc/pihole/pihole-FTL.conf</code> setting:
-<div class="codehilite"><pre><span></span>BLOCKINGMODE=IP-NODATA-AAAA
+<div class="codehilite"><pre><span></span><span class="n">BLOCKINGMODE</span><span class="o">=</span><span class="n">IP</span><span class="o">-</span><span class="n">NODATA</span><span class="o">-</span><span class="n">AAAA</span>
 </pre></div></p>
 <p>Blocked queries will be answered with the local <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> addresses of your Pi-hole (as configured in your <code>setupVars.conf</code> file). Blocked AAAA queries will answered with <code>NODATA-IPV6</code> and clients will only try to reach your Pi-hole over its static <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> address
-<div class="codehilite"><pre><span></span>;; QUESTION SECTION:
-;doubleclick.net.               IN      ANY
+<div class="codehilite"><pre><span></span><span class="p">;;</span> <span class="n">QUESTION</span> <span class="n">SECTION</span><span class="p">:</span>
+<span class="p">;</span><span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>               <span class="k">IN</span>      <span class="k">ANY</span>
 
-;; ANSWER SECTION:
-doubleclick.net.        2       IN      A       192.168.2.11
+<span class="p">;;</span> <span class="n">ANSWER</span> <span class="n">SECTION</span><span class="p">:</span>
+<span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>        <span class="mi">2</span>       <span class="k">IN</span>      <span class="n">A</span>       <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">11</span>
 </pre></div></p>
 <h5 id="advantage">Advantage<a class="headerlink" href="#advantage" title="Permanent link">&para;</a></h5>
 <ul>
@@ -1461,15 +1461,15 @@ doubleclick.net.        2       IN      A       192.168.2.11
 </ul>
 <h2 id="pi-holes-full-ip-blocking">Pi-hole's full <abbr title="Internet protocol address">IP</abbr> blocking<a class="headerlink" href="#pi-holes-full-ip-blocking" title="Permanent link">&para;</a></h2>
 <p><code>/etc/pihole/pihole-FTL.conf</code> setting:
-<div class="codehilite"><pre><span></span>BLOCKINGMODE=IP
+<div class="codehilite"><pre><span></span><span class="n">BLOCKINGMODE</span><span class="o">=</span><span class="n">IP</span>
 </pre></div></p>
 <p>Blocked queries will be answered with the local <abbr title="Internet protocol address">IP</abbr> addresses of your Pi-hole (as configured in your <code>setupVars.conf</code> file)
-<div class="codehilite"><pre><span></span>;; QUESTION SECTION:
-;doubleclick.net.               IN      ANY
+<div class="codehilite"><pre><span></span><span class="p">;;</span> <span class="n">QUESTION</span> <span class="n">SECTION</span><span class="p">:</span>
+<span class="p">;</span><span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>               <span class="k">IN</span>      <span class="k">ANY</span>
 
-;; ANSWER SECTION:
-doubleclick.net.        2       IN      A       192.168.2.11
-doubleclick.net.        2       IN      AAAA    fda2:2001:4756:0:ab27:beff:ef37:4242
+<span class="p">;;</span> <span class="n">ANSWER</span> <span class="n">SECTION</span><span class="p">:</span>
+<span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>        <span class="mi">2</span>       <span class="k">IN</span>      <span class="n">A</span>       <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">11</span>
+<span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>        <span class="mi">2</span>       <span class="k">IN</span>      <span class="n">AAAA</span>    <span class="n">fda2</span><span class="p">:</span><span class="mi">2001</span><span class="p">:</span><span class="mi">4756</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="n">ab27</span><span class="p">:</span><span class="n">beff</span><span class="p">:</span><span class="n">ef37</span><span class="p">:</span><span class="mi">4242</span>
 </pre></div></p>
 <h5 id="advantage_1">Advantage<a class="headerlink" href="#advantage_1" title="Permanent link">&para;</a></h5>
 <ul>
@@ -1483,21 +1483,21 @@ doubleclick.net.        2       IN      AAAA    fda2:2001:4756:0:ab27:beff:ef37:
 </ul>
 <h2 id="pi-holes-nxdomain-blocking">Pi-hole's NXDOMAIN blocking<a class="headerlink" href="#pi-holes-nxdomain-blocking" title="Permanent link">&para;</a></h2>
 <p><code>/etc/pihole/pihole-FTL.conf</code> setting:
-<div class="codehilite"><pre><span></span>BLOCKINGMODE=NXDOMAIN
+<div class="codehilite"><pre><span></span><span class="n">BLOCKINGMODE</span><span class="o">=</span><span class="n">NXDOMAIN</span>
 </pre></div>
 Blocked queries will be answered with an empty response (no answer section) and status <code>NXDOMAIN</code> (<em>no such domain</em>)
-<div class="codehilite"><pre><span></span>;; QUESTION SECTION:
-;doubleclick.net.               IN      ANY
+<div class="codehilite"><pre><span></span><span class="p">;;</span> <span class="n">QUESTION</span> <span class="n">SECTION</span><span class="p">:</span>
+<span class="p">;</span><span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>               <span class="k">IN</span>      <span class="k">ANY</span>
 </pre></div></p>
 <h5 id="advantages-disadvantages">Advantages &amp; Disadvantages<a class="headerlink" href="#advantages-disadvantages" title="Permanent link">&para;</a></h5>
 <p>Similar to <code>NULL</code> blocking, but experiments suggest that clients may try to resolve blocked domains more often compared to <code>NULL</code> blocking.</p>
 <h2 id="pi-holes-nodata-blocking">Pi-hole's NODATA blocking<a class="headerlink" href="#pi-holes-nodata-blocking" title="Permanent link">&para;</a></h2>
 <p><code>/etc/pihole/pihole-FTL.conf</code> setting:
-<div class="codehilite"><pre><span></span>BLOCKINGMODE=NODATA
+<div class="codehilite"><pre><span></span><span class="n">BLOCKINGMODE</span><span class="o">=</span><span class="n">NODATA</span>
 </pre></div>
 Blocked queries will be answered with an empty response (no answer section) and status <code>NODATA</code> (domain exists but there is no record for the requested query type)
-<div class="codehilite"><pre><span></span>;; QUESTION SECTION:
-;doubleclick.net.               IN      ANY
+<div class="codehilite"><pre><span></span><span class="p">;;</span> <span class="n">QUESTION</span> <span class="n">SECTION</span><span class="p">:</span>
+<span class="p">;</span><span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>               <span class="k">IN</span>      <span class="k">ANY</span>
 </pre></div></p>
 <h5 id="advantages-disadvantages_1">Advantages &amp; Disadvantages<a class="headerlink" href="#advantages-disadvantages_1" title="Permanent link">&para;</a></h5>
 <p>Similar to <code>NXDOMAIN</code> blocking. Clients might have a better acceptance of <code>NODATA</code> replies compared to <code>NXDOMAIN</code> replies.</p>

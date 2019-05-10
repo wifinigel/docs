@@ -1230,46 +1230,46 @@
 <code>systemctl enable nginx</code></li>
 <li>Edit <code>/etc/nginx/sites-available/default</code> to:</li>
 </ol>
-<div class="codehilite"><pre><span></span><span class="nt">server</span> <span class="p">{</span>
-        <span class="err">listen</span> <span class="err">80</span> <span class="err">default_server</span><span class="p">;</span>
-        <span class="n">listen</span> <span class="cp">[</span><span class="p">::</span><span class="cp">]</span><span class="p">:</span><span class="mi">80</span> <span class="n">default_server</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="nv">server</span> {
+        <span class="nv">listen</span> <span class="mi">80</span> <span class="nv">default_server</span><span class="c1">;</span>
+        <span class="nv">listen</span> [::]:<span class="mi">80</span> <span class="nv">default_server</span><span class="c1">;</span>
 
-        <span class="err">root</span> <span class="err">/var/www/html</span><span class="p">;</span>
-        <span class="err">server_name</span> <span class="err">_</span><span class="p">;</span>
-        <span class="err">autoindex</span> <span class="err">off</span><span class="p">;</span>
+        <span class="nv">root</span> <span class="o">/</span><span class="nv">var</span><span class="o">/</span><span class="nv">www</span><span class="o">/</span><span class="nv">html</span><span class="c1">;</span>
+        <span class="nv">server_name</span> <span class="nv">_</span><span class="c1">;</span>
+        <span class="nv">autoindex</span> <span class="nv">off</span><span class="c1">;</span>
 
-        <span class="err">index</span> <span class="err">pihole/index.php</span> <span class="err">index.php</span> <span class="err">index.html</span> <span class="err">index.htm</span><span class="p">;</span>
+        <span class="nv">index</span> <span class="nv">pihole</span><span class="o">/</span><span class="nv">index</span>.<span class="nv">php</span> <span class="nv">index</span>.<span class="nv">php</span> <span class="nv">index</span>.<span class="nv">html</span> <span class="nv">index</span>.<span class="nv">htm</span><span class="c1">;</span>
 
-        <span class="err">location</span> <span class="err">/</span> <span class="err">{</span>
-                <span class="err">expires</span> <span class="err">max</span><span class="p">;</span>
-                <span class="err">try_files</span> <span class="err">$uri</span> <span class="err">$uri/</span> <span class="err">=404</span><span class="p">;</span>
-        <span class="p">}</span>
+        <span class="nv">location</span> <span class="o">/</span> {
+                <span class="nv">expires</span> <span class="nv">max</span><span class="c1">;</span>
+                <span class="nv">try_files</span> $<span class="nv">uri</span> $<span class="nv">uri</span><span class="o">/</span> <span class="o">=</span><span class="mi">404</span><span class="c1">;</span>
+        }
 
-        <span class="nt">location</span> <span class="o">~</span> <span class="err">\</span><span class="p">.</span><span class="nc">php</span><span class="o">$</span> <span class="p">{</span>
-                <span class="err">include</span> <span class="err">snippets/fastcgi-php.conf</span><span class="p">;</span>
-                <span class="err">fastcgi_pass</span> <span class="n">unix</span><span class="p">:</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">php</span><span class="o">/</span><span class="n">php7</span><span class="mf">.0</span><span class="o">-</span><span class="n">fpm</span><span class="o">.</span><span class="n">sock</span><span class="p">;</span>
-                <span class="err">fastcgi_param</span> <span class="err">FQDN</span> <span class="err">true</span><span class="p">;</span>
-                <span class="err">auth_basic</span> <span class="err">&quot;Restricted&quot;</span><span class="p">;</span> <span class="err">#For</span> <span class="err">Basic</span> <span class="err">Auth</span>
-                <span class="err">auth_basic_user_file</span> <span class="err">/etc/nginx/.htpasswd</span><span class="p">;</span>  <span class="err">#For</span> <span class="err">Basic</span> <span class="err">Auth</span>
-        <span class="p">}</span>
+        <span class="nv">location</span> <span class="o">~</span> \.<span class="nv">php</span>$ {
+                <span class="k">include</span> <span class="nv">snippets</span><span class="o">/</span><span class="nv">fastcgi</span><span class="o">-</span><span class="nv">php</span>.<span class="nv">conf</span><span class="c1">;</span>
+                <span class="nv">fastcgi_pass</span> <span class="nv">unix</span>:<span class="o">/</span><span class="nv">run</span><span class="o">/</span><span class="nv">php</span><span class="o">/</span><span class="nv">php7</span>.<span class="mi">0</span><span class="o">-</span><span class="nv">fpm</span>.<span class="nv">sock</span><span class="c1">;</span>
+                <span class="nv">fastcgi_param</span> <span class="nv">FQDN</span> <span class="nv">true</span><span class="c1">;</span>
+                <span class="nv">auth_basic</span> <span class="s2">&quot;</span><span class="s">Restricted</span><span class="s2">&quot;</span><span class="c1">; #For Basic Auth</span>
+                <span class="nv">auth_basic_user_file</span> <span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">nginx</span><span class="o">/</span>.<span class="nv">htpasswd</span><span class="c1">;  #For Basic Auth</span>
+        }
 
-        <span class="nt">location</span> <span class="o">/*</span><span class="p">.</span><span class="nc">js</span> <span class="p">{</span>
-                <span class="err">index</span> <span class="err">pihole/index.js</span><span class="p">;</span>
-                <span class="err">auth_basic</span> <span class="err">&quot;Restricted&quot;</span><span class="p">;</span> <span class="err">#For</span> <span class="err">Basic</span> <span class="err">Auth</span>
-                <span class="err">auth_basic_user_file</span> <span class="err">/etc/nginx/.htpasswd</span><span class="p">;</span>  <span class="err">#For</span> <span class="err">Basic</span> <span class="err">Auth</span>
-        <span class="p">}</span>
+        <span class="nv">location</span> <span class="cm">/*.js {</span>
+<span class="cm">                index pihole/index.js;</span>
+<span class="cm">                auth_basic &quot;Restricted&quot;; #For Basic Auth</span>
+<span class="cm">                auth_basic_user_file /etc/nginx/.htpasswd;  #For Basic Auth</span>
+<span class="cm">        }</span>
 
-        <span class="nt">location</span> <span class="o">/</span><span class="nt">admin</span> <span class="p">{</span>
-                <span class="err">root</span> <span class="err">/var/www/html</span><span class="p">;</span>
-                <span class="err">index</span> <span class="err">index.php</span> <span class="err">index.html</span> <span class="err">index.htm</span><span class="p">;</span>
-                <span class="err">auth_basic</span> <span class="err">&quot;Restricted&quot;</span><span class="p">;</span> <span class="err">#For</span> <span class="err">Basic</span> <span class="err">Auth</span>
-                <span class="err">auth_basic_user_file</span> <span class="err">/etc/nginx/.htpasswd</span><span class="p">;</span>  <span class="err">#For</span> <span class="err">Basic</span> <span class="err">Auth</span>
-        <span class="p">}</span>
+<span class="cm">        location /admin {</span>
+<span class="cm">                root /var/www/html;</span>
+<span class="cm">                index index.php index.html index.htm;</span>
+<span class="cm">                auth_basic &quot;Restricted&quot;; #For Basic Auth</span>
+<span class="cm">                auth_basic_user_file /etc/nginx/.htpasswd;  #For Basic Auth</span>
+<span class="cm">        }</span>
 
-        <span class="nt">location</span> <span class="o">~</span> <span class="o">/</span><span class="err">\</span><span class="p">.</span><span class="nc">ht</span> <span class="p">{</span>
-                <span class="err">deny</span> <span class="err">all</span><span class="p">;</span>
-        <span class="p">}</span>
-<span class="err">}</span>
+<span class="cm">        location ~ /\.ht {</span>
+<span class="cm">                deny all;</span>
+<span class="cm">        }</span>
+<span class="cm">}</span>
 </pre></div>
 
 <ol>
@@ -1301,14 +1301,14 @@
 </li>
 <li>
 <p>If you want to use block page for any blocked domain subpage (aka Nginx 404), add this to Pi-hole server block in your Nginx configuration file:
-<div class="codehilite"><pre><span></span>error_page 404 /pihole/index.php;
+<div class="codehilite"><pre><span></span><span class="n">error_page</span> <span class="mi">404</span> <span class="o">/</span><span class="n">pihole</span><span class="o">/</span><span class="k">index</span><span class="p">.</span><span class="n">php</span><span class="p">;</span>
 </pre></div></p>
 </li>
 <li>When using nginx to serve Pi-hole, Let's Encrypt can be used to directly configure nginx. Make sure to use your hostname instead of _ in <code>server_name _;</code> line above.
-<div class="codehilite"><pre><span></span>add-apt-repository ppa:certbot/certbot
-apt-get install certbot python-certbot-nginx
+<div class="codehilite"><pre><span></span><span class="k">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="p">:</span><span class="n">certbot</span><span class="o">/</span><span class="n">certbot</span>
+<span class="n">apt</span><span class="o">-</span><span class="k">get</span> <span class="n">install</span> <span class="n">certbot</span> <span class="n">python</span><span class="o">-</span><span class="n">certbot</span><span class="o">-</span><span class="n">nginx</span>
 
-certbot --nginx -m &quot;$email&quot; -d &quot;$domain&quot; -n --agree-tos --no-eff-email
+<span class="n">certbot</span> <span class="c1">--nginx -m &quot;$email&quot; -d &quot;$domain&quot; -n --agree-tos --no-eff-email</span>
 </pre></div></li>
 </ul>
                 

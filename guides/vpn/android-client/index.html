@@ -1135,35 +1135,35 @@
 <p>Log into your OpenVPN server and use the road warrior installer to create a new certificate for your device:</p>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span>root@ubuntu-512mb-fra1-01:~# bash openvpn-install.sh
-Looks like OpenVPN is already installed
+<div class="codehilite"><pre><span></span><span class="nv">root</span>@<span class="nv">ubuntu</span><span class="o">-</span><span class="mi">512</span><span class="nv">mb</span><span class="o">-</span><span class="nv">fra1</span><span class="o">-</span><span class="mi">01</span>:<span class="o">~</span># <span class="nv">bash</span> <span class="nv">openvpn</span><span class="o">-</span><span class="nv">install</span>.<span class="nv">sh</span>
+<span class="nv">Looks</span> <span class="nv">like</span> <span class="nv">OpenVPN</span> <span class="nv">is</span> <span class="nv">already</span> <span class="nv">installed</span>
 
-What do you want to do?
-   1) Add a cert for a new user
-   2) Revoke existing user cert
-   3) Remove OpenVPN
-   4) Exit
-Select an option [1-4]: 1
+<span class="nv">What</span> <span class="k">do</span> <span class="nv">you</span> <span class="nv">want</span> <span class="nv">to</span> <span class="k">do</span>?
+   <span class="mi">1</span><span class="ss">)</span> <span class="nv">Add</span> <span class="nv">a</span> <span class="nv">cert</span> <span class="k">for</span> <span class="nv">a</span> <span class="nv">new</span> <span class="nv">user</span>
+   <span class="mi">2</span><span class="ss">)</span> <span class="nv">Revoke</span> <span class="nv">existing</span> <span class="nv">user</span> <span class="nv">cert</span>
+   <span class="mi">3</span><span class="ss">)</span> <span class="nv">Remove</span> <span class="nv">OpenVPN</span>
+   <span class="mi">4</span><span class="ss">)</span> <span class="k">Exit</span>
+<span class="nv">Select</span> <span class="nv">an</span> <span class="nv">option</span> [<span class="mi">1</span><span class="o">-</span><span class="mi">4</span>]: <span class="mi">1</span>
 
-Tell me a name for the client cert
-Please, use one word only, no special characters
-Client name: android
-Generating a 2048 bit RSA private key
-.....+++
-..................................+++
-writing new private key to &#39;...&#39;
------
-Using configuration from /etc/openvpn/easy-rsa/openssl-1.0.cnf
-Check that the request matches the signature
-Signature ok
-The Subject&#39;s Distinguished Name is as follows
-commonName            :ASN.1 12:&#39;android&#39;
-Certificate is to be certified until Jan 25 15:07:37 2027 GMT (3650 days)
+<span class="nv">Tell</span> <span class="nv">me</span> <span class="nv">a</span> <span class="nv">name</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">client</span> <span class="nv">cert</span>
+<span class="nv">Please</span>, <span class="nv">use</span> <span class="nv">one</span> <span class="nv">word</span> <span class="nv">only</span>, <span class="nv">no</span> <span class="nv">special</span> <span class="nv">characters</span>
+<span class="nv">Client</span> <span class="nv">name</span>: <span class="nv">android</span>
+<span class="nv">Generating</span> <span class="nv">a</span> <span class="mi">2048</span> <span class="nv">bit</span> <span class="nv">RSA</span> <span class="nv">private</span> <span class="nv">key</span>
+.....<span class="o">+++</span>
+..................................<span class="o">+++</span>
+<span class="nv">writing</span> <span class="nv">new</span> <span class="nv">private</span> <span class="nv">key</span> <span class="nv">to</span> <span class="s1">&#39;</span><span class="s">...</span><span class="s1">&#39;</span>
+<span class="o">-----</span>
+<span class="nv">Using</span> <span class="nv">configuration</span> <span class="nv">from</span> <span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">openvpn</span><span class="o">/</span><span class="nv">easy</span><span class="o">-</span><span class="nv">rsa</span><span class="o">/</span><span class="nv">openssl</span><span class="o">-</span><span class="mi">1</span>.<span class="mi">0</span>.<span class="nv">cnf</span>
+<span class="nv">Check</span> <span class="nv">that</span> <span class="nv">the</span> <span class="nv">request</span> <span class="nv">matches</span> <span class="nv">the</span> <span class="nv">signature</span>
+<span class="nv">Signature</span> <span class="nv">ok</span>
+<span class="nv">The</span> <span class="nv">Subject</span><span class="s1">&#39;</span><span class="s">s Distinguished Name is as follows</span>
+<span class="nv">commonName</span>            :<span class="nv">ASN</span>.<span class="mi">1</span> <span class="mi">12</span>:<span class="s1">&#39;</span><span class="s">android</span><span class="s1">&#39;</span>
+<span class="nv">Certificate</span> <span class="nv">is</span> <span class="nv">to</span> <span class="nv">be</span> <span class="nv">certified</span> <span class="k">until</span> <span class="nv">Jan</span> <span class="mi">25</span> <span class="mi">15</span>:<span class="mi">07</span>:<span class="mi">37</span> <span class="mi">2027</span> <span class="nv">GMT</span> <span class="ss">(</span><span class="mi">3650</span> <span class="nv">days</span><span class="ss">)</span>
 
-Write out database with 1 new entries
-Data Base Updated
+<span class="nv">Write</span> <span class="nv">out</span> <span class="nv">database</span> <span class="nv">with</span> <span class="mi">1</span> <span class="nv">new</span> <span class="nv">entries</span>
+<span class="nv">Data</span> <span class="nv">Base</span> <span class="nv">Updated</span>
 
-Client android added, configuration is available at /root/android.ovpn
+<span class="nv">Client</span> <span class="nv">android</span> <span class="nv">added</span>, <span class="nv">configuration</span> <span class="nv">is</span> <span class="nv">available</span> <span class="nv">at</span> <span class="o">/</span><span class="nv">root</span><span class="o">/</span><span class="nv">android</span>.<span class="nv">ovpn</span>
 </pre></div>
 
 <ul>

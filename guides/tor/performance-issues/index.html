@@ -1237,16 +1237,16 @@
 <h5 id="solution-1-only-use-exit-nodes-from-specific-countries">Solution 1 - Only use Exit Nodes from specific countries<a class="headerlink" href="#solution-1-only-use-exit-nodes-from-specific-countries" title="Permanent link">&para;</a></h5>
 <ul>
 <li>Install the necessary geoip db for Tor to use, on Debian derivatives (raspbian, Ubuntu) that means
-  <div class="codehilite"><pre><span></span>sudo apt install tor-geoipdb
+  <div class="codehilite"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">tor</span><span class="o">-</span><span class="n">geoipdb</span>
 </pre></div></li>
 <li>Pick the Country Codes you want to use as ExitNodes from the "List of country codes for Tor" list on <a href="http://www.b3rn3d.com/blog/2014/03/05/tor-country-codes/">this page</a>.
    Edit <code>/etc/tor/torrc</code> as root and, add the following lines to the end and replace <code>CountryCodeN</code> (keep the <code>{</code> and <code>}</code>) with the country code you've chosen (you can also use only one country code, in this case it would be just on <code>{CountryCode1}</code> without a comma).
-  <div class="codehilite"><pre><span></span>ExitNodes {CountryCode1},{CountryCode2},{CountryCode3}
-StrictNodes 1
+  <div class="codehilite"><pre><span></span><span class="n">ExitNodes</span> <span class="err">{</span><span class="n">CountryCode1</span><span class="err">}</span><span class="p">,</span><span class="err">{</span><span class="n">CountryCode2</span><span class="err">}</span><span class="p">,</span><span class="err">{</span><span class="n">CountryCode3</span><span class="err">}</span>
+<span class="n">StrictNodes</span> <span class="mi">1</span>
 </pre></div></li>
 <li>Save the changes, restart Tor</li>
 </ul>
-<div class="codehilite"><pre><span></span>sudo service tor restart
+<div class="codehilite"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">tor</span> <span class="k">restart</span>
 </pre></div>
 
 <p><strong>Note:</strong> Using this approach you put strain on Tor Relays in the selected countries only and increase your security vulnerability. It's not nice and not recommended. Also be aware that this change also affects which Exit Nodes are used if you <a href="#your-browser">Route Your Browser Traffic</a> over the Pi-hole host Tor SocksPort.</p>
@@ -1257,14 +1257,14 @@ StrictNodes 1
 <li>Make sure the relay allows Port <code>53</code> in his <code>IPv4 Exit Policy Summary</code> (and/or <code>IPv6 Exit Policy Summary</code> if you want to resolve IPv6 AAAA queries). </li>
 <li>As root copy the <code>Fingerprint</code> (Top Right under Relay Details) of those two Relays to the end of your <code>/etc/tor/torrc</code> file on the Pi-hole host in the following format:</li>
 </ol>
-<div class="codehilite"><pre><span></span>ExitNodes Fingerprint1,Fingerprint2
-StrictNodes 1
+<div class="codehilite"><pre><span></span><span class="n">ExitNodes</span> <span class="n">Fingerprint1</span><span class="p">,</span><span class="n">Fingerprint2</span>
+<span class="n">StrictNodes</span> <span class="mi">1</span>
 </pre></div>
 
 <ul>
 <li>Save the changes, restart Tor</li>
 </ul>
-<div class="codehilite"><pre><span></span>sudo service tor restart
+<div class="codehilite"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">tor</span> <span class="k">restart</span>
 </pre></div>
 
 <p>If DNS requests stop resolving at all, you might need to repeat this procedure because the Relays you chosen might've went down.</p>

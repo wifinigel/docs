@@ -1212,11 +1212,11 @@ To tell <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abb
 </ul>
 <h2 id="pi-hole-regex-debugging-mode">Pi-hole <abbr title="Regular expression">Regex</abbr> debugging mode<a class="headerlink" href="#pi-hole-regex-debugging-mode" title="Permanent link">&para;</a></h2>
 <p>To ease the usage of regular expression filters in <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr>, we offer a <abbr title="Regular expression">regex</abbr> debugging mode. Set
-<div class="codehilite"><pre><span></span>REGEX_DEBUGMODE=true
+<div class="codehilite"><pre><span></span><span class="n">REGEX_DEBUGMODE</span><span class="o">=</span><span class="k">true</span>
 </pre></div>
 in your <code>/etc/pihole/pihole-FTL.conf</code> and restart <code>pihole-FTL</code> to enable or disable this mode.</p>
 <p>Once the debugging mode is enabled, each match will be logged to <code>/var/log/pihole-FTL.log</code> in the following format:
-<div class="codehilite"><pre><span></span>[2018-07-17 17:40:51.304] DEBUG: Regex in line 2 &quot;((^)|(\.))twitter\.&quot; matches &quot;whatever.twitter.com&quot;
+<div class="codehilite"><pre><span></span><span class="p">[</span><span class="mi">2018</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">17</span> <span class="mi">17</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">51</span><span class="p">.</span><span class="mi">304</span><span class="p">]</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="n">Regex</span> <span class="k">in</span> <span class="n">line</span> <span class="mi">2</span> <span class="ss">&quot;((^)|(\.))twitter\.&quot;</span> <span class="n">matches</span> <span class="ss">&quot;whatever.twitter.com&quot;</span>
 </pre></div>
 The given line number corresponds to the line in the file <code>/etc/pihole/regex.list</code>.</p>
 <p>Note that validation is only done on the first occurrence of a domain to increase the computational efficiency of <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr>.</p>

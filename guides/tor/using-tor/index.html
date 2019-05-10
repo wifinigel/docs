@@ -1245,11 +1245,11 @@
 <p>The easiest and most reliable solution would be to use the <a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser</a>. Though that won't use your Pi-hole DNS Server out of the box. You can however disable <code>Proxy DNS when using SOCKS v5</code> in Tor Browsers Preferences -&gt; Advanced -&gt; Network -&gt; Settings and <a href="#make-sure-it-works">make sure</a> to point your system to use Pi-hole with DNS over Tor activated.</p>
 <h3 id="your-browser">Your Browser<a class="headerlink" href="#your-browser" title="Permanent link">&para;</a></h3>
 <p>Edit <code>/etc/tor/torrc</code> on your Pi-hole as root, include the following line at the end and save the changes
-<div class="codehilite"><pre><span></span>SocksPort 0.0.0.0:9050
+<div class="codehilite"><pre><span></span><span class="n">SocksPort</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">:</span><span class="mi">9050</span>
 </pre></div>
  <strong>Note:</strong> You should make sure that only your LAN devices are able to access your Pi-hole on port 9050.
  Restart Tor
-<div class="codehilite"><pre><span></span>sudo service tor restart
+<div class="codehilite"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">tor</span> <span class="k">restart</span>
 </pre></div>
  Point your browser to use your Pi-hole IP or Hostname (e.g. <code>pi.hole</code>) and <code>Port 9050</code> as Socks5 Proxy. Do not enable <code>Proxy DNS when using SOCKS v5</code> and <a href="#make-sure-it-works">make sure</a> to point your system to use Pi-hole with DNS over Tor activated.  </p>
 <ul>
@@ -1268,7 +1268,7 @@
 <ul>
 <li>Don't define other regular Upstream DNS Servers than the Tor one if you want to avoid that your Pi-hole makes plaintext DNS requests.</li>
 <li>From the <a href="https://www.torproject.org/docs/tor-manual.html.en">Tor Manual</a> regarding <code>DNSPort</code>:
-  <div class="codehilite"><pre><span></span>This port only handles A, AAAA, and PTR requests
+  <div class="codehilite"><pre><span></span><span class="n">This</span> <span class="n">port</span> <span class="k">only</span> <span class="n">handles</span> <span class="n">A</span><span class="p">,</span> <span class="n">AAAA</span><span class="p">,</span> <span class="k">and</span> <span class="n">PTR</span> <span class="n">requests</span>
 </pre></div></li>
 </ul>
                 
