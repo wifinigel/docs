@@ -1386,7 +1386,7 @@ The use of dnsmasq on ports <em>67</em> or <em>547</em> is optional, but require
 <p><div class="codehilite"><pre><span></span>iptables -I INPUT <span class="m">1</span> -p tcp -m tcp --dport <span class="m">80</span> -j ACCEPT
 iptables -I INPUT <span class="m">1</span> -p tcp -m tcp --dport <span class="m">53</span> -j ACCEPT
 iptables -I INPUT <span class="m">1</span> -p udp -m udp --dport <span class="m">53</span> -j ACCEPT
-iptables -I INPUT <span class="m">1</span> -p udp -m tcp --dport <span class="m">67</span> -j ACCEPT
+iptables -I INPUT <span class="m">1</span> -p tcp -m tcp --dport <span class="m">67</span> -j ACCEPT
 iptables -I INPUT <span class="m">1</span> -p udp -m udp --dport <span class="m">67</span> -j ACCEPT
 iptables -I INPUT <span class="m">1</span> -p tcp -m tcp --dport <span class="m">4711</span> -i lo -j ACCEPT
 </pre></div>
