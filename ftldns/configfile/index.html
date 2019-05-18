@@ -652,8 +652,99 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#regex_debugmode" title="REGEX Debug Mode" class="md-nav__link">
-    REGEX Debug Mode
+  <a href="#debug_all" title="Debug All" class="md-nav__link">
+    Debug All
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_database" title="Debug Database" class="md-nav__link">
+    Debug Database
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_networking" title="Debug networking" class="md-nav__link">
+    Debug networking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_locks" title="Debug Locks" class="md-nav__link">
+    Debug Locks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_queries" title="Debug Queries" class="md-nav__link">
+    Debug Queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_flags" title="Debug Flags" class="md-nav__link">
+    Debug Flags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_shmem" title="Debug Shared Memory" class="md-nav__link">
+    Debug Shared Memory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_gc" title="Debug GC" class="md-nav__link">
+    Debug GC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_arp" title="Debug ARP" class="md-nav__link">
+    Debug ARP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_regex" title="Debug REGEX" class="md-nav__link">
+    Debug REGEX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_api" title="Debug Telnet" class="md-nav__link">
+    Debug Telnet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_overtime" title="Debug overTime" class="md-nav__link">
+    Debug overTime
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_extblocked" title="Debug externally blocked" class="md-nav__link">
+    Debug externally blocked
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_caps" title="Debug Linux capabilities" class="md-nav__link">
+    Debug Linux capabilities
   </a>
   
 </li>
@@ -1505,8 +1596,99 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#regex_debugmode" title="REGEX Debug Mode" class="md-nav__link">
-    REGEX Debug Mode
+  <a href="#debug_all" title="Debug All" class="md-nav__link">
+    Debug All
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_database" title="Debug Database" class="md-nav__link">
+    Debug Database
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_networking" title="Debug networking" class="md-nav__link">
+    Debug networking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_locks" title="Debug Locks" class="md-nav__link">
+    Debug Locks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_queries" title="Debug Queries" class="md-nav__link">
+    Debug Queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_flags" title="Debug Flags" class="md-nav__link">
+    Debug Flags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_shmem" title="Debug Shared Memory" class="md-nav__link">
+    Debug Shared Memory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_gc" title="Debug GC" class="md-nav__link">
+    Debug GC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_arp" title="Debug ARP" class="md-nav__link">
+    Debug ARP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_regex" title="Debug REGEX" class="md-nav__link">
+    Debug REGEX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_api" title="Debug Telnet" class="md-nav__link">
+    Debug Telnet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_overtime" title="Debug overTime" class="md-nav__link">
+    Debug overTime
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_extblocked" title="Debug externally blocked" class="md-nav__link">
+    Debug externally blocked
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_caps" title="Debug Linux capabilities" class="md-nav__link">
+    Debug Linux capabilities
   </a>
   
 </li>
@@ -1581,11 +1763,53 @@
 <p>How often do we store queries in <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr>'s database [minutes]?
 <hr/></p>
 <h4 id="dbfile"><code>DBFILE=/etc/pihole/pihole-FTL.db</code><a class="headerlink" href="#dbfile" title="Permanent link">&para;</a></h4>
-<p>Specify path and filename of <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr>'s <abbr title="Database engine that handles an SQL databases in a file">SQLite3</abbr> long-term database. Setting this to <code>DBFILE=</code> disables the database altogether<br></p>
+<p>Specify path and filename of <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr>'s <abbr title="Database engine that handles an SQL databases in a file">SQLite3</abbr> long-term database. Setting this to <code>DBFILE=</code> disables the database altogether</p>
 <h3 id="debugging-options">Debugging options<a class="headerlink" href="#debugging-options" title="Permanent link">&para;</a></h3>
-<h4 id="regex_debugmode"><code>REGEX_DEBUGMODE=false|true</code><a class="headerlink" href="#regex_debugmode" title="Permanent link">&para;</a></h4>
+<h4 id="debug_all"><code>DEBUG_ALL=false|true</code><a class="headerlink" href="#debug_all" title="Permanent link">&para;</a></h4>
+<p>Enable all debug flags. If this is set to true, all other debug config options are ignored.
+<hr/></p>
+<h4 id="debug_database"><code>DEBUG_DATABASE=false|true</code><a class="headerlink" href="#debug_database" title="Permanent link">&para;</a></h4>
+<p>Print debugging information about database actions. This prints performed SQL statements as well as some general information such as the time it took to store the queries and how many have been saved to the database.
+<hr/></p>
+<h4 id="debug_networking"><code>DEBUG_NETWORKING=false|true</code><a class="headerlink" href="#debug_networking" title="Permanent link">&para;</a></h4>
+<p>Prints a list of the detected interfaces on startup of <code>pihole-FTL</code>. Also prints whether these interfaces are <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> or <abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> interfaces.
+<hr/></p>
+<h4 id="debug_locks"><code>DEBUG_LOCKS=false|true</code><a class="headerlink" href="#debug_locks" title="Permanent link">&para;</a></h4>
+<p>Print information about shared memory locks. Messages will be generated when waiting, obtaining, and releasing a lock.
+<hr/></p>
+<h4 id="debug_queries"><code>DEBUG_QUERIES=false|true</code><a class="headerlink" href="#debug_queries" title="Permanent link">&para;</a></h4>
+<p>Print extensive query information (domains, types, replies, etc.). This has always been part of the legacy <code>debug</code> mode of <code>pihole-FTL</code>.
+<hr/></p>
+<h4 id="debug_flags"><code>DEBUG_FLAGS=false|true</code><a class="headerlink" href="#debug_flags" title="Permanent link">&para;</a></h4>
+<p>Print flags of queries received by the <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> hooks. Only effective when <code>DEBUG_QUERIES</code> is enabled as well.
+<hr/></p>
+<h4 id="debug_shmem"><code>DEBUG_SHMEM=false|true</code><a class="headerlink" href="#debug_shmem" title="Permanent link">&para;</a></h4>
+<p>Print information about shared memory buffers. Messages are either about creating or enlarging shmem objects or string injections.
+<hr/></p>
+<h4 id="debug_gc"><code>DEBUG_GC=false|true</code><a class="headerlink" href="#debug_gc" title="Permanent link">&para;</a></h4>
+<p>Print information about garbage collection (GC): What is to be removed, how many have been removed and how long did GC take.
+<hr/></p>
+<h4 id="debug_arp"><code>DEBUG_ARP=false|true</code><a class="headerlink" href="#debug_arp" title="Permanent link">&para;</a></h4>
+<p>Print information about ARP table processing: How long did parsing take, whether read MAC addresses are valid, and if the <code>macvendor.db</code> file exists.
+<hr/></p>
+<h4 id="debug_regex"><code>DEBUG_REGEX=false|true</code><a class="headerlink" href="#debug_regex" title="Permanent link">&para;</a></h4>
 <p>Controls if <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> should print extended details about <abbr title="Regular expression">regex</abbr> matching into <code>pihole-FTL.log</code>.<br>
-  <strong><a href="../regex/overview/">More details</a></strong></p>
+  Due to legacy reasons, we also support the following setting to be used for enabling the same functionality:<br>
+  <code>REGEX_DEBUGMODE=false|true</code>
+  Note that if one of them is set to <code>true</code>, the other one cannot be used to disable this setting again.<br>
+  <strong><a href="../regex/overview/">More details</a></strong>
+<hr/></p>
+<h4 id="debug_api"><code>DEBUG_API=false|true</code><a class="headerlink" href="#debug_api" title="Permanent link">&para;</a></h4>
+<p>Print extra debugging information during telnet <abbr title="Application Programming Interface (a set of subroutine definitions, protocols, and tools for building application software)">API</abbr> calls. Currently only used to send extra information when getting all queries.
+<hr/></p>
+<h4 id="debug_overtime"><code>DEBUG_OVERTIME=false|true</code><a class="headerlink" href="#debug_overtime" title="Permanent link">&para;</a></h4>
+<p>Print information about overTime memory operations, such as initializing or moving overTime slots.
+<hr/></p>
+<h4 id="debug_extblocked"><code>DEBUG_EXTBLOCKED=false|true</code><a class="headerlink" href="#debug_extblocked" title="Permanent link">&para;</a></h4>
+<p>Print information about why <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> decided that certain queries were recognized as being externally blocked.
+<hr/></p>
+<h4 id="debug_caps"><code>DEBUG_CAPS=false|true</code><a class="headerlink" href="#debug_caps" title="Permanent link">&para;</a></h4>
+<p>Print information about capabilities granted to the pihole-<abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> process. The current capabilities are printed on receipt of <code>SIGHUP</code>, i.e., the current set of capabilities can be queried without restarting <code>pihole-FTL</code> (by setting <code>DEBUG_CAPS=true</code> and thereafter sending <code>killall -HUP pihole-FTL</code>).</p>
                 
                   
                 
