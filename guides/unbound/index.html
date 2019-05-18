@@ -1369,15 +1369,11 @@ The first thing you need to do is to install the recursive DNS resolver:
     <span class="c1"># Suggested by the unbound man page to reduce fragmentation reassembly problems</span>
     <span class="na">edns-buffer-size: 1472</span>
 
-    <span class="c1"># TTL bounds for cache</span>
-    <span class="na">cache-min-ttl: 3600</span>
-    <span class="na">cache-max-ttl: 86400</span>
-
     <span class="c1"># Perform prefetching of close to expired message cache entries</span>
     <span class="c1"># This only applies to domains that have been frequently queried</span>
     <span class="na">prefetch: yes</span>
 
-    <span class="c1"># One thread should be sufficient, can be increased on beefy machines</span>
+    <span class="c1"># One thread should be sufficient, can be increased on beefy machines. In reality for most users running on small networks or on a single machine it should be unnecessary to seek performance enhancement by increasing num-threads above 1.</span>
     <span class="na">num-threads: 1</span>
 
     <span class="c1"># Ensure kernel buffer is large enough to not lose messages in traffic spikes</span>
