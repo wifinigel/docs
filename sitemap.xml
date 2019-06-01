@@ -171,6 +171,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://docs.pi-hole.net/guides/benchmark/</loc>
+     <lastmod>2019-06-01</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://docs.pi-hole.net/guides/vpn/overview/</loc>
      <lastmod>2019-06-01</lastmod>
      <changefreq>daily</changefreq>
