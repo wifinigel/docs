@@ -2,262 +2,262 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://docs.pi-hole.net/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/main/contact/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/main/origins/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/main/presentations/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/main/coverage/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/main/prerequesites/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/main/basic-install/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/main/post-install/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/main/update/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/core/pihole-command/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/ftldns/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/ftldns/configfile/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/ftldns/dns-resolver/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/ftldns/dns-cache/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/ftldns/blockingmode/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/ftldns/regex/overview/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/ftldns/regex/tutorial/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/ftldns/privacylevels/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/ftldns/database/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/ftldns/telnet-api/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/ftldns/compatibility/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/ftldns/compile/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/ftldns/debugging/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/ftldns/in-depth/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/docker/DHCP/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/github/contributing/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/github/how-to-signoff/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/unbound/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/dns-over-https/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/upstream-dns-providers/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/whitelist-blacklist/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/nginx-configuration/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/caddy-configuration/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/traefik-configuration-nodocker/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/benchmark/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/vpn/overview/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/vpn/installation/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/vpn/setup-openvpn-server/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/vpn/firewall/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/vpn/clients/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/vpn/android-client/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/vpn/only-dns-via-vpn/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/vpn/dual-operation/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/vpn/dual-VPN/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/vpn/dynDNS/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/vpn/troubleshooting/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/tor/overview/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/tor/setup/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/tor/using-tor/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/tor/performance-issues/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/guides/tor/dnssec/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.pi-hole.net/main/projects/</loc>
-     <lastmod>2019-06-12</lastmod>
+     <lastmod>2019-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
