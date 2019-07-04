@@ -629,6 +629,68 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#file-options" title="File options" class="md-nav__link">
+    File options
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file_LOGFILE" title="Log file" class="md-nav__link">
+    Log file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_PIDFILE" title="Process identifier file" class="md-nav__link">
+    Process identifier file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_PORTFILE" title="Port file" class="md-nav__link">
+    Port file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_SOCKETFILE" title="Socket file" class="md-nav__link">
+    Socket file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_SETUPVARSFILE" title="setupVars file" class="md-nav__link">
+    setupVars file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_AUDITLISTFILE" title="Audit list file" class="md-nav__link">
+    Audit list file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_MACVENDORDB" title="MacVendor database file" class="md-nav__link">
+    MacVendor database file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#debugging-options" title="Debugging options" class="md-nav__link">
     Debugging options
   </a>
@@ -1585,6 +1647,68 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#file-options" title="File options" class="md-nav__link">
+    File options
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file_LOGFILE" title="Log file" class="md-nav__link">
+    Log file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_PIDFILE" title="Process identifier file" class="md-nav__link">
+    Process identifier file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_PORTFILE" title="Port file" class="md-nav__link">
+    Port file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_SOCKETFILE" title="Socket file" class="md-nav__link">
+    Socket file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_SETUPVARSFILE" title="setupVars file" class="md-nav__link">
+    setupVars file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_AUDITLISTFILE" title="Audit list file" class="md-nav__link">
+    Audit list file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_MACVENDORDB" title="MacVendor database file" class="md-nav__link">
+    MacVendor database file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#debugging-options" title="Debugging options" class="md-nav__link">
     Debugging options
   </a>
@@ -1761,6 +1885,21 @@
 <hr/></p>
 <h4 id="dbfile"><code>DBFILE=/etc/pihole/pihole-FTL.db</code><a class="headerlink" href="#dbfile" title="Permanent link">&para;</a></h4>
 <p>Specify path and filename of <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr>'s <abbr title="Database engine that handles an SQL databases in a file">SQLite3</abbr> long-term database. Setting this to <code>DBFILE=</code> disables the database altogether</p>
+<h3 id="file-options">File options<a class="headerlink" href="#file-options" title="Permanent link">&para;</a></h3>
+<h4 id="file_LOGFILE"><code>LOGFILE=/var/log/pihole-FTL.log</code><a class="headerlink" href="#file_LOGFILE" title="Permanent link">&para;</a></h4>
+<p>Location of <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr>'s log file. If you want to move the log file to a different place, also consider <a href="https://discourse.pi-hole.net/t/moving-the-pi-hole-log-to-another-location-device/2041">this FAQ article</a>.</p>
+<h4 id="file_PIDFILE"><code>PIDFILE=/var/run/pihole-FTL.pid</code><a class="headerlink" href="#file_PIDFILE" title="Permanent link">&para;</a></h4>
+<p>File which contains the <abbr title="Process identifier (a number used to identify a process)">PID</abbr> of <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr>'s main process.</p>
+<h4 id="file_PORTFILE"><code>PORTFILE=/var/run/pihole-FTL.port</code><a class="headerlink" href="#file_PORTFILE" title="Permanent link">&para;</a></h4>
+<p>File containing the port <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr>'s <abbr title="Application Programming Interface (a set of subroutine definitions, protocols, and tools for building application software)">API</abbr> is listening on.</p>
+<h4 id="file_SOCKETFILE"><code>SOCKETFILE=/var/run/pihole/FTL.sock</code><a class="headerlink" href="#file_SOCKETFILE" title="Permanent link">&para;</a></h4>
+<p>File containing the socket <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr>'s <abbr title="Application Programming Interface (a set of subroutine definitions, protocols, and tools for building application software)">API</abbr> is listening on.</p>
+<h4 id="file_SETUPVARSFILE"><code>SETUPVARSFILE=/etc/pihole/setupVars.conf</code><a class="headerlink" href="#file_SETUPVARSFILE" title="Permanent link">&para;</a></h4>
+<p>Config file of Pi-hole containing, e.g., the current blocking status (do not change).</p>
+<h4 id="file_AUDITLISTFILE"><code>AUDITLISTFILE=/etc/pihole/auditlog.list</code><a class="headerlink" href="#file_AUDITLISTFILE" title="Permanent link">&para;</a></h4>
+<p>List containing the audited domains.</p>
+<h4 id="file_MACVENDORDB"><code>MACVENDORDB=/etc/pihole/macvendor.db</code><a class="headerlink" href="#file_MACVENDORDB" title="Permanent link">&para;</a></h4>
+<p>Database containing MAC -&gt; Vendor information for the network table.</p>
 <h3 id="debugging-options">Debugging options<a class="headerlink" href="#debugging-options" title="Permanent link">&para;</a></h3>
 <h4 id="debug_all"><code>DEBUG_ALL=false|true</code><a class="headerlink" href="#debug_all" title="Permanent link">&para;</a></h4>
 <p>Enable all debug flags. If this is set to true, all other debug config options are ignored.
