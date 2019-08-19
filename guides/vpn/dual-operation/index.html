@@ -1190,7 +1190,7 @@
 <li>devices in 192.168.0.1 - 192.168.0.254 -&gt; <code>route 192.168.0.0</code></li>
 <li>devices in 192.168.123.1 - 192.168.123.254 -&gt; <code>route 192.168.123.0</code></li>
 </ul>
-<p>Edit your <code>/etc/openvpn/server.conf</code>:</p>
+<p>Edit your <code>/etc/openvpn/server/server.conf</code>:</p>
 <div class="codehilite"><pre><span></span><span class="n">push</span> <span class="ss">&quot;route 192.168.2.0 255.255.255.0&quot;</span>
 <span class="n">push</span> <span class="ss">&quot;dhcp-option DNS 192.168.2.123&quot;</span>
 </pre></div>

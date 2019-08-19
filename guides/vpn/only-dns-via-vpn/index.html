@@ -1266,7 +1266,7 @@
                 
                 <h3 id="optional-only-route-dns-via-vpn">Optional: Only route DNS via VPN<a class="headerlink" href="#optional-only-route-dns-via-vpn" title="Permanent link">&para;</a></h3>
 <p>With this setup, you will force connected clients to use <strong>only the DNS provided by the VPN connection, i.e. the Pi-hole.</strong>  Do this only if you <strong>don't</strong> want to tunnel all traffic from the client through the VPN, but only its DNS queries.</p>
-<p>Edit your <code>/etc/openvpn/server.conf</code> and remove (comment out) the following line:</p>
+<p>Edit your <code>/etc/openvpn/server/server.conf</code> and remove (comment out) the following line:</p>
 <div class="codehilite"><pre><span></span><span class="o">#</span> <span class="n">push</span> <span class="ss">&quot;redirect-gateway def1 bypass-dhcp&quot;</span>
 </pre></div>
 

@@ -1209,7 +1209,7 @@
                   <h1>Optional: Dynamic DNS</h1>
                 
                 <p>If you operate your Pi-hole + OpenVPN at home, it is very likely that you are sitting behind a NAT / dynamically changing IP address. In this case, you should set up a dynamic DNS record, which allows you to reach your server. You can exchange the address that has been configured during the setup of OpenVPN like this:</p>
-<div class="codehilite"><pre><span></span><span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">openvpn</span><span class="o">/</span><span class="n">client</span><span class="o">-</span><span class="n">common</span><span class="p">.</span><span class="n">txt</span>
+<div class="codehilite"><pre><span></span><span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">openvpn</span><span class="o">/</span><span class="n">server</span><span class="o">/</span><span class="n">client</span><span class="o">-</span><span class="n">common</span><span class="p">.</span><span class="n">txt</span>
 </pre></div>
 
 <p>Look for the <code>remote</code> line and adjust it accordingly (remove IP address, add host name), e.g.</p>

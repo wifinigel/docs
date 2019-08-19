@@ -1225,13 +1225,13 @@
                 <h3 id="dual-vpn-setup-separate-dns-and-vpn-traffic">Dual VPN Setup - Separate DNS and VPN Traffic<a class="headerlink" href="#dual-vpn-setup-separate-dns-and-vpn-traffic" title="Permanent link">&para;</a></h3>
 <p>In order to separate VPN traffic from DNS queries you will need to run two VPN servers. One server routes the normal user traffic and the second routes only DNS requests. This can be done with two OpenVPN configurations.</p>
 <h4 id="prerequisites-and-configuration">Prerequisites and Configuration<a class="headerlink" href="#prerequisites-and-configuration" title="Permanent link">&para;</a></h4>
-<p>You should have an existing OpenVPN server configured and running. We are going to use the original configuration file located at <code>/etc/openvpn/server.conf</code>. </p>
+<p>You should have an existing OpenVPN server configured and running. We are going to use the original configuration file located at <code>/etc/openvpn/server/server.conf</code>. </p>
 <p>First, copy the file:</p>
-<div class="codehilite"><pre><span></span>sudo cp /etc/openvpn/server.conf /etc/openvpn/server2.conf
+<div class="codehilite"><pre><span></span>sudo cp /etc/openvpn/server/server.conf /etc/openvpn/server/server2.conf
 </pre></div>
 
 <p>Next, exit the new copy of the configuration. We use the <code>nano</code> editor in this example, but any editor will work. Remember to edit under the root account via <code>sudo</code>.</p>
-<div class="codehilite"><pre><span></span>sudo nano /etc/openvpn/server2.conf
+<div class="codehilite"><pre><span></span>sudo nano /etc/openvpn/server/server2.conf
 </pre></div>
 
 <p>We will need to change the port to one different from the original, so that it does not conflict with the first instance of OpenVPN. Assuming you used the default port configuration, you should have 1194 as the port. You need to change this to a different value, making sure the port is available - 1195 should be.</p>

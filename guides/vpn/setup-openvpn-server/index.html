@@ -1219,7 +1219,7 @@ On Stretch
 <div class="codehilite"><pre><span></span><span class="n">ip</span> <span class="n">a</span>
 </pre></div></p>
 <p>Edit the OpenVPN config file:</p>
-<div class="codehilite"><pre><span></span><span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">openvpn</span><span class="o">/</span><span class="n">server</span><span class="p">.</span><span class="n">conf</span>
+<div class="codehilite"><pre><span></span><span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">openvpn</span><span class="o">/</span><span class="n">server</span><span class="o">/</span><span class="n">server</span><span class="p">.</span><span class="n">conf</span>
 </pre></div>
 
 <p>Set this line to use your Pi-hole's IP address, which you determined from the <code>ifconfig</code> command and comment out or remove the other line (if it exists):</p>
@@ -1259,7 +1259,7 @@ On Stretch
 <span class="nv">Please</span>, <span class="nv">use</span> <span class="nv">one</span> <span class="nv">word</span> <span class="nv">only</span>, <span class="nv">no</span> <span class="nv">special</span> <span class="nv">characters</span>
 <span class="nv">Client</span> <span class="nv">name</span>: <span class="nv">iphone7</span>
 </pre></div></p>
-<p>This will generate a <code>.ovpn</code> file, which needs to be copied to your client machine (often times using the OpenVPN app).  This process also generates a few other files found in <code>/etc/openvpn/easy-rsa/pki/</code>, which make public key authentication possible; you only need to worry about the <code>.ovpn</code> file, though.</p>
+<p>This will generate a <code>.ovpn</code> file, which needs to be copied to your client machine (often times using the OpenVPN app).  This process also generates a few other files found in <code>/etc/openvpn/server/easy-rsa/pki/</code>, which make public key authentication possible; you only need to worry about the <code>.ovpn</code> file, though.</p>
                 
                   
                 

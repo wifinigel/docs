@@ -1273,7 +1273,7 @@
 <span class="nv">Please</span>, <span class="nv">use</span> <span class="nv">one</span> <span class="nv">word</span> <span class="nv">only</span>, <span class="nv">no</span> <span class="nv">special</span> <span class="nv">characters</span>
 <span class="nv">Client</span> <span class="nv">name</span>: <span class="nv">iphone7</span>
 </pre></div></p>
-<p>This will generate a <code>.ovpn</code> file, which needs to be copied to your client machine (often times using the OpenVPN app).  This process also generates a few other files found in <code>/etc/openvpn/easy-rsa/pki/</code>, which make public key authentication possible; you only need to worry about the <code>.ovpn</code> file, though.</p>
+<p>This will generate a <code>.ovpn</code> file, which needs to be copied to your client machine (often times using the OpenVPN app).  This process also generates a few other files found in <code>/etc/openvpn/server/easy-rsa/pki/</code>, which make public key authentication possible; you only need to worry about the <code>.ovpn</code> file, though.</p>
 <h2 id="connect-a-client-using-the-ovpn-file">Connect a client using the <code>.ovpn</code> file<a class="headerlink" href="#connect-a-client-using-the-ovpn-file" title="Permanent link">&para;</a></h2>
 <p>The OpenVPN documentation has some decent <a href="https://openvpn.net/index.php/access-server/docs/admin-guides-sp-859543150/howto-connect-client-configuration.html">guides on connecting desktop clients for Mac, Windows, and Linux</a>, so we'll instead explain how to connect a mobile device, since that provides the most usefulness in today's world--<strong>connecting to your ad-blocking VPN via a mobile device</strong>.  We'll go through two examples:</p>
 <ol>
@@ -1306,16 +1306,16 @@
 </pre></div></p>
 </li>
 <li>
-<p>Securely copy the necessary certificates from your OpenVPN server to your client (e.g. using <code>sftp</code>). They are located in <code>/etc/openvpn/easy-rsa/pki</code></p>
+<p>Securely copy the necessary certificates from your OpenVPN server to your client (e.g. using <code>sftp</code>). They are located in <code>/etc/openvpn/server/easy-rsa/pki</code></p>
 </li>
 </ol>
 <p>You will need:</p>
 <ul>
-<li>User Certificate: <code>/etc/openvpn/easy-rsa/pki/issued/client.crt</code></li>
-<li>CA Certificate: <code>/etc/openvpn/easy-rsa/pki/ca.crt</code></li>
-<li>Private Key: <code>/etc/openvpn/easy-rsa/pki/private/client.key</code></li>
+<li>User Certificate: <code>/etc/openvpn/server/easy-rsa/pki/issued/client.crt</code></li>
+<li>CA Certificate: <code>/etc/openvpn/server/easy-rsa/pki/ca.crt</code></li>
+<li>Private Key: <code>/etc/openvpn/server/easy-rsa/pki/private/client.key</code></li>
 <li>Private Key Password: Depending on your settings (might even be empty)</li>
-<li>TA Key: <code>/etc/openvpn/ta.key</code></li>
+<li>TA Key: <code>/etc/openvpn/server/ta.key</code></li>
 </ul>
 <p>Further details can be found in the screenshots provided below:
 <img alt="" src="../NetworkManager3.png" />
