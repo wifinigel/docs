@@ -395,6 +395,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ufw" class="md-nav__link">
+    ufw
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1252,6 +1259,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ufw" class="md-nav__link">
+    ufw
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1399,6 +1413,19 @@ firewall-cmd --permanent --zone<span class="o">=</span>ftl --add-interface<span 
 firewall-cmd --permanent --zone<span class="o">=</span>ftl --add-port<span class="o">=</span><span class="m">4711</span>/tcp
 firewall-cmd --reload
 </pre></div>
+
+<h4 id="ufw">ufw<a class="headerlink" href="#ufw" title="Permanent link">&para;</a></h4>
+<p>ufw stores all rules persistent, so you just need to execute the commands below.</p>
+<p><abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr>:
+<div class="codehilite"><pre><span></span>ufw allow <span class="m">80</span>/tcp
+ufw allow <span class="m">53</span>/tcp
+ufw allow <span class="m">53</span>/udp
+ufw allow <span class="m">67</span>/tcp
+ufw allow <span class="m">67</span>/udp
+</pre></div></p>
+<p><abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> (include above <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> rules):
+<div class="codehilite"><pre><span></span>ufw allow <span class="m">546</span>:547/udp
+</pre></div></p>
                 
                   
                 
