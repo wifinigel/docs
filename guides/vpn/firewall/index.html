@@ -1336,7 +1336,6 @@
 </pre></div>
 
 <p>Depending on the systems you have connecting, you may benefit from appending <code>--reject-with tcp-reset</code> to the command above.  If you still get slow load times of HTTPS assets, the above may help.</p>
-<p>If you want to test how your Pi-hole behaves with blocking HTTP vs. HTTPS assets, use <a href="https://pi-hole.net/pages-to-test-ad-blocking-performance/#https-test">this page</a>.</p>
 <h5 id="ipv6-iptables">IPv6 <code>iptables</code><a class="headerlink" href="#ipv6-iptables" title="Permanent link">&para;</a></h5>
 <p>If your server is reachable via IPv6, you'll need to run the same commands but using <code>ip6tables</code>:</p>
 <p><div class="codehilite"><pre><span></span><span class="n">ip6tables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">i</span> <span class="n">tun0</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="c1">--destination-port 53 -j ACCEPT</span>
