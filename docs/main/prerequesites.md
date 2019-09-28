@@ -1,3 +1,8 @@
+---
+title: Prerequisites
+description: Operating system and network requirements
+last_updated: Fri September 20 2019
+---
 ### Hardware
 Pi-hole is very lightweight, and does not require much processing power
 
@@ -13,7 +18,7 @@ The following operating systems are **officially** supported:
 
 | Distribution | Release          | Architecture        |
 | ------------ | ---------------- | ------------------- |
-| Raspbian     | Jessie / Stretch | ARM                 |
+| Raspbian     | Jessie / Stretch / Buster | ARM                 |
 | Ubuntu       | 16.x / 18.x      | ARM / x86_64        |
 | Debian       | 8 / 9            | ARM / x86_64 / i386 |
 | Fedora       | 29 / 30          | ARM / x86_64        |
@@ -76,5 +81,23 @@ firewall-cmd --permanent --new-zone=ftl
 firewall-cmd --permanent --zone=ftl --add-interface=lo
 firewall-cmd --permanent --zone=ftl --add-port=4711/tcp
 firewall-cmd --reload
+```
+
+#### ufw
+
+ufw stores all rules persistent, so you just need to execute the commands below.
+
+IPv4:
+```bash
+ufw allow 80/tcp
+ufw allow 53/tcp
+ufw allow 53/udp
+ufw allow 67/tcp
+ufw allow 67/udp
+```
+
+IPv6 (include above IPv4 rules):
+```bash
+ufw allow 546:547/udp
 ```
 {!abbreviations.md!}

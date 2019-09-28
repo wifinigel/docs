@@ -9,7 +9,7 @@ This setup assumes that your local network is in the range **192.168.2.0** (i.e.
 - devices in 192.168.0.1 - 192.168.0.254 -> `route 192.168.0.0`
 - devices in 192.168.123.1 - 192.168.123.254 -> `route 192.168.123.0`
 
-Edit your `/etc/openvpn/server.conf`:
+Edit your `/etc/openvpn/server/server.conf`:
 
 ```
 push "route 192.168.2.0 255.255.255.0"
@@ -67,4 +67,5 @@ rtt min/avg/max/mdev = 18.740/18.894/19.017/0.189 ms
 
 ### Important last step
 The undocumented `pihole -a -i all` command is simply what runs when you choose _Listen on all interfaces, permit all origins (make sure your Pi-hole is firewalled)_, which if you've read this far in the tutorial, you should understand that we don't want you to knowingly or unknowing set up an open resolver.
+
 ![screenshot](listening-behavior.png)
