@@ -1299,44 +1299,44 @@ It is worth noting however, that the upstream DNS-Over-HTTPS provider will still
 <h3 id="installing-cloudflared">Installing <code>cloudflared</code><a class="headerlink" href="#installing-cloudflared" title="Permanent link">&para;</a></h3>
 <p>The installation is fairly straightforward, however be aware of what architecture you are installing on (<code>amd64</code> or <code>arm</code>).</p>
 <h4 id="amd64-architecture-most-devices">AMD64 architecture (most devices)<a class="headerlink" href="#amd64-architecture-most-devices" title="Permanent link">&para;</a></h4>
-<p>Download the installer package, then use <code>apt-get</code> to install the package along with any dependencies. Proceed to run the binary with the <code>-v</code> flag to check it is all working.</p>
-<div class="codehilite"><pre><span></span># <span class="k">For</span> <span class="nv">Debian</span><span class="o">/</span><span class="nv">Ubuntu</span>
-<span class="nv">wget</span> <span class="nv">https</span>:<span class="o">//</span><span class="nv">bin</span>.<span class="nv">equinox</span>.<span class="nv">io</span><span class="o">/</span><span class="nv">c</span><span class="o">/</span><span class="nv">VdrWdbjqyF</span><span class="o">/</span><span class="nv">cloudflared</span><span class="o">-</span><span class="nv">stable</span><span class="o">-</span><span class="nv">linux</span><span class="o">-</span><span class="nv">amd64</span>.<span class="nv">deb</span>
-<span class="nv">sudo</span> <span class="nv">apt</span><span class="o">-</span><span class="nv">get</span> <span class="nv">install</span> .<span class="o">/</span><span class="nv">cloudflared</span><span class="o">-</span><span class="nv">stable</span><span class="o">-</span><span class="nv">linux</span><span class="o">-</span><span class="nv">amd64</span>.<span class="nv">deb</span>
-<span class="nv">cloudflared</span> <span class="o">-</span><span class="nv">v</span>
+<p>Download the installer package, then use <code>apt-get</code> to install the package along with any dependencies. Proceed to run the binary with the <code>-v</code> flag to check it is all working:</p>
+<div class="codehilite"><pre><span></span><span class="c1"># For Debian/Ubuntu</span>
+wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb
+sudo apt-get install ./cloudflared-stable-linux-amd64.deb
+cloudflared -v
 
-# <span class="k">For</span> <span class="nv">CentOS</span><span class="o">/</span><span class="nv">RHEL</span><span class="o">/</span><span class="nv">Fedora</span>
-<span class="nv">wget</span> <span class="nv">https</span>:<span class="o">//</span><span class="nv">bin</span>.<span class="nv">equinox</span>.<span class="nv">io</span><span class="o">/</span><span class="nv">c</span><span class="o">/</span><span class="nv">VdrWdbjqyF</span><span class="o">/</span><span class="nv">cloudflared</span><span class="o">-</span><span class="nv">stable</span><span class="o">-</span><span class="nv">linux</span><span class="o">-</span><span class="nv">amd64</span>.<span class="nv">rpm</span>
-<span class="nv">sudo</span> <span class="nv">yum</span> <span class="nv">install</span> .<span class="o">/</span><span class="nv">cloudflared</span><span class="o">-</span><span class="nv">stable</span><span class="o">-</span><span class="nv">linux</span><span class="o">-</span><span class="nv">amd64</span>.<span class="nv">rpm</span>
-<span class="nv">cloudflared</span> <span class="o">-</span><span class="nv">v</span>
+<span class="c1"># For CentOS/RHEL/Fedora</span>
+wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.rpm
+sudo yum install ./cloudflared-stable-linux-amd64.rpm
+cloudflared -v
 </pre></div>
 
 <p><strong>Note:</strong> Binaries for other operating systems can be found here: <a href="https://developers.cloudflare.com/argo-tunnel/downloads/">https://developers.cloudflare.com/argo-tunnel/downloads/</a></p>
 <h4 id="arm-architecture-raspberry-pi">ARM architecture (Raspberry Pi)<a class="headerlink" href="#arm-architecture-raspberry-pi" title="Permanent link">&para;</a></h4>
-<p>Here we are downloading the precompiled binary and copying it to the <code>/usr/local/bin/</code> directory to allow execution by the cloudflared user. Proceed to run the binary with the <code>-v</code> flag to check it is all working.</p>
-<div class="codehilite"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">bin</span><span class="p">.</span><span class="n">equinox</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="k">c</span><span class="o">/</span><span class="n">VdrWdbjqyF</span><span class="o">/</span><span class="n">cloudflared</span><span class="o">-</span><span class="k">stable</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">arm</span><span class="p">.</span><span class="n">tgz</span>
-<span class="n">tar</span> <span class="o">-</span><span class="n">xvzf</span> <span class="n">cloudflared</span><span class="o">-</span><span class="k">stable</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">arm</span><span class="p">.</span><span class="n">tgz</span>
-<span class="n">sudo</span> <span class="n">cp</span> <span class="p">.</span><span class="o">/</span><span class="n">cloudflared</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">bin</span>
-<span class="n">sudo</span> <span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">cloudflared</span>
-<span class="n">cloudflared</span> <span class="o">-</span><span class="n">v</span>
+<p>Here we are downloading the precompiled binary and copying it to the <code>/usr/local/bin/</code> directory to allow execution by the cloudflared user. Proceed to run the binary with the <code>-v</code> flag to check it is all working:</p>
+<div class="codehilite"><pre><span></span>wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz
+tar -xvzf cloudflared-stable-linux-arm.tgz
+sudo cp ./cloudflared /usr/local/bin
+sudo chmod +x /usr/local/bin/cloudflared
+cloudflared -v
 </pre></div>
 
 <h4 id="configuring-cloudflared-to-run-on-startup">Configuring <code>cloudflared</code> to run on startup<a class="headerlink" href="#configuring-cloudflared-to-run-on-startup" title="Permanent link">&para;</a></h4>
-<p>Create a cloudflared user to run the daemon.</p>
-<div class="codehilite"><pre><span></span><span class="n">sudo</span> <span class="n">useradd</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span> <span class="o">-</span><span class="n">r</span> <span class="o">-</span><span class="n">M</span> <span class="n">cloudflared</span>
+<p>Create a cloudflared user to run the daemon:</p>
+<div class="codehilite"><pre><span></span>sudo useradd -s /usr/sbin/nologin -r -M cloudflared
 </pre></div>
 
-<p>Proceed to create a configuration file for <code>cloudflared</code> by copying the following in to <code>/etc/default/cloudflared</code>. This file contains the command-line options that get passed to cloudflared on startup.</p>
-<div class="codehilite"><pre><span></span># <span class="nv">Commandline</span> <span class="nv">args</span> <span class="k">for</span> <span class="nv">cloudflared</span>
-<span class="nv">CLOUDFLARED_OPTS</span><span class="o">=--</span><span class="nv">port</span> <span class="mi">5053</span> <span class="o">--</span><span class="nv">upstream</span> <span class="nv">https</span>:<span class="o">//</span><span class="mi">1</span>.<span class="mi">1</span>.<span class="mi">1</span>.<span class="mi">1</span><span class="o">/</span><span class="nv">dns</span><span class="o">-</span><span class="nv">query</span> <span class="o">--</span><span class="nv">upstream</span> <span class="nv">https</span>:<span class="o">//</span><span class="mi">1</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">1</span><span class="o">/</span><span class="nv">dns</span><span class="o">-</span><span class="nv">query</span>
+<p>Proceed to create a configuration file for <code>cloudflared</code> by copying the following in to <code>/etc/default/cloudflared</code>. This file contains the command-line options that get passed to cloudflared on startup:</p>
+<div class="codehilite"><pre><span></span><span class="c1"># Commandline args for cloudflared</span>
+<span class="nv">CLOUDFLARED_OPTS</span><span class="o">=</span>--port <span class="m">5053</span> --upstream https://1.1.1.1/dns-query --upstream https://1.0.0.1/dns-query
 </pre></div>
 
-<p>Update the permissions for the configuration file and <code>cloudflared</code> binary to allow access for the cloudflared user</p>
-<div class="codehilite"><pre><span></span><span class="n">sudo</span> <span class="n">chown</span> <span class="n">cloudflared</span><span class="p">:</span><span class="n">cloudflared</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="k">default</span><span class="o">/</span><span class="n">cloudflared</span>
-<span class="n">sudo</span> <span class="n">chown</span> <span class="n">cloudflared</span><span class="p">:</span><span class="n">cloudflared</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">cloudflared</span>
+<p>Update the permissions for the configuration file and <code>cloudflared</code> binary to allow access for the cloudflared user:</p>
+<div class="codehilite"><pre><span></span>sudo chown cloudflared:cloudflared /etc/default/cloudflared
+sudo chown cloudflared:cloudflared /usr/local/bin/cloudflared
 </pre></div>
 
-<p>Then create the <code>systemd</code> script by copying the following in to <code>/lib/systemd/system/cloudflared.service</code>. This will control the running of the service and allow it to run on startup.</p>
+<p>Then create the <code>systemd</code> script by copying the following in to <code>/etc/systemd/system/cloudflared.service</code>. This will control the running of the service and allow it to run on startup:</p>
 <div class="codehilite"><pre><span></span><span class="k">[Unit]</span>
 <span class="na">Description</span><span class="o">=</span><span class="s">cloudflared DNS over HTTPS proxy</span>
 <span class="na">After</span><span class="o">=</span><span class="s">syslog.target network-online.target</span>
@@ -1354,33 +1354,34 @@ It is worth noting however, that the upstream DNS-Over-HTTPS provider will still
 <span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
 </pre></div>
 
-<p>Enable the <code>systemd</code> service to run on startup, then start the service and check its status.
-<div class="codehilite"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">cloudflared</span>
-<span class="n">sudo</span> <span class="n">systemctl</span> <span class="k">start</span> <span class="n">cloudflared</span>
-<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">cloudflared</span>
-</pre></div></p>
-<p>Now test that it is working! Run the following <code>dig</code> command, a response should be returned similar to the one below</p>
-<div class="codehilite"><pre><span></span><span class="n">dig</span> <span class="mf">@127.0.0.1</span> <span class="o">-</span><span class="n">p</span> <span class="mi">5053</span> <span class="n">google</span><span class="p">.</span><span class="n">com</span>
+<p>Enable the <code>systemd</code> service to run on startup, then start the service and check its status:</p>
+<div class="codehilite"><pre><span></span>sudo systemctl <span class="nb">enable</span> cloudflared
+sudo systemctl start cloudflared
+sudo systemctl status cloudflared
+</pre></div>
+
+<p>Now test that it is working! Run the following <code>dig</code> command, a response should be returned similar to the one below:</p>
+<div class="codehilite"><pre><span></span>dig @127.0.0.1 -p <span class="m">5053</span> google.com
 
 
-<span class="p">;</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="n">DiG</span> <span class="mf">9.10.3</span><span class="o">-</span><span class="n">P4</span><span class="o">-</span><span class="n">Ubuntu</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="mf">@127.0.0.1</span> <span class="o">-</span><span class="n">p</span> <span class="mi">5053</span> <span class="n">google</span><span class="p">.</span><span class="n">com</span>
-<span class="p">;</span> <span class="p">(</span><span class="mi">1</span> <span class="n">server</span> <span class="n">found</span><span class="p">)</span>
-<span class="p">;;</span> <span class="n">global</span> <span class="nl">options</span><span class="p">:</span> <span class="o">+</span><span class="n">cmd</span>
-<span class="p">;;</span> <span class="n">Got</span> <span class="nl">answer</span><span class="p">:</span>
-<span class="p">;;</span> <span class="o">-&gt;&gt;</span><span class="n">HEADER</span><span class="o">&lt;&lt;-</span> <span class="nl">opcode</span><span class="p">:</span> <span class="n">QUERY</span><span class="p">,</span> <span class="nl">status</span><span class="p">:</span> <span class="n">NOERROR</span><span class="p">,</span> <span class="kt">id</span><span class="o">:</span> <span class="mi">65181</span>
-<span class="p">;;</span> <span class="nl">flags</span><span class="p">:</span> <span class="n">qr</span> <span class="n">rd</span> <span class="n">ra</span><span class="p">;</span> <span class="nl">QUERY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nl">ANSWER</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nl">AUTHORITY</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">ADDITIONAL</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">;</span> &lt;&lt;&gt;&gt; DiG <span class="m">9</span>.10.3-P4-Ubuntu &lt;&lt;&gt;&gt; @127.0.0.1 -p <span class="m">5053</span> google.com
+<span class="p">;</span> <span class="o">(</span><span class="m">1</span> server found<span class="o">)</span>
+<span class="p">;;</span> global options: +cmd
+<span class="p">;;</span> Got answer:
+<span class="p">;;</span> -&gt;&gt;HEADER<span class="s">&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: <span class="m">65181</span>
+<span class="p">;;</span> flags: qr rd ra<span class="p">;</span> QUERY: <span class="m">1</span>, ANSWER: <span class="m">1</span>, AUTHORITY: <span class="m">0</span>, ADDITIONAL: <span class="m">1</span>
 
-<span class="p">;;</span> <span class="n">OPT</span> <span class="nl">PSEUDOSECTION</span><span class="p">:</span>
-<span class="p">;</span> <span class="nl">EDNS</span><span class="p">:</span> <span class="nl">version</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">flags</span><span class="p">:;</span> <span class="nl">udp</span><span class="p">:</span> <span class="mi">1536</span>
-<span class="p">;;</span> <span class="n">QUESTION</span> <span class="nl">SECTION</span><span class="p">:</span>
-<span class="p">;</span><span class="n">google</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>            <span class="n">IN</span>  <span class="n">A</span>
+<span class="p">;;</span> OPT PSEUDOSECTION:
+<span class="p">;</span> EDNS: version: <span class="m">0</span>, flags:<span class="p">;</span> udp: <span class="m">1536</span>
+<span class="p">;;</span> QUESTION SECTION:
+<span class="p">;</span>google.com.            IN  A
 
-<span class="p">;;</span> <span class="n">ANSWER</span> <span class="nl">SECTION</span><span class="p">:</span>
-<span class="n">google</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>     <span class="mi">299</span> <span class="n">IN</span>  <span class="n">A</span>   <span class="mf">243.65.127.221</span>
+<span class="p">;;</span> ANSWER SECTION:
+google.com.     <span class="m">299</span> IN  A   <span class="m">243</span>.65.127.221
 
-<span class="p">;;</span> <span class="n">Query</span> <span class="nl">time</span><span class="p">:</span> <span class="mi">3</span> <span class="n">msec</span>
-<span class="p">;;</span> <span class="nl">SERVER</span><span class="p">:</span> <span class="mf">127.0.0.1</span><span class="err">#</span><span class="mi">5053</span><span class="p">(</span><span class="mf">127.0.0.1</span><span class="p">)</span>
-<span class="p">;;</span> <span class="n">MSG</span> <span class="n">SIZE</span>  <span class="nl">rcvd</span><span class="p">:</span> <span class="mi">65</span>
+<span class="p">;;</span> Query time: <span class="m">3</span> msec
+<span class="p">;;</span> SERVER: <span class="m">127</span>.0.0.1#5053<span class="o">(</span><span class="m">127</span>.0.0.1<span class="o">)</span>
+<span class="p">;;</span> MSG SIZE  rcvd: <span class="m">65</span>
 </pre></div>
 
 <h3 id="configuring-pi-hole">Configuring Pi-hole<a class="headerlink" href="#configuring-pi-hole" title="Permanent link">&para;</a></h3>
