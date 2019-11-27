@@ -1191,8 +1191,8 @@
 <li>devices in 192.168.123.1 - 192.168.123.254 -&gt; <code>route 192.168.123.0</code></li>
 </ul>
 <p>Edit your <code>/etc/openvpn/server/server.conf</code>:</p>
-<div class="codehilite"><pre><span></span><span class="n">push</span> <span class="ss">&quot;route 192.168.2.0 255.255.255.0&quot;</span>
-<span class="n">push</span> <span class="ss">&quot;dhcp-option DNS 192.168.2.123&quot;</span>
+<div class="codehilite"><pre><span></span><span class="err">push &quot;route 192.168.2.0 255.255.255.0&quot;</span>
+<span class="err">push &quot;dhcp-option DNS 192.168.2.123&quot;</span>
 </pre></div>
 
 <p>As you can see, we change the address of the DNS server to the local IP address of our Pi-hole (which is <strong>192.168.2.123</strong> in this example).</p>

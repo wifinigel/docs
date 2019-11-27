@@ -1258,15 +1258,15 @@
 </li>
 <li>
 <p>Edit your /etc/lighthttpd/external.conf to
-<div class="codehilite"><pre><span></span>$<span class="nv">SERVER</span>[<span class="s2">&quot;</span><span class="s">socket</span><span class="s2">&quot;</span>] <span class="o">==</span> <span class="s2">&quot;</span><span class="s">:80</span><span class="s2">&quot;</span> {
-  # <span class="nv">Ensure</span> <span class="nv">the</span> <span class="nv">Pi</span><span class="o">-</span><span class="nv">hole</span> <span class="nv">Block</span> <span class="nv">Page</span> <span class="nv">knows</span> <span class="nv">that</span> <span class="nv">this</span> <span class="nv">is</span> <span class="nv">not</span> <span class="nv">a</span> <span class="nv">blocked</span> <span class="nv">domain</span>
-  <span class="k">setenv</span>.<span class="nv">add</span><span class="o">-</span><span class="nv">environment</span> <span class="o">=</span> <span class="ss">(</span><span class="s2">&quot;</span><span class="s">fqdn</span><span class="s2">&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;</span><span class="s">true</span><span class="s2">&quot;</span><span class="ss">)</span>
+<div class="codehilite"><pre><span></span><span class="err">$</span><span class="n">SERVER</span><span class="p">[</span><span class="ss">&quot;socket&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="ss">&quot;:80&quot;</span> <span class="err">{</span>
+  <span class="o">#</span> <span class="n">Ensure</span> <span class="n">the</span> <span class="n">Pi</span><span class="o">-</span><span class="n">hole</span> <span class="n">Block</span> <span class="n">Page</span> <span class="n">knows</span> <span class="n">that</span> <span class="n">this</span> <span class="k">is</span> <span class="k">not</span> <span class="n">a</span> <span class="n">blocked</span> <span class="k">domain</span>
+  <span class="n">setenv</span><span class="p">.</span><span class="k">add</span><span class="o">-</span><span class="n">environment</span> <span class="o">=</span> <span class="p">(</span><span class="ss">&quot;fqdn&quot;</span> <span class="o">=&gt;</span> <span class="ss">&quot;true&quot;</span><span class="p">)</span>
 
 
-  $<span class="nv">HTTP</span>[<span class="s2">&quot;</span><span class="s">host</span><span class="s2">&quot;</span>] <span class="o">=~</span> <span class="s2">&quot;</span><span class="s">^pi\.hole</span><span class="s2">&quot;</span> {
-      <span class="nv">url</span>.<span class="nv">redirect</span> <span class="o">=</span> <span class="ss">(</span><span class="s2">&quot;</span><span class="s">^/(.*)</span><span class="s2">&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;</span><span class="s">https://pihole.domain.tld/$1</span><span class="s2">&quot;</span><span class="ss">)</span>
-  }
-}
+  <span class="err">$</span><span class="n">HTTP</span><span class="p">[</span><span class="ss">&quot;host&quot;</span><span class="p">]</span> <span class="o">=~</span> <span class="ss">&quot;^pi\.hole&quot;</span> <span class="err">{</span>
+      <span class="n">url</span><span class="p">.</span><span class="n">redirect</span> <span class="o">=</span> <span class="p">(</span><span class="ss">&quot;^/(.*)&quot;</span> <span class="o">=&gt;</span> <span class="ss">&quot;https://pihole.domain.tld/$1&quot;</span><span class="p">)</span>
+  <span class="err">}</span>
+<span class="err">}</span>
 </pre></div></p>
 </li>
 <li>

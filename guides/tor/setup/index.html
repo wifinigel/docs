@@ -1184,19 +1184,19 @@
                 
                 <p><strong>This is an unsupported configuration created by the community</strong></p>
 <p>This guide should work for most recent Debian derivatives (raspbian, Ubuntu). Alternatively you can follow a Tor Installation Guide for your Host System.
-<div class="codehilite"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">tor</span>
+<div class="codehilite"><pre><span></span><span class="err">sudo apt install tor</span>
 </pre></div></p>
 <p>Edit <code>/etc/tor/torrc</code> as root, include the following line at the end and save the changes
-<div class="codehilite"><pre><span></span><span class="n">DNSPort</span> <span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">10</span><span class="p">.</span><span class="mi">1</span><span class="p">:</span><span class="mi">53</span>
+<div class="codehilite"><pre><span></span><span class="err">DNSPort 127.0.10.1:53</span>
 </pre></div></p>
 <p>Restart Tor with: <code>sudo service tor restart</code></p>
 <p>Change your Pi-hole upstream DNS server to use <code>127.0.10.1</code> in the Pi-hole WebGUI (Settings) under "Upstream DNS Servers" and click "Save".</p>
 <p><strong>Note:</strong> It's currently not possible to change the Upstream DNS Server directly in the <code>/etc/pihole/setupVars.conf</code> file, the Pi-hole DNS Server won't pick up the change.</p>
 <p>If you want a recognizable hostname for the Tor DNS in your Pi-hole GUI statistics, edit <code>/etc/hosts</code> as root, include the following line at the end and save the changes
-<div class="codehilite"><pre><span></span><span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">10</span><span class="p">.</span><span class="mi">1</span>     <span class="n">tor</span><span class="p">.</span><span class="n">dns</span><span class="p">.</span><span class="k">local</span>
+<div class="codehilite"><pre><span></span><span class="err">127.0.10.1     tor.dns.local</span>
 </pre></div>
  Restart Pi-hole DNS Server for the <code>/etc/hosts</code> changes to take effect
-<div class="codehilite"><pre><span></span><span class="n">sudo</span> <span class="n">pihole</span> <span class="n">restartdns</span>
+<div class="codehilite"><pre><span></span><span class="err">sudo pihole restartdns</span>
 </pre></div></p>
 <h2 id="testing-your-configuration">Testing your configuration<a class="headerlink" href="#testing-your-configuration" title="Permanent link">&para;</a></h2>
 <p>To see which DNS servers you're using, you can use a DNS Server Leak Test. Some of them don't work with DNS over Tor, <a href="https://dns-leak.com/">this one</a> does work tho. It should show random DNS Servers. Tor rotates the circuit approximately every 10minutes in default configuration, so it might take 10minutes for you to see a new set of random DNS servers in the Leak Test.</p>

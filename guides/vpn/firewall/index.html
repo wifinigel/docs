@@ -1297,32 +1297,32 @@
 <p>It's recommended that you <a href="https://serverfault.com/questions/200635/best-way-to-clear-all-iptables-rules">clear out your entire firewall</a> so you have full control over its setup.  You have two options for setting up your firewall with your VPN.</p>
 <h4 id="option-1-allow-everything-from-within-your-vpn">Option 1: Allow everything from within your VPN<a class="headerlink" href="#option-1-allow-everything-from-within-your-vpn" title="Permanent link">&para;</a></h4>
 <p>Enter this command, which will allow all traffic through the VPN <code>tun0</code> interface.</p>
-<div class="codehilite"><pre><span></span><span class="n">iptables</span> <span class="o">-</span><span class="n">I</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">i</span> <span class="n">tun0</span> <span class="o">-</span><span class="n">j</span> <span class="n">ACCEPT</span>
+<div class="codehilite"><pre><span></span><span class="err">iptables -I INPUT -i tun0 -j ACCEPT</span>
 </pre></div>
 
 <h4 id="option-2-explicitly-allow-what-can-be-accessed-within-the-vpn">Option 2: Explicitly allow what can be accessed within the VPN<a class="headerlink" href="#option-2-explicitly-allow-what-can-be-accessed-within-the-vpn" title="Permanent link">&para;</a></h4>
 <p>These commands will allow DNS and HTTP needed for name resolution (using Pi-hole as a resolver) and accessing the Web interface, respectively.</p>
-<div class="codehilite"><pre><span></span><span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">i</span> <span class="n">tun0</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="c1">--destination-port 53 -j ACCEPT</span>
-<span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">i</span> <span class="n">tun0</span> <span class="o">-</span><span class="n">p</span> <span class="n">udp</span> <span class="c1">--destination-port 53 -j ACCEPT</span>
-<span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">i</span> <span class="n">tun0</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="c1">--destination-port 80 -j ACCEPT</span>
+<div class="codehilite"><pre><span></span><span class="err">iptables -A INPUT -i tun0 -p tcp --destination-port 53 -j ACCEPT</span>
+<span class="err">iptables -A INPUT -i tun0 -p udp --destination-port 53 -j ACCEPT</span>
+<span class="err">iptables -A INPUT -i tun0 -p tcp --destination-port 80 -j ACCEPT</span>
 </pre></div>
 
 <p>You will also want to enable SSH and VPN access from anywhere.</p>
-<div class="codehilite"><pre><span></span><span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="c1">--destination-port 22 -j ACCEPT</span>
-<span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="c1">--destination-port 1194 -j ACCEPT</span>
-<span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">p</span> <span class="n">udp</span> <span class="c1">--destination-port 1194 -j ACCEPT</span>
+<div class="codehilite"><pre><span></span><span class="err">iptables -A INPUT -p tcp --destination-port 22 -j ACCEPT</span>
+<span class="err">iptables -A INPUT -p tcp --destination-port 1194 -j ACCEPT</span>
+<span class="err">iptables -A INPUT -p udp --destination-port 1194 -j ACCEPT</span>
 </pre></div>
 
 <p>The next crucial setting is to explicitly allow TCP/IP to do "three way handshakes":</p>
-<div class="codehilite"><pre><span></span><span class="n">iptables</span> <span class="o">-</span><span class="n">I</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">m</span> <span class="k">state</span> <span class="c1">--state RELATED,ESTABLISHED -j ACCEPT</span>
+<div class="codehilite"><pre><span></span><span class="err">iptables -I INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT</span>
 </pre></div>
 
 <p>Also, we want to allow any loopback traffic, i.e. the server is allowed to talk to itself without any limitations using 127.0.0.0/8:</p>
-<div class="codehilite"><pre><span></span><span class="n">iptables</span> <span class="o">-</span><span class="n">I</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">i</span> <span class="n">lo</span> <span class="o">-</span><span class="n">j</span> <span class="n">ACCEPT</span>
+<div class="codehilite"><pre><span></span><span class="err">iptables -I INPUT -i lo -j ACCEPT</span>
 </pre></div>
 
 <p>Finally, reject access from anywhere else (i.e. if no rule has matched up to this point):</p>
-<div class="codehilite"><pre><span></span><span class="n">iptables</span> <span class="o">-</span><span class="n">P</span> <span class="k">INPUT</span> <span class="k">DROP</span>
+<div class="codehilite"><pre><span></span><span class="err">iptables -P INPUT DROP</span>
 </pre></div>
 
 <h6 id="blocking-https-advertisement-assets">Blocking HTTPS advertisement assets<a class="headerlink" href="#blocking-https-advertisement-assets" title="Permanent link">&para;</a></h6>
@@ -1330,29 +1330,29 @@
 <blockquote>
 <p>Why doesn't Pi-hole just use a certificate to prevent this?  The answer is <a href="https://discourse.pi-hole.net/t/slow-loading-websites/3408/12">here</a>.</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">p</span> <span class="n">udp</span> <span class="c1">--dport 80 -j REJECT --reject-with icmp-port-unreachable</span>
-<span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="c1">--dport 443 -j REJECT --reject-with tcp-reset</span>
-<span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">p</span> <span class="n">udp</span> <span class="c1">--dport 443 -j REJECT --reject-with icmp-port-unreachable</span>
+<div class="codehilite"><pre><span></span><span class="err">iptables -A INPUT -p udp --dport 80 -j REJECT --reject-with icmp-port-unreachable</span>
+<span class="err">iptables -A INPUT -p tcp --dport 443 -j REJECT --reject-with tcp-reset</span>
+<span class="err">iptables -A INPUT -p udp --dport 443 -j REJECT --reject-with icmp-port-unreachable</span>
 </pre></div>
 
 <p>Depending on the systems you have connecting, you may benefit from appending <code>--reject-with tcp-reset</code> to the command above.  If you still get slow load times of HTTPS assets, the above may help.</p>
 <h5 id="ipv6-iptables">IPv6 <code>iptables</code><a class="headerlink" href="#ipv6-iptables" title="Permanent link">&para;</a></h5>
 <p>If your server is reachable via IPv6, you'll need to run the same commands but using <code>ip6tables</code>:</p>
-<p><div class="codehilite"><pre><span></span><span class="n">ip6tables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">i</span> <span class="n">tun0</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="c1">--destination-port 53 -j ACCEPT</span>
-<span class="n">ip6tables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">i</span> <span class="n">tun0</span> <span class="o">-</span><span class="n">p</span> <span class="n">udp</span> <span class="c1">--destination-port 53 -j ACCEPT</span>
-<span class="n">ip6tables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">i</span> <span class="n">tun0</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="c1">--destination-port 80 -j ACCEPT</span>
-<span class="n">ip6tables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="c1">--destination-port 22 -j ACCEPT</span>
-<span class="n">ip6tables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="c1">--destination-port 1194 -j ACCEPT</span>
-<span class="n">ip6tables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">p</span> <span class="n">udp</span> <span class="c1">--destination-port 1194 -j ACCEPT</span>
-<span class="n">ip6tables</span> <span class="o">-</span><span class="n">I</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">m</span> <span class="k">state</span> <span class="c1">--state RELATED,ESTABLISHED -j ACCEPT</span>
-<span class="n">ip6tables</span> <span class="o">-</span><span class="n">I</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">i</span> <span class="n">lo</span> <span class="o">-</span><span class="n">j</span> <span class="n">ACCEPT</span>
-<span class="n">ip6tables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">p</span> <span class="n">udp</span> <span class="c1">--dport 80 -j REJECT --reject-with icmp6-port-unreachable</span>
-<span class="n">ip6tables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="c1">--dport 443 -j REJECT --reject-with tcp-reset</span>
-<span class="n">ip6tables</span> <span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">p</span> <span class="n">udp</span> <span class="c1">--dport 443 -j REJECT --reject-with icmp6-port-unreachable</span>
-<span class="n">ip6tables</span> <span class="o">-</span><span class="n">P</span> <span class="k">INPUT</span> <span class="k">DROP</span>
+<p><div class="codehilite"><pre><span></span><span class="err">ip6tables -A INPUT -i tun0 -p tcp --destination-port 53 -j ACCEPT</span>
+<span class="err">ip6tables -A INPUT -i tun0 -p udp --destination-port 53 -j ACCEPT</span>
+<span class="err">ip6tables -A INPUT -i tun0 -p tcp --destination-port 80 -j ACCEPT</span>
+<span class="err">ip6tables -A INPUT -p tcp --destination-port 22 -j ACCEPT</span>
+<span class="err">ip6tables -A INPUT -p tcp --destination-port 1194 -j ACCEPT</span>
+<span class="err">ip6tables -A INPUT -p udp --destination-port 1194 -j ACCEPT</span>
+<span class="err">ip6tables -I INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT</span>
+<span class="err">ip6tables -I INPUT -i lo -j ACCEPT</span>
+<span class="err">ip6tables -A INPUT -p udp --dport 80 -j REJECT --reject-with icmp6-port-unreachable</span>
+<span class="err">ip6tables -A INPUT -p tcp --dport 443 -j REJECT --reject-with tcp-reset</span>
+<span class="err">ip6tables -A INPUT -p udp --dport 443 -j REJECT --reject-with icmp6-port-unreachable</span>
+<span class="err">ip6tables -P INPUT DROP</span>
 </pre></div>
 View the rules you just created</p>
-<div class="codehilite"><pre><span></span><span class="n">iptables</span> <span class="o">-</span><span class="n">L</span> <span class="c1">--line-numbers</span>
+<div class="codehilite"><pre><span></span><span class="err">iptables -L --line-numbers</span>
 </pre></div>
 
 <p>and they should look something like this:</p>
@@ -1410,13 +1410,13 @@ View the rules you just created</p>
 <p>Connect to the VPN as a client and verify you can resolve DNS names as well as access the Pi-hole Web interface.  These settings are stored in memory until you save them.  If it's not working, you can restart your server to start from scratch.  Alternatively, you could also go through and delete lines with <code>iptables -D INPUT &lt;SOME LINE NUMBER&gt;</code></p>
 <h4 id="save-your-iptables">Save your <code>iptables</code><a class="headerlink" href="#save-your-iptables" title="Permanent link">&para;</a></h4>
 <p>If things look good, you may want to save your rules so you can revert to them if you ever make changes to the firewall.  Save them with these commands:</p>
-<div class="codehilite"><pre><span></span><span class="n">iptables</span><span class="o">-</span><span class="n">save</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">pihole</span><span class="o">/</span><span class="n">rules</span><span class="p">.</span><span class="n">v4</span>
-<span class="n">ip6tables</span><span class="o">-</span><span class="n">save</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">pihole</span><span class="o">/</span><span class="n">rules</span><span class="p">.</span><span class="n">v6</span>
+<div class="codehilite"><pre><span></span><span class="err">iptables-save &gt; /etc/pihole/rules.v4</span>
+<span class="err">ip6tables-save &gt; /etc/pihole/rules.v6</span>
 </pre></div>
 
 <p>Similarly, you can restore these rules:</p>
-<div class="codehilite"><pre><span></span><span class="n">iptables</span><span class="o">-</span><span class="n">restore</span> <span class="o">&lt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">pihole</span><span class="o">/</span><span class="n">rules</span><span class="p">.</span><span class="n">v4</span>
-<span class="n">ip6tables</span><span class="o">-</span><span class="n">restore</span> <span class="o">&lt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">pihole</span><span class="o">/</span><span class="n">rules</span><span class="p">.</span><span class="n">v6</span>
+<div class="codehilite"><pre><span></span><span class="err">iptables-restore &lt; /etc/pihole/rules.v4</span>
+<span class="err">ip6tables-restore &lt; /etc/pihole/rules.v6</span>
 </pre></div>
                 
                   

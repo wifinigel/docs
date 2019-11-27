@@ -1257,7 +1257,7 @@
 As the domains in the long-term database reflect <strong>your particular</strong> real-life usage, a benchmark on these domains should give you a good feeling for the performance of your Pi-hole.</p>
 <h2 id="1-extract-the-domains-from-the-long-term-database">1. Extract the domains from the long-term database<a class="headerlink" href="#1-extract-the-domains-from-the-long-term-database" title="Permanent link">&para;</a></h2>
 <p>You can extract the domains using, e.g.,
-<div class="codehilite"><pre><span></span><span class="n">sqlite3</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">pihole</span><span class="o">/</span><span class="n">pihole</span><span class="o">-</span><span class="n">FTL</span><span class="p">.</span><span class="n">db</span> <span class="ss">&quot;SELECT domain FROM queries LIMIT 100000;&quot;</span> <span class="o">&gt;</span> <span class="n">domains</span><span class="p">.</span><span class="n">list</span>
+<div class="codehilite"><pre><span></span><span class="err">sqlite3 /etc/pihole/pihole-FTL.db &quot;SELECT domain FROM queries LIMIT 100000;&quot; &gt; domains.list</span>
 </pre></div>
 This will generate a list file with (up to) 100,000 domains. You can increase the upper limit of domains, however, I'd suggest to start from not too much data for getting realistic results in a reasonable period of time.</p>
 <p>They are extracted into the list file as they are recorded in the database. There will be lots of frequently queried domains (maybe <code>google.com</code> or similar) as well as some blocked ad domains. This list will serve you as an individualized testing bench for realistic <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> queries as typically seen in <strong>your particular environment</strong>.</p>
@@ -1266,7 +1266,7 @@ This will generate a list file with (up to) 100,000 domains. You can increase th
 <p>We suggest disabling both logging as well as the long-term database during the benchmark run as both the log file and the database would otherwise unnecessarily grow (maybe be several hundreds of megabytes). Not only your statistics would be distorted by the artificial mass querying, the benchmark could also negatively be affected by the writing speed of your SD card.</p>
 <p>Logging can be disabled using <code>sudo pihole logging off</code>.</p>
 <p>The long-term database can disabled by setting
-<div class="codehilite"><pre><span></span><span class="n">DBFILE</span><span class="o">=</span>
+<div class="codehilite"><pre><span></span><span class="err">DBFILE=</span>
 </pre></div>
 in <code>/etc/pihole/pihole-FTL.conf</code> and running <code>sudo pihole restartdns</code> (see also <a href="https://docs.pi-hole.net/ftldns/configfile/#dbfile">here</a>).</p>
 <h3 id="22-increase-dns-cache-size">2.2 Increase <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> cache size<a class="headerlink" href="#22-increase-dns-cache-size" title="Permanent link">&para;</a></h3>
@@ -1274,7 +1274,7 @@ in <code>/etc/pihole/pihole-FTL.conf</code> and running <code>sudo pihole restar
 <p>Set <code>cache-size</code> to a rather high value (maybe 25,000 - by guess roughly one-eight to one-fourth number of the domains you extracted from the database in step 1) in <code>/etc/dnsmasq.d/01-pihole.conf</code> and run <code>sudo pihole restartdns</code> afterwards.</p>
 <h2 id="3-query-domains-from-the-list">3. Query domains from the list<a class="headerlink" href="#3-query-domains-from-the-list" title="Permanent link">&para;</a></h2>
 <p>Use
-<div class="codehilite"><pre><span></span><span class="n">time</span> <span class="n">dig</span> <span class="o">-</span><span class="n">f</span> <span class="n">domains</span><span class="p">.</span><span class="n">list</span> <span class="o">+</span><span class="n">noall</span> <span class="o">+</span><span class="n">answer</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="k">null</span>
+<div class="codehilite"><pre><span></span><span class="err">time dig -f domains.list +noall +answer &gt; /dev/null</span>
 </pre></div>
 for mass querying the domains from your list. This will show you how much time it takes to query the number of domains you extracted from the database.</p>
                 

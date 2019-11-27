@@ -1237,15 +1237,15 @@
 <p>We will need to change the port to one different from the original, so that it does not conflict with the first instance of OpenVPN. Assuming you used the default port configuration, you should have 1194 as the port. You need to change this to a different value, making sure the port is available - 1195 should be.</p>
 <p>Next, if needed, port forward the newly configured port from your router to your device. You will also need to assign a different class of IP addresses that will serve this connection only. </p>
 <p>Your server line should look like this:</p>
-<div class="codehilite"><pre><span></span><span class="n">server</span> <span class="mi">10</span><span class="p">.</span><span class="mi">9</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span> <span class="mi">255</span><span class="p">.</span><span class="mi">255</span><span class="p">.</span><span class="mi">255</span><span class="p">.</span><span class="mi">0</span>
+<div class="codehilite"><pre><span></span><span class="err">server 10.9.0.0 255.255.255.0</span>
 </pre></div>
 
 <p>Make sure that the DNS requests go though the instance of OpenVPN: </p>
-<div class="codehilite"><pre><span></span><span class="n">push</span> <span class="ss">&quot;dhcp-option DNS 10.9.0.1&quot;</span>
+<div class="codehilite"><pre><span></span><span class="err">push &quot;dhcp-option DNS 10.9.0.1&quot;</span>
 </pre></div>
 
 <p>One other setting that we need to change is to comment out the <code>bypass-dhcp</code> instruction so that it looks like: </p>
-<div class="codehilite"><pre><span></span><span class="o">#</span> <span class="n">push</span> <span class="ss">&quot;redirect-gateway def1 bypass-dhcp&quot;</span><span class="o">`</span><span class="p">.</span>
+<div class="codehilite"><pre><span></span><span class="err"># push &quot;redirect-gateway def1 bypass-dhcp&quot;`.</span>
 </pre></div>
 
 <p>Commenting out this line ensures that no traffic is routed via the VPN server.</p>

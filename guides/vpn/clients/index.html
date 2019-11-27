@@ -1256,22 +1256,22 @@
 <p>Now that the server is configured, you'll want to connect some clients so you can make use of your Pi-hole wherever you are.  Doing so requires the use of a certificate.  You generate these and the resulting <code>.ovpn</code> file by running the installer and choosing <code>1) Add a new user</code> for each client that will connect to the VPN.  </p>
 <p>You can repeat this process for as many clients as you need.  In this example, we'll "Add a new user" by naming the <code>.ovpn</code> file the same as the client's hostname but you may want to adopt your own naming strategy.</p>
 <p>Run the OpenVPN installer again</p>
-<div class="codehilite"><pre><span></span><span class="p">.</span><span class="o">/</span><span class="n">openvpn</span><span class="o">-</span><span class="n">install</span><span class="p">.</span><span class="n">sh</span>
+<div class="codehilite"><pre><span></span><span class="err">./openvpn-install.sh</span>
 </pre></div>
 
 <p>Choose <code>1) Add a new user</code> and enter a client name
-<div class="codehilite"><pre><span></span><span class="nv">Looks</span> <span class="nv">like</span> <span class="nv">OpenVPN</span> <span class="nv">is</span> <span class="nv">already</span> <span class="nv">installed</span>
+<div class="codehilite"><pre><span></span><span class="n">Looks</span> <span class="k">like</span> <span class="n">OpenVPN</span> <span class="k">is</span> <span class="n">already</span> <span class="n">installed</span>
 
-<span class="nv">What</span> <span class="k">do</span> <span class="nv">you</span> <span class="nv">want</span> <span class="nv">to</span> <span class="k">do</span>?
-   <span class="mi">1</span><span class="ss">)</span> <span class="nv">Add</span> <span class="nv">a</span> <span class="nv">new</span> <span class="nv">user</span>
-   <span class="mi">2</span><span class="ss">)</span> <span class="nv">Revoke</span> <span class="nv">an</span> <span class="nv">existing</span> <span class="nv">user</span>
-   <span class="mi">3</span><span class="ss">)</span> <span class="nv">Remove</span> <span class="nv">OpenVPN</span>
-   <span class="mi">4</span><span class="ss">)</span> <span class="k">Exit</span>
-<span class="nv">Select</span> <span class="nv">an</span> <span class="nv">option</span> [<span class="mi">1</span><span class="o">-</span><span class="mi">4</span>]: <span class="mi">1</span>
+<span class="n">What</span> <span class="k">do</span> <span class="n">you</span> <span class="n">want</span> <span class="k">to</span> <span class="k">do</span><span class="o">?</span>
+   <span class="mi">1</span><span class="p">)</span> <span class="k">Add</span> <span class="n">a</span> <span class="k">new</span> <span class="k">user</span>
+   <span class="mi">2</span><span class="p">)</span> <span class="k">Revoke</span> <span class="n">an</span> <span class="k">existing</span> <span class="k">user</span>
+   <span class="mi">3</span><span class="p">)</span> <span class="n">Remove</span> <span class="n">OpenVPN</span>
+   <span class="mi">4</span><span class="p">)</span> <span class="n">Exit</span>
+<span class="k">Select</span> <span class="n">an</span> <span class="k">option</span> <span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">4</span><span class="p">]:</span> <span class="mi">1</span>
 
-<span class="nv">Tell</span> <span class="nv">me</span> <span class="nv">a</span> <span class="nv">name</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">client</span> <span class="nv">certificate</span>
-<span class="nv">Please</span>, <span class="nv">use</span> <span class="nv">one</span> <span class="nv">word</span> <span class="nv">only</span>, <span class="nv">no</span> <span class="nv">special</span> <span class="nv">characters</span>
-<span class="nv">Client</span> <span class="nv">name</span>: <span class="nv">iphone7</span>
+<span class="n">Tell</span> <span class="n">me</span> <span class="n">a</span> <span class="n">name</span> <span class="k">for</span> <span class="n">the</span> <span class="n">client</span> <span class="n">certificate</span>
+<span class="n">Please</span><span class="p">,</span> <span class="n">use</span> <span class="n">one</span> <span class="n">word</span> <span class="k">only</span><span class="p">,</span> <span class="k">no</span> <span class="n">special</span> <span class="n">characters</span>
+<span class="n">Client</span> <span class="n">name</span><span class="p">:</span> <span class="n">iphone7</span>
 </pre></div></p>
 <p>This will generate a <code>.ovpn</code> file, which needs to be copied to your client machine (often times using the OpenVPN app).  This process also generates a few other files found in <code>/etc/openvpn/server/easy-rsa/pki/</code>, which make public key authentication possible; you only need to worry about the <code>.ovpn</code> file, though.</p>
 <h2 id="connect-a-client-using-the-ovpn-file">Connect a client using the <code>.ovpn</code> file<a class="headerlink" href="#connect-a-client-using-the-ovpn-file" title="Permanent link">&para;</a></h2>
@@ -1301,8 +1301,8 @@
 <ol>
 <li>
 <p>Install the necessary network-manager plugins
-<div class="codehilite"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="k">get</span> <span class="n">install</span> <span class="n">network</span><span class="o">-</span><span class="n">manager</span><span class="o">-</span><span class="n">openvpn</span> <span class="n">network</span><span class="o">-</span><span class="n">manager</span><span class="o">-</span><span class="n">openvpn</span><span class="o">-</span><span class="n">gnome</span>
-<span class="n">sudo</span> <span class="n">service</span> <span class="n">network</span><span class="o">-</span><span class="n">manager</span> <span class="k">restart</span>
+<div class="codehilite"><pre><span></span><span class="err">sudo apt-get install network-manager-openvpn network-manager-openvpn-gnome</span>
+<span class="err">sudo service network-manager restart</span>
 </pre></div></p>
 </li>
 <li>

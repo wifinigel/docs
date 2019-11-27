@@ -1287,14 +1287,14 @@
 <h3 id="split-database">Split database<a class="headerlink" href="#split-database" title="Permanent link">&para;</a></h3>
 <p>You can split your long-term database by periodically rotating the database file (do this only when <code>pihole-FTL</code> is <em>not</em> running). The individual database contents can easily be merged when required.
 This could be implemented by running a monthly <code>cron</code> job such as:
-<div class="codehilite"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">pihole</span><span class="o">-</span><span class="n">FTL</span> <span class="n">stop</span>
-<span class="n">sudo</span> <span class="n">mv</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">pihole</span><span class="o">/</span><span class="n">pihole</span><span class="o">-</span><span class="n">FTL</span><span class="p">.</span><span class="n">db</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">pihole</span><span class="o">-</span><span class="n">FTL_$</span><span class="p">(</span><span class="nb">date</span> <span class="o">+</span><span class="ss">&quot;%m-%y&quot;</span><span class="p">).</span><span class="n">db</span>
-<span class="n">sudo</span> <span class="n">service</span> <span class="n">pihole</span><span class="o">-</span><span class="n">FTL</span> <span class="k">start</span>
+<div class="codehilite"><pre><span></span><span class="err">sudo service pihole-FTL stop</span>
+<span class="err">sudo mv /etc/pihole/pihole-FTL.db /media/backup/pihole-FTL_$(date +&quot;%m-%y&quot;).db</span>
+<span class="err">sudo service pihole-FTL start</span>
 </pre></div>
 Note that <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> resolution will not be available as long as <code>pihole-FTL</code> is stopped.</p>
 <h3 id="backup-database">Backup database<a class="headerlink" href="#backup-database" title="Permanent link">&para;</a></h3>
 <p>The database can be backed up while <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> is running when using the <abbr title="Database engine that handles an SQL databases in a file">SQLite3</abbr> Online backup method, e.g.,
-<div class="codehilite"><pre><span></span><span class="n">sqlite3</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">pihole</span><span class="o">/</span><span class="n">pihole</span><span class="o">-</span><span class="n">FTL</span><span class="p">.</span><span class="n">db</span> <span class="ss">&quot;.backup /home/pi/pihole-FTL.db.backup&quot;</span>
+<div class="codehilite"><pre><span></span><span class="err">sqlite3 /etc/pihole/pihole-FTL.db &quot;.backup /home/pi/pihole-FTL.db.backup&quot;</span>
 </pre></div>
 will create <code>/home/pi/pihole-FTL.db.backup</code> which is a copy of your long-term database.</p>
 <hr />
@@ -1355,8 +1355,8 @@ will create <code>/home/pi/pihole-FTL.db.backup</code> which is a copy of your l
 </tbody>
 </table>
 <p><abbr title="Database engine that handles an SQL databases in a file">SQLite3</abbr> syntax used to create this table:
-<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">queries</span> <span class="p">(</span> <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTOINCREMENT</span><span class="p">,</span> <span class="k">timestamp</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">type</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="n">status</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">domain</span> <span class="nb">TEXT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="n">client</span> <span class="nb">TEXT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">forward</span> <span class="nb">TEXT</span> <span class="p">);</span>
-<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_queries_timestamps</span> <span class="k">ON</span> <span class="n">queries</span> <span class="p">(</span><span class="k">timestamp</span><span class="p">);</span>
+<div class="codehilite"><pre><span></span><span class="err">CREATE TABLE queries ( id INTEGER PRIMARY KEY AUTOINCREMENT, timestamp INTEGER NOT NULL, type INTEGER NOT NULL, status INTEGER NOT NULL, domain TEXT NOT NULL, client TEXT NOT NULL, forward TEXT );</span>
+<span class="err">CREATE INDEX idx_queries_timestamps ON queries (timestamp);</span>
 </pre></div></p>
 <h3 id="counters-table">Counters table<a class="headerlink" href="#counters-table" title="Permanent link">&para;</a></h3>
 <p>This table contains counter values integrated over the entire lifetime of the table</p>
@@ -1403,12 +1403,12 @@ will create <code>/home/pi/pihole-FTL.db.backup</code> which is a copy of your l
 </tbody>
 </table>
 <p><abbr title="Database engine that handles an SQL databases in a file">SQLite3</abbr> syntax used to create this table:
-<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">counters</span> <span class="p">(</span> <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="n">value</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="p">);</span>
+<div class="codehilite"><pre><span></span><span class="err">CREATE TABLE counters ( id INTEGER PRIMARY KEY NOT NULL, value INTEGER NOT NULL );</span>
 </pre></div></p>
 <h3 id="ftl-table"><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> table<a class="headerlink" href="#ftl-table" title="Permanent link">&para;</a></h3>
 <p>The <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> tables contains some data used by <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> for determining which queries to save to the database. This table does not contain any entries of general interest.</p>
 <p><abbr title="Database engine that handles an SQL databases in a file">SQLite3</abbr> syntax used to create this table:
-<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">ftl</span> <span class="p">(</span> <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="n">value</span> <span class="nb">BLOB</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="p">);</span>
+<div class="codehilite"><pre><span></span><span class="err">CREATE TABLE ftl ( id INTEGER PRIMARY KEY NOT NULL, value BLOB NOT NULL );</span>
 </pre></div></p>
 <h3 id="supported-query-types">Supported query types<a class="headerlink" href="#supported-query-types" title="Permanent link">&para;</a></h3>
 <table>
@@ -1504,12 +1504,12 @@ will create <code>/home/pi/pihole-FTL.db.backup</code> which is a copy of your l
 </table>
 <h3 id="example-for-interaction-with-the-ftl-long-term-database">Example for interaction with the <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> long-term database<a class="headerlink" href="#example-for-interaction-with-the-ftl-long-term-database" title="Permanent link">&para;</a></h3>
 <p>In addition to the interactions the Pi-hole database <abbr title="Application Programming Interface (a set of subroutine definitions, protocols, and tools for building application software)">API</abbr> offers, you can also run your own SQL commands against the database. If you want to obtain the three most queries domains for all time, you could use
-<div class="codehilite"><pre><span></span><span class="n">sqlite3</span> <span class="ss">&quot;/etc/pihole/pihole-FTL.db&quot;</span> <span class="ss">&quot;SELECT domain,count(domain) FROM queries WHERE (STATUS == 2 OR STATUS == 3) GROUP by domain order by count(domain) desc limit 3&quot;</span>
+<div class="codehilite"><pre><span></span><span class="err">sqlite3 &quot;/etc/pihole/pihole-FTL.db&quot; &quot;SELECT domain,count(domain) FROM queries WHERE (STATUS == 2 OR STATUS == 3) GROUP by domain order by count(domain) desc limit 3&quot;</span>
 </pre></div>
 which would return something like
-<div class="codehilite"><pre><span></span><span class="n">discourse</span><span class="p">.</span><span class="n">pi</span><span class="o">-</span><span class="n">hole</span><span class="p">.</span><span class="n">net</span><span class="o">|</span><span class="mi">421095</span>
-<span class="n">www</span><span class="p">.</span><span class="n">pi</span><span class="o">-</span><span class="n">hole</span><span class="p">.</span><span class="n">net</span><span class="o">|</span><span class="mi">132483</span>
-<span class="n">posteo</span><span class="p">.</span><span class="n">de</span><span class="o">|</span><span class="mi">130243</span>
+<div class="codehilite"><pre><span></span><span class="err">discourse.pi-hole.net|421095</span>
+<span class="err">www.pi-hole.net|132483</span>
+<span class="err">posteo.de|130243</span>
 </pre></div>
 showing the domain and the number of times it was found in the long-term database. Note that such a request might take very long for computation as the entire history of queries have to be processed for this.</p>
                 

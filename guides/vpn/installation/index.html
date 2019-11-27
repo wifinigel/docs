@@ -1258,53 +1258,53 @@
 <p>This is less convenient, so many users will simply decide to install Pi-hole and OpenVPN on a single machine, which is what this guide will walkthrough.</p>
 <h3 id="install-the-openvpn-server">Install the OpenVPN server<a class="headerlink" href="#install-the-openvpn-server" title="Permanent link">&para;</a></h3>
 <p>First, download the OpenVPN installer; make it executable, and then run it:
-<div class="codehilite"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">vpn</span> <span class="o">-</span><span class="n">O</span> <span class="n">openvpn</span><span class="o">-</span><span class="n">install</span><span class="p">.</span><span class="n">sh</span>
-<span class="n">chmod</span> <span class="mi">755</span> <span class="n">openvpn</span><span class="o">-</span><span class="n">install</span><span class="p">.</span><span class="n">sh</span>
-<span class="p">.</span><span class="o">/</span><span class="n">openvpn</span><span class="o">-</span><span class="n">install</span><span class="p">.</span><span class="n">sh</span>
+<div class="codehilite"><pre><span></span><span class="err">wget https://git.io/vpn -O openvpn-install.sh</span>
+<span class="err">chmod 755 openvpn-install.sh</span>
+<span class="err">./openvpn-install.sh</span>
 </pre></div>
 Enter your server's IP address and accept all the defaults, unless you require special needs:
-<div class="codehilite"><pre><span></span><span class="nv">Welcome</span> <span class="nv">to</span> <span class="nv">this</span> <span class="nv">quick</span> <span class="nv">OpenVPN</span> <span class="s2">&quot;</span><span class="s">road warrior</span><span class="s2">&quot;</span> <span class="nv">installer</span>
+<div class="codehilite"><pre><span></span><span class="n">Welcome</span> <span class="k">to</span> <span class="n">this</span> <span class="n">quick</span> <span class="n">OpenVPN</span> <span class="ss">&quot;road warrior&quot;</span> <span class="n">installer</span>
 
-<span class="nv">I</span> <span class="nv">need</span> <span class="nv">to</span> <span class="nv">ask</span> <span class="nv">you</span> <span class="nv">a</span> <span class="nv">few</span> <span class="nv">questions</span> <span class="nv">before</span> <span class="nv">starting</span> <span class="nv">the</span> <span class="nv">setup</span>
-<span class="nv">You</span> <span class="nv">can</span> <span class="nv">leave</span> <span class="nv">the</span> <span class="nv">default</span> <span class="nv">options</span> <span class="nv">and</span> <span class="nv">just</span> <span class="nv">press</span> <span class="nv">enter</span> <span class="k">if</span> <span class="nv">you</span> <span class="nv">are</span> <span class="nv">ok</span> <span class="nv">with</span> <span class="nv">them</span>
+<span class="n">I</span> <span class="n">need</span> <span class="k">to</span> <span class="n">ask</span> <span class="n">you</span> <span class="n">a</span> <span class="n">few</span> <span class="n">questions</span> <span class="k">before</span> <span class="n">starting</span> <span class="n">the</span> <span class="n">setup</span>
+<span class="n">You</span> <span class="n">can</span> <span class="n">leave</span> <span class="n">the</span> <span class="k">default</span> <span class="k">options</span> <span class="k">and</span> <span class="n">just</span> <span class="n">press</span> <span class="n">enter</span> <span class="k">if</span> <span class="n">you</span> <span class="k">are</span> <span class="n">ok</span> <span class="k">with</span> <span class="n">them</span>
 
-<span class="nv">First</span> <span class="nv">I</span> <span class="nv">need</span> <span class="nv">to</span> <span class="nv">know</span> <span class="nv">the</span> <span class="nv">IPv4</span> <span class="nv">address</span> <span class="nv">of</span> <span class="nv">the</span> <span class="nv">network</span> <span class="nv">interface</span> <span class="nv">you</span> <span class="nv">want</span> <span class="nv">OpenVPN</span>
-<span class="nv">listening</span> <span class="nv">to</span>.
-<span class="nv">IP</span> <span class="nv">address</span>: <span class="mi">10</span>.<span class="mi">8</span>.<span class="mi">0</span>.<span class="mi">1</span>
+<span class="k">First</span> <span class="n">I</span> <span class="n">need</span> <span class="k">to</span> <span class="n">know</span> <span class="n">the</span> <span class="n">IPv4</span> <span class="n">address</span> <span class="k">of</span> <span class="n">the</span> <span class="n">network</span> <span class="n">interface</span> <span class="n">you</span> <span class="n">want</span> <span class="n">OpenVPN</span>
+<span class="n">listening</span> <span class="k">to</span><span class="p">.</span>
+<span class="n">IP</span> <span class="n">address</span><span class="p">:</span> <span class="mi">10</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span>
 
-<span class="nv">Which</span> <span class="nv">protocol</span> <span class="k">do</span> <span class="nv">you</span> <span class="nv">want</span> <span class="k">for</span> <span class="nv">OpenVPN</span> <span class="nv">connections</span>?
-   <span class="mi">1</span><span class="ss">)</span> <span class="nv">UDP</span> <span class="ss">(</span><span class="nv">recommended</span><span class="ss">)</span>
-   <span class="mi">2</span><span class="ss">)</span> <span class="nv">TCP</span>
-<span class="nv">Protocol</span> [<span class="mi">1</span><span class="o">-</span><span class="mi">2</span>]: <span class="mi">1</span>
+<span class="n">Which</span> <span class="n">protocol</span> <span class="k">do</span> <span class="n">you</span> <span class="n">want</span> <span class="k">for</span> <span class="n">OpenVPN</span> <span class="n">connections</span><span class="o">?</span>
+   <span class="mi">1</span><span class="p">)</span> <span class="n">UDP</span> <span class="p">(</span><span class="n">recommended</span><span class="p">)</span>
+   <span class="mi">2</span><span class="p">)</span> <span class="n">TCP</span>
+<span class="n">Protocol</span> <span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">2</span><span class="p">]:</span> <span class="mi">1</span>
 
-<span class="nv">What</span> <span class="nv">port</span> <span class="k">do</span> <span class="nv">you</span> <span class="nv">want</span> <span class="nv">OpenVPN</span> <span class="nv">listening</span> <span class="nv">to</span>?
-<span class="nv">Port</span>: <span class="mi">1194</span>
+<span class="n">What</span> <span class="n">port</span> <span class="k">do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">OpenVPN</span> <span class="n">listening</span> <span class="k">to</span><span class="o">?</span>
+<span class="n">Port</span><span class="p">:</span> <span class="mi">1194</span>
 
-<span class="nv">Which</span> <span class="nv">DNS</span> <span class="k">do</span> <span class="nv">you</span> <span class="nv">want</span> <span class="nv">to</span> <span class="nv">use</span> <span class="nv">with</span> <span class="nv">the</span> <span class="nv">VPN</span>?
-   <span class="mi">1</span><span class="ss">)</span> <span class="nv">Current</span> <span class="nv">system</span> <span class="nv">resolvers</span>
-   <span class="mi">2</span><span class="ss">)</span> <span class="nv">Google</span>
-   <span class="mi">3</span><span class="ss">)</span> <span class="nv">OpenDNS</span>
-   <span class="mi">4</span><span class="ss">)</span> <span class="nv">NTT</span>
-   <span class="mi">5</span><span class="ss">)</span> <span class="nv">Hurricane</span> <span class="nv">Electric</span>
-   <span class="mi">6</span><span class="ss">)</span> <span class="nv">Verisign</span>
-<span class="nv">DNS</span> [<span class="mi">1</span><span class="o">-</span><span class="mi">6</span>]: <span class="mi">1</span>
+<span class="n">Which</span> <span class="n">DNS</span> <span class="k">do</span> <span class="n">you</span> <span class="n">want</span> <span class="k">to</span> <span class="n">use</span> <span class="k">with</span> <span class="n">the</span> <span class="n">VPN</span><span class="o">?</span>
+   <span class="mi">1</span><span class="p">)</span> <span class="k">Current</span> <span class="k">system</span> <span class="n">resolvers</span>
+   <span class="mi">2</span><span class="p">)</span> <span class="n">Google</span>
+   <span class="mi">3</span><span class="p">)</span> <span class="n">OpenDNS</span>
+   <span class="mi">4</span><span class="p">)</span> <span class="n">NTT</span>
+   <span class="mi">5</span><span class="p">)</span> <span class="n">Hurricane</span> <span class="n">Electric</span>
+   <span class="mi">6</span><span class="p">)</span> <span class="n">Verisign</span>
+<span class="n">DNS</span> <span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">6</span><span class="p">]:</span> <span class="mi">1</span>
 
-<span class="nv">Finally</span>, <span class="nv">tell</span> <span class="nv">me</span> <span class="nv">your</span> <span class="nv">name</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">client</span> <span class="nv">certificate</span>
-<span class="nv">Please</span>, <span class="nv">use</span> <span class="nv">one</span> <span class="nv">word</span> <span class="nv">only</span>, <span class="nv">no</span> <span class="nv">special</span> <span class="nv">characters</span>
-<span class="nv">Client</span> <span class="nv">name</span>: <span class="nv">pihole</span>
+<span class="n">Finally</span><span class="p">,</span> <span class="n">tell</span> <span class="n">me</span> <span class="n">your</span> <span class="n">name</span> <span class="k">for</span> <span class="n">the</span> <span class="n">client</span> <span class="n">certificate</span>
+<span class="n">Please</span><span class="p">,</span> <span class="n">use</span> <span class="n">one</span> <span class="n">word</span> <span class="k">only</span><span class="p">,</span> <span class="k">no</span> <span class="n">special</span> <span class="n">characters</span>
+<span class="n">Client</span> <span class="n">name</span><span class="p">:</span> <span class="n">pihole</span>
 
-<span class="nv">Okay</span>, <span class="nv">that</span> <span class="nv">was</span> <span class="nv">all</span> <span class="nv">I</span> <span class="nv">needed</span>. <span class="nv">We</span> <span class="nv">are</span> <span class="nv">ready</span> <span class="nv">to</span> <span class="nv">setup</span> <span class="nv">your</span> <span class="nv">OpenVPN</span> <span class="nv">server</span> <span class="nv">now</span>
-<span class="nv">Press</span> <span class="nv">any</span> <span class="nv">key</span> <span class="nv">to</span> <span class="k">continue</span>...
+<span class="n">Okay</span><span class="p">,</span> <span class="n">that</span> <span class="n">was</span> <span class="k">all</span> <span class="n">I</span> <span class="n">needed</span><span class="p">.</span> <span class="n">We</span> <span class="k">are</span> <span class="n">ready</span> <span class="k">to</span> <span class="n">setup</span> <span class="n">your</span> <span class="n">OpenVPN</span> <span class="n">server</span> <span class="n">now</span>
+<span class="n">Press</span> <span class="k">any</span> <span class="k">key</span> <span class="k">to</span> <span class="k">continue</span><span class="p">...</span>
 </pre></div>
 Let the installer run...
-<div class="codehilite"><pre><span></span><span class="nv">Finished</span><span class="o">!</span>
+<div class="codehilite"><pre><span></span><span class="n">Finished</span><span class="o">!</span>
 
-<span class="nv">Your</span> <span class="nv">client</span> <span class="nv">configuration</span> <span class="nv">is</span> <span class="nv">available</span> <span class="nv">at</span> <span class="o">/</span><span class="nv">root</span><span class="o">/</span><span class="nv">pihole</span>.<span class="nv">ovpn</span>
-<span class="k">If</span> <span class="nv">you</span> <span class="nv">want</span> <span class="nv">to</span> <span class="nv">add</span> <span class="nv">more</span> <span class="nv">clients</span>, <span class="nv">you</span> <span class="nv">simply</span> <span class="nv">need</span> <span class="nv">to</span> <span class="nv">run</span> <span class="nv">this</span> <span class="nv">script</span> <span class="nv">again</span><span class="o">!</span>
+<span class="n">Your</span> <span class="n">client</span> <span class="n">configuration</span> <span class="k">is</span> <span class="n">available</span> <span class="k">at</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">pihole</span><span class="p">.</span><span class="n">ovpn</span>
+<span class="k">If</span> <span class="n">you</span> <span class="n">want</span> <span class="k">to</span> <span class="k">add</span> <span class="k">more</span> <span class="n">clients</span><span class="p">,</span> <span class="n">you</span> <span class="n">simply</span> <span class="n">need</span> <span class="k">to</span> <span class="n">run</span> <span class="n">this</span> <span class="n">script</span> <span class="n">again</span><span class="o">!</span>
 </pre></div></p>
 <h3 id="install-pi-hole">Install Pi-hole<a class="headerlink" href="#install-pi-hole" title="Permanent link">&para;</a></h3>
 <p>Next, install Pi-hole and choose <code>tun0</code> as the interface and <code>10.8.0.1/24</code> as the IP address. You can accept the rest of the defaults, or configure Pi-hole to your liking.  The interface selection is the most important step; if you don't choose <code>tun0</code> (at least to begin with), it will not work properly.</p>
-<div class="codehilite"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">sSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">install</span><span class="p">.</span><span class="n">pi</span><span class="o">-</span><span class="n">hole</span><span class="p">.</span><span class="n">net</span> <span class="o">|</span> <span class="n">bash</span>
+<div class="codehilite"><pre><span></span><span class="err">curl -sSL https://install.pi-hole.net | bash</span>
 </pre></div>
                 
                   
