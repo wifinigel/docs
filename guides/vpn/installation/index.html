@@ -90,7 +90,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://docs.pi-hole.net" title="Pi-hole documentation" class="md-header-nav__button md-logo">
+        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -182,7 +182,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://docs.pi-hole.net" title="Pi-hole documentation" class="md-nav__button md-logo">
+    <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
@@ -1251,7 +1251,7 @@
                   <h1>Installation</h1>
                 
                 <h2 id="install-an-operating-system">Install an operating system<a class="headerlink" href="#install-an-operating-system" title="Permanent link">&para;</a></h2>
-<p>Once you have your preferred OS up and running.  You may already have a server set up on your network, or you may prefer to make a <a href="http://www.digitalocean.com/?refcode=344d234950e1">Digital Ocean</a> droplet.  In either case, you'll use the quick OpenVPN "road warrior" installer.  The cloud-hosted server option is convenient if you don't want to host the hardware at home, but you'll need to take additional steps to secure the server as it's available on the public Internet.  Failure to do so is <a href="https://www.us-cert.gov/ncas/alerts/TA13-088A">not only irresponsible, but you also put yourself and others at risk</a>.</p>
+<p>Once you have your preferred OS up and running.  You may already have a server set up on your network, or you may prefer to make a <a href="https://www.digitalocean.com/?refcode=344d234950e1">Digital Ocean</a> droplet.  In either case, you'll use the quick OpenVPN "road warrior" installer.  The cloud-hosted server option is convenient if you don't want to host the hardware at home, but you'll need to take additional steps to secure the server as it's available on the public Internet.  Failure to do so is <a href="https://www.us-cert.gov/ncas/alerts/TA13-088A">not only irresponsible, but you also put yourself and others at risk</a>.</p>
 <h2 id="install-openvpn-pi-hole">Install OpenVPN + Pi-hole<a class="headerlink" href="#install-openvpn-pi-hole" title="Permanent link">&para;</a></h2>
 <h3 id="a-note-about-security">A note about security<a class="headerlink" href="#a-note-about-security" title="Permanent link">&para;</a></h3>
 <p>For security purposes, it is recommended that the CA machine should be separate from the machine running OpenVPN. If you lose control of your CA private key, you can no longer trust any certificates from this CA. Anyone with access to this CA private key can sign new certificates without your knowledge, which then can connect to your OpenVPN server without needing to modify anything on the VPN server. Place your CA files on a storage which can be offline as much as possible, only to be activated when you need to get a new certificate for a client or server.</p>

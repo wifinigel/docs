@@ -90,7 +90,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://docs.pi-hole.net" title="Pi-hole documentation" class="md-header-nav__button md-logo">
+        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -182,7 +182,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://docs.pi-hole.net" title="Pi-hole documentation" class="md-nav__button md-logo">
+    <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
@@ -1292,7 +1292,7 @@
                 
                 <h3 id="optional-secure-the-server-with-firewall-rules-iptables">(optional) Secure the server with firewall rules (<code>iptables</code>)<a class="headerlink" href="#optional-secure-the-server-with-firewall-rules-iptables" title="Permanent link">&para;</a></h3>
 <p>**If you are behind a NAT and not running the Pi-hole on a cloud server, you do not need to issue the IPTABLES commands bellow as the firewall rules are already handled by the RoadWarrior installer.</p>
-<p><strong>This step is optional but recommended if you are running your server in the cloud, such as a droplet made on <a href="http://www.digitalocean.com/?refcode=344d234950e1">Digital Ocean</a></strong>.  If this is the case, you need to secure the server for your safety as well as others to prevent aiding in DDoS attacks.</p>
+<p><strong>This step is optional but recommended if you are running your server in the cloud, such as a droplet made on <a href="https://www.digitalocean.com/?refcode=344d234950e1">Digital Ocean</a></strong>.  If this is the case, you need to secure the server for your safety as well as others to prevent aiding in DDoS attacks.</p>
 <p>In addition to the risk of being an open resolver, your Web interface is also open to the world increasing the risk.  So you will want to prevent ports 53 and 80, respectively, from being accessible from the public Internet.</p>
 <p>It's recommended that you <a href="https://serverfault.com/questions/200635/best-way-to-clear-all-iptables-rules">clear out your entire firewall</a> so you have full control over its setup.  You have two options for setting up your firewall with your VPN.</p>
 <h4 id="option-1-allow-everything-from-within-your-vpn">Option 1: Allow everything from within your VPN<a class="headerlink" href="#option-1-allow-everything-from-within-your-vpn" title="Permanent link">&para;</a></h4>
@@ -1326,7 +1326,7 @@
 </pre></div>
 
 <h6 id="blocking-https-advertisement-assets">Blocking HTTPS advertisement assets<a class="headerlink" href="#blocking-https-advertisement-assets" title="Permanent link">&para;</a></h6>
-<p>Since you're <code>:head-desk:</code>ing with <code>iptables</code>, you can also use this opportunity to block HTTPS advertisements to <a href="https://discourse.pi-hole.net/t/why-do-some-sites-take-forever-to-load-when-using-pi-hole/3654/4">improve blocking ads that are loaded via HTTPS</a> and also deal with QUIC.</p>
+<p>Since you're <code>:head-desk:</code>ing with <code>iptables</code>, you can also use this opportunity to block HTTPS advertisements to <a href="https://discourse.pi-hole.net/t/why-do-some-sites-take-forever-to-load-when-using-pi-hole-for-versions-v4-0/3654/4">improve blocking ads that are loaded via HTTPS</a> and also deal with QUIC.</p>
 <blockquote>
 <p>Why doesn't Pi-hole just use a certificate to prevent this?  The answer is <a href="https://discourse.pi-hole.net/t/slow-loading-websites/3408/12">here</a>.</p>
 </blockquote>

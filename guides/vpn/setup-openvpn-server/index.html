@@ -90,7 +90,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://docs.pi-hole.net" title="Pi-hole documentation" class="md-header-nav__button md-logo">
+        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -182,7 +182,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://docs.pi-hole.net" title="Pi-hole documentation" class="md-nav__button md-logo">
+    <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
@@ -1227,7 +1227,7 @@ On Stretch
 <span class="err">#push &quot;dhcp-option DNS 8.8.8.8&quot;</span>
 </pre></div>
 
-<p>This <code>push</code> directive is setting a <a href="https://www.incognito.com/tips-and-tutorials/dhcp-options-in-plain-english/">DHCP option</a>, which tells client's connecting to the VPN that they should use Pi-hole as their primary DNS server.</p>
+<p>This <code>push</code> directive is setting a <a href="https://www.incognito.com/tutorials/dhcp-options-in-plain-english/">DHCP option</a>, which tells client's connecting to the VPN that they should use Pi-hole as their primary DNS server.</p>
 <p>It's <a href="https://discourse.pi-hole.net/t/why-should-pi-hole-be-my-only-dns-server/3376">suggested to have Pi-hole be the only resolver</a> as it defines the upstream servers.  Setting a non-Pi-hole resolver here <a href="https://discourse.pi-hole.net/t/why-should-pi-hole-be-my-only-dns-server/3376">may have adverse effects on ad blocking</a> but it <em>can</em> provide failover connectivity in the case of Pi-hole not working if that is something you are concerned about.</p>
 <p>Furthermore, you might want to enable logging for your OpenVPN server. In this case, add the following lines to your server's config file:
 <div class="codehilite"><pre><span></span><span class="err">log /var/log/openvpn.log</span>

@@ -90,7 +90,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://docs.pi-hole.net" title="Pi-hole documentation" class="md-header-nav__button md-logo">
+        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -182,7 +182,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://docs.pi-hole.net" title="Pi-hole documentation" class="md-nav__button md-logo">
+    <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
@@ -1236,7 +1236,7 @@
                 
                 <p><code>pihole-FTL</code> offers an efficient <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> cache that helps speed up your Internet experience. This <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> cache is part of the embedded <code>dnsmasq</code> server. Setting the cache size to zero disables caching. The <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> <abbr title="Time-To-Live is a mechanism that limits the lifespan or lifetime of data in a computer or network">TTL</abbr> value is used for determining the caching period. <code>pihole-FTL</code> clears its cache on receiving <code>SIGHUP</code>.</p>
 <h3 id="cache-metrics">Cache metrics<a class="headerlink" href="#cache-metrics" title="Permanent link">&para;</a></h3>
-<p>The Settings page (System panel, <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> table) gives live information about the cache usage. It obtains its information from <a href="http://pi.hole/admin/api.php?getCacheInfo">http://pi.hole/admin/api.php?getCacheInfo</a>.</p>
+<p>The Settings page (System panel, <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> table) gives live information about the cache usage. It obtains its information from <code>http://pi.hole/admin/api.php?getCacheInfo</code>.</p>
 <h4 id="dns-cache-size"><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> cache size<a class="headerlink" href="#dns-cache-size" title="Permanent link">&para;</a></h4>
 <p>Size of the <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> domain cache, defaulting to 10,000 entries. You typically specify this number directly in <code>/etc/dnsmasq.d/01-pihole.conf</code>. It is the number of entries that can be actively cached at the same time. There is no benefit in enlarging this number <em>except</em> if the <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> cache evictions count is larger than zero.</p>
 <p>This information may also be queried using <code>dig +short chaos txt cachesize.bind</code></p>
