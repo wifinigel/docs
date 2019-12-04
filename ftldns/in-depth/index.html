@@ -1272,7 +1272,7 @@ Whereas <code>dnsmasq</code> is running as <code>root</code> process, we designe
 <li><code>CAP_NET_RAW</code>: use raw and packet sockets (we need a RAW socket for handling <abbr title="Dynamic Host Configuration Protocol version 6 (a network protocol for configuring Internet Protocol version 6 (IPv6) hosts with IP addresses)">DHCPv6</abbr> requests)</li>
 <li><code>CAP_NET_ADMIN</code>: modify routing tables and other network-related operations (to allow for handling <abbr title="Dynamic Host Configuration Protocol (network management protocol for configuring Internet Protocol version 4 (IPv4) hosts with IP addresses)">DHCP</abbr> requests)</li>
 </ul>
-<p>Users that cannot use Linux capabilites for various reasons (lacking kernel or file system support) can modify the startup scripts of <code>pihole-FTL</code> to ensure the daemon is started as <code>root</code>. However, be aware of that you do so on your own risk (although we don't expect problems to arise).</p>
+<p>Users that cannot use Linux capabilities for various reasons (lacking kernel or file system support) can modify the startup scripts of <code>pihole-FTL</code> to ensure the daemon is started as <code>root</code>. However, be aware of that you do so on your own risk (although we don't expect problems to arise).</p>
                 
                   
                 
