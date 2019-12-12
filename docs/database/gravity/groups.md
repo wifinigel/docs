@@ -11,19 +11,21 @@ Label | Type | Uniqueness enforced | Content
 `comment` | text | No | Optional field for arbitrary user comments
 
 Group management is implemented using so called linking tables. Hence, it is possible to
-- associate domains with any number of groups,
+- associate domains (and clients!) with any number of groups,
 - manage adlists together with groups,
-- use the same groups for, e.g., black- and whitelisted domains at the same time.
+- use the same groups for black- and whitelisted domains at the same time.
 
-The linking tables are particularly simple, as they only link group `id`s with list `id`s. As an example, we describe the `whitelist_by_group` table. All other linking tables are constructed similarly.
+The linking tables are particularly simple, as they only link group `id`s with list `id`s. As an example, we describe the `domainlist_by_group` table. The `adlist` and `client` linking tables are constructed similarly.
 
 Label | Type | Content
 ----- | ---- | -------
-`whitelist_id` | integer | `id` of domain in the `whitelist` table
+`domainlist_id` | integer | `id` of domain in the `domainlist` table
 `group_id` | integer | `id` of associated group in the `group` table
 
+Group `0` is special as it is automatically assigned to domains and clients not being member of other groups. Each newly added client or domain gets assigned to group zero when being added.
+
 ## Effect of group management
-The great flexibility to manage domains in no, one, or multiple groups may result in unexpected behavior when, e.g., the domains are enabled in some but disabled in other groups. For the sake of convenience, we describe all possible configurations and whether *FTL*DNS uses these domains (&#10004;) or not (&#10008;) in these cases.
+The great flexibility to manage domains in no, one, or multiple groups may result in unexpected behavior when, e.g., the domains are enabled in some but disabled in other groups. For the sake of convenience, we describe the possible configurations and whether *FTL*DNS uses these domains (&#10004;) or not (&#10008;) in such cases.
 
 - Domain disabled: &#10008;<br>Note that the domain is never imported by *FTL*DNS, even if it is contained in an enabled group.
 

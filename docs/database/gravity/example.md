@@ -31,40 +31,10 @@ INSERT INTO client_by_group (client_id, group_id) VALUES (2, 2);
 INSERT INTO client_by_group (client_id, group_id) VALUES (3, 3);
 ```
 
-## Example 1. Exclude from blocking
-**Task:** Exclude clients from Pi-hole's blocking - already done!
-
-#### Test
-```text
-192.168.0.101: dig +short doubleclick.net ---> 216.58.208.46  (not blocked)
-192.168.0.102: dig +short doubleclick.net ---> 216.58.208.46  (not blocked)
-192.168.0.103: dig +short doubleclick.net ---> 216.58.208.46  (not blocked)
-192.168.0.104: dig +short doubleclick.net ---> 0.0.0.0        (blocked)
-```
-
-#### Result
-All three client have been assigned to "empty" groups. "Empty" in this regard means that the corresponding group is not assigned to *any* black-, white or adlists. Hence, these clients do not get anything blocked at all. Add adlists and black- / whitelist domains if you want to change this (see below).
-
-## Example 2: Blocklist management
-Task: Set up **full gravity blocking** for clients `192.168.0.102` and `192.168.0.102` (groups 2+3).
-
-### Step 1
-Assign all adlists to group 2
+## Example 1: Exclude from blocking
+**Task:** Exclude client 1 from Pi-hole's blocking
 ```sql
-INSERT INTO adlist_by_group (adlist_id, group_id) SELECT id, 2 FROM adlist;
-INSERT INTO adlist_by_group (adlist_id, group_id) SELECT id, 3 FROM adlist;
-```
-We used the `SELECT` statement as shortcut for getting all adlist IDs.
-We could also have done this step-by-step for all adlists and groups:
-```sql
-INSERT INTO adlist_by_group (adlist_id, group_id) VALUES (1,2);
-INSERT INTO adlist_by_group (adlist_id, group_id) VALUES (2,2);
-INSERT INTO adlist_by_group (adlist_id, group_id) VALUES (3,2);
-[...]
-INSERT INTO adlist_by_group (adlist_id, group_id) VALUES (1,3);
-INSERT INTO adlist_by_group (adlist_id, group_id) VALUES (2,3);
-INSERT INTO adlist_by_group (adlist_id, group_id) VALUES (3,3);
-[...]
+DELETE FROM client_by_group WHERE client_id = 1 AND group_id = 0;
 ```
 
 #### Test
@@ -76,10 +46,30 @@ INSERT INTO adlist_by_group (adlist_id, group_id) VALUES (3,3);
 ```
 
 #### Result
-- `192.168.0.101` - Not blocked as group 1 is not associated to any adlist (as before).
-- `192.168.0.102` - Blocked as group 2 is associated to all adlists.
-- `192.168.0.103` - Blocked as group 3 is associated to all adlists.
-- `192.168.0.104` - Blocked as not managed by any group - all adlist domains are used.
+All three client are assigned to the default ("zero") group on addition. They include all set up adlists if the assignment not already changed by the user. When we remove the default group for client `192.168.0.101`, we effectively remove all default associations to adlists and domains.
+
+## Example 2: Blocklist management
+Task: Set up one blocklist for client `192.168.0.101` (groups 1).
+
+### Step 1
+Assign all adlists to group 2
+```sql
+INSERT INTO adlist_by_group (adlist_id, group_id) VALUES (1,1);
+```
+
+#### Test
+```text
+192.168.0.101: dig +short doubleclick.net ---> 0.0.0.0  (blocked)
+192.168.0.102: dig +short doubleclick.net ---> 0.0.0.0  (blocked)
+192.168.0.103: dig +short doubleclick.net ---> 0.0.0.0  (blocked)
+192.168.0.104: dig +short doubleclick.net ---> 0.0.0.0  (blocked)
+```
+
+#### Result
+- `192.168.0.101` - Blocked as group 1 is associated to an adlist containing the requested domain.
+- `192.168.0.102` - Blocked as group 2 is associated to all adlists (as before).
+- `192.168.0.103` - Blocked as group 3 is associated to all adlists (as before).
+- `192.168.0.104` - Blocked as not managed by any group - all adlist domains are used (as before).
 
 ## Example 3: Blacklisting
 **Task:** Add a single domain that should be **black**listed for client `192.168.0.101` (group 1).
@@ -93,15 +83,15 @@ INSERT INTO domainlist (type, domain, comment) VALUES (1, 'blacklisted.com', 'Bl
 #### Test
 ```text
 192.168.0.101: dig +short blacklisted.com ---> 103.224.182.245  (not blocked)
-192.168.0.102: dig +short blacklisted.com ---> 103.224.182.245  (not blocked)
-192.168.0.103: dig +short blacklisted.com ---> 103.224.182.245  (not blocked)
+192.168.0.102: dig +short blacklisted.com ---> 0.0.0.0          (blocked)
+192.168.0.103: dig +short blacklisted.com ---> 0.0.0.0          (blocked)
 192.168.0.104: dig +short blacklisted.com ---> 0.0.0.0          (blocked)
 ```
 
 #### Result
 - `192.168.0.101` - Not blocked as group 1 is not associated to the new blacklisted entry.
-- `192.168.0.102` - Not blocked as group 2 is not associated to the new blacklisted entry.
-- `192.168.0.103` - Not blocked as group 3 is not associated to the new blacklisted entry.
+- `192.168.0.102` - Blocked as this client is associated to the new blacklisted entry through group 0 (default).
+- `192.168.0.103` - Blocked as this client is associated to the new blacklisted entry through group 0 (default).
 - `192.168.0.104` - Blocked as not managed by any group - all blacklisted domains are used.
 
 ### Step 2
@@ -113,22 +103,21 @@ INSERT INTO domainlist_by_group (domainlist_id, group_id) VALUES (1, 1);
 
 #### Test
 ```text
-192.168.0.101: dig +short blacklisted.com ---> 0.0.0.0          (blocked)
-192.168.0.102: dig +short blacklisted.com ---> 103.224.182.245  (not blocked)
-192.168.0.103: dig +short blacklisted.com ---> 103.224.182.245  (not blocked)
-192.168.0.104: dig +short blacklisted.com ---> 0.0.0.0          (blocked)
+192.168.0.101: dig +short blacklisted.com ---> 0.0.0.0  (blocked)
+192.168.0.102: dig +short blacklisted.com ---> 0.0.0.0  (blocked)
+192.168.0.103: dig +short blacklisted.com ---> 0.0.0.0  (blocked)
+192.168.0.104: dig +short blacklisted.com ---> 0.0.0.0  (blocked)
 ```
 
 #### Result
-- `192.168.0.101` - Blocked as group 1 is associated to the new blacklisted domain.
-- `192.168.0.102` - Not blocked as group 2 is not associated to the new blacklisted entry.
-- `192.168.0.103` - Not blocked as group 3 is not associated to the new blacklisted entry.
+- `192.168.0.101` - Blocked as group 1 is associated to the new blacklisted domain.- `192.168.0.102` - Blocked as this client is associated to the new blacklisted entry through group 0 (default).
+- `192.168.0.103` - Blocked as this client is associated to the new blacklisted entry through group 0 (default).
 - `192.168.0.104` - Blocked as not managed by any group - all blacklisted domains are used.
 
-### Step
+### Step 3
 Remove default assignment to all clients not belonging to a group
 ```sql
-DELETE FROM domainlist_by_group  WHERE domainlist_id = 1 AND group_id = 0;
+DELETE FROM domainlist_by_group WHERE domainlist_id = 1 AND group_id = 0;
 ```
 (the `domainlist_id` might be different for you, see above)
 
@@ -157,19 +146,35 @@ INSERT INTO domainlist (type, domain, comment) VALUES (0, 'doubleclick.net', 'Wh
 ```
 #### Test
 ```text
-192.168.0.101: dig +short doubleclick.net ---> 216.58.208.46  (not blocked)
-192.168.0.102: dig +short doubleclick.net ---> 0.0.0.0        (blocked)
-192.168.0.103: dig +short doubleclick.net ---> 0.0.0.0        (blocked)
+192.168.0.101: dig +short doubleclick.net ---> 0.0.0.0        (blocked)
+192.168.0.102: dig +short doubleclick.net ---> 216.58.208.46  (not blocked)
+192.168.0.103: dig +short doubleclick.net ---> 216.58.208.46  (not blocked)
 192.168.0.104: dig +short doubleclick.net ---> 216.58.208.46  (not blocked)
 ```
 
 #### Result
-- `192.168.0.101` - Not blocked as group 1 is not associated to any adlist (as before).
-- `192.168.0.102` - Blocked as group 2 is associated to all adlists but not to the new whitelist entry.
-- `192.168.0.103` - Blocked as group 3 is associated to all adlists but not to the new whitelist entry.
+- `192.168.0.101` - Blocked as client 1 is associated to an adlist, however, not to the new whitelist (we removed the default griup assignment above).
+- `192.168.0.102` - Not blocked as client 2 is associated to the new whitelist entry through the default group.
+- `192.168.0.103` - Not blocked as client 3 is associated to the new whitelist entry through the default group.
 - `192.168.0.104` - Not blocked as not managed by any group - all whitelisted domains are used.
 
-### Step 2
+## Step 2
+Remove default group assignment
+```sql
+DELETE FROM domainlist_by_group WHERE domainlist_id = 2 AND group_id = 0;
+```
+#### Test
+```text
+192.168.0.101: dig +short doubleclick.net ---> 0.0.0.0  (blocked)
+192.168.0.102: dig +short doubleclick.net ---> 0.0.0.0  (blocked)
+192.168.0.103: dig +short doubleclick.net ---> 0.0.0.0  (blocked)
+192.168.0.104: dig +short doubleclick.net ---> 0.0.0.0  (blocked)
+```
+
+#### Result
+- All requests are blocked as the new whitelist entry is not associated to any group and, hence, is not used by any client.
+
+## Step 3
 Assign this domain to group 2
 ```sql
 INSERT INTO domainlist_by_group (domainlist_id, group_id) VALUES (2, 2);
@@ -178,35 +183,14 @@ INSERT INTO domainlist_by_group (domainlist_id, group_id) VALUES (2, 2);
 
 #### Test
 ```text
-192.168.0.101: dig +short doubleclick.net ---> 216.58.208.46  (not blocked)
-192.168.0.102: dig +short doubleclick.net ---> 216.58.208.46  (not blocked)
-192.168.0.103: dig +short doubleclick.net ---> 0.0.0.0        (blocked)
-192.168.0.104: dig +short doubleclick.net ---> 216.58.208.46  (not blocked)
-```
-
-#### Result
-- `192.168.0.101` - Not blocked as group 1 is not associated to any adlist (as before).
-- `192.168.0.102` - Not blocked as group 2 is associated to the whitelist entry for this domain.
-- `192.168.0.103` - Blocked as group 3 is associated to all adlists but not to the new whitelist entry.
-- `192.168.0.104` - Not blocked as not managed by any group - all whitelisted domains are used.
-
-### Step 3
-Remove default assignment to all clients not belonging to a group
-```sql
-DELETE FROM domainlist_by_group  WHERE domainlist_id = 2 AND group_id = 0;
-```
-(the `domainlist_id` might be different for you, see above)
-
-#### Test
-```text
-192.168.0.101: dig +short doubleclick.net ---> 216.58.208.46  (not blocked)
+192.168.0.101: dig +short doubleclick.net ---> 0.0.0.0        (blocked)
 192.168.0.102: dig +short doubleclick.net ---> 216.58.208.46  (not blocked)
 192.168.0.103: dig +short doubleclick.net ---> 0.0.0.0        (blocked)
 192.168.0.104: dig +short doubleclick.net ---> 0.0.0.0        (blocked)
 ```
 
 #### Result
-- `192.168.0.101` - Not blocked as group 1 is not associated to any adlist (as before).
+- `192.168.0.101` - Blocked (as before).
 - `192.168.0.102` - Not blocked as group 2 is associated to the whitelist entry for this domain.
-- `192.168.0.103` - Blocked as group 3 is associated to all adlists but not to the new whitelist entry.
-- `192.168.0.104` - Blocked as we deleted the default assignment of this domain to untagged clients.
+- `192.168.0.103` - Blocked (as before).
+- `192.168.0.104` - Blocked (as before).
