@@ -62,6 +62,7 @@ nav:
     - 'Overview': database/gravity/index.md
     - 'List tables': database/gravity/lists.md
     - 'Group management': database/gravity/groups.md
+    - 'Examples': database/gravity/example.md
 - 'FTLDNS':
   - 'Overview': ftldns/index.md
   - 'Configuration': ftldns/configfile.md

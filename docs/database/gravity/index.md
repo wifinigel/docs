@@ -7,13 +7,16 @@ The database stores white-, black-, and regex lists which are all directly relev
 In addition to the ability to add comments to individual domains, we also offer a powerful way of managing domains through groups. Each domain can be associated with no group, exactly one group, or multiple groups. See [domain group management](groups.md) for further details.
 
 ## Gravity Table (`gravity`)
-The `gravity` table consists of the domains that have been processed by Pi-hole's `gravity` (`pihole -g`) command. The domain in this list are the unique collection of domains sourced from the configured sources (see the [`adlist` table](lists.md#adlist-table-adlist).
+The `gravity` table consists of the domains that have been processed by Pi-hole's `gravity` (`pihole -g`) command. The domain in this list are the collection of domains sourced from the configured sources (see the [`adlist` table](lists.md#adlist-table-adlist).
 
 During each run of `pihole -g`, this table is flushed and completely rebuilt from the newly obtained set of domains to be blocked.
 
-Label | Type | Uniqueness enforced | Content
------ | ---- | ------------------- | --------
-`domain` | text | Yes | Blocked domain compiled from enabled adlists
+Label | Type | Content
+----- | ---- | -------
+`domain` | text | Blocked domain compiled from adlist referenced by `adlist_id`
+`adlist_id` | integer | ID associated to adlists in table `adlist`
+
+Uniqueness is enforced on pairs of (`domain`, `adlist_id`). In other words: domains can be added multiple times, however, only when they are referencing different adlists as their origins.
 
 ## Audit Table (`auditlist`)
 The `audit` table contains domains that have been audited by the user on the web interface.
