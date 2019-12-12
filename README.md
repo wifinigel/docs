@@ -27,6 +27,18 @@ Whilst working on this repo, it is advised that you review your own changes loca
 
 Please make sure you fork the repo and change the clone URL in the example below for your fork:
 
+- Linux Mint / Ubuntu 18.04 LTS (using `python`):
+   - Preparations (only required once):
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/docs
+   cd docs
+   sudo apt install python3-pip
+   sudo pip3 install mkdocs mkdocs-material markdown-include pymdown-extensions
+   ```
+   - Running the docs server:
+   ```bash
+   mkdocs serve --dev-addr 0.0.0.0:8000
+   ```
 - Linux Mint / Ubuntu instructions (tested on Linux Mint 18):
    - Preparations (only required once):
    ```bash
