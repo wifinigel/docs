@@ -1322,20 +1322,24 @@ Fortunately, both your Pi-hole as well as your recursive server will be configur
 </ul>
 <h2 id="setting-up-pi-hole-as-a-recursive-dns-server-solution">Setting up Pi-hole as a recursive DNS server solution<a class="headerlink" href="#setting-up-pi-hole-as-a-recursive-dns-server-solution" title="Permanent link">&para;</a></h2>
 <p>We will use <a href="https://www.unbound.net/"><code>unbound</code></a>, a secure open source recursive DNS server primarily developed by NLnet Labs, VeriSign Inc., Nominet, and Kirei.
-The first thing you need to do is to install the recursive DNS resolver:
+The first thing you need to do is to install the recursive DNS resolver:</p>
 <div class="codehilite"><pre><span></span>sudo apt install unbound
-</pre></div></p>
-<p><strong>Important</strong>: Download the current root hints file (the list of primary root servers which are serving the domain "." - the root domain). Update it roughly every six months. Note that this file changes infrequently.
+</pre></div>
+
+<p><strong>Important</strong>: Download the current root hints file (the list of primary root servers which are serving the domain "." - the root domain). Update it roughly every six months. Note that this file changes infrequently.</p>
 <div class="codehilite"><pre><span></span><span class="err">wget -O root.hints https://www.internic.net/domain/named.root</span>
 <span class="err">sudo mv root.hints /var/lib/unbound/</span>
-</pre></div></p>
+</pre></div>
+
 <h3 id="configure-unbound">Configure <code>unbound</code><a class="headerlink" href="#configure-unbound" title="Permanent link">&para;</a></h3>
-<p>Highlights:
-- Listen only for queries from the local Pi-hole installation (on port 5353)
-- Listen for both UDP and TCP requests
-- Verify DNSSEC signatures, discarding BOGUS domains
-- Apply a few security and privacy tricks</p>
-<p><code>/etc/unbound/unbound.conf.d/pi-hole.conf</code>:
+<p>Highlights:</p>
+<ul>
+<li>Listen only for queries from the local Pi-hole installation (on port 5353)</li>
+<li>Listen for both UDP and TCP requests</li>
+<li>Verify DNSSEC signatures, discarding BOGUS domains</li>
+<li>Apply a few security and privacy tricks</li>
+</ul>
+<p><code>/etc/unbound/unbound.conf.d/pi-hole.conf</code>:</p>
 <div class="codehilite"><pre><span></span><span class="na">server:</span>
     <span class="c1"># If no logfile is specified, syslog is used</span>
     <span class="c1"># logfile: &quot;/var/log/unbound/unbound.log&quot;</span>
@@ -1383,18 +1387,20 @@ The first thing you need to do is to install the recursive DNS resolver:
     <span class="na">private-address: 10.0.0.0/8</span>
     <span class="na">private-address: fd00::/8</span>
     <span class="na">private-address: fe80::/10</span>
-</pre></div></p>
-<p>Start your local recursive server and test that it's operational:
-<div class="codehilite"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">unbound</span> <span class="n">start</span>
+</pre></div>
+
+<p>Start your local recursive server and test that it's operational:</p>
+<p><div class="codehilite"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">unbound</span> <span class="n">start</span>
 <span class="n">dig</span> <span class="n">pi</span><span class="o">-</span><span class="n">hole</span><span class="p">.</span><span class="n">net</span> <span class="mf">@127.0.0.1</span> <span class="o">-</span><span class="n">p</span> <span class="mi">5353</span>
 </pre></div>
 The first query may be quite slow, but subsequent queries, also to other domains under the same TLD, should be fairly quick.</p>
 <h3 id="test-validation">Test validation<a class="headerlink" href="#test-validation" title="Permanent link">&para;</a></h3>
-<p>You can test DNSSEC validation using
+<p>You can test DNSSEC validation using</p>
 <div class="codehilite"><pre><span></span><span class="n">dig</span> <span class="n">sigfail</span><span class="p">.</span><span class="n">verteiltesysteme</span><span class="p">.</span><span class="n">net</span> <span class="mf">@127.0.0.1</span> <span class="o">-</span><span class="n">p</span> <span class="mi">5353</span>
 <span class="n">dig</span> <span class="n">sigok</span><span class="p">.</span><span class="n">verteiltesysteme</span><span class="p">.</span><span class="n">net</span> <span class="mf">@127.0.0.1</span> <span class="o">-</span><span class="n">p</span> <span class="mi">5353</span>
 </pre></div>
-The first command should give a status report of <code>SERVFAIL</code> and no IP address. The second should give <code>NOERROR</code> plus an IP address.</p>
+
+<p>The first command should give a status report of <code>SERVFAIL</code> and no IP address. The second should give <code>NOERROR</code> plus an IP address.</p>
 <h3 id="configure-pi-hole">Configure Pi-hole<a class="headerlink" href="#configure-pi-hole" title="Permanent link">&para;</a></h3>
 <p>Finally, configure Pi-hole to use your recursive DNS server:</p>
 <p><img alt="screenshot at 2018-04-18" src="../../images/RecursiveResolver.png" /></p>
