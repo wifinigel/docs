@@ -18,6 +18,15 @@ Label | Type | Content
 
 Uniqueness is enforced on pairs of (`domain`, `adlist_id`). In other words: domains can be added multiple times, however, only when they are referencing different adlists as their origins.
 
+## Client table (`client`)
+
+Clients are identified by their IP addresses. Each client automatically gets a unique identifier (`id`).
+
+Label | Type | Content
+----- | ---- | -------
+`id` | integer | Client ID (autoincrementing)
+`ip` | text | IP address of the client (IPv4 or IPv6)
+
 ## Audit Table (`auditlist`)
 The `audit` table contains domains that have been audited by the user on the web interface.
 
