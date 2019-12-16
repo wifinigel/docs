@@ -33,7 +33,7 @@ Please make sure you fork the repo and change the clone URL in the example below
    git clone https://github.com/YOUR-USERNAME/docs
    cd docs
    sudo apt install python3-pip
-   sudo pip3 install mkdocs mkdocs-material markdown-include pymdown-extensions
+   sudo pip3 install mkdocs pygments mkdocs-material markdown-include pymdown-extensions
    ```
    - Running the docs server:
    ```bash
