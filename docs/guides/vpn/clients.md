@@ -26,11 +26,11 @@ Please, use one word only, no special characters
 Client name: iphone7
 ```
 
-This will generate a `.ovpn` file, which needs to be copied to your client machine (often times using the OpenVPN app).  This process also generates a few other files found in `/etc/openvpn/easy-rsa/pki/`, which make public key authentication possible; you only need to worry about the `.ovpn` file, though.
+This will generate a `.ovpn` file, which needs to be copied to your client machine (often times using the OpenVPN app).  This process also generates a few other files found in `/etc/openvpn/server/easy-rsa/pki/`, which make public key authentication possible; you only need to worry about the `.ovpn` file, though.
 
 ## Connect a client using the `.ovpn` file
 
-The OpenVPN documentation has some decent [guides on connecting desktop clients for Mac, Windows, and Linux](https://openvpn.net/index.php/access-server/docs/admin-guides-sp-859543150/howto-connect-client-configuration.html), so we'll instead explain how to connect a mobile device, since that provides the most usefulness in today's world--**connecting to your ad-blocking VPN via a mobile device**.  We'll go through two examples:
+The OpenVPN documentation has some decent [guides on connecting desktop clients for Mac, Windows, and Linux](https://openvpn.net/vpn-server-resources/), so we'll instead explain how to connect a mobile device, since that provides the most usefulness in today's world--**connecting to your ad-blocking VPN via a mobile device**.  We'll go through two examples:
 
 1. connect an iPhone using the OpenVPN Connect mobile app (see [here](https://github.com/pi-hole/pi-hole/wiki/OpenVPN-server:-Connect-from-a-client-(Android)) for Android)
 2. connect a Linux machine
@@ -64,15 +64,15 @@ sudo apt-get install network-manager-openvpn network-manager-openvpn-gnome
 sudo service network-manager restart
 ```
 
-2. Securely copy the necessary certificates from your OpenVPN server to your client (e.g. using `sftp`). They are located in `/etc/openvpn/easy-rsa/pki`
+2. Securely copy the necessary certificates from your OpenVPN server to your client (e.g. using `sftp`). They are located in `/etc/openvpn/server/easy-rsa/pki`
 
 You will need:
 
-* User Certificate: `/etc/openvpn/easy-rsa/pki/issued/client.crt`
-* CA Certificate: `/etc/openvpn/easy-rsa/pki/ca.crt`
-* Private Key: `/etc/openvpn/easy-rsa/pki/private/client.key`
+* User Certificate: `/etc/openvpn/server/easy-rsa/pki/issued/client.crt`
+* CA Certificate: `/etc/openvpn/server/easy-rsa/pki/ca.crt`
+* Private Key: `/etc/openvpn/server/easy-rsa/pki/private/client.key`
 * Private Key Password: Depending on your settings (might even be empty)
-* TA Key: `/etc/openvpn/ta.key`
+* TA Key: `/etc/openvpn/server/ta.key`
 
 Further details can be found in the screenshots provided below:
 ![](NetworkManager3.png)
@@ -85,4 +85,4 @@ Your whole network traffic will now securely be transferred to your Pi-hole.
 
 ### Windows
 
-You will have to install additional software. See https://openvpn.net/index.php/open-source/downloads.html
+You will have to install additional software. See https://openvpn.net/community-downloads/

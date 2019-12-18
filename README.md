@@ -11,7 +11,7 @@ The Pi-hole[®](https://pi-hole.net/trademark-rules-and-brand-guidelines/) is a 
 This repo is the source for the official [Pi-hole documentation](https://docs.pi-hole.net/).
 
 ### How to contribute.
-To add a new link on the navigation panel you need to edit the `mkdocs.yml` file in the root of the repo. There is a guide for building the navbar [on the mkdocs wiki]( https://www.mkdocs.org/user-guide/configuration/#nav)
+To add a new link on the navigation panel you need to edit the `mkdocs.yml` file in the root of the repo. There is a guide for building the navbar [on the mkdocs wiki](https://www.mkdocs.org/user-guide/configuration/#nav)
 
 To add a new document or guide.
 
@@ -23,10 +23,22 @@ To add a new document or guide.
 
 
 ### Testing your changes.
-Whilst working on this repo, it is advised that you review your own changes locally before commiting them. The `mkdocs serve` command can be used to live preview your changes (as you type) on your local machine.
+Whilst working on this repo, it is advised that you review your own changes locally before committing them. The `mkdocs serve` command can be used to live preview your changes (as you type) on your local machine.
 
 Please make sure you fork the repo and change the clone URL in the example below for your fork:
 
+- Linux Mint / Ubuntu 18.04 LTS (using `python`):
+   - Preparations (only required once):
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/docs
+   cd docs
+   sudo apt install python3-pip
+   sudo pip3 install mkdocs pygments mkdocs-material markdown-include pymdown-extensions
+   ```
+   - Running the docs server:
+   ```bash
+   mkdocs serve --dev-addr 0.0.0.0:8000
+   ```
 - Linux Mint / Ubuntu instructions (tested on Linux Mint 18):
    - Preparations (only required once):
    ```bash

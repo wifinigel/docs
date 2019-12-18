@@ -14,7 +14,7 @@ ip a
 Edit the OpenVPN config file:
 
 ```
-vim /etc/openvpn/server.conf
+vim /etc/openvpn/server/server.conf
 ```
 
 Set this line to use your Pi-hole's IP address, which you determined from the `ifconfig` command and comment out or remove the other line (if it exists):
@@ -24,7 +24,7 @@ push "dhcp-option DNS 10.8.0.1"
 #push "dhcp-option DNS 8.8.8.8"
 ```
 
-This `push` directive is setting a [DHCP option](https://www.incognito.com/tips-and-tutorials/dhcp-options-in-plain-english/), which tells client's connecting to the VPN that they should use Pi-hole as their primary DNS server.
+This `push` directive is setting a [DHCP option](https://www.incognito.com/tutorials/dhcp-options-in-plain-english/), which tells client's connecting to the VPN that they should use Pi-hole as their primary DNS server.
 
 It's [suggested to have Pi-hole be the only resolver](https://discourse.pi-hole.net/t/why-should-pi-hole-be-my-only-dns-server/3376) as it defines the upstream servers.  Setting a non-Pi-hole resolver here [may have adverse effects on ad blocking](https://discourse.pi-hole.net/t/why-should-pi-hole-be-my-only-dns-server/3376) but it _can_ provide failover connectivity in the case of Pi-hole not working if that is something you are concerned about.
 
@@ -38,8 +38,8 @@ verb 3
 
 Depending on your operating system, one of these commands should work to restart the service.
 ```
-systemctl restart openvpn
-service openvpn restart
+systemctl restart openvpn-server@server
+service openvpn-server@server restart
 ```
 
 ## Create a client config file (`.ovpn`)
@@ -70,4 +70,4 @@ Please, use one word only, no special characters
 Client name: iphone7
 ```
 
-This will generate a `.ovpn` file, which needs to be copied to your client machine (often times using the OpenVPN app).  This process also generates a few other files found in `/etc/openvpn/easy-rsa/pki/`, which make public key authentication possible; you only need to worry about the `.ovpn` file, though.
+This will generate a `.ovpn` file, which needs to be copied to your client machine (often times using the OpenVPN app).  This process also generates a few other files found in `/etc/openvpn/server/easy-rsa/pki/`, which make public key authentication possible; you only need to worry about the `.ovpn` file, though.

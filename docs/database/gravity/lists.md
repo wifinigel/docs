@@ -13,18 +13,18 @@ Label | Type | Uniqueness enforced | Content
 `enabled` | boolean | No | Flag whether domain should be used by `pihole-FTL`<br>(`0` = disabled, `1` = enabled)
 `date_added` | integer | No | Timestamp when domain was added
 `date_modified` | integer | No | Timestamp when domain was last modified, automatically updated when a record is changed
-`comment` | text | No | Optional field for arbitrary user comments
-
-### Regex Whitelisting Table (`regex_whitelist`)
-In addition to the `whitelist` table, we also provide a `regex_whitelist` table containing all regex based whitelisting filters. Just like the `whitelist` table, it has a few extra fields to store data related to a given filter.
-
-Its schema is identical to the schema of the `whitelist` table.
+`comment` | text | No | Optional field for arbitrary user comments, only field that is allowed to be `NULL`
 
 ## Blacklist
 ### Exact Blacklisting Table (`blacklist`)
 The `blacklist` table contains all blacklisted domains. Just like the `whitelist` table, it has a few extra fields to store data related to a given domain such as the `enabled` state, the dates when the domain were added and when it has last been modified, and an optional comment.
 
 Its schema is identical to the schema of the `whitelist` table.
+
+## Regex Tables (`regex_blacklist` and `regex_whitelist`)
+The `regex_blacklist` and `regex_whitelist` tables contain all regex based filters. Just like the `black`- and `whitelist` tables, they have a few extra fields to store data related to a given filter.
+
+Their schema is identical to the schema of the `whitelist` table.
 
 ### Regex Blacklisting Table (`regex_blacklist`)
 Just as for whitelisting, *FTL*DNS also supports blacklisting using regular expression filters.
