@@ -1126,137 +1126,151 @@
 <p><code>&gt;quit</code>: Closes connection to client</p>
 </li>
 <li>
-<p><code>&gt;stats</code> : Get current statistics
- <div class="codehilite"><pre><span></span><span class="err">domains_being_blocked 116007</span>
-<span class="err">dns_queries_today 30163</span>
-<span class="err">ads_blocked_today 5650</span>
-<span class="err">ads_percentage_today 18.731558</span>
-<span class="err">unique_domains 1056</span>
-<span class="err">queries_forwarded 4275</span>
-<span class="err">queries_cached 20238</span>
-<span class="err">clients_ever_seen 11</span>
-<span class="err">unique_clients 9</span>
-<span class="err">status enabled</span>
-</pre></div></p>
-</li>
-<li>
-<p><code>&gt;overTime</code> : over time data (10 min intervals)
- <div class="codehilite"><pre><span></span><span class="err">1525546500 163 0</span>
-<span class="err">1525547100 154 1</span>
-<span class="err">1525547700 164 0</span>
-<span class="err">1525548300 167 0</span>
-<span class="err">1525548900 151 0</span>
-<span class="err">1525549500 143 0</span>
-<span class="err">[...]</span>
-</pre></div></p>
-</li>
-<li>
-<p><code>&gt;top-domains</code> : get top domains
- <div class="codehilite"><pre><span></span><span class="err">0 8462 x.y.z.de</span>
-<span class="err">1 236 safebrowsing-cache.google.com</span>
-<span class="err">2 116 pi.hole</span>
-<span class="err">3 109 z.y.x.de</span>
-<span class="err">4 93 safebrowsing.google.com</span>
-<span class="err">5 96 plus.google.com</span>
-<span class="err">[...]</span>
+<p><code>&gt;stats</code> : Get current statistics</p>
+<div class="codehilite"><pre><span></span>domains_being_blocked 116007
+dns_queries_today 30163
+ads_blocked_today 5650
+ads_percentage_today 18.731558
+unique_domains 1056
+queries_forwarded 4275
+queries_cached 20238
+clients_ever_seen 11
+unique_clients 9
+status enabled
 </pre></div>
- Variant: <code>&gt;top-domains (15)</code> to show (up to) 15 entries</p>
+
 </li>
 <li>
-<p><code>&gt;top-ads</code> : get top ad domains
- <div class="codehilite"><pre><span></span><span class="err">0 8 googleads.g.doubleclick.net</span>
-<span class="err">1 6 www.googleadservices.com</span>
-<span class="err">2 1 cdn.mxpnl.com</span>
-<span class="err">3 1 collector.githubapp.com</span>
-<span class="err">4 1 www.googletagmanager.com</span>
-<span class="err">5 1 s.zkcdn.net</span>
-<span class="err">[...]</span>
+<p><code>&gt;overTime</code> : over time data (10 min intervals)</p>
+<div class="codehilite"><pre><span></span>1525546500 163 0
+1525547100 154 1
+1525547700 164 0
+1525548300 167 0
+1525548900 151 0
+1525549500 143 0
+[...]
 </pre></div>
- Variant: <code>&gt;top-ads (14)</code> to show (up to) 14 entries</p>
+
 </li>
 <li>
-<p><code>top-clients</code> : get recently active top clients (<abbr title="Internet protocol address">IP</abbr> addresses + host names (if available))
- <div class="codehilite"><pre><span></span><span class="err">0 9373 192.168.2.1 router</span>
-<span class="err">1 484 192.168.2.2 work-machine</span>
-<span class="err">2 8 127.0.0.1 localhost</span>
+<p><code>&gt;top-domains</code> : get top domains</p>
+<div class="codehilite"><pre><span></span>0 8462 x.y.z.de
+1 236 safebrowsing-cache.google.com
+2 116 pi.hole
+3 109 z.y.x.de
+4 93 safebrowsing.google.com
+5 96 plus.google.com
+[...]
 </pre></div>
- Variant: <code>&gt;top-clients (9)</code> to show (up to) 9 client entries or <code>&gt;top-clients withzero (15)</code> to show (up to) 15 clients even if they have not been active recently (see PR #124 for further details)</p>
+
+<p>Variant: <code>&gt;top-domains (15)</code> to show (up to) 15 entries</p>
 </li>
 <li>
-<p><code>&gt;forward-dest</code> : get forward destinations (<abbr title="Internet protocol address">IP</abbr> addresses + host names (if available)) along with the percentage. The first result (<abbr title="Indentifier">ID</abbr> -2) will always be the percentage of domains answered from blocklists, whereas the second result (<abbr title="Indentifier">ID</abbr> -1) will be the queries answered from cache
- <div class="codehilite"><pre><span></span><span class="err">-2 18.70 blocklist blocklist</span>
-<span class="err">-1 67.10 cache cache</span>
-<span class="err">0 14.20 127.0.0.1 localhost</span>
+<p><code>&gt;top-ads</code> : get top ad domains</p>
+<div class="codehilite"><pre><span></span>0 8 googleads.g.doubleclick.net
+1 6 www.googleadservices.com
+2 1 cdn.mxpnl.com
+3 1 collector.githubapp.com
+4 1 www.googletagmanager.com
+5 1 s.zkcdn.net
+[...]
 </pre></div>
- Variant: <code>&gt;forward-dest unsorted</code> to show forward destinations in unsorted order (equivalent to using <code>&gt;forward-names</code>)</p>
+
+<p>Variant: <code>&gt;top-ads (14)</code> to show (up to) 14 entries</p>
 </li>
 <li>
-<p><code>&gt;querytypes</code> : get collected query types percentage
- <div class="codehilite"><pre><span></span><span class="err">A (IPv4): 53.45</span>
-<span class="err">AAAA (IPv6): 45.32</span>
-<span class="c">ANY: 0.00</span>
-<span class="c">SRV: 0.64</span>
-<span class="c">SOA: 0.05</span>
-<span class="c">PTR: 0.54</span>
-<span class="c">TXT: 0.00</span>
-</pre></div></p>
-</li>
-<li>
-<p><code>&gt;getallqueries</code> : get all queries that <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> has in memory
- <div class="codehilite"><pre><span></span><span class="err">1525554586 A fonts.googleapis.com 192.168.2.100 3 0 4 6</span>
-<span class="err">1525554586 AAAA fonts.googleapis.com 192.168.2.100 3 0 4 5</span>
-<span class="err">1525554586 A www.mkdocs.org 192.168.2.100 3 0 4 7</span>
-<span class="err">1525554586 AAAA www.mkdocs.org 192.168.2.100 2 0 3 21</span>
-<span class="err">1525554586 A squidfunk.github.io 192.168.2.100 2 0 3 20</span>
-<span class="err">1525554586 A pi-hole.net 192.168.2.100 3 0 4 5</span>
-<span class="err">1525554586 AAAA squidfunk.github.io 192.168.2.100 3 0 1 6</span>
-<span class="err">1525554586 AAAA pi-hole.net 192.168.2.100 2 0 1 18</span>
-<span class="err">1525554586 A github.com 192.168.2.100 3 0 4 5</span>
-<span class="err">1525554586 AAAA github.com 192.168.2.100 2 0 1 18</span>
+<p><code>top-clients</code> : get recently active top clients (<abbr title="Internet protocol address">IP</abbr> addresses + host names (if available))</p>
+<div class="codehilite"><pre><span></span>0 9373 192.168.2.1 router
+1 484 192.168.2.2 work-machine
+2 8 127.0.0.1 localhost
 </pre></div>
- Variants: <code>&gt;getallqueries (37)</code> show (up to) 37 latest entries, <code>&gt;getallqueries-time 1483964295 1483964312</code> gets all queries that <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> has in its database in a limited time interval, <code>&gt;getallqueries-time 1483964295 1483964312 (17)</code> show matches in the (up to) 17 latest entries, <code>&gt;getallqueries-domain www.google.com</code> gets all queries that <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> has in its database for a specific domain name, <code>&gt;getallqueries-client 2.3.4.5</code> : gets all queries that <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> has in its database for a specific client name <em>or</em> <abbr title="Internet protocol address">IP</abbr></p>
+
+<p>Variant: <code>&gt;top-clients (9)</code> to show (up to) 9 client entries or <code>&gt;top-clients withzero (15)</code> to show (up to) 15 clients even if they have not been active recently (see PR #124 for further details)</p>
 </li>
 <li>
-<p><code>&gt;recentBlocked</code> : get most recently pi-holed domain name
- <div class="codehilite"><pre><span></span><span class="err">www.googleadservices.com</span>
+<p><code>&gt;forward-dest</code> : get forward destinations (<abbr title="Internet protocol address">IP</abbr> addresses + host names (if available)) along with the percentage. The first result (<abbr title="Indentifier">ID</abbr> -2) will always be the percentage of domains answered from blocklists, whereas the second result (<abbr title="Indentifier">ID</abbr> -1) will be the queries answered from cache</p>
+<div class="codehilite"><pre><span></span>-2 18.70 blocklist blocklist
+-1 67.10 cache cache
+0 14.20 127.0.0.1 localhost
 </pre></div>
- Variant: <code>&gt;recentBlocked (4)</code> show the four most recent blocked domains</p>
+
+<p>Variant: <code>&gt;forward-dest unsorted</code> to show forward destinations in unsorted order (equivalent to using <code>&gt;forward-names</code>)</p>
 </li>
 <li>
-<p><code>&gt;clientID</code> : Get <abbr title="Indentifier">ID</abbr> of currently connected client
- <div class="codehilite"><pre><span></span><span class="err">6</span>
-</pre></div></p>
+<p><code>&gt;querytypes</code> : get collected query types percentage</p>
+<div class="codehilite"><pre><span></span>A (IPv4): 53.45
+AAAA (IPv6): 45.32
+ANY: 0.00
+SRV: 0.64
+SOA: 0.05
+PTR: 0.54
+TXT: 0.00
+</pre></div>
+
 </li>
 <li>
-<p><code>&gt;version</code> : Get version information of the currently running <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> instance
- <div class="codehilite"><pre><span></span><span class="err">version v1.6-3-g106498d-dirty</span>
-<span class="err">tag v1.6</span>
-<span class="err">branch master</span>
-<span class="err">hash 106498d</span>
-<span class="err">date 2017-03-26 13:10:43 +0200</span>
-</pre></div></p>
+<p><code>&gt;getallqueries</code> : get all queries that <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> has in memory</p>
+<div class="codehilite"><pre><span></span>1525554586 A fonts.googleapis.com 192.168.2.100 3 0 4 6
+1525554586 AAAA fonts.googleapis.com 192.168.2.100 3 0 4 5
+1525554586 A www.mkdocs.org 192.168.2.100 3 0 4 7
+1525554586 AAAA www.mkdocs.org 192.168.2.100 2 0 3 21
+1525554586 A squidfunk.github.io 192.168.2.100 2 0 3 20
+1525554586 A pi-hole.net 192.168.2.100 3 0 4 5
+1525554586 AAAA squidfunk.github.io 192.168.2.100 3 0 1 6
+1525554586 AAAA pi-hole.net 192.168.2.100 2 0 1 18
+1525554586 A github.com 192.168.2.100 3 0 4 5
+1525554586 AAAA github.com 192.168.2.100 2 0 1 18
+</pre></div>
+
+<p>Variants: <code>&gt;getallqueries (37)</code> show (up to) 37 latest entries, <code>&gt;getallqueries-time 1483964295 1483964312</code> gets all queries that <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> has in its database in a limited time interval, <code>&gt;getallqueries-time 1483964295 1483964312 (17)</code> show matches in the (up to) 17 latest entries, <code>&gt;getallqueries-domain www.google.com</code> gets all queries that <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> has in its database for a specific domain name, <code>&gt;getallqueries-client 2.3.4.5</code> : gets all queries that <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> has in its database for a specific client name <em>or</em> <abbr title="Internet protocol address">IP</abbr></p>
 </li>
 <li>
-<p><code>&gt;dbstats</code> : Get some statistics about <code>FTL</code>'s' long-term storage database (this request may take some time for processing in case of a large database file)
- <div class="codehilite"><pre><span></span><span class="err">queries in database: 2700304</span>
-<span class="err">database filesize: 199.20 MB</span>
-<span class="err">SQLite version: 3.23.1</span>
-</pre></div></p>
+<p><code>&gt;recentBlocked</code> : get most recently pi-holed domain name</p>
+<div class="codehilite"><pre><span></span>www.googleadservices.com
+</pre></div>
+
+<p>Variant: <code>&gt;recentBlocked (4)</code> show the four most recent blocked domains</p>
 </li>
 <li>
-<p><code>&gt;domain pi-hole.net</code>: Get detailed information about domain (if available)
- <div class="codehilite"><pre><span></span><span class="err">Domain &quot;pi-hole.net&quot;, ID: 254</span>
-<span class="c">Total: 179</span>
-<span class="c">Blocked: 0</span>
-<span class="err">Wildcard blocked: false</span>
-</pre></div></p>
+<p><code>&gt;clientID</code> : Get <abbr title="Indentifier">ID</abbr> of currently connected client</p>
+<div class="codehilite"><pre><span></span>6
+</pre></div>
+
 </li>
 <li>
-<p><code>&gt;cacheinfo</code>: Get <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> server cache size and usage information
- <div class="codehilite"><pre><span></span><span class="c">cache-size: 500000</span>
-<span class="c">cache-live-freed: 0</span>
-<span class="c">cache-inserted: 15529</span>
-</pre></div></p>
+<p><code>&gt;version</code> : Get version information of the currently running <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> instance</p>
+<div class="codehilite"><pre><span></span>version v1.6-3-g106498d-dirty
+tag v1.6
+branch master
+hash 106498d
+date 2017-03-26 13:10:43 +0200
+</pre></div>
+
+</li>
+<li>
+<p><code>&gt;dbstats</code> : Get some statistics about <code>FTL</code>'s' long-term storage database (this request may take some time for processing in case of a large database file)</p>
+<div class="codehilite"><pre><span></span>queries in database: 2700304
+database filesize: 199.20 MB
+SQLite version: 3.23.1
+</pre></div>
+
+</li>
+<li>
+<p><code>&gt;domain pi-hole.net</code>: Get detailed information about domain (if available)</p>
+<div class="codehilite"><pre><span></span>Domain &quot;pi-hole.net&quot;, ID: 254
+Total: 179
+Blocked: 0
+Wildcard blocked: false
+</pre></div>
+
+</li>
+<li>
+<p><code>&gt;cacheinfo</code>: Get <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> server cache size and usage information</p>
+<div class="codehilite"><pre><span></span>cache-size: 500000
+cache-live-freed: 0
+cache-inserted: 15529
+</pre></div>
+
 </li>
 </ul>
                 

@@ -1247,27 +1247,30 @@ Install them by running the following command in a terminal:</p>
 </pre></div>
 
 <hr />
-<p>You'll also need to compile <code>nettle</code> as <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> uses <code>libnettle</code> for handling DNSSEC. Compile and install a recent version of <code>nettle</code> (we tested 3.4):
-<div class="codehilite"><pre><span></span><span class="err">wget https://ftp.gnu.org/gnu/nettle/nettle-3.4.tar.gz</span>
-<span class="err">tar -xvzf nettle-3.4.tar.gz</span>
-<span class="err">cd nettle-3.4</span>
-<span class="err">./configure</span>
-<span class="err">make</span>
-<span class="err">sudo make install</span>
-</pre></div></p>
+<p>You'll also need to compile <code>nettle</code> as <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> uses <code>libnettle</code> for handling DNSSEC. Compile and install a recent version of <code>nettle</code> (we tested 3.4):</p>
+<div class="codehilite"><pre><span></span>wget https://ftp.gnu.org/gnu/nettle/nettle-3.4.tar.gz
+tar -xvzf nettle-3.4.tar.gz
+<span class="nb">cd</span> nettle-3.4
+./configure
+make
+sudo make install
+</pre></div>
+
 <h4 id="get-the-ftldns-source">Get the <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> source<a class="headerlink" href="#get-the-ftldns-source" title="Permanent link">&para;</a></h4>
-<p>Now, clone the <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> <abbr title="Repository on GitHub">repo</abbr> (or your own fork) to get the source code of <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr>:
-<div class="codehilite"><pre><span></span><span class="err">git clone https://github.com/pi-hole/FTL.git</span>
-<span class="err">cd FTL</span>
-</pre></div></p>
+<p>Now, clone the <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> <abbr title="Repository on GitHub">repo</abbr> (or your own fork) to get the source code of <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr>:</p>
+<div class="codehilite"><pre><span></span>git clone https://github.com/pi-hole/FTL.git
+<span class="nb">cd</span> FTL
+</pre></div>
+
 <p>If you want to build another branch and not <code>master</code>, use checkout to get to this branch (e.g. <code>git checkout development</code>).</p>
-<p><em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> can now be compiled and installed:
-<div class="codehilite"><pre><span></span><span class="err">make -j 4</span>
-<span class="err">sudo make install</span>
-</pre></div></p>
-<p>Finally, restart <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> to use the new binary:
-<div class="codehilite"><pre><span></span><span class="err">sudo service pihole-FTL restart</span>
-</pre></div></p>
+<p><em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> can now be compiled and installed:</p>
+<div class="codehilite"><pre><span></span>make -j <span class="m">4</span>
+sudo make install
+</pre></div>
+
+<p>Finally, restart <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> to use the new binary:</p>
+<div class="codehilite"><pre><span></span>sudo service pihole-FTL restart
+</pre></div>
                 
                   
                 

@@ -1396,14 +1396,15 @@ The use of dnsmasq on ports <em>67</em> or <em>547</em> is optional, but require
 <h4 id="iptables">IPTables<a class="headerlink" href="#iptables" title="Permanent link">&para;</a></h4>
 <p>IPTables uses two sets of tables. One set is for <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> chains, and the second is for <abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> chains. If only <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> blocking is used for the Pi-hole installation, only apply the rules for IP4Tables. Full Stack (<abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> and <abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr>) require both sets of rules to be applied. <em>Note: These examples insert the rules at the front of the chain. Please see your distribution's documentation for the exact proper command to use.</em></p>
 <p>IPTables (<abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr>)</p>
-<p><div class="codehilite"><pre><span></span>iptables -I INPUT <span class="m">1</span> -p tcp -m tcp --dport <span class="m">80</span> -j ACCEPT
+<div class="codehilite"><pre><span></span>iptables -I INPUT <span class="m">1</span> -p tcp -m tcp --dport <span class="m">80</span> -j ACCEPT
 iptables -I INPUT <span class="m">1</span> -p tcp -m tcp --dport <span class="m">53</span> -j ACCEPT
 iptables -I INPUT <span class="m">1</span> -p udp -m udp --dport <span class="m">53</span> -j ACCEPT
 iptables -I INPUT <span class="m">1</span> -p tcp -m tcp --dport <span class="m">67</span> -j ACCEPT
 iptables -I INPUT <span class="m">1</span> -p udp -m udp --dport <span class="m">67</span> -j ACCEPT
 iptables -I INPUT <span class="m">1</span> -p tcp -m tcp --dport <span class="m">4711</span> -i lo -j ACCEPT
 </pre></div>
-IP6Tables (<abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr>)</p>
+
+<p>IP6Tables (<abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr>)</p>
 <div class="codehilite"><pre><span></span>ip6tables -I INPUT -p udp -m udp --sport <span class="m">546</span>:547 --dport <span class="m">546</span>:547 -j ACCEPT
 </pre></div>
 
@@ -1418,16 +1419,17 @@ firewall-cmd --reload
 
 <h4 id="ufw">ufw<a class="headerlink" href="#ufw" title="Permanent link">&para;</a></h4>
 <p>ufw stores all rules persistent, so you just need to execute the commands below.</p>
-<p><abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr>:
+<p><abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr>:</p>
 <div class="codehilite"><pre><span></span>ufw allow <span class="m">80</span>/tcp
 ufw allow <span class="m">53</span>/tcp
 ufw allow <span class="m">53</span>/udp
 ufw allow <span class="m">67</span>/tcp
 ufw allow <span class="m">67</span>/udp
-</pre></div></p>
-<p><abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> (include above <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> rules):
+</pre></div>
+
+<p><abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> (include above <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> rules):</p>
 <div class="codehilite"><pre><span></span>ufw allow <span class="m">546</span>:547/udp
-</pre></div></p>
+</pre></div>
                 
                   
                 

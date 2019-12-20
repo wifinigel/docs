@@ -828,8 +828,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#verifying-your-set-up" class="md-nav__link">
-    Verifying your set up
+  <a href="#verifying-your-setup" class="md-nav__link">
+    Verifying your setup
   </a>
   
 </li>
@@ -1183,8 +1183,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#verifying-your-set-up" class="md-nav__link">
-    Verifying your set up
+  <a href="#verifying-your-setup" class="md-nav__link">
+    Verifying your setup
   </a>
   
 </li>
@@ -1211,38 +1211,42 @@
                 <p><strong>This is an unsupported configuration created by the community</strong></p>
 <p>If you'd like to use <a href="https://caddyserver.com/">Caddy</a> as your main web server with Pi-hole, you'll need to make a few changes.</p>
 <h2 id="modifying-lighttpd-configuration">Modifying lighttpd configuration<a class="headerlink" href="#modifying-lighttpd-configuration" title="Permanent link">&para;</a></h2>
-<p>First, change the listen port in this file: 
-<code>/etc/lighttpd/lighttpd.conf:</code></p>
-<div class="codehilite"><pre><span></span><span class="err">server.port                 = 1080</span>
+<p>First, change the listen port in this file: <code>/etc/lighttpd/lighttpd.conf:</code></p>
+<div class="codehilite"><pre><span></span><span class="k">server.port</span> <span class="o">=</span> <span class="m">1080</span>
 </pre></div>
 
 <p>In this case I chose 1080 somewhat at random. Use whatever feels right to you.</p>
-<p>Next, restart the lighttpd server with either of these commands:
-- <code>sudo systemctl restart lighttpd</code> 
-- <code>sudo service lighttpd restart.</code></p>
-<h2 id="setting-up-your-caddyfile">Setting up your Caddyfile<a class="headerlink" href="#setting-up-your-caddyfile" title="Permanent link">&para;</a></h2>
-<p>Now we need to set up a "virtual host" in our Caddyfile (default <code>/etc/caddy/Caddyfile</code>). There are many more options you can add, but at bare minimum you need to make a "default" host by binding <code>0.0.0.0:80</code>  which will accept requests for any host.
-<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">blackhole:80, pi.hole:80, 0.0.0.0:80 {</span>
-  <span class="l l-Scalar l-Scalar-Plain">root /var/www/html/pihole</span>
-  <span class="l l-Scalar l-Scalar-Plain">log /var/log/caddy/blackhole.log</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">rewrite {</span>
-    <span class="l l-Scalar l-Scalar-Plain">ext js</span>
-    <span class="l l-Scalar l-Scalar-Plain">to index.js</span>
-  <span class="l l-Scalar l-Scalar-Plain">}</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">proxy / localhost:1080 {</span>
-    <span class="l l-Scalar l-Scalar-Plain">transparent</span>
-  <span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
+<p>Next, restart the lighttpd server with either of these commands:</p>
+<div class="codehilite"><pre><span></span>sudo systemctl restart lighttpd
 </pre></div>
-In this case I've chosen to also add blackhole and pi.hole as valid names to open the admin page with.</p>
-<p>Finally, restart your Caddy server: 
-- <code>sudo service caddy restart</code></p>
-<h2 id="verifying-your-set-up">Verifying your set up<a class="headerlink" href="#verifying-your-set-up" title="Permanent link">&para;</a></h2>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span>sudo service lighttpd restart
+</pre></div>
+
+<h2 id="setting-up-your-caddyfile">Setting up your Caddyfile<a class="headerlink" href="#setting-up-your-caddyfile" title="Permanent link">&para;</a></h2>
+<p>Now we need to set up a "virtual host" in our Caddyfile (default <code>/etc/caddy/Caddyfile</code>). There are many more options you can add, but at bare minimum you need to make a "default" host by binding <code>0.0.0.0:80</code>  which will accept requests for any host.</p>
+<div class="codehilite"><pre><span></span><span class="n">blackhole</span><span class="o">:</span><span class="mi">80</span><span class="o">,</span> <span class="n">pi</span><span class="o">.</span><span class="na">hole</span><span class="o">:</span><span class="mi">80</span><span class="o">,</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="o">:</span><span class="mi">80</span> <span class="o">{</span>
+  <span class="n">root</span> <span class="sr">/var/www/html/</span><span class="n">pihole</span>
+  <span class="n">log</span> <span class="sr">/var/log/caddy/</span><span class="n">blackhole</span><span class="o">.</span><span class="na">log</span>
+
+  <span class="n">rewrite</span> <span class="o">{</span>
+    <span class="n">ext</span> <span class="n">js</span>
+    <span class="n">to</span> <span class="n">index</span><span class="o">.</span><span class="na">js</span>
+  <span class="o">}</span>
+
+  <span class="n">proxy</span> <span class="o">/</span> <span class="n">localhost</span><span class="o">:</span><span class="mi">1080</span> <span class="o">{</span>
+    <span class="n">transparent</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<p>In this case I've chosen to also add blackhole and pi.hole as valid names to open the admin page with.</p>
+<p>Finally, restart your Caddy server: <code>sudo service caddy restart</code></p>
+<h2 id="verifying-your-setup">Verifying your setup<a class="headerlink" href="#verifying-your-setup" title="Permanent link">&para;</a></h2>
 <p>First, make sure that any other sites you're serving from caddy are still functioning. For example, if you have a block for <code>myawesomesite.com:80</code> in your Caddyfile, open up a browser to <code>http://myawesomesite.com</code> and verify it still loads.</p>
 <p>Next, verify you can load the admin page. Open up <code>http://pi.hole/admin</code> (or use the IP address of your server) and verify that you can access the admin page.</p>
-<p>Finally, verify that requests for ads are being black holed:
+<p>Finally, verify that requests for ads are being black holed:</p>
 <div class="codehilite"><pre><span></span>$ curl -H <span class="s2">&quot;Host: badhost&quot;</span> pi.hole/
 &lt;html&gt;
 &lt;head&gt;
@@ -1252,11 +1256,12 @@ In this case I've chosen to also add blackhole and pi.hole as valid names to ope
 &lt;/body&gt;
 &lt;/html&gt;
 </pre></div>
-Replace the URL <code>pi.hole</code> with the IP address or alternate DNS name you're using if necessary.</p>
-<p>Lastly, ensure that requests for JavaScript files from advertisement domains are being served properly:
+
+<p>Replace the URL <code>pi.hole</code> with the IP address or alternate DNS name you're using if necessary.</p>
+<p>Lastly, ensure that requests for JavaScript files from advertisement domains are being served properly:</p>
 <div class="codehilite"><pre><span></span>curl -H <span class="s2">&quot;Host: badhost&quot;</span> pi.hole/malicious.js
 var <span class="nv">x</span> <span class="o">=</span> <span class="s2">&quot;Pi-hole: A black hole for Internet advertisements.&quot;</span>
-</pre></div></p>
+</pre></div>
                 
                   
                 

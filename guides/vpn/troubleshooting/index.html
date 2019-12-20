@@ -1183,17 +1183,18 @@
                   <h1>Troubleshooting</h1>
                 
                 <h3 id="crl-expired">CRL expired<a class="headerlink" href="#crl-expired" title="Permanent link">&para;</a></h3>
-<p>OpenVPN 2.4 and newer check the validity of the Certificate Revocation List (CRL). This can result in a sudden malfunction of <code>openvpn</code> after an update even though no configuration files have changed. This error manifests in the following, not very helpful, error on the client side:
+<p>OpenVPN 2.4 and newer check the validity of the Certificate Revocation List (CRL). This can result in a sudden malfunction of <code>openvpn</code> after an update even though no configuration files have changed. This error manifests in the following, not very helpful, error on the client side:</p>
 <div class="codehilite"><pre><span></span><span class="err">Wed Apr 24 11:19:07 2019 VERIFY OK: depth=0, CN=server</span>
 <span class="err">Wed Apr 24 11:19:07 2019 Connection reset, restarting [0]</span>
 <span class="err">Wed Apr 24 11:19:07 2019 SIGUSR1[soft,connection-reset] received, process restarting</span>
 <span class="err">Wed Apr 24 11:19:07 2019 Restart pause, 5 second(s)</span>
 </pre></div>
-Android clients simply report: "Transport error, trying to reconnect..."</p>
+
+<p>Android clients simply report: "Transport error, trying to reconnect..."</p>
 <blockquote>
 <p><img alt="" src="../Android-Transport-Error.png" /></p>
 </blockquote>
-<p>On the OpenVPN server, the following messages are logged:
+<p>On the OpenVPN server, the following messages are logged:</p>
 <div class="codehilite"><pre><span></span><span class="n">Wed</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="mi">11</span><span class="err">:</span><span class="mi">19</span><span class="err">:</span><span class="mi">07</span><span class="w"> </span><span class="mi">2019</span><span class="w"> </span><span class="n">aaa</span><span class="p">.</span><span class="n">bbb</span><span class="p">.</span><span class="n">ccc</span><span class="p">.</span><span class="nl">ddd</span><span class="p">:</span><span class="n">pppp</span><span class="w"> </span><span class="nl">TLS</span><span class="p">:</span><span class="w"> </span><span class="n">Initial</span><span class="w"> </span><span class="n">packet</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="o">[</span><span class="n">AF_INET</span><span class="o">]</span><span class="n">aaa</span><span class="p">.</span><span class="n">bbb</span><span class="p">.</span><span class="n">ccc</span><span class="p">.</span><span class="nl">ddd</span><span class="p">:</span><span class="n">pppp</span><span class="p">,</span><span class="w"> </span><span class="n">sid</span><span class="o">=</span><span class="mi">57719</span><span class="n">cb8</span><span class="w"> </span><span class="mi">77945</span><span class="n">ae9</span><span class="w"></span>
 <span class="n">Wed</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="mi">11</span><span class="err">:</span><span class="mi">19</span><span class="err">:</span><span class="mi">07</span><span class="w"> </span><span class="mi">2019</span><span class="w"> </span><span class="n">aaa</span><span class="p">.</span><span class="n">bbb</span><span class="p">.</span><span class="n">ccc</span><span class="p">.</span><span class="nl">ddd</span><span class="p">:</span><span class="n">pppp</span><span class="w"> </span><span class="n">VERIFY</span><span class="w"> </span><span class="nl">ERROR</span><span class="p">:</span><span class="w"> </span><span class="k">depth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="o">=</span><span class="n">CRL</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="nl">expired</span><span class="p">:</span><span class="w"> </span><span class="n">CN</span><span class="o">=</span><span class="n">client1</span><span class="w"></span>
 <span class="n">Wed</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="mi">11</span><span class="err">:</span><span class="mi">19</span><span class="err">:</span><span class="mi">07</span><span class="w"> </span><span class="mi">2019</span><span class="w"> </span><span class="n">aaa</span><span class="p">.</span><span class="n">bbb</span><span class="p">.</span><span class="n">ccc</span><span class="p">.</span><span class="nl">ddd</span><span class="p">:</span><span class="n">pppp</span><span class="w"> </span><span class="nl">OpenSSL</span><span class="p">:</span><span class="w"> </span><span class="nl">error</span><span class="p">:</span><span class="mi">11089086</span><span class="err">:</span><span class="n">SSL</span><span class="w"> </span><span class="nl">routines</span><span class="p">:</span><span class="nl">ssl3_get_client_certificate</span><span class="p">:</span><span class="n">certificate</span><span class="w"> </span><span class="n">verify</span><span class="w"> </span><span class="n">failed</span><span class="w"></span>
@@ -1203,7 +1204,8 @@ Android clients simply report: "Transport error, trying to reconnect..."</p>
 <span class="n">Wed</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="mi">11</span><span class="err">:</span><span class="mi">19</span><span class="err">:</span><span class="mi">07</span><span class="w"> </span><span class="mi">2019</span><span class="w"> </span><span class="n">aaa</span><span class="p">.</span><span class="n">bbb</span><span class="p">.</span><span class="n">ccc</span><span class="p">.</span><span class="nl">ddd</span><span class="p">:</span><span class="n">pppp</span><span class="w"> </span><span class="n">Fatal</span><span class="w"> </span><span class="n">TLS</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="p">(</span><span class="n">check_tls_errors_co</span><span class="p">),</span><span class="w"> </span><span class="n">restarting</span><span class="w"></span>
 <span class="n">Wed</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="mi">11</span><span class="err">:</span><span class="mi">19</span><span class="err">:</span><span class="mi">07</span><span class="w"> </span><span class="mi">2019</span><span class="w"> </span><span class="n">aaa</span><span class="p">.</span><span class="n">bbb</span><span class="p">.</span><span class="n">ccc</span><span class="p">.</span><span class="nl">ddd</span><span class="p">:</span><span class="n">pppp</span><span class="w"> </span><span class="n">SIGUSR1</span><span class="o">[</span><span class="n">soft,tls-error</span><span class="o">]</span><span class="w"> </span><span class="n">received</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="o">-</span><span class="n">instance</span><span class="w"> </span><span class="n">restarting</span><span class="w"></span>
 </pre></div>
-The error is <code>CRL has expired</code> and can be solved using the following commands:
+
+<p>The error is <code>CRL has expired</code> and can be solved using the following commands:</p>
 <div class="codehilite"><pre><span></span><span class="err">sudo -s</span>
 <span class="err">cd /etc/openvpn</span>
 <span class="err">mv crl.pem crl.pem_old</span>
@@ -1212,7 +1214,7 @@ The error is <code>CRL has expired</code> and can be solved using the following 
 <span class="err">cp pki/crl.pem ../</span>
 <span class="err">service openvpn restart</span>
 <span class="err">exit</span>
-</pre></div></p>
+</pre></div>
                 
                   
                 

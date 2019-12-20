@@ -1183,30 +1183,38 @@
                   <h1>Basic Setup</h1>
                 
                 <p><strong>This is an unsupported configuration created by the community</strong></p>
-<p>This guide should work for most recent Debian derivatives (raspbian, Ubuntu). Alternatively you can follow a Tor Installation Guide for your Host System.
-<div class="codehilite"><pre><span></span><span class="err">sudo apt install tor</span>
-</pre></div></p>
-<p>Edit <code>/etc/tor/torrc</code> as root, include the following line at the end and save the changes
+<p>This guide should work for most recent Debian derivatives (raspbian, Ubuntu). Alternatively you can follow a Tor Installation Guide for your Host System.</p>
+<div class="codehilite"><pre><span></span>sudo apt install tor
+</pre></div>
+
+<p>Edit <code>/etc/tor/torrc</code> as root, include the following line at the end and save the changes</p>
 <div class="codehilite"><pre><span></span><span class="err">DNSPort 127.0.10.1:53</span>
-</pre></div></p>
+</pre></div>
+
 <p>Restart Tor with: <code>sudo service tor restart</code></p>
 <p>Change your Pi-hole upstream DNS server to use <code>127.0.10.1</code> in the Pi-hole WebGUI (Settings) under "Upstream DNS Servers" and click "Save".</p>
 <p><strong>Note:</strong> It's currently not possible to change the Upstream DNS Server directly in the <code>/etc/pihole/setupVars.conf</code> file, the Pi-hole DNS Server won't pick up the change.</p>
-<p>If you want a recognizable hostname for the Tor DNS in your Pi-hole GUI statistics, edit <code>/etc/hosts</code> as root, include the following line at the end and save the changes
+<p>If you want a recognizable hostname for the Tor DNS in your Pi-hole GUI statistics, edit <code>/etc/hosts</code> as root, include the following line at the end and save the changes</p>
 <div class="codehilite"><pre><span></span><span class="err">127.0.10.1     tor.dns.local</span>
 </pre></div>
- Restart Pi-hole DNS Server for the <code>/etc/hosts</code> changes to take effect
-<div class="codehilite"><pre><span></span><span class="err">sudo pihole restartdns</span>
-</pre></div></p>
+
+<p>Restart Pi-hole DNS Server for the <code>/etc/hosts</code> changes to take effect</p>
+<div class="codehilite"><pre><span></span>sudo pihole restartdns
+</pre></div>
+
 <h2 id="testing-your-configuration">Testing your configuration<a class="headerlink" href="#testing-your-configuration" title="Permanent link">&para;</a></h2>
 <p>To see which DNS servers you're using, you can use a DNS Server Leak Test. Some of them don't work with DNS over Tor, <a href="https://dns-leak.com/">this one</a> does work tho. It should show random DNS Servers. Tor rotates the circuit approximately every 10minutes in default configuration, so it might take 10minutes for you to see a new set of random DNS servers in the Leak Test.</p>
 <p>You can also check the "Forward Destinations over Time" Graph (enabled per default) in your Pi-hole WebGUI - the latest Forward Destinations should only include "local" and "tor.dns.local" (if you updated the <code>/etc/hosts</code> file).</p>
 <p>To absolutely make sure that you always use the Pi-hole as DNS Server and to make sure that it handles IPv4 and/or IPv6 blocking if you configured it to do so, you should check which DNS Servers your client is using: <code>nmcli device show &lt;interface&gt; | grep .DNS</code> (Linux) or <code>ipconfig /all</code> (Windows, and look for <strong>DNS Servers</strong> on your <strong>LAN Adapter</strong>). You should then issue a IPv4 (A) and/or IPv6 (AAAA) DNS query to every IPv4 and/or IPv6 DNS Server that shows up:</p>
-<p>For Linux:<br />
-<code>dig @&lt;IPv4/6-dns-server-address&gt; api.mixpanel.com &lt;A/AAAA&gt;</code></p>
-<p>For Windows:<br />
-<code>nslookup -server=&lt;IPv4/6-dns-server-address&gt; -q=&lt;A/AAAA&gt; api.mixpanel.com</code> </p>
-<p>That should give you the Pi-hole IPv4 and/or IPv6 address as Answer and show up as "Pi-holed" in the WebGUI Query Log (assuming you have the default blocklist, otherwise replace <code>api.mixpanel.com</code> with any domain on your blocklist). </p>
+<p>For Linux:</p>
+<div class="codehilite"><pre><span></span>dig @&lt;IPv4/6-dns-server-address&gt; api.mixpanel.com &lt;A/AAAA&gt;
+</pre></div>
+
+<p>For Windows:</p>
+<div class="codehilite"><pre><span></span>nslookup -server<span class="o">=</span>&lt;IPv4/6-dns-server-address&gt; -q<span class="o">=</span>&lt;A/AAAA&gt; api.mixpanel.com
+</pre></div>
+
+<p>That should give you the Pi-hole IPv4 and/or IPv6 address as Answer and show up as "Pi-holed" in the WebGUI Query Log (assuming you have the default blocklist, otherwise replace <code>api.mixpanel.com</code> with any domain on your blocklist).</p>
 <p>If any of the queries doesn't show up in the Query Log you should make sure to configure your Pi-hole/network setup properly (<a href="https://www.reddit.com/r/pihole/comments/7e0jg9/dns_over_tor/dq4kkvg/">this thread might help</a>).</p>
                 
                   

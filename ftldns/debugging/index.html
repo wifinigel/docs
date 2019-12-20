@@ -1123,8 +1123,10 @@
                 <p>Once you are used to it, you can skip most of the steps. Debugging <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> is actually quite easy as <code>pihole-FTL</code> has been designed such that a debugger can be attached to an already running process. It can give you insights into how software (not limited to <code>pihole-FTL</code>) works.</p>
 <ol>
 <li>Install <code>screen</code> and <code>gdb</code> using <code>sudo apt-get install screen gdb</code></li>
-<li>Start a screen session (it will allow you to come back even if the <abbr title="Secure Shell is a cryptographic network protocol for operating network services securely over an unsecured network">SSH</abbr> connection died)</li>
+<li>Start a screen session (it will allow you to come back even if the <abbr title="Secure Shell is a cryptographic network protocol for operating network services securely over an unsecured network">SSH</abbr> connection died)<ul>
 <li>If you don't know about <code>screen</code>, then read about it (you <em>will</em> love it!)</li>
+</ul>
+</li>
 <li>Start a screen session using <code>screen</code></li>
 <li>Use <code>sudo gdb -p $(pidof pihole-FTL)</code> to attach the debugger to the already running <code>pihole-FTL</code> process</li>
 <li>Once loading of the symbols has finished (the <code>(gdb)</code> input prompt is shown), run <code>handle SIGHUP nostop SIGPIPE nostop</code></li>

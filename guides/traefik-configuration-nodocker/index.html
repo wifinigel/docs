@@ -1205,72 +1205,74 @@
 <p>Have a traefik server running anywhere where it can access port 80 of the pihole server. Technically it can run in a docker container though. For LetsEncrypt to work traefik must be reachable on port 80 and 443 from the internet and have the domain.tld pointed at its external address.</p>
 </li>
 <li>
-<p>The following traefik config (traefik.toml)
-<div class="codehilite"><pre><span></span><span class="n">debug</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="w"></span>
-<span class="n">checkNewVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"></span>
-<span class="n">logLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;INFO&quot;</span><span class="w"></span>
-<span class="n">defaultEntryPoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;https&quot;,&quot;http&quot;</span><span class="o">]</span><span class="w"></span>
+<p>The following traefik config (traefik.toml)</p>
+<div class="codehilite"><pre><span></span><span class="n">debug</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="n">checkNewVersion</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="n">logLevel</span> <span class="o">=</span> <span class="s">&quot;INFO&quot;</span>
+<span class="n">defaultEntryPoints</span> <span class="o">=</span> <span class="k">[&quot;https&quot;,&quot;http&quot;]</span>
 
-<span class="o">[</span><span class="n">entryPoints</span><span class="o">]</span><span class="w"></span>
-<span class="w">  </span><span class="o">[</span><span class="n">entryPoints.http</span><span class="o">]</span><span class="w"></span>
-<span class="w">    </span><span class="n">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;:80&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="o">[</span><span class="n">entryPoints.http.redirect</span><span class="o">]</span><span class="w"></span>
-<span class="w">      </span><span class="n">entryPoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;https&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="o">[</span><span class="n">entryPoints.https</span><span class="o">]</span><span class="w"></span>
-<span class="w">    </span><span class="n">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;:443&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="o">[</span><span class="n">entryPoints.https.tls</span><span class="o">]</span><span class="w"></span>
-<span class="w">      </span><span class="err">#</span><span class="w"> </span><span class="n">Optional</span><span class="w"> </span><span class="n">Security</span><span class="w"> </span><span class="n">Settings</span><span class="w"></span>
-<span class="o">[</span><span class="n">retry</span><span class="o">]</span><span class="w"></span>
+<span class="k">[entryPoints]</span>
+  <span class="k">[entryPoints.http]</span>
+    <span class="n">address</span> <span class="o">=</span> <span class="s">&quot;:80&quot;</span>
+    <span class="k">[entryPoints.http.redirect]</span>
+      <span class="n">entryPoint</span> <span class="o">=</span> <span class="s">&quot;https&quot;</span>
+  <span class="k">[entryPoints.https]</span>
+    <span class="n">address</span> <span class="o">=</span> <span class="s">&quot;:443&quot;</span>
+    <span class="k">[entryPoints.https.tls]</span>
+      <span class="c1"># Optional Security Settings</span>
+<span class="k">[retry]</span>
 
-<span class="o">[</span><span class="n">docker</span><span class="o">]</span><span class="w"></span>
-<span class="w">  </span><span class="n">endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;unix:///var/run/docker.sock&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="k">domain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;domain.tld&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="n">watch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"></span>
-<span class="w">  </span><span class="n">exposedbydefault</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="w"></span>
+<span class="k">[docker]</span>
+  <span class="n">endpoint</span> <span class="o">=</span> <span class="s">&quot;unix:///var/run/docker.sock&quot;</span>
+  <span class="n">domain</span> <span class="o">=</span> <span class="s">&quot;domain.tld&quot;</span>
+  <span class="n">watch</span> <span class="o">=</span> <span class="kc">true</span>
+  <span class="n">exposedbydefault</span> <span class="o">=</span> <span class="kc">false</span>
 
-<span class="o">[</span><span class="n">acme</span><span class="o">]</span><span class="w"></span>
-<span class="w">  </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;emailForLetsEncryptACME&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="n">storage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;acme.json&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="n">storageFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;/etc/traefik/acme/acme.json&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="n">entryPoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;https&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="n">OnHostRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"></span>
-<span class="w">  </span><span class="o">[</span><span class="n">acme.tlsChallenge</span><span class="o">]</span><span class="w"></span>
-<span class="w">  </span><span class="o">[</span><span class="n">[acme.domains</span><span class="o">]</span><span class="err">]</span><span class="w"></span>
-<span class="w">    </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;pihole.domain.tld&quot;</span><span class="w"></span>
+<span class="k">[acme]</span>
+  <span class="n">email</span> <span class="o">=</span> <span class="s">&quot;emailForLetsEncryptACME&quot;</span>
+  <span class="n">storage</span> <span class="o">=</span> <span class="s">&quot;acme.json&quot;</span>
+  <span class="n">storageFile</span> <span class="o">=</span> <span class="s">&quot;/etc/traefik/acme/acme.json&quot;</span>
+  <span class="n">entryPoint</span> <span class="o">=</span> <span class="s">&quot;https&quot;</span>
+  <span class="n">OnHostRule</span> <span class="o">=</span> <span class="kc">true</span>
+  <span class="k">[acme.tlsChallenge]</span>
+  <span class="k">[[acme.domains]]</span>
+    <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;pihole.domain.tld&quot;</span>
 
-<span class="o">[</span><span class="n">file</span><span class="o">]</span><span class="w"></span>
-<span class="w">  </span><span class="n">watch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"></span>
+<span class="k">[file]</span>
+  <span class="n">watch</span> <span class="o">=</span> <span class="kc">true</span>
 
-<span class="o">[</span><span class="n">backends</span><span class="o">]</span><span class="w"></span>
-<span class="w">  </span><span class="o">[</span><span class="n">backends.pihole</span><span class="o">]</span><span class="w"></span>
-<span class="w">    </span><span class="o">[</span><span class="n">backends.pihole.servers.server1</span><span class="o">]</span><span class="w"></span>
-<span class="w">    </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;http://IP-Of-Pihole:80&quot;</span><span class="w"></span>
+<span class="k">[backends]</span>
+  <span class="k">[backends.pihole]</span>
+    <span class="k">[backends.pihole.servers.server1]</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">&quot;http://IP-Of-Pihole:80&quot;</span>
 
-<span class="o">[</span><span class="n">frontends</span><span class="o">]</span><span class="w"></span>
-<span class="w">  </span><span class="o">[</span><span class="n">frontends.pihole</span><span class="o">]</span><span class="w"></span>
-<span class="w">  </span><span class="n">backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;pihole&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="n">passHostHeader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"></span>
-<span class="w">    </span><span class="o">[</span><span class="n">frontends.pihole.headers</span><span class="o">]</span><span class="w"></span>
-<span class="w">    </span><span class="n">STSSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">31536000</span><span class="w"></span>
-<span class="w">    </span><span class="o">[</span><span class="n">frontends.pihole.routes.route1</span><span class="o">]</span><span class="w"></span>
-<span class="w">    </span><span class="k">rule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Host:pihole.domain.tld&quot;</span><span class="w"></span>
-</pre></div></p>
+<span class="k">[frontends]</span>
+  <span class="k">[frontends.pihole]</span>
+  <span class="n">backend</span> <span class="o">=</span> <span class="s">&quot;pihole&quot;</span>
+  <span class="n">passHostHeader</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="k">[frontends.pihole.headers]</span>
+    <span class="n">STSSeconds</span> <span class="o">=</span> <span class="mi">31536000</span>
+    <span class="k">[frontends.pihole.routes.route1]</span>
+    <span class="n">rule</span> <span class="o">=</span> <span class="s">&quot;Host:pihole.domain.tld&quot;</span>
+</pre></div>
+
 </li>
 <li>
-<p>Edit your /etc/lighthttpd/external.conf to
-<div class="codehilite"><pre><span></span><span class="err">$</span><span class="n">SERVER</span><span class="p">[</span><span class="ss">&quot;socket&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="ss">&quot;:80&quot;</span> <span class="err">{</span>
-  <span class="o">#</span> <span class="n">Ensure</span> <span class="n">the</span> <span class="n">Pi</span><span class="o">-</span><span class="n">hole</span> <span class="n">Block</span> <span class="n">Page</span> <span class="n">knows</span> <span class="n">that</span> <span class="n">this</span> <span class="k">is</span> <span class="k">not</span> <span class="n">a</span> <span class="n">blocked</span> <span class="k">domain</span>
-  <span class="n">setenv</span><span class="p">.</span><span class="k">add</span><span class="o">-</span><span class="n">environment</span> <span class="o">=</span> <span class="p">(</span><span class="ss">&quot;fqdn&quot;</span> <span class="o">=&gt;</span> <span class="ss">&quot;true&quot;</span><span class="p">)</span>
+<p>Edit your /etc/lighthttpd/external.conf to</p>
+<div class="codehilite"><pre><span></span><span class="nb">$SERVER</span><span class="p">[</span><span class="s2">&quot;socket&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;:80&quot;</span> <span class="p">{</span>
+  <span class="c1"># Ensure the Pi-hole Block Page knows that this is not a blocked domain</span>
+  <span class="k">setenv.add-environment</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;fqdn&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span>
 
 
-  <span class="err">$</span><span class="n">HTTP</span><span class="p">[</span><span class="ss">&quot;host&quot;</span><span class="p">]</span> <span class="o">=~</span> <span class="ss">&quot;^pi\.hole&quot;</span> <span class="err">{</span>
-      <span class="n">url</span><span class="p">.</span><span class="n">redirect</span> <span class="o">=</span> <span class="p">(</span><span class="ss">&quot;^/(.*)&quot;</span> <span class="o">=&gt;</span> <span class="ss">&quot;https://pihole.domain.tld/$1&quot;</span><span class="p">)</span>
-  <span class="err">}</span>
-<span class="err">}</span>
-</pre></div></p>
+  <span class="nb">$HTTP</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="o">=~</span> <span class="s2">&quot;^pi\.hole&quot;</span> <span class="p">{</span>
+      <span class="k">url.redirect</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;^/(.*)&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;https://pihole.domain.tld/$1&quot;</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
 </li>
 <li>
-<p>Restart pi-holes lighthttpd and traefik, then you should be able to access your pihole via <code>https://pihole.domain.tld/</code></p>
+<p>Restart pi-hole's lighttpd and traefik, then you should be able to access your pihole via <code>https://pihole.domain.tld/</code></p>
 </li>
 </ol>
                 

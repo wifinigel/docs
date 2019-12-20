@@ -1241,32 +1241,37 @@
 <h3 id="tor-browser">Tor Browser<a class="headerlink" href="#tor-browser" title="Permanent link">&para;</a></h3>
 <p>The easiest and most reliable solution would be to use the <a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser</a>. Though that won't use your Pi-hole DNS Server out of the box. You can however disable <code>Proxy DNS when using SOCKS v5</code> in Tor Browsers Preferences -&gt; Advanced -&gt; Network -&gt; Settings and <a href="#make-sure-it-works">make sure</a> to point your system to use Pi-hole with DNS over Tor activated.</p>
 <h3 id="your-browser">Your Browser<a class="headerlink" href="#your-browser" title="Permanent link">&para;</a></h3>
-<p>Edit <code>/etc/tor/torrc</code> on your Pi-hole as root, include the following line at the end and save the changes
+<p>Edit <code>/etc/tor/torrc</code> on your Pi-hole as root, include the following line at the end and save the changes</p>
 <div class="codehilite"><pre><span></span><span class="err">SocksPort 0.0.0.0:9050</span>
 </pre></div>
- <strong>Note:</strong> You should make sure that only your LAN devices are able to access your Pi-hole on port 9050.
- Restart Tor
-<div class="codehilite"><pre><span></span><span class="err">sudo service tor restart</span>
+
+<p><strong>Note:</strong> You should make sure that only your LAN devices are able to access your Pi-hole on port 9050.</p>
+<p>Restart Tor</p>
+<div class="codehilite"><pre><span></span>sudo service tor restart
 </pre></div>
- Point your browser to use your Pi-hole IP or Hostname (e.g. <code>pi.hole</code>) and <code>Port 9050</code> as Socks5 Proxy. Do not enable <code>Proxy DNS when using SOCKS v5</code> and <a href="#make-sure-it-works">make sure</a> to point your system to use Pi-hole with DNS over Tor activated.  </p>
+
+<p>Point your browser to use your Pi-hole IP or Hostname (e.g. <code>pi.hole</code>) and <code>Port 9050</code> as Socks5 Proxy. Do not enable <code>Proxy DNS when using SOCKS v5</code> and <a href="#make-sure-it-works">make sure</a> to point your system to use Pi-hole with DNS over Tor activated.</p>
 <ul>
 <li>
-<p>For Chrome you can either use e.g. the <a href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif">Proxy SwitchyOmega Extension</a> or start Chrome with <a href="https://www.chromium.org/developers/design-documents/network-stack/socks-proxy">command-line parameters</a>.  </p>
+<p>For Chrome you can either use e.g. the <a href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif">Proxy SwitchyOmega Extension</a> or start Chrome with <a href="https://www.chromium.org/developers/design-documents/network-stack/socks-proxy">command-line parameters</a>.</p>
 </li>
 <li>
-<p>For Firefox you can either use e.g. the <a href="https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/">FoxyProxy Add-on</a> or configure the Socks5 Proxy directly in the Firefox Preferences.<br />
+<p>For Firefox you can either use e.g. the <a href="https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/">FoxyProxy Add-on</a> or configure the Socks5 Proxy directly in the Firefox Preferences.
  If you use a Proxy Add-on/Extension you can also e.g. route everything per default over Tor and only whitelist some sites that you need to perform really good.</p>
 </li>
 </ul>
 <h4 id="accessing-onion-addresses">Accessing .onion addresses<a class="headerlink" href="#accessing-onion-addresses" title="Permanent link">&para;</a></h4>
-<p>If you want to access .onion addresses with this kind of setup you have to activate <a href="https://www.grepular.com/Transparent_Access_to_Tor_Hidden_Services">Transparent Access to Tor Hidden Services</a> on the Pi-hole host.  </p>
+<p>If you want to access .onion addresses with this kind of setup you have to activate <a href="https://www.grepular.com/Transparent_Access_to_Tor_Hidden_Services">Transparent Access to Tor Hidden Services</a> on the Pi-hole host.</p>
 <hr />
 <h4 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Don't define other regular Upstream DNS Servers than the Tor one if you want to avoid that your Pi-hole makes plaintext DNS requests.</li>
-<li>From the <a href="https://www.torproject.org/docs/tor-manual.html.en">Tor Manual</a> regarding <code>DNSPort</code>:
-  <div class="codehilite"><pre><span></span><span class="err">This port only handles A, AAAA, and PTR requests</span>
-</pre></div></li>
+<li>
+<p>From the <a href="https://www.torproject.org/docs/tor-manual.html.en">Tor Manual</a> regarding <code>DNSPort</code>:</p>
+<blockquote>
+<p>This port only handles A, AAAA, and PTR requests</p>
+</blockquote>
+</li>
 </ul>
                 
                   

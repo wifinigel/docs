@@ -1237,7 +1237,7 @@
                 <h3 id="what-to-whitelist-or-blacklist">What to Whitelist or Blacklist<a class="headerlink" href="#what-to-whitelist-or-blacklist" title="Permanent link">&para;</a></h3>
 <p><a href="https://chrome.google.com/webstore/detail/adamone-assistant/fdmpekabnlekabjlimjkfmdjajnddgpc">This extension for Google Chrome</a> can help you in finding out which domains you need to whitelist.</p>
 <h3 id="how-to-whitelist-or-blacklist">How to Whitelist or Blacklist<a class="headerlink" href="#how-to-whitelist-or-blacklist" title="Permanent link">&para;</a></h3>
-<p>There are scripts to aid users in adding or removing domains to the whitelist or blacklist. </p>
+<p>There are scripts to aid users in adding or removing domains to the whitelist or blacklist.</p>
 <p>The scripts will first parse <code>whitelist.txt</code> or <code>blacklist.txt</code> for any changes, and if any additions or deletions are detected, it will reload <code>dnsmasq</code> so that they are effective immediately.</p>
 <p>Each script accepts the following parameters:</p>
 <table>
@@ -1245,11 +1245,11 @@
       <tr>
          <th><code>[domain]</code></th>
          <td>Fully qualified domain name you wish to add or remove. You can pass any number of domains.</td>
-      </tr>     
+      </tr>
       <tr>
          <th><code>-d</code></th>
          <td>Removal mode. Domains will be removed from the list, rather than added</td>
-      </tr>     
+      </tr>
       <tr>
          <th><code>-nr</code></th>
          <td>Update blacklist without refreshing dnsmasq</td>
@@ -1266,17 +1266,17 @@
 </table>
 
 <p>Domains passed are parsed by the script to ensure they are valid domains. If a domain is invalid it will be ignored.</p>
-<h5 id="example-pihole-w-usages">Example <code>pihole -w</code> usages<a class="headerlink" href="#example-pihole-w-usages" title="Permanent link">&para;</a></h5>
+<h4 id="example-pihole-w-usages">Example <code>pihole -w</code> usages<a class="headerlink" href="#example-pihole-w-usages" title="Permanent link">&para;</a></h4>
 <table>
   <tbody>
       <tr>
          <th><code>pihole -w domain1 [domain2...]</code></th>
          <td>Attempt to add one or more domains to the whitelist and reload dnsmasq.</td>
-      </tr>     
+      </tr>
       <tr>
          <th><code>pihole -w -nr domain1 [domain2...]</code></th>
          <td>Attempt to add one or more domains to the whitelist, but do not reload dnsmasq.</td>
-      </tr>     
+      </tr>
       <tr>
          <th><code>pihole -w -f domain1 [domain2...]</code></th>
          <td>Attempt to add one or more domains to the whitelist and force dnsmasq to reload</td>
@@ -1286,17 +1286,17 @@
 
 <p>To remove domains from the whitelist:
 Add <code>-d</code> as an additional argument (e.g <code>pihole -w -d domain1 [domain2...]</code>)</p>
-<h5 id="example-pihole-b-usages">Example <code>pihole -b</code> usages<a class="headerlink" href="#example-pihole-b-usages" title="Permanent link">&para;</a></h5>
+<h4 id="example-pihole-b-usages">Example <code>pihole -b</code> usages<a class="headerlink" href="#example-pihole-b-usages" title="Permanent link">&para;</a></h4>
 <table>
   <tbody>
       <tr>
          <th><code>pihole -b domain1 [domain2...]</code></th>
          <td>Attempt to add one or more domains to the blacklist and reload dnsmasq.</td>
-      </tr>     
+      </tr>
       <tr>
          <th><code>pihole -b -nr domain1 [domain2...]</code></th>
          <td>Attempt to add one or more domains to the blacklist, but do not reload dnsmasq.</td>
-      </tr>     
+      </tr>
       <tr>
          <th><code>pihole -b -f domain1 [domain2...]</code></th>
          <td>Attempt to add one or more domains to the blacklist and force dnsmasq to reload</td>

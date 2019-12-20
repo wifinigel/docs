@@ -1225,55 +1225,67 @@
                   <h1>Performance and other issues</h1>
                 
                 <p><strong>This is an unsupported configuration created by the community</strong></p>
-<p>You're constantly using new DNS Servers that are located all over the world, so it might happen that sometimes hostname resolving is slow or might not work at all for certain domains. In this cases you have to wait some minutes until you switch to another Tor circuit or configure Tor to accept control connections and send a command that tells Tor to <a href="https://superuser.com/a/139018">switch circuits immediately</a>.   </p>
-<p>You could set <code>ExitNodes</code> in your torrc to a specific set of Exit nodes that are reliable for you or use only Exit nodes in a <a href="https://b3rn3d.herokuapp.com/blog/2014/03/05/tor-country-codes/">specific country</a> (on Debian derivatives you need to have the <code>tor-geoipdb</code> package installed for that to work) and thus avoid problems with DNS lookups to some extend. </p>
+<p>You're constantly using new DNS Servers that are located all over the world, so it might happen that sometimes hostname resolving is slow or might not work at all for certain domains. In this cases you have to wait some minutes until you switch to another Tor circuit or configure Tor to accept control connections and send a command that tells Tor to <a href="https://superuser.com/a/139018">switch circuits immediately</a>.</p>
+<p>You could set <code>ExitNodes</code> in your torrc to a specific set of Exit nodes that are reliable for you or use only Exit nodes in a <a href="https://b3rn3d.herokuapp.com/blog/2014/03/05/tor-country-codes/">specific country</a> (on Debian derivatives you need to have the <code>tor-geoipdb</code> package installed for that to work) and thus avoid problems with DNS lookups to some extend.</p>
 <p>Keep in mind that this approach increases the correlation attack vulnerability if you only have a small amount of <code>ExitNodes</code> set or your selected country/s has/have few Exit nodes. If your goal is only to slightly increase security and maintain performance and reliability, this approach might be for you. It is not recommended.</p>
 <p><strong>Ok, but please just tell me how to avoid timeouts</strong></p>
-<p>So you've read about <a href="#performance-reliability-and-timeouts">Performance, Reliability and Timeouts</a> and just want a quick solution. </p>
+<p>So you've read about <a href="#performance-reliability-and-timeouts">Performance, Reliability and Timeouts</a> and just want a quick solution.</p>
 <p>This is not recommended, but here are some things you can do:</p>
 <h5 id="solution-1-only-use-exit-nodes-from-specific-countries">Solution 1 - Only use Exit Nodes from specific countries<a class="headerlink" href="#solution-1-only-use-exit-nodes-from-specific-countries" title="Permanent link">&para;</a></h5>
 <ul>
-<li>Install the necessary geoip db for Tor to use, on Debian derivatives (raspbian, Ubuntu) that means
-  <div class="codehilite"><pre><span></span><span class="err">sudo apt install tor-geoipdb</span>
-</pre></div></li>
-<li>Pick the Country Codes you want to use as ExitNodes from the "List of country codes for Tor" list on <a href="http://www.b3rn3d.com/blog/2014/03/05/tor-country-codes/">this page</a>.
-   Edit <code>/etc/tor/torrc</code> as root and, add the following lines to the end and replace <code>CountryCodeN</code> (keep the <code>{</code> and <code>}</code>) with the country code you've chosen (you can also use only one country code, in this case it would be just on <code>{CountryCode1}</code> without a comma).
-  <div class="codehilite"><pre><span></span><span class="err">ExitNodes {CountryCode1},{CountryCode2},{CountryCode3}</span>
-<span class="err">StrictNodes 1</span>
-</pre></div></li>
-<li>Save the changes, restart Tor</li>
-</ul>
-<div class="codehilite"><pre><span></span><span class="err">sudo service tor restart</span>
+<li>
+<p>Install the necessary geoip db for Tor to use, on Debian derivatives (raspbian, Ubuntu) that means</p>
+<div class="codehilite"><pre><span></span>sudo apt install tor-geoipdb
 </pre></div>
 
+</li>
+<li>
+<p>Pick the Country Codes you want to use as ExitNodes from the "List of country codes for Tor" list on <a href="http://www.b3rn3d.com/blog/2014/03/05/tor-country-codes/">this page</a>.</p>
+<p>Edit <code>/etc/tor/torrc</code> as root and, add the following lines to the end and replace <code>CountryCodeN</code> (keep the <code>{</code> and <code>}</code>) with the country code you've chosen (you can also use only one country code, in this case it would be just on <code>{CountryCode1}</code> without a comma).</p>
+<div class="codehilite"><pre><span></span><span class="err">ExitNodes {CountryCode1},{CountryCode2},{CountryCode3}</span>
+<span class="err">StrictNodes 1</span>
+</pre></div>
+
+</li>
+<li>
+<p>Save the changes, restart Tor</p>
+<div class="codehilite"><pre><span></span>sudo service tor restart
+</pre></div>
+
+</li>
+</ul>
 <p><strong>Note:</strong> Using this approach you put strain on Tor Relays in the selected countries only and increase your security vulnerability. It's not nice and not recommended. Also be aware that this change also affects which Exit Nodes are used if you <a href="#your-browser">Route Your Browser Traffic</a> over the Pi-hole host Tor SocksPort.</p>
 <h5 id="solution-2-only-use-specific-exit-nodes">Solution 2 - Only use specific Exit Nodes<a class="headerlink" href="#solution-2-only-use-specific-exit-nodes" title="Permanent link">&para;</a></h5>
 <ol>
-<li>Navigate to <a href="https://atlas.torproject.org/#toprelays">atlas.torproject.org Top Relays</a>. </li>
-<li>Click on two Relays out of the list. </li>
-<li>Make sure the relay allows Port <code>53</code> in his <code>IPv4 Exit Policy Summary</code> (and/or <code>IPv6 Exit Policy Summary</code> if you want to resolve IPv6 AAAA queries). </li>
-<li>As root copy the <code>Fingerprint</code> (Top Right under Relay Details) of those two Relays to the end of your <code>/etc/tor/torrc</code> file on the Pi-hole host in the following format:</li>
-</ol>
+<li>Navigate to <a href="https://atlas.torproject.org/#toprelays">atlas.torproject.org Top Relays</a>.</li>
+<li>Click on two Relays out of the list.</li>
+<li>Make sure the relay allows Port <code>53</code> in his <code>IPv4 Exit Policy Summary</code> (and/or <code>IPv6 Exit Policy Summary</code> if you want to resolve IPv6 AAAA queries).</li>
+<li>
+<p>As root copy the <code>Fingerprint</code> (Top Right under Relay Details) of those two Relays to the end of your <code>/etc/tor/torrc</code> file on the Pi-hole host in the following format:</p>
 <div class="codehilite"><pre><span></span><span class="err">ExitNodes Fingerprint1,Fingerprint2</span>
 <span class="err">StrictNodes 1</span>
 </pre></div>
 
-<ul>
-<li>Save the changes, restart Tor</li>
-</ul>
-<div class="codehilite"><pre><span></span><span class="err">sudo service tor restart</span>
+</li>
+<li>
+<p>Save the changes, restart Tor</p>
+<div class="codehilite"><pre><span></span>sudo service tor restart
 </pre></div>
 
+</li>
+<li>
 <p>If DNS requests stop resolving at all, you might need to repeat this procedure because the Relays you chosen might've went down.</p>
-<p><strong>Note:</strong> Using this approach you put strain on single Tor Relays and increase your security vulnerability. It's not nice and not recommended. Also be aware that this change also affects which Exit Nodes are used if you <a href="#your-browser">Route Your Browser Traffic</a> over the Pi-hole host Tor SocksPort.  </p>
-<p><strong>Hint:</strong> You can combine both Solutions and have country codes and fingerprints as <code>ExitNodes</code>.  </p>
+</li>
+</ol>
+<p><strong>Note:</strong> Using this approach you put strain on single Tor Relays and increase your security vulnerability. It's not nice and not recommended. Also be aware that this change also affects which Exit Nodes are used if you <a href="#your-browser">Route Your Browser Traffic</a> over the Pi-hole host Tor SocksPort.</p>
+<p><strong>Hint:</strong> You can combine both Solutions and have country codes and fingerprints as <code>ExitNodes</code>.</p>
 <h4 id="ipv6">IPv6<a class="headerlink" href="#ipv6" title="Permanent link">&para;</a></h4>
-<p>DNS over Tor only partially supports IPv6 as of now. This is only a problem if your Router or your ISP don't support IPv4 or you want only IPv6 traffic for another reason - if you have both IPv4 and IPv6 available and you don't plan to visit a IPv6 only service, this is no problem at all.  </p>
-<p>In general, <a href="https://www.reddit.com/r/pihole/comments/7e0jg9/dns_over_tor/dq4wbry/">if you made sure that you configured your Pi-hole to support IPv6</a>, resolving IPv6 addresses will sometimes work and sometimes not. The reason for this is that Tor Exit nodes only resolve IPv6 queries if they have <code>IPv6Exit 1</code> set in their configuration. Tor is <a href="https://trac.torproject.org/projects/tor/ticket/21311">working on a fix</a> for that - but until that is done and the Tor exit nodes switched to the fixed version, you will run into situations where IPv6 addresses aren't resolvable despite being available in the responsible nameserver. To check whether your current Exit node resolves IPv6 correctly you can run <code>dig example.com aaaa</code> (Linux) or <code>nslookup -q=aaaa example.com</code> (Windows) on your client.  </p>
+<p>DNS over Tor only partially supports IPv6 as of now. This is only a problem if your Router or your ISP don't support IPv4 or you want only IPv6 traffic for another reason - if you have both IPv4 and IPv6 available and you don't plan to visit a IPv6 only service, this is no problem at all.</p>
+<p>In general, <a href="https://www.reddit.com/r/pihole/comments/7e0jg9/dns_over_tor/dq4wbry/">if you made sure that you configured your Pi-hole to support IPv6</a>, resolving IPv6 addresses will sometimes work and sometimes not. The reason for this is that Tor Exit nodes only resolve IPv6 queries if they have <code>IPv6Exit 1</code> set in their configuration. Tor is <a href="https://trac.torproject.org/projects/tor/ticket/21311">working on a fix</a> for that - but until that is done and the Tor exit nodes switched to the fixed version, you will run into situations where IPv6 addresses aren't resolvable despite being available in the responsible nameserver. To check whether your current Exit node resolves IPv6 correctly you can run <code>dig example.com aaaa</code> (Linux) or <code>nslookup -q=aaaa example.com</code> (Windows) on your client.</p>
 <p>If you're dependent on IPv6 and can't use IPv4 at all, your only chance is to configure <code>ExitNodes</code> in your torrc to only point to Exit nodes that resolve IPv6 correctly. But keep in mind that this approach increases the correlation attack vulnerability if you only have a small amount of <code>ExitNodes</code> set.</p>
 <p>Also you can't (afaik) change the internal IPv4 Tor DNS address on the Pi-hole host to an IPv6 one since <code>DNSPort</code> doesn't support that - so you need at least internal IPv4 on your Pi-hole host, which is the default on most host systems.</p>
 <h4 id="exit-node-fingerprints">Exit node fingerprints<a class="headerlink" href="#exit-node-fingerprints" title="Permanent link">&para;</a></h4>
-<p>To get the fingerprint of your current Exit node, you can configure <code>SocksPort 0.0.0.0:9050</code> in your torrc, restart tor, point your Browser to use your Pi-holes IP and port 9050 as Socks5 proxy, visit e.g. <a href="https://check.torproject.org/">check.torproject.org</a> to get your Exit Node IP, search for that IP on <a href="https://atlas.torproject.org">atlas.torproject.org</a>, click on one of the results and it will show the Fingerprint top right under details.  </p>
+<p>To get the fingerprint of your current Exit node, you can configure <code>SocksPort 0.0.0.0:9050</code> in your torrc, restart tor, point your Browser to use your Pi-holes IP and port 9050 as Socks5 proxy, visit e.g. <a href="https://check.torproject.org/">check.torproject.org</a> to get your Exit Node IP, search for that IP on <a href="https://atlas.torproject.org">atlas.torproject.org</a>, click on one of the results and it will show the Fingerprint top right under details.</p>
 <p>These fingerprints can be set as comma separated value for <code>ExitNodes</code>. Don't forget to remove the <code>SocksPort</code> option and restart tor if you don't need it anymore. Also it should be noted that the Exit node you get over <code>SocksPort</code> is not necessarily the same as the one you get when issuing DNS requests over the <code>DNSPort</code>, since Tor internally keeps multiple circuits open. Again, setting <code>ExitNodes</code> manually is not recommended.</p>
                 
                   

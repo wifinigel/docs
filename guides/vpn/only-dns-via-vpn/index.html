@@ -1267,7 +1267,7 @@
                 <h3 id="optional-only-route-dns-via-vpn">Optional: Only route DNS via VPN<a class="headerlink" href="#optional-only-route-dns-via-vpn" title="Permanent link">&para;</a></h3>
 <p>With this setup, you will force connected clients to use <strong>only the DNS provided by the VPN connection, i.e. the Pi-hole.</strong>  Do this only if you <strong>don't</strong> want to tunnel all traffic from the client through the VPN, but only its DNS queries.</p>
 <p>Edit your <code>/etc/openvpn/server/server.conf</code> and remove (comment out) the following line:</p>
-<div class="codehilite"><pre><span></span><span class="err"># push &quot;redirect-gateway def1 bypass-dhcp&quot;</span>
+<div class="codehilite"><pre><span></span><span class="c1"># push &quot;redirect-gateway def1 bypass-dhcp&quot;</span>
 </pre></div>
 
 <h3 id="using-a-client-config-file">Using a client config file<a class="headerlink" href="#using-a-client-config-file" title="Permanent link">&para;</a></h3>
@@ -1277,32 +1277,36 @@
 <p>When using the Network Manager, you will have to do some additional setting on the client side of things:</p>
 <p><img alt="" src="../NetworkManager1.png" /></p>
 <h4 id="alternative-1-disable-network-managers-internal-dns-server">Alternative 1: Disable Network Manager's internal DNS server<a class="headerlink" href="#alternative-1-disable-network-managers-internal-dns-server" title="Permanent link">&para;</a></h4>
-<p>Edit <code>/etc/NetworkManager/NetworkManager.conf</code>:
-<div class="codehilite"><pre><span></span><span class="err"># dns=dnsmasq</span>
+<p>Edit <code>/etc/NetworkManager/NetworkManager.conf</code>:</p>
+<div class="codehilite"><pre><span></span><span class="c1"># dns=dnsmasq</span>
 </pre></div>
-and restart the Network Manager:
-<div class="codehilite"><pre><span></span><span class="err">sudo restart network-manager</span>
-</pre></div></p>
+
+<p>and restart the Network Manager:</p>
+<div class="codehilite"><pre><span></span>sudo restart network-manager
+</pre></div>
+
 <p>When connecting your DNS server will now be properly picked up and used by your client.</p>
 <h4 id="alternative-2-set-dns-server-address-of-your-pi-hole-manually-on-the-main-interface">Alternative 2: Set DNS server address of your Pi-hole manually on the main interface<a class="headerlink" href="#alternative-2-set-dns-server-address-of-your-pi-hole-manually-on-the-main-interface" title="Permanent link">&para;</a></h4>
 <p>You can also set the address of the DNS server manually (use the device which actually connects to the internet, e.g. <code>eth0</code>):</p>
 <p><img alt="" src="../NetworkManager2.png" /></p>
-<p>After doing either alternative, you should see:
-<div class="codehilite"><pre><span></span><span class="err">pi.hole has address W.X.Y.Z (outside address of your VPN server)</span>
-<span class="err">pi.hole has IPv6 address A:B:C:D:E:F (outside address of your VPN server)</span>
-</pre></div></p>
+<p>After doing either alternative, you should see:</p>
+<div class="codehilite"><pre><span></span>pi.hole has address W.X.Y.Z (outside address of your VPN server)
+pi.hole has IPv6 address A:B:C:D:E:F (outside address of your VPN server)
+</pre></div>
+
 <p>The web interface of your Pi-hole will be visible at <code>http://pi.hole/admin/</code> (even with the recommended firewall configuration mentioned on another subpage)</p>
 <p><img alt="" src="../VPNdashboard.png" /></p>
 <hr />
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<p>If your new DNS server configuration has not been activated (try restarting the interface / system) you will see
-<div class="codehilite"><pre><span></span><span class="err">host pi.hole</span>
-<span class="err">Host pi.hole not found: 3(NXDOMAIN)</span>
-</pre></div></p>
-<p>If you are not connected to your VPN network you will see
-<div class="codehilite"><pre><span></span><span class="err">host pi.hole</span>
-<span class="err">;; connection timed out; no servers could be reached</span>
-</pre></div></p>
+<p>If your new DNS server configuration has not been activated (try restarting the interface / system) you will see</p>
+<div class="codehilite"><pre><span></span>host pi.hole
+Host pi.hole not found: 3(NXDOMAIN)
+</pre></div>
+
+<p>If you are not connected to your VPN network you will see</p>
+<div class="codehilite"><pre><span></span>host pi.hole
+;; connection timed out; no servers could be reached
+</pre></div>
                 
                   
                 

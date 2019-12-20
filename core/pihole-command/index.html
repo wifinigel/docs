@@ -1710,11 +1710,15 @@
 <ul>
 <li>Each domain is validated using regex (except when using <code>-regex</code>), to ensure invalid domains and IDNs are not added</li>
 <li>A whitelisted domain gets added or removed from <code>/etc/pihole/whitelist.txt</code></li>
-<li>A blacklisted domain gets added or removed from <code>/etc/pihole/blacklist.txt</code></li>
+<li>A blacklisted domain gets added or removed from <code>/etc/pihole/blacklist.txt</code><ul>
 <li>On either list type, <code>gravity.sh</code> is then called to consolidate an updated copy of <code>gravity.list</code>, and the DNS server is reloaded</li>
+</ul>
+</li>
 <li>A regex blacklisted domain gets added or removed from <code>/etc/pihole/regex.list</code></li>
-<li>A wildcard domain gets converted into regex and added or removed from <code>/etc/pihole/regex.list</code></li>
+<li>A wildcard domain gets converted into regex and added or removed from <code>/etc/pihole/regex.list</code><ul>
 <li>For both regex-based commands, <code>gravity.sh</code> is then called to restart the DNS server</li>
+</ul>
+</li>
 </ul>
 <h3 id="debugger">Debugger<a class="headerlink" href="#debugger" title="Permanent link">&para;</a></h3>
 <table>
@@ -1790,9 +1794,11 @@
 <p>There are times where the administrator will need to repair or reconfigure the Pi-hole installation, which is performed via this command.</p>
 <p><strong>Basic Script Process</strong>:</p>
 <ul>
-<li><a href="https://github.com/pi-hole/pi-hole/blob/master/automated%20install/basic-install.sh"><code>basic-install.sh</code></a> will be run</li>
+<li><a href="https://github.com/pi-hole/pi-hole/blob/master/automated%20install/basic-install.sh"><code>basic-install.sh</code></a> will be run<ul>
 <li><strong>Reconfigure</strong> will run through the first-time installation prompts, asking for upstream DNS provider, IP protocols, etc</li>
 <li><strong>Repair</strong> will retain your existing settings, and will attempt to repair any scripts or dependencies as necessary</li>
+</ul>
+</li>
 <li>The rest of <code>basic-install.sh</code> will then run as appropriate</li>
 </ul>
 <h3 id="tail">Tail<a class="headerlink" href="#tail" title="Permanent link">&para;</a></h3>
@@ -1897,8 +1903,10 @@
 <ul>
 <li>It will determine Internet connectivity, and give time for <code>dnsmasq</code> to be resolvable on low-end systems if has just been restarted</li>
 <li>It extracts all URLs and domains from <code>/etc/pihole/adlists.list</code></li>
-<li>It runs through each URL, downloading it if necessary</li>
+<li>It runs through each URL, downloading it if necessary<ul>
 <li><code>curl</code> checks the servers <code>Last-Modified</code> header to ensure it is getting a newer version</li>
+</ul>
+</li>
 <li>It will attempt to parse the file into a domains-only format if necessary</li>
 <li>Lists are merged, comments removed, sorted uniquely and stored as <code>list.preEventHorizon</code></li>
 <li>Whitelisted entries within <code>/etc/pihole/whitelist.txt</code> are removed from <code>list.preEventHorizon</code> and saved into a temporary file</li>

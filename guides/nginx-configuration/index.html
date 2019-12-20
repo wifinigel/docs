@@ -1215,80 +1215,110 @@
 </ul>
 <h3 id="basic-requirements">Basic requirements<a class="headerlink" href="#basic-requirements" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Stop default lighttpd<br />
-<code>service lighttpd stop</code></li>
-<li>Install necessary packages<br />
-<code>apt-get -y install nginx php7.0-fpm php7.0-zip apache2-utils</code></li>
-<li>Disable lighttpd at startup<br />
-<code>systemctl disable lighttpd</code></li>
-<li>Enable php7.0-fpm at startup<br />
-<code>systemctl enable php7.0-fpm</code></li>
-<li>Enable nginx at startup<br />
-<code>systemctl enable nginx</code></li>
-<li>Edit <code>/etc/nginx/sites-available/default</code> to:</li>
-</ol>
+<li>
+<p>Stop default lighttpd</p>
+<div class="codehilite"><pre><span></span>service lighttpd stop
+</pre></div>
+
+</li>
+<li>
+<p>Install necessary packages</p>
+<div class="codehilite"><pre><span></span>apt-get -y install nginx php7.0-fpm php7.0-zip apache2-utils
+</pre></div>
+
+</li>
+<li>
+<p>Disable lighttpd at startup</p>
+<div class="codehilite"><pre><span></span>systemctl disable lighttpd
+</pre></div>
+
+</li>
+<li>
+<p>Enable php7.0-fpm at startup</p>
+<div class="codehilite"><pre><span></span>systemctl <span class="nb">enable</span> php7.0-fpm
+</pre></div>
+
+</li>
+<li>
+<p>Enable nginx at startup</p>
+<div class="codehilite"><pre><span></span>systemctl <span class="nb">enable</span> nginx
+</pre></div>
+
+</li>
+<li>
+<p>Edit <code>/etc/nginx/sites-available/default</code> to:</p>
 <div class="codehilite"><pre><span></span><span class="k">server</span> <span class="p">{</span>
-        <span class="kn">listen</span> <span class="mi">80</span> <span class="s">default_server</span><span class="p">;</span>
-        <span class="kn">listen</span> <span class="s">[::]:80</span> <span class="s">default_server</span><span class="p">;</span>
+    <span class="kn">listen</span> <span class="mi">80</span> <span class="s">default_server</span><span class="p">;</span>
+    <span class="kn">listen</span> <span class="s">[::]:80</span> <span class="s">default_server</span><span class="p">;</span>
 
+    <span class="kn">root</span> <span class="s">/var/www/html</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">_</span><span class="p">;</span>
+    <span class="kn">autoindex</span> <span class="no">off</span><span class="p">;</span>
+
+    <span class="kn">index</span> <span class="s">pihole/index.php</span> <span class="s">index.php</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">expires</span> <span class="s">max</span><span class="p">;</span>
+        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php$</span> <span class="p">{</span>
+        <span class="kn">include</span> <span class="s">snippets/fastcgi-php.conf</span><span class="p">;</span>
+        <span class="kn">fastcgi_pass</span> <span class="s">unix:/run/php/php7.0-fpm.sock</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span> <span class="s">FQDN</span> <span class="s">true</span><span class="p">;</span>
+        <span class="kn">auth_basic</span> <span class="s">&quot;Restricted&quot;</span><span class="p">;</span> <span class="c1"># For Basic Auth</span>
+        <span class="kn">auth_basic_user_file</span> <span class="s">/etc/nginx/.htpasswd</span><span class="p">;</span> <span class="c1"># For Basic Auth</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="s">/*.js</span> <span class="p">{</span>
+        <span class="kn">index</span> <span class="s">pihole/index.js</span><span class="p">;</span>
+        <span class="kn">auth_basic</span> <span class="s">&quot;Restricted&quot;</span><span class="p">;</span> <span class="c1"># For Basic Auth</span>
+        <span class="kn">auth_basic_user_file</span> <span class="s">/etc/nginx/.htpasswd</span><span class="p">;</span> <span class="c1"># For Basic Auth</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="s">/admin</span> <span class="p">{</span>
         <span class="kn">root</span> <span class="s">/var/www/html</span><span class="p">;</span>
-        <span class="kn">server_name</span> <span class="s">_</span><span class="p">;</span>
-        <span class="kn">autoindex</span> <span class="no">off</span><span class="p">;</span>
+        <span class="kn">index</span> <span class="s">index.php</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+        <span class="kn">auth_basic</span> <span class="s">&quot;Restricted&quot;</span><span class="p">;</span> <span class="c1"># For Basic Auth</span>
+        <span class="kn">auth_basic_user_file</span> <span class="s">/etc/nginx/.htpasswd</span><span class="p">;</span> <span class="c1"># For Basic Auth</span>
+    <span class="p">}</span>
 
-        <span class="kn">index</span> <span class="s">pihole/index.php</span> <span class="s">index.php</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
-
-        <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
-                <span class="kn">expires</span> <span class="s">max</span><span class="p">;</span>
-                <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="p">=</span><span class="mi">404</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php$</span> <span class="p">{</span>
-                <span class="kn">include</span> <span class="s">snippets/fastcgi-php.conf</span><span class="p">;</span>
-                <span class="kn">fastcgi_pass</span> <span class="s">unix:/run/php/php7.0-fpm.sock</span><span class="p">;</span>
-                <span class="kn">fastcgi_param</span> <span class="s">FQDN</span> <span class="s">true</span><span class="p">;</span>
-                <span class="kn">auth_basic</span> <span class="s">&quot;Restricted&quot;</span><span class="p">;</span> <span class="c1">#For Basic Auth</span>
-                <span class="kn">auth_basic_user_file</span> <span class="s">/etc/nginx/.htpasswd</span><span class="p">;</span>  <span class="c1">#For Basic Auth</span>
-        <span class="p">}</span>
-
-        <span class="kn">location</span> <span class="s">/*.js</span> <span class="p">{</span>
-                <span class="kn">index</span> <span class="s">pihole/index.js</span><span class="p">;</span>
-                <span class="kn">auth_basic</span> <span class="s">&quot;Restricted&quot;</span><span class="p">;</span> <span class="c1">#For Basic Auth</span>
-                <span class="kn">auth_basic_user_file</span> <span class="s">/etc/nginx/.htpasswd</span><span class="p">;</span>  <span class="c1">#For Basic Auth</span>
-        <span class="p">}</span>
-
-        <span class="kn">location</span> <span class="s">/admin</span> <span class="p">{</span>
-                <span class="kn">root</span> <span class="s">/var/www/html</span><span class="p">;</span>
-                <span class="kn">index</span> <span class="s">index.php</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
-                <span class="kn">auth_basic</span> <span class="s">&quot;Restricted&quot;</span><span class="p">;</span> <span class="c1">#For Basic Auth</span>
-                <span class="kn">auth_basic_user_file</span> <span class="s">/etc/nginx/.htpasswd</span><span class="p">;</span>  <span class="c1">#For Basic Auth</span>
-        <span class="p">}</span>
-
-        <span class="kn">location</span> <span class="p">~</span> <span class="sr">/\.ht</span> <span class="p">{</span>
-                <span class="kn">deny</span> <span class="s">all</span><span class="p">;</span>
-        <span class="p">}</span>
+    <span class="kn">location</span> <span class="p">~</span> <span class="sr">/\.ht</span> <span class="p">{</span>
+        <span class="kn">deny</span> <span class="s">all</span><span class="p">;</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
-<ol>
-<li>
-<p>Create username for authentication for the admin - we don't want other people in our network change our black and whitelist ;)<br />
-<code>htpasswd -c /etc/nginx/.htpasswd exampleuser</code></p>
 </li>
 <li>
-<p>Change ownership of html directory to nginx user<br />
-<code>chown -R www-data:www-data /var/www/html</code></p>
+<p>Create username for authentication for the admin - we don't want other people in our network change our black and whitelist ;)</p>
+<div class="codehilite"><pre><span></span>htpasswd -c /etc/nginx/.htpasswd exampleuser
+</pre></div>
+
 </li>
 <li>
-<p>Make sure html directory is writable<br />
-<code>chmod -R 755 /var/www/html</code></p>
+<p>Change ownership of html directory to nginx user</p>
+<div class="codehilite"><pre><span></span>chown -R www-data:www-data /var/www/html
+</pre></div>
+
 </li>
 <li>
-<p>Start php7.0-fpm daemon<br />
-<code>service php7.0-fpm start</code></p>
+<p>Make sure html directory is writable</p>
+<div class="codehilite"><pre><span></span>chmod -R <span class="m">755</span> /var/www/html
+</pre></div>
+
 </li>
 <li>
-<p>Start nginx webserver<br />
-<code>service nginx start</code></p>
+<p>Start php7.0-fpm daemon</p>
+<div class="codehilite"><pre><span></span>service php7.0-fpm start
+</pre></div>
+
+</li>
+<li>
+<p>Start nginx webserver</p>
+<div class="codehilite"><pre><span></span>service nginx start
+</pre></div>
+
 </li>
 </ol>
 <h3 id="optional-configuration">Optional configuration<a class="headerlink" href="#optional-configuration" title="Permanent link">&para;</a></h3>
@@ -1297,16 +1327,20 @@
 <p>If you want to use your custom domain to access admin page (e.g.: <code>http://mydomain.internal/admin/settings.php</code> instead of <code>http://pi.hole/admin/settings.php</code>), make sure <code>mydomain.internal</code> is assigned to <code>server_name</code> in <code>/etc/nginx/sites-available/default</code>. E.g.: <code>server_name mydomain.internal;</code></p>
 </li>
 <li>
-<p>If you want to use block page for any blocked domain subpage (aka Nginx 404), add this to Pi-hole server block in your Nginx configuration file:
+<p>If you want to use block page for any blocked domain subpage (aka Nginx 404), add this to Pi-hole server block in your Nginx configuration file:</p>
 <div class="codehilite"><pre><span></span><span class="k">error_page</span> <span class="mi">404</span> <span class="s">/pihole/index.php</span><span class="p">;</span>
-</pre></div></p>
+</pre></div>
+
 </li>
-<li>When using nginx to serve Pi-hole, Let's Encrypt can be used to directly configure nginx. Make sure to use your hostname instead of _ in <code>server_name _;</code> line above.
+<li>
+<p>When using nginx to serve Pi-hole, Let's Encrypt can be used to directly configure nginx. Make sure to use your hostname instead of _ in <code>server_name _;</code> line above.</p>
 <div class="codehilite"><pre><span></span>add-apt-repository ppa:certbot/certbot
 apt-get install certbot python-certbot-nginx
 
 certbot --nginx -m <span class="s2">&quot;</span><span class="nv">$email</span><span class="s2">&quot;</span> -d <span class="s2">&quot;</span><span class="nv">$domain</span><span class="s2">&quot;</span> -n --agree-tos --no-eff-email
-</pre></div></li>
+</pre></div>
+
+</li>
 </ul>
                 
                   

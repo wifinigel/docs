@@ -1596,13 +1596,15 @@
 <h2 id="advanced-examples">Advanced examples<a class="headerlink" href="#advanced-examples" title="Permanent link">&para;</a></h2>
 <p>After going through our quick tutorial, we provide some more advances examples so you can test your knowledge.</p>
 <h3 id="block-domain-with-only-numbers">Block domain with only numbers<a class="headerlink" href="#block-domain-with-only-numbers" title="Permanent link">&para;</a></h3>
-<p><div class="codehilite"><pre><span></span><span class="err">^[0-9][^a-z]+\.((com)|(edu))$</span>
+<div class="codehilite"><pre><span></span><span class="err">^[0-9][^a-z]+\.((com)|(edu))$</span>
 </pre></div>
-Blocks domains containing only numbers (no letters) and ending in <code>.com</code> or <code>.edu</code>. Blocks <code>555661.com</code>, and <code>456.edu</code>, but not <code>555g555.com</code></p>
+
+<p>Blocks domains containing only numbers (no letters) and ending in <code>.com</code> or <code>.edu</code>. Blocks <code>555661.com</code>, and <code>456.edu</code>, but not <code>555g555.com</code></p>
 <h3 id="block-domains-without-subdomains">Block domains without subdomains<a class="headerlink" href="#block-domains-without-subdomains" title="Permanent link">&para;</a></h3>
-<p><div class="codehilite"><pre><span></span><span class="err">^[a-z0-9]+([\-]{1}[a-z0-9]+)*\.[a-z]{2,7}$</span>
+<div class="codehilite"><pre><span></span><span class="err">^[a-z0-9]+([\-]{1}[a-z0-9]+)*\.[a-z]{2,7}$</span>
 </pre></div>
-A domain name shall not start or end with a dash but can contain any number of them. It must be followed by a <abbr title="Top-level domain (domains at the highest level in the hierarchical Domain Name System of the Internet., e.g. &quot;.com&quot;, &quot;.org&quot;, etc.)">TLD</abbr> (we assume a valid <abbr title="Top-level domain (domains at the highest level in the hierarchical Domain Name System of the Internet., e.g. &quot;.com&quot;, &quot;.org&quot;, etc.)">TLD</abbr> length of two to seven characters)</p>
+
+<p>A domain name shall not start or end with a dash but can contain any number of them. It must be followed by a <abbr title="Top-level domain (domains at the highest level in the hierarchical Domain Name System of the Internet., e.g. &quot;.com&quot;, &quot;.org&quot;, etc.)">TLD</abbr> (we assume a valid <abbr title="Top-level domain (domains at the highest level in the hierarchical Domain Name System of the Internet., e.g. &quot;.com&quot;, &quot;.org&quot;, etc.)">TLD</abbr> length of two to seven characters)</p>
 <h2 id="cheatsheet">Cheatsheet<a class="headerlink" href="#cheatsheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

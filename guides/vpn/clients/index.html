@@ -1253,26 +1253,27 @@
                   <h1>General</h1>
                 
                 <h2 id="create-a-client-config-file-ovpn">Create a client config file (<code>.ovpn</code>)<a class="headerlink" href="#create-a-client-config-file-ovpn" title="Permanent link">&para;</a></h2>
-<p>Now that the server is configured, you'll want to connect some clients so you can make use of your Pi-hole wherever you are.  Doing so requires the use of a certificate.  You generate these and the resulting <code>.ovpn</code> file by running the installer and choosing <code>1) Add a new user</code> for each client that will connect to the VPN.  </p>
+<p>Now that the server is configured, you'll want to connect some clients so you can make use of your Pi-hole wherever you are.  Doing so requires the use of a certificate.  You generate these and the resulting <code>.ovpn</code> file by running the installer and choosing <code>1) Add a new user</code> for each client that will connect to the VPN.</p>
 <p>You can repeat this process for as many clients as you need.  In this example, we'll "Add a new user" by naming the <code>.ovpn</code> file the same as the client's hostname but you may want to adopt your own naming strategy.</p>
 <p>Run the OpenVPN installer again</p>
-<div class="codehilite"><pre><span></span><span class="err">./openvpn-install.sh</span>
+<div class="codehilite"><pre><span></span>./openvpn-install.sh
 </pre></div>
 
-<p>Choose <code>1) Add a new user</code> and enter a client name
-<div class="codehilite"><pre><span></span><span class="n">Looks</span> <span class="k">like</span> <span class="n">OpenVPN</span> <span class="k">is</span> <span class="n">already</span> <span class="n">installed</span>
+<p>Choose <code>1) Add a new user</code> and enter a client name</p>
+<div class="codehilite"><pre><span></span>Looks like OpenVPN is already installed
 
-<span class="n">What</span> <span class="k">do</span> <span class="n">you</span> <span class="n">want</span> <span class="k">to</span> <span class="k">do</span><span class="o">?</span>
-   <span class="mi">1</span><span class="p">)</span> <span class="k">Add</span> <span class="n">a</span> <span class="k">new</span> <span class="k">user</span>
-   <span class="mi">2</span><span class="p">)</span> <span class="k">Revoke</span> <span class="n">an</span> <span class="k">existing</span> <span class="k">user</span>
-   <span class="mi">3</span><span class="p">)</span> <span class="n">Remove</span> <span class="n">OpenVPN</span>
-   <span class="mi">4</span><span class="p">)</span> <span class="n">Exit</span>
-<span class="k">Select</span> <span class="n">an</span> <span class="k">option</span> <span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">4</span><span class="p">]:</span> <span class="mi">1</span>
+What do you want to do?
+   1) Add a new user
+   2) Revoke an existing user
+   3) Remove OpenVPN
+   4) Exit
+Select an option [1-4]: 1
 
-<span class="n">Tell</span> <span class="n">me</span> <span class="n">a</span> <span class="n">name</span> <span class="k">for</span> <span class="n">the</span> <span class="n">client</span> <span class="n">certificate</span>
-<span class="n">Please</span><span class="p">,</span> <span class="n">use</span> <span class="n">one</span> <span class="n">word</span> <span class="k">only</span><span class="p">,</span> <span class="k">no</span> <span class="n">special</span> <span class="n">characters</span>
-<span class="n">Client</span> <span class="n">name</span><span class="p">:</span> <span class="n">iphone7</span>
-</pre></div></p>
+Tell me a name for the client certificate
+Please, use one word only, no special characters
+Client name: iphone7
+</pre></div>
+
 <p>This will generate a <code>.ovpn</code> file, which needs to be copied to your client machine (often times using the OpenVPN app).  This process also generates a few other files found in <code>/etc/openvpn/server/easy-rsa/pki/</code>, which make public key authentication possible; you only need to worry about the <code>.ovpn</code> file, though.</p>
 <h2 id="connect-a-client-using-the-ovpn-file">Connect a client using the <code>.ovpn</code> file<a class="headerlink" href="#connect-a-client-using-the-ovpn-file" title="Permanent link">&para;</a></h2>
 <p>The OpenVPN documentation has some decent <a href="https://openvpn.net/vpn-server-resources/">guides on connecting desktop clients for Mac, Windows, and Linux</a>, so we'll instead explain how to connect a mobile device, since that provides the most usefulness in today's world--<strong>connecting to your ad-blocking VPN via a mobile device</strong>.  We'll go through two examples:</p>
@@ -1289,21 +1290,26 @@
 <li>Message the file to yourself (not recommended)</li>
 <li>Email the file to yourself (not recommended)</li>
 </ol>
-<blockquote>
-<p><strong>WARNING</strong> Anyone who gets his hands on this configuration/certificate file can obtain full access to your VPN. Make sure that you use only trusted paths for transferring the file (e.g. never send it via an un-encrypted channel, e.g. email or FTP). Best strategy is to use an USB thumb drive to avoid any network transport at all (when possible). Make sure to delete the certificate on the USB drive afterwards.</p>
-<p><strong>NOTICE</strong> If one of your certificates has been compromised, remove it using option 2 when you run the installer and generate a new certificate. This will effectively lock out anyone who might have gotten access to the certificate.</p>
-</blockquote>
-<p>Once you get it on your device, you can open the file in the OpenVPN app.  </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Anyone who gets his hands on this configuration/certificate file can obtain full access to your VPN. Make sure that you use only trusted paths for transferring the file (e.g. never send it via an un-encrypted channel, e.g. email or FTP). Best strategy is to use an USB thumb drive to avoid any network transport at all (when possible). Make sure to delete the certificate on the USB drive afterwards.</p>
+</div>
+<div class="admonition notice">
+<p class="admonition-title">Notice</p>
+<p>If one of your certificates has been compromised, remove it using option 2 when you run the installer and generate a new certificate. This will effectively lock out anyone who might have gotten access to the certificate.</p>
+</div>
+<p>Once you get it on your device, you can open the file in the OpenVPN app.</p>
 <p>Click the green plus to add the profile to your phone.</p>
 <p>You can connect from within the app or you can connect from the Settings app once you grant it access to do so.</p>
 <h3 id="linux">Linux<a class="headerlink" href="#linux" title="Permanent link">&para;</a></h3>
 <p>We'll demonstrate the procedure here for Ubuntu Linux (which trivially extends to Linux Mint, etc.)</p>
 <ol>
 <li>
-<p>Install the necessary network-manager plugins
-<div class="codehilite"><pre><span></span><span class="err">sudo apt-get install network-manager-openvpn network-manager-openvpn-gnome</span>
-<span class="err">sudo service network-manager restart</span>
-</pre></div></p>
+<p>Install the necessary network-manager plugins</p>
+<div class="codehilite"><pre><span></span>sudo apt-get install network-manager-openvpn network-manager-openvpn-gnome
+sudo service network-manager restart
+</pre></div>
+
 </li>
 <li>
 <p>Securely copy the necessary certificates from your OpenVPN server to your client (e.g. using <code>sftp</code>). They are located in <code>/etc/openvpn/server/easy-rsa/pki</code></p>
@@ -1317,14 +1323,14 @@
 <li>Private Key Password: Depending on your settings (might even be empty)</li>
 <li>TA Key: <code>/etc/openvpn/server/ta.key</code></li>
 </ul>
-<p>Further details can be found in the screenshots provided below:
-<img alt="" src="../NetworkManager3.png" />
+<p>Further details can be found in the screenshots provided below:</p>
+<p><img alt="" src="../NetworkManager3.png" />
 <img alt="" src="../NetworkManager4.png" />
 <img alt="" src="../NetworkManager5.png" />
 <img alt="" src="../NetworkManager6.png" />
-<img alt="" src="../NetworkManager7.png" />
-Your whole network traffic will now securely be transferred to your Pi-hole.
-<img alt="" src="../VPNclients.png" /></p>
+<img alt="" src="../NetworkManager7.png" /></p>
+<p>Your whole network traffic will now securely be transferred to your Pi-hole.</p>
+<p><img alt="" src="../VPNclients.png" /></p>
 <h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
 <p>You will have to install additional software. See <a href="https://openvpn.net/community-downloads/">https://openvpn.net/community-downloads/</a></p>
                 

@@ -1846,43 +1846,43 @@
 <strong><a href="../blockingmode/">More details</a></strong></p>
 <h3 id="statistics-settings">Statistics settings<a class="headerlink" href="#statistics-settings" title="Permanent link">&para;</a></h3>
 <h4 id="maxlogage"><code>MAXLOGAGE=24.0</code><a class="headerlink" href="#maxlogage" title="Permanent link">&para;</a></h4>
-<p>Up to how many hours of queries should be imported from the database and logs? Maximum is 24.0
-<hr/></p>
+<p>Up to how many hours of queries should be imported from the database and logs? Maximum is 24.0</p>
+<hr />
 <h4 id="privacylevel"><code>PRIVACYLEVEL=0|1|2|3|4</code><a class="headerlink" href="#privacylevel" title="Permanent link">&para;</a></h4>
 <p>Which privacy level is used?<br>
-<strong><a href="../privacylevels/">More details</a></strong>
-<hr/></p>
+<strong><a href="../privacylevels/">More details</a></strong></p>
+<hr />
 <h4 id="ignore_localhost"><code>IGNORE_LOCALHOST=no|yes</code><a class="headerlink" href="#ignore_localhost" title="Permanent link">&para;</a></h4>
-<p>Should <code>FTL</code> ignore queries coming from the local machine?
-<hr/></p>
+<p>Should <code>FTL</code> ignore queries coming from the local machine?</p>
+<hr />
 <h4 id="aaaa_query_analysis"><code>AAAA_QUERY_ANALYSIS=yes|no</code><a class="headerlink" href="#aaaa_query_analysis" title="Permanent link">&para;</a></h4>
-<p>Allow <code>FTL</code> to analyze AAAA queries from pihole.log?
-<hr/></p>
+<p>Allow <code>FTL</code> to analyze AAAA queries from pihole.log?</p>
+<hr />
 <h4 id="analyze_only_a_and_aaaa"><code>ANALYZE_ONLY_A_AND_AAAA=false|true</code><a class="headerlink" href="#analyze_only_a_and_aaaa" title="Permanent link">&para;</a></h4>
 <p>Should <code>FTL</code> only analyze A and AAAA queries?</p>
 <h3 id="socket-settings">Socket settings<a class="headerlink" href="#socket-settings" title="Permanent link">&para;</a></h3>
 <h4 id="socket_listening"><code>SOCKET_LISTENING=localonly|all</code><a class="headerlink" href="#socket_listening" title="Permanent link">&para;</a></h4>
-<p>Listen only for local socket connections or permit all connections
-<hr/></p>
+<p>Listen only for local socket connections or permit all connections</p>
+<hr />
 <h4 id="ftlport"><code>FTLPORT=4711</code><a class="headerlink" href="#ftlport" title="Permanent link">&para;</a></h4>
 <p>On which port should <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> be listening?</p>
 <h3 id="host-name-resolution">Host name resolution<a class="headerlink" href="#host-name-resolution" title="Permanent link">&para;</a></h3>
 <h4 id="resolve_ipv6"><code>RESOLVE_IPV6=yes|no</code><a class="headerlink" href="#resolve_ipv6" title="Permanent link">&para;</a></h4>
-<p>Should <code>FTL</code> try to resolve <abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> addresses to host names?
-<hr/></p>
+<p>Should <code>FTL</code> try to resolve <abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> addresses to host names?</p>
+<hr />
 <h4 id="resolve_ipv4"><code>RESOLVE_IPV4=yes|no</code><a class="headerlink" href="#resolve_ipv4" title="Permanent link">&para;</a></h4>
 <p>Should <code>FTL</code> try to resolve <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> addresses to host names?</p>
 <h3 id="database-settings">Database settings<a class="headerlink" href="#database-settings" title="Permanent link">&para;</a></h3>
 <p><strong><a href="../database/">Further details concerning the database</a></strong></p>
 <h4 id="dbimport"><code>DBIMPORT=yes|no</code><a class="headerlink" href="#dbimport" title="Permanent link">&para;</a></h4>
-<p>Should <code>FTL</code> load information from the database on startup to be aware of the most recent history?
-<hr/></p>
+<p>Should <code>FTL</code> load information from the database on startup to be aware of the most recent history?</p>
+<hr />
 <h4 id="maxdbdays"><code>MAXDBDAYS=365</code><a class="headerlink" href="#maxdbdays" title="Permanent link">&para;</a></h4>
-<p>How long should queries be stored in the database? Setting this to <code>0</code> disables the database
-<hr/></p>
+<p>How long should queries be stored in the database? Setting this to <code>0</code> disables the database</p>
+<hr />
 <h4 id="dbinterval"><code>DBINTERVAL=1.0</code><a class="headerlink" href="#dbinterval" title="Permanent link">&para;</a></h4>
-<p>How often do we store queries in <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr>'s database [minutes]?
-<hr/></p>
+<p>How often do we store queries in <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr>'s database [minutes]?</p>
+<hr />
 <h4 id="dbfile"><code>DBFILE=/etc/pihole/pihole-FTL.db</code><a class="headerlink" href="#dbfile" title="Permanent link">&para;</a></h4>
 <p>Specify path and filename of <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr>'s <abbr title="Database engine that handles an SQL databases in a file">SQLite3</abbr> long-term database. Setting this to <code>DBFILE=</code> disables the database altogether</p>
 <h3 id="file-options">File options<a class="headerlink" href="#file-options" title="Permanent link">&para;</a></h3>
@@ -1902,48 +1902,48 @@
 <p>Database containing MAC -&gt; Vendor information for the network table.</p>
 <h3 id="debugging-options">Debugging options<a class="headerlink" href="#debugging-options" title="Permanent link">&para;</a></h3>
 <h4 id="debug_all"><code>DEBUG_ALL=false|true</code><a class="headerlink" href="#debug_all" title="Permanent link">&para;</a></h4>
-<p>Enable all debug flags. If this is set to true, all other debug config options are ignored.
-<hr/></p>
+<p>Enable all debug flags. If this is set to true, all other debug config options are ignored.</p>
+<hr />
 <h4 id="debug_database"><code>DEBUG_DATABASE=false|true</code><a class="headerlink" href="#debug_database" title="Permanent link">&para;</a></h4>
-<p>Print debugging information about database actions. This prints performed SQL statements as well as some general information such as the time it took to store the queries and how many have been saved to the database.
-<hr/></p>
+<p>Print debugging information about database actions. This prints performed SQL statements as well as some general information such as the time it took to store the queries and how many have been saved to the database.</p>
+<hr />
 <h4 id="debug_networking"><code>DEBUG_NETWORKING=false|true</code><a class="headerlink" href="#debug_networking" title="Permanent link">&para;</a></h4>
-<p>Prints a list of the detected interfaces on startup of <code>pihole-FTL</code>. Also prints whether these interfaces are <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> or <abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> interfaces.
-<hr/></p>
+<p>Prints a list of the detected interfaces on startup of <code>pihole-FTL</code>. Also prints whether these interfaces are <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> or <abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> interfaces.</p>
+<hr />
 <h4 id="debug_locks"><code>DEBUG_LOCKS=false|true</code><a class="headerlink" href="#debug_locks" title="Permanent link">&para;</a></h4>
-<p>Print information about shared memory locks. Messages will be generated when waiting, obtaining, and releasing a lock.
-<hr/></p>
+<p>Print information about shared memory locks. Messages will be generated when waiting, obtaining, and releasing a lock.</p>
+<hr />
 <h4 id="debug_queries"><code>DEBUG_QUERIES=false|true</code><a class="headerlink" href="#debug_queries" title="Permanent link">&para;</a></h4>
-<p>Print extensive query information (domains, types, replies, etc.). This has always been part of the legacy <code>debug</code> mode of <code>pihole-FTL</code>.
-<hr/></p>
+<p>Print extensive query information (domains, types, replies, etc.). This has always been part of the legacy <code>debug</code> mode of <code>pihole-FTL</code>.</p>
+<hr />
 <h4 id="debug_flags"><code>DEBUG_FLAGS=false|true</code><a class="headerlink" href="#debug_flags" title="Permanent link">&para;</a></h4>
-<p>Print flags of queries received by the <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> hooks. Only effective when <code>DEBUG_QUERIES</code> is enabled as well.
-<hr/></p>
+<p>Print flags of queries received by the <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> hooks. Only effective when <code>DEBUG_QUERIES</code> is enabled as well.</p>
+<hr />
 <h4 id="debug_shmem"><code>DEBUG_SHMEM=false|true</code><a class="headerlink" href="#debug_shmem" title="Permanent link">&para;</a></h4>
-<p>Print information about shared memory buffers. Messages are either about creating or enlarging shmem objects or string injections.
-<hr/></p>
+<p>Print information about shared memory buffers. Messages are either about creating or enlarging shmem objects or string injections.</p>
+<hr />
 <h4 id="debug_gc"><code>DEBUG_GC=false|true</code><a class="headerlink" href="#debug_gc" title="Permanent link">&para;</a></h4>
-<p>Print information about garbage collection (GC): What is to be removed, how many have been removed and how long did GC take.
-<hr/></p>
+<p>Print information about garbage collection (GC): What is to be removed, how many have been removed and how long did GC take.</p>
+<hr />
 <h4 id="debug_arp"><code>DEBUG_ARP=false|true</code><a class="headerlink" href="#debug_arp" title="Permanent link">&para;</a></h4>
-<p>Print information about ARP table processing: How long did parsing take, whether read MAC addresses are valid, and if the <code>macvendor.db</code> file exists.
-<hr/></p>
+<p>Print information about ARP table processing: How long did parsing take, whether read MAC addresses are valid, and if the <code>macvendor.db</code> file exists.</p>
+<hr />
 <h4 id="debug_regex"><code>DEBUG_REGEX=false|true</code><a class="headerlink" href="#debug_regex" title="Permanent link">&para;</a></h4>
 <p>Controls if <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> should print extended details about <abbr title="Regular expression">regex</abbr> matching into <code>pihole-FTL.log</code>.<br>
-  Due to legacy reasons, we also support the following setting to be used for enabling the same functionality:<br>
-  <code>REGEX_DEBUGMODE=false|true</code>
-  Note that if one of them is set to <code>true</code>, the other one cannot be used to disable this setting again.<br>
-  <strong><a href="../regex/overview/">More details</a></strong>
-<hr/></p>
+Due to legacy reasons, we also support the following setting to be used for enabling the same functionality:<br>
+<code>REGEX_DEBUGMODE=false|true</code>
+Note that if one of them is set to <code>true</code>, the other one cannot be used to disable this setting again.<br>
+<strong><a href="../regex/overview/">More details</a></strong></p>
+<hr />
 <h4 id="debug_api"><code>DEBUG_API=false|true</code><a class="headerlink" href="#debug_api" title="Permanent link">&para;</a></h4>
-<p>Print extra debugging information during telnet <abbr title="Application Programming Interface (a set of subroutine definitions, protocols, and tools for building application software)">API</abbr> calls. Currently only used to send extra information when getting all queries.
-<hr/></p>
+<p>Print extra debugging information during telnet <abbr title="Application Programming Interface (a set of subroutine definitions, protocols, and tools for building application software)">API</abbr> calls. Currently only used to send extra information when getting all queries.</p>
+<hr />
 <h4 id="debug_overtime"><code>DEBUG_OVERTIME=false|true</code><a class="headerlink" href="#debug_overtime" title="Permanent link">&para;</a></h4>
-<p>Print information about overTime memory operations, such as initializing or moving overTime slots.
-<hr/></p>
+<p>Print information about overTime memory operations, such as initializing or moving overTime slots.</p>
+<hr />
 <h4 id="debug_extblocked"><code>DEBUG_EXTBLOCKED=false|true</code><a class="headerlink" href="#debug_extblocked" title="Permanent link">&para;</a></h4>
-<p>Print information about why <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> decided that certain queries were recognized as being externally blocked.
-<hr/></p>
+<p>Print information about why <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> decided that certain queries were recognized as being externally blocked.</p>
+<hr />
 <h4 id="debug_caps"><code>DEBUG_CAPS=false|true</code><a class="headerlink" href="#debug_caps" title="Permanent link">&para;</a></h4>
 <p>Print information about capabilities granted to the pihole-<abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> process. The current capabilities are printed on receipt of <code>SIGHUP</code>, i.e., the current set of capabilities can be queried without restarting <code>pihole-FTL</code> (by setting <code>DEBUG_CAPS=true</code> and thereafter sending <code>killall -HUP pihole-FTL</code>).</p>
                 

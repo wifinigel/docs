@@ -1297,32 +1297,32 @@
 <p>It's recommended that you <a href="https://serverfault.com/questions/200635/best-way-to-clear-all-iptables-rules">clear out your entire firewall</a> so you have full control over its setup.  You have two options for setting up your firewall with your VPN.</p>
 <h4 id="option-1-allow-everything-from-within-your-vpn">Option 1: Allow everything from within your VPN<a class="headerlink" href="#option-1-allow-everything-from-within-your-vpn" title="Permanent link">&para;</a></h4>
 <p>Enter this command, which will allow all traffic through the VPN <code>tun0</code> interface.</p>
-<div class="codehilite"><pre><span></span><span class="err">iptables -I INPUT -i tun0 -j ACCEPT</span>
+<div class="codehilite"><pre><span></span>iptables -I INPUT -i tun0 -j ACCEPT
 </pre></div>
 
 <h4 id="option-2-explicitly-allow-what-can-be-accessed-within-the-vpn">Option 2: Explicitly allow what can be accessed within the VPN<a class="headerlink" href="#option-2-explicitly-allow-what-can-be-accessed-within-the-vpn" title="Permanent link">&para;</a></h4>
 <p>These commands will allow DNS and HTTP needed for name resolution (using Pi-hole as a resolver) and accessing the Web interface, respectively.</p>
-<div class="codehilite"><pre><span></span><span class="err">iptables -A INPUT -i tun0 -p tcp --destination-port 53 -j ACCEPT</span>
-<span class="err">iptables -A INPUT -i tun0 -p udp --destination-port 53 -j ACCEPT</span>
-<span class="err">iptables -A INPUT -i tun0 -p tcp --destination-port 80 -j ACCEPT</span>
+<div class="codehilite"><pre><span></span>iptables -A INPUT -i tun0 -p tcp --destination-port <span class="m">53</span> -j ACCEPT
+iptables -A INPUT -i tun0 -p udp --destination-port <span class="m">53</span> -j ACCEPT
+iptables -A INPUT -i tun0 -p tcp --destination-port <span class="m">80</span> -j ACCEPT
 </pre></div>
 
 <p>You will also want to enable SSH and VPN access from anywhere.</p>
-<div class="codehilite"><pre><span></span><span class="err">iptables -A INPUT -p tcp --destination-port 22 -j ACCEPT</span>
-<span class="err">iptables -A INPUT -p tcp --destination-port 1194 -j ACCEPT</span>
-<span class="err">iptables -A INPUT -p udp --destination-port 1194 -j ACCEPT</span>
+<div class="codehilite"><pre><span></span>iptables -A INPUT -p tcp --destination-port <span class="m">22</span> -j ACCEPT
+iptables -A INPUT -p tcp --destination-port <span class="m">1194</span> -j ACCEPT
+iptables -A INPUT -p udp --destination-port <span class="m">1194</span> -j ACCEPT
 </pre></div>
 
 <p>The next crucial setting is to explicitly allow TCP/IP to do "three way handshakes":</p>
-<div class="codehilite"><pre><span></span><span class="err">iptables -I INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT</span>
+<div class="codehilite"><pre><span></span>iptables -I INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 </pre></div>
 
 <p>Also, we want to allow any loopback traffic, i.e. the server is allowed to talk to itself without any limitations using 127.0.0.0/8:</p>
-<div class="codehilite"><pre><span></span><span class="err">iptables -I INPUT -i lo -j ACCEPT</span>
+<div class="codehilite"><pre><span></span>iptables -I INPUT -i lo -j ACCEPT
 </pre></div>
 
 <p>Finally, reject access from anywhere else (i.e. if no rule has matched up to this point):</p>
-<div class="codehilite"><pre><span></span><span class="err">iptables -P INPUT DROP</span>
+<div class="codehilite"><pre><span></span>iptables -P INPUT DROP
 </pre></div>
 
 <h6 id="blocking-https-advertisement-assets">Blocking HTTPS advertisement assets<a class="headerlink" href="#blocking-https-advertisement-assets" title="Permanent link">&para;</a></h6>
@@ -1330,93 +1330,94 @@
 <blockquote>
 <p>Why doesn't Pi-hole just use a certificate to prevent this?  The answer is <a href="https://discourse.pi-hole.net/t/slow-loading-websites/3408/12">here</a>.</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><span class="err">iptables -A INPUT -p udp --dport 80 -j REJECT --reject-with icmp-port-unreachable</span>
-<span class="err">iptables -A INPUT -p tcp --dport 443 -j REJECT --reject-with tcp-reset</span>
-<span class="err">iptables -A INPUT -p udp --dport 443 -j REJECT --reject-with icmp-port-unreachable</span>
+<div class="codehilite"><pre><span></span>iptables -A INPUT -p udp --dport <span class="m">80</span> -j REJECT --reject-with icmp-port-unreachable
+iptables -A INPUT -p tcp --dport <span class="m">443</span> -j REJECT --reject-with tcp-reset
+iptables -A INPUT -p udp --dport <span class="m">443</span> -j REJECT --reject-with icmp-port-unreachable
 </pre></div>
 
 <p>Depending on the systems you have connecting, you may benefit from appending <code>--reject-with tcp-reset</code> to the command above.  If you still get slow load times of HTTPS assets, the above may help.</p>
 <h5 id="ipv6-iptables">IPv6 <code>iptables</code><a class="headerlink" href="#ipv6-iptables" title="Permanent link">&para;</a></h5>
 <p>If your server is reachable via IPv6, you'll need to run the same commands but using <code>ip6tables</code>:</p>
-<p><div class="codehilite"><pre><span></span><span class="err">ip6tables -A INPUT -i tun0 -p tcp --destination-port 53 -j ACCEPT</span>
-<span class="err">ip6tables -A INPUT -i tun0 -p udp --destination-port 53 -j ACCEPT</span>
-<span class="err">ip6tables -A INPUT -i tun0 -p tcp --destination-port 80 -j ACCEPT</span>
-<span class="err">ip6tables -A INPUT -p tcp --destination-port 22 -j ACCEPT</span>
-<span class="err">ip6tables -A INPUT -p tcp --destination-port 1194 -j ACCEPT</span>
-<span class="err">ip6tables -A INPUT -p udp --destination-port 1194 -j ACCEPT</span>
-<span class="err">ip6tables -I INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT</span>
-<span class="err">ip6tables -I INPUT -i lo -j ACCEPT</span>
-<span class="err">ip6tables -A INPUT -p udp --dport 80 -j REJECT --reject-with icmp6-port-unreachable</span>
-<span class="err">ip6tables -A INPUT -p tcp --dport 443 -j REJECT --reject-with tcp-reset</span>
-<span class="err">ip6tables -A INPUT -p udp --dport 443 -j REJECT --reject-with icmp6-port-unreachable</span>
-<span class="err">ip6tables -P INPUT DROP</span>
+<div class="codehilite"><pre><span></span>ip6tables -A INPUT -i tun0 -p tcp --destination-port <span class="m">53</span> -j ACCEPT
+ip6tables -A INPUT -i tun0 -p udp --destination-port <span class="m">53</span> -j ACCEPT
+ip6tables -A INPUT -i tun0 -p tcp --destination-port <span class="m">80</span> -j ACCEPT
+ip6tables -A INPUT -p tcp --destination-port <span class="m">22</span> -j ACCEPT
+ip6tables -A INPUT -p tcp --destination-port <span class="m">1194</span> -j ACCEPT
+ip6tables -A INPUT -p udp --destination-port <span class="m">1194</span> -j ACCEPT
+ip6tables -I INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+ip6tables -I INPUT -i lo -j ACCEPT
+ip6tables -A INPUT -p udp --dport <span class="m">80</span> -j REJECT --reject-with icmp6-port-unreachable
+ip6tables -A INPUT -p tcp --dport <span class="m">443</span> -j REJECT --reject-with tcp-reset
+ip6tables -A INPUT -p udp --dport <span class="m">443</span> -j REJECT --reject-with icmp6-port-unreachable
+ip6tables -P INPUT DROP
 </pre></div>
-View the rules you just created</p>
-<div class="codehilite"><pre><span></span><span class="err">iptables -L --line-numbers</span>
+
+<p>View the rules you just created</p>
+<div class="codehilite"><pre><span></span>iptables -L --line-numbers
 </pre></div>
 
 <p>and they should look something like this:</p>
-<div class="codehilite"><pre><span></span><span class="k">Chain</span> <span class="k">INPUT</span> <span class="p">(</span><span class="n">policy</span> <span class="k">DROP</span><span class="p">)</span>
-<span class="n">num</span>  <span class="n">target</span>     <span class="n">prot</span> <span class="n">opt</span> <span class="k">source</span>               <span class="n">destination</span>
-<span class="mi">1</span>    <span class="n">ACCEPT</span>     <span class="k">all</span>  <span class="c1">--  anywhere             anywhere</span>
-<span class="mi">2</span>    <span class="n">ACCEPT</span>     <span class="k">all</span>  <span class="c1">--  anywhere             anywhere             state RELATED,ESTABLISHED</span>
-<span class="mi">3</span>    <span class="n">ACCEPT</span>     <span class="k">all</span>  <span class="c1">--  anywhere             anywhere</span>
-<span class="mi">4</span>    <span class="n">ACCEPT</span>     <span class="n">tcp</span>  <span class="c1">--  anywhere             anywhere             tcp dpt:domain</span>
-<span class="mi">5</span>    <span class="n">ACCEPT</span>     <span class="n">udp</span>  <span class="c1">--  anywhere             anywhere             udp dpt:domain</span>
-<span class="mi">6</span>    <span class="n">ACCEPT</span>     <span class="n">tcp</span>  <span class="c1">--  anywhere             anywhere             tcp dpt:http</span>
-<span class="mi">7</span>    <span class="n">ACCEPT</span>     <span class="n">udp</span>  <span class="c1">--  anywhere             anywhere             udp dpt:80</span>
-<span class="mi">8</span>    <span class="n">ACCEPT</span>     <span class="n">tcp</span>  <span class="c1">--  anywhere             anywhere             tcp dpt:ssh</span>
-<span class="mi">9</span>    <span class="n">ACCEPT</span>     <span class="n">tcp</span>  <span class="c1">--  anywhere             anywhere             tcp dpt:openvpn</span>
-<span class="mi">10</span>   <span class="n">ACCEPT</span>     <span class="n">udp</span>  <span class="c1">--  anywhere             anywhere             udp dpt:openvpn</span>
-<span class="mi">11</span>   <span class="n">ACCEPT</span>     <span class="n">tcp</span>  <span class="c1">--  10.8.0.0/24          anywhere             tcp dpt:domain</span>
-<span class="mi">12</span>   <span class="n">ACCEPT</span>     <span class="n">udp</span>  <span class="c1">--  10.8.0.0/24          anywhere             udp dpt:domain</span>
-<span class="mi">13</span>   <span class="n">ACCEPT</span>     <span class="n">tcp</span>  <span class="c1">--  10.8.0.0/24          anywhere             tcp dpt:http</span>
-<span class="mi">14</span>   <span class="n">ACCEPT</span>     <span class="n">udp</span>  <span class="c1">--  10.8.0.0/24          anywhere             udp dpt:80</span>
-<span class="mi">15</span>   <span class="n">ACCEPT</span>     <span class="n">tcp</span>  <span class="c1">--  10.8.0.0/24          anywhere             tcp dpt:domain</span>
-<span class="mi">16</span>   <span class="n">ACCEPT</span>     <span class="n">tcp</span>  <span class="c1">--  10.8.0.0/24          anywhere             tcp dpt:http</span>
-<span class="mi">17</span>   <span class="n">ACCEPT</span>     <span class="n">udp</span>  <span class="c1">--  10.8.0.0/24          anywhere             udp dpt:domain</span>
-<span class="mi">18</span>   <span class="n">ACCEPT</span>     <span class="n">udp</span>  <span class="c1">--  10.8.0.0/24          anywhere             udp dpt:80</span>
-<span class="mi">19</span>   <span class="n">REJECT</span>     <span class="n">tcp</span>  <span class="c1">--  anywhere             anywhere             tcp dpt:https reject-with icmp-port-unreachable</span>
+<div class="codehilite"><pre><span></span>Chain INPUT (policy DROP)
+num  target     prot opt source               destination
+1    ACCEPT     all  --  anywhere             anywhere
+2    ACCEPT     all  --  anywhere             anywhere             state RELATED,ESTABLISHED
+3    ACCEPT     all  --  anywhere             anywhere
+4    ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:domain
+5    ACCEPT     udp  --  anywhere             anywhere             udp dpt:domain
+6    ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:http
+7    ACCEPT     udp  --  anywhere             anywhere             udp dpt:80
+8    ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:ssh
+9    ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:openvpn
+10   ACCEPT     udp  --  anywhere             anywhere             udp dpt:openvpn
+11   ACCEPT     tcp  --  10.8.0.0/24          anywhere             tcp dpt:domain
+12   ACCEPT     udp  --  10.8.0.0/24          anywhere             udp dpt:domain
+13   ACCEPT     tcp  --  10.8.0.0/24          anywhere             tcp dpt:http
+14   ACCEPT     udp  --  10.8.0.0/24          anywhere             udp dpt:80
+15   ACCEPT     tcp  --  10.8.0.0/24          anywhere             tcp dpt:domain
+16   ACCEPT     tcp  --  10.8.0.0/24          anywhere             tcp dpt:http
+17   ACCEPT     udp  --  10.8.0.0/24          anywhere             udp dpt:domain
+18   ACCEPT     udp  --  10.8.0.0/24          anywhere             udp dpt:80
+19   REJECT     tcp  --  anywhere             anywhere             tcp dpt:https reject-with icmp-port-unreachable
 
-<span class="k">Chain</span> <span class="k">FORWARD</span> <span class="p">(</span><span class="n">policy</span> <span class="n">ACCEPT</span><span class="p">)</span>
-<span class="n">num</span>  <span class="n">target</span>     <span class="n">prot</span> <span class="n">opt</span> <span class="k">source</span>               <span class="n">destination</span>
+Chain FORWARD (policy ACCEPT)
+num  target     prot opt source               destination
 
-<span class="k">Chain</span> <span class="k">OUTPUT</span> <span class="p">(</span><span class="n">policy</span> <span class="n">ACCEPT</span><span class="p">)</span>
-<span class="n">num</span>  <span class="n">target</span>     <span class="n">prot</span> <span class="n">opt</span> <span class="k">source</span>               <span class="n">destination</span>
+Chain OUTPUT (policy ACCEPT)
+num  target     prot opt source               destination
 </pre></div>
 
 <p>Similarly, <code>ip6tables -L --line-numbers</code> should look like this:</p>
-<div class="codehilite"><pre><span></span><span class="k">Chain</span> <span class="k">INPUT</span> <span class="p">(</span><span class="n">policy</span> <span class="k">DROP</span><span class="p">)</span>
-<span class="n">num</span>  <span class="n">target</span>     <span class="n">prot</span> <span class="n">opt</span> <span class="k">source</span>               <span class="n">destination</span>
-<span class="mi">1</span>    <span class="n">ACCEPT</span>     <span class="k">all</span>      <span class="n">anywhere</span>             <span class="n">anywhere</span>
-<span class="mi">2</span>    <span class="n">ACCEPT</span>     <span class="k">all</span>      <span class="n">anywhere</span>             <span class="n">anywhere</span>             <span class="k">state</span> <span class="n">RELATED</span><span class="p">,</span><span class="n">ESTABLISHED</span>
-<span class="mi">3</span>    <span class="n">ACCEPT</span>     <span class="n">tcp</span>      <span class="n">anywhere</span>             <span class="n">anywhere</span>             <span class="n">tcp</span> <span class="n">dpt</span><span class="p">:</span><span class="k">domain</span>
-<span class="mi">4</span>    <span class="n">ACCEPT</span>     <span class="n">udp</span>      <span class="n">anywhere</span>             <span class="n">anywhere</span>             <span class="n">udp</span> <span class="n">dpt</span><span class="p">:</span><span class="k">domain</span>
-<span class="mi">5</span>    <span class="n">ACCEPT</span>     <span class="n">tcp</span>      <span class="n">anywhere</span>             <span class="n">anywhere</span>             <span class="n">tcp</span> <span class="n">dpt</span><span class="p">:</span><span class="n">http</span>
-<span class="mi">6</span>    <span class="n">ACCEPT</span>     <span class="n">udp</span>      <span class="n">anywhere</span>             <span class="n">anywhere</span>             <span class="n">udp</span> <span class="n">dpt</span><span class="p">:</span><span class="mi">80</span>
-<span class="mi">7</span>    <span class="n">ACCEPT</span>     <span class="n">tcp</span>      <span class="n">anywhere</span>             <span class="n">anywhere</span>             <span class="n">tcp</span> <span class="n">dpt</span><span class="p">:</span><span class="n">ssh</span>
-<span class="mi">8</span>    <span class="n">ACCEPT</span>     <span class="n">tcp</span>      <span class="n">anywhere</span>             <span class="n">anywhere</span>             <span class="n">tcp</span> <span class="n">dpt</span><span class="p">:</span><span class="n">openvpn</span>
-<span class="mi">9</span>    <span class="n">ACCEPT</span>     <span class="n">udp</span>      <span class="n">anywhere</span>             <span class="n">anywhere</span>             <span class="n">udp</span> <span class="n">dpt</span><span class="p">:</span><span class="n">openvpn</span>
-<span class="mi">10</span>   <span class="n">REJECT</span>     <span class="n">tcp</span>      <span class="n">anywhere</span>             <span class="n">anywhere</span>             <span class="n">tcp</span> <span class="n">dpt</span><span class="p">:</span><span class="n">https</span> <span class="n">reject</span><span class="o">-</span><span class="k">with</span> <span class="n">icmp6</span><span class="o">-</span><span class="n">port</span><span class="o">-</span><span class="n">unreachable</span>
+<div class="codehilite"><pre><span></span>Chain INPUT (policy DROP)
+num  target     prot opt source               destination
+1    ACCEPT     all      anywhere             anywhere
+2    ACCEPT     all      anywhere             anywhere             state RELATED,ESTABLISHED
+3    ACCEPT     tcp      anywhere             anywhere             tcp dpt:domain
+4    ACCEPT     udp      anywhere             anywhere             udp dpt:domain
+5    ACCEPT     tcp      anywhere             anywhere             tcp dpt:http
+6    ACCEPT     udp      anywhere             anywhere             udp dpt:80
+7    ACCEPT     tcp      anywhere             anywhere             tcp dpt:ssh
+8    ACCEPT     tcp      anywhere             anywhere             tcp dpt:openvpn
+9    ACCEPT     udp      anywhere             anywhere             udp dpt:openvpn
+10   REJECT     tcp      anywhere             anywhere             tcp dpt:https reject-with icmp6-port-unreachable
 
-<span class="k">Chain</span> <span class="k">FORWARD</span> <span class="p">(</span><span class="n">policy</span> <span class="n">ACCEPT</span><span class="p">)</span>
-<span class="n">num</span>  <span class="n">target</span>     <span class="n">prot</span> <span class="n">opt</span> <span class="k">source</span>               <span class="n">destination</span>
+Chain FORWARD (policy ACCEPT)
+num  target     prot opt source               destination
 
-<span class="k">Chain</span> <span class="k">OUTPUT</span> <span class="p">(</span><span class="n">policy</span> <span class="n">ACCEPT</span><span class="p">)</span>
-<span class="n">num</span>  <span class="n">target</span>     <span class="n">prot</span> <span class="n">opt</span> <span class="k">source</span>               <span class="n">destination</span>
+Chain OUTPUT (policy ACCEPT)
+num  target     prot opt source               destination
 </pre></div>
 
 <h5 id="verify-the-rules-are-working">Verify the rules are working<a class="headerlink" href="#verify-the-rules-are-working" title="Permanent link">&para;</a></h5>
 <p>Connect to the VPN as a client and verify you can resolve DNS names as well as access the Pi-hole Web interface.  These settings are stored in memory until you save them.  If it's not working, you can restart your server to start from scratch.  Alternatively, you could also go through and delete lines with <code>iptables -D INPUT &lt;SOME LINE NUMBER&gt;</code></p>
 <h4 id="save-your-iptables">Save your <code>iptables</code><a class="headerlink" href="#save-your-iptables" title="Permanent link">&para;</a></h4>
 <p>If things look good, you may want to save your rules so you can revert to them if you ever make changes to the firewall.  Save them with these commands:</p>
-<div class="codehilite"><pre><span></span><span class="err">iptables-save &gt; /etc/pihole/rules.v4</span>
-<span class="err">ip6tables-save &gt; /etc/pihole/rules.v6</span>
+<div class="codehilite"><pre><span></span>iptables-save &gt; /etc/pihole/rules.v4
+ip6tables-save &gt; /etc/pihole/rules.v6
 </pre></div>
 
 <p>Similarly, you can restore these rules:</p>
-<div class="codehilite"><pre><span></span><span class="err">iptables-restore &lt; /etc/pihole/rules.v4</span>
-<span class="err">ip6tables-restore &lt; /etc/pihole/rules.v6</span>
+<div class="codehilite"><pre><span></span>iptables-restore &lt; /etc/pihole/rules.v4
+ip6tables-restore &lt; /etc/pihole/rules.v6
 </pre></div>
                 
                   

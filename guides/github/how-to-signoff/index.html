@@ -1194,25 +1194,36 @@
                 
                   <h1>How to sign-off commits</h1>
                 
-                <p>Pi-hole requires a sign-off message in the following format appear on each commit in the pull request:
-<div class="codehilite"><pre><span></span><span class="n">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">my</span><span class="w"> </span><span class="k">commit</span><span class="w"> </span><span class="n">message</span><span class="w"></span>
+                <p>Pi-hole requires a sign-off message in the following format appear on each commit in the pull request:</p>
+<div class="codehilite"><pre><span></span>This is my commit message
 
-<span class="n">Signed</span><span class="o">-</span><span class="k">off</span><span class="o">-</span><span class="k">by</span><span class="err">:</span><span class="w"> </span><span class="n">Random</span><span class="w"> </span><span class="n">J</span><span class="w"> </span><span class="n">Developer</span><span class="w"> </span><span class="o">&lt;</span><span class="n">random</span><span class="nv">@developer</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">org</span><span class="o">&gt;</span><span class="w"></span>
+Signed-off-by: Random J Developer &lt;random@developer.example.org&gt;
 </pre></div>
-The text can either be manually added to your commit body, or you can add either <code>-s</code> or <code>--signoff</code> to your usual git commit commands. </p>
+
+<p>The text can either be manually added to your commit body, or you can add either <code>-s</code> or <code>--signoff</code> to your usual git commit commands.</p>
 <h4 id="creating-your-signoff">Creating your signoff<a class="headerlink" href="#creating-your-signoff" title="Permanent link">&para;</a></h4>
 <p>Git has a <code>-s | --signoff</code> command line option to append this automatically to your commit message:</p>
-<p><code>$ git commit --signoff --message 'This is my commit message'</code></p>
-<p><code>$ git commit -s -m "This is my commit message"</code></p>
+<div class="codehilite"><pre><span></span>git commit --signoff --message <span class="s1">&#39;This is my commit message&#39;</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>git commit -s -m <span class="s2">&quot;This is my commit message&quot;</span>
+</pre></div>
+
 <p>This will use your default git configuration which is found in <code>.git/config</code> and usually it is the <code>username systemaddress</code> of the machine which you are using.</p>
 <p>To change this, you can use the following commands (Note these only change the current repo settings, you will need to add <code>--global</code> for these commands to change the installation default).</p>
-<p>Your name:<br />
-<code>$ git config user.name "FIRST_NAME LAST_NAME"</code></p>
-<p>Your email:<br />
-<code>$ git config user.email "MY_NAME@example.com"</code></p>
+<p>Your name:</p>
+<div class="codehilite"><pre><span></span>git config user.name <span class="s2">&quot;FIRST_NAME LAST_NAME&quot;</span>
+</pre></div>
+
+<p>Your email:</p>
+<div class="codehilite"><pre><span></span>git config user.email <span class="s2">&quot;MY_NAME@example.com&quot;</span>
+</pre></div>
+
 <h4 id="how-to-amend-a-sign-off">How to amend a sign-off<a class="headerlink" href="#how-to-amend-a-sign-off" title="Permanent link">&para;</a></h4>
 <p>If you have authored a commit that is missing the signed-off-by line, you can amend your commits and push them to GitHub</p>
-<p><code>$ git commit --amend --signoff</code></p>
+<div class="codehilite"><pre><span></span>git commit --amend --signoff
+</pre></div>
+
 <p>If you've pushed your changes to Github already you'll need to force push your branch after this with <code>git push -f</code>.</p>
                 
                   
