@@ -1227,18 +1227,22 @@
 <div class="codehilite"><pre><span></span>curl -sSL https://install.pi-hole.net <span class="p">|</span> bash
 </pre></div>
 
+<!-- markdownlint-disable code-block-style -->
+
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p><a href="https://pi-hole.net/2016/07/25/curling-and-piping-to-bash">Piping to <code>bash</code> is a controversial topic</a>, as it prevents you from <a href="https://github.com/pi-hole/pi-hole/blob/master/automated%20install/basic-install.sh">reading code that is about to run</a> on your system.</p>
 <p>If you would prefer to review the code before installation, we provide these alternative installation methods.</p>
 </div>
-<h4 id="alternative-1-clone-our-repository-and-run">Alternative 1: Clone our repository and run<a class="headerlink" href="#alternative-1-clone-our-repository-and-run" title="Permanent link">&para;</a></h4>
+<!-- markdownlint-enable code-block-style -->
+
+<h3 id="alternative-1-clone-our-repository-and-run">Alternative 1: Clone our repository and run<a class="headerlink" href="#alternative-1-clone-our-repository-and-run" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>git clone --depth <span class="m">1</span> https://github.com/pi-hole/pi-hole.git Pi-hole
 <span class="nb">cd</span> <span class="s2">&quot;Pi-hole/automated install/&quot;</span>
 sudo bash basic-install.sh
 </pre></div>
 
-<h4 id="alternative-2-manually-download-the-installer-and-run">Alternative 2: Manually download the installer and run<a class="headerlink" href="#alternative-2-manually-download-the-installer-and-run" title="Permanent link">&para;</a></h4>
+<h3 id="alternative-2-manually-download-the-installer-and-run">Alternative 2: Manually download the installer and run<a class="headerlink" href="#alternative-2-manually-download-the-installer-and-run" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>wget -O basic-install.sh https://install.pi-hole.net
 sudo bash basic-install.sh
 </pre></div>

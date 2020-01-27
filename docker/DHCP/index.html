@@ -1272,7 +1272,7 @@
                 
                 <h1 id="docker-dhcp-and-network-modes">Docker DHCP and Network Modes<a class="headerlink" href="#docker-dhcp-and-network-modes" title="Permanent link">&para;</a></h1>
 <p>Docker runs in a separate network by default called a docker bridge network, which makes DHCP want to serve addresses to that network and not your LAN network where you probably want it. This document details why Docker Pi-hole DHCP is different from normal Pi-hole and how to fix the problem.</p>
-<h3 id="technical-details">Technical details<a class="headerlink" href="#technical-details" title="Permanent link">&para;</a></h3>
+<h2 id="technical-details">Technical details<a class="headerlink" href="#technical-details" title="Permanent link">&para;</a></h2>
 <p>Docker's bridge network mode is default and recommended as a more secure setting for containers because docker is all about isolation, they isolate processes by default and the bridge network isolates the networking by default too. You gain access to the isolated container's service ports by using port forwards in your container's runtime config; for example <code>-p 67:67</code> is DHCP. However DHCP protocol operates through a network 'broadcast' which cannot span multiple networks (docker's bridge, and your LAN network). In order to get DHCP on to your network there are a few approaches:</p>
 <h2 id="working-network-modes">Working network modes<a class="headerlink" href="#working-network-modes" title="Permanent link">&para;</a></h2>
 <p>Here are details on setting up DHCP for Docker Pi-hole for various network modes available in docker.</p>

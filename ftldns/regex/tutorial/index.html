@@ -599,40 +599,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#advanced-examples" class="md-nav__link">
-    Advanced examples
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#block-domain-with-only-numbers" class="md-nav__link">
-    Block domain with only numbers
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#block-domains-without-subdomains" class="md-nav__link">
-    Block domains without subdomains
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cheatsheet" class="md-nav__link">
-    Cheatsheet
-  </a>
-  
-</li>
-      
       
       
       
@@ -1287,40 +1253,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#advanced-examples" class="md-nav__link">
-    Advanced examples
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#block-domain-with-only-numbers" class="md-nav__link">
-    Block domain with only numbers
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#block-domains-without-subdomains" class="md-nav__link">
-    Block domains without subdomains
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cheatsheet" class="md-nav__link">
-    Cheatsheet
-  </a>
-  
-</li>
-      
       
       
       
@@ -1342,7 +1274,7 @@
                 
                 <h1 id="pi-hole-regular-expressions-tutorial">Pi-hole regular expressions tutorial<a class="headerlink" href="#pi-hole-regular-expressions-tutorial" title="Permanent link">&para;</a></h1>
 <p>We provide a short but thorough introduction to our regular expressions implementation. This may come in handy if you are designing blocking rules (see also our cheat sheet below!). In our implementation, all characters match themselves except for the following special characters: <code>.[{}()\*+?|^$</code>. If you want to match those, you need to escape them like <code>\.</code> for a literal period, but no rule without exception (see character groups below for further details).</p>
-<h3 id="anchors-and">Anchors (<code>^</code> and <code>$</code>)<a class="headerlink" href="#anchors-and" title="Permanent link">&para;</a></h3>
+<h2 id="anchors-and">Anchors (<code>^</code> and <code>$</code>)<a class="headerlink" href="#anchors-and" title="Permanent link">&para;</a></h2>
 <p>First of all, we look at anchors which can be used to indicate the start or the end of a domain, respectively. If you don't specify anchors, the match may be partial (see examples below).</p>
 <table>
 <thead>
@@ -1370,7 +1302,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="wildcard">Wildcard (<code>.</code>)<a class="headerlink" href="#wildcard" title="Permanent link">&para;</a></h3>
+<h2 id="wildcard">Wildcard (<code>.</code>)<a class="headerlink" href="#wildcard" title="Permanent link">&para;</a></h2>
 <p>An unescaped period stands for any <em>single</em> character.</p>
 <table>
 <thead>
@@ -1386,7 +1318,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="bounds-and-multipliers-and">Bounds and multipliers (<code>{}</code>, <code>*</code>, <code>+</code>, and <code>?</code>)<a class="headerlink" href="#bounds-and-multipliers-and" title="Permanent link">&para;</a></h3>
+<h2 id="bounds-and-multipliers-and">Bounds and multipliers (<code>{}</code>, <code>*</code>, <code>+</code>, and <code>?</code>)<a class="headerlink" href="#bounds-and-multipliers-and" title="Permanent link">&para;</a></h2>
 <p>With bounds, one can denote the number of times something has to occur:</p>
 <table>
 <thead>
@@ -1464,7 +1396,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="character-groups">Character groups (<code>[]</code>)<a class="headerlink" href="#character-groups" title="Permanent link">&para;</a></h3>
+<h2 id="character-groups">Character groups (<code>[]</code>)<a class="headerlink" href="#character-groups" title="Permanent link">&para;</a></h2>
 <p>With character groups, a set of characters can be matched:</p>
 <table>
 <thead>
@@ -1509,7 +1441,7 @@
 </tbody>
 </table>
 <p>Bracket expressions are an exception to the character escape rule. Inside them, all special characters, including the backslash (<code>\</code>), lose their special powers, i.e. they match themselves exactly. Furthermore, to include a literal <code>]</code> in the list, make it the first character (like <code>[]]</code> or <code>[^]]</code> if negated). To include a literal <code>-</code>, make it the first or last character, or the second endpoint of a range (e.g. <code>[a-z-]</code> to match <code>a</code> to <code>z</code> and <code>-</code>).</p>
-<h3 id="groups">Groups (<code>()</code>)<a class="headerlink" href="#groups" title="Permanent link">&para;</a></h3>
+<h2 id="groups">Groups (<code>()</code>)<a class="headerlink" href="#groups" title="Permanent link">&para;</a></h2>
 <p>Using groups, we can enclose regular expressions, they are most powerful when combined with bounds or multipliers (see also alternations below).</p>
 <table>
 <thead>
@@ -1533,7 +1465,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="alternations">Alternations (<code>|</code>)<a class="headerlink" href="#alternations" title="Permanent link">&para;</a></h3>
+<h2 id="alternations">Alternations (<code>|</code>)<a class="headerlink" href="#alternations" title="Permanent link">&para;</a></h2>
 <p>Alternations can be used as an "or" operator in regular expressions.</p>
 <table>
 <thead>
@@ -1557,7 +1489,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="character-classes-class">Character classes (<code>[:class:]</code>)<a class="headerlink" href="#character-classes-class" title="Permanent link">&para;</a></h3>
+<h2 id="character-classes-class">Character classes (<code>[:class:]</code>)<a class="headerlink" href="#character-classes-class" title="Permanent link">&para;</a></h2>
 <p>In addition to character groups, there are also some special character classes available, such as</p>
 <table>
 <thead>
@@ -1595,9 +1527,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="advanced-examples">Advanced examples<a class="headerlink" href="#advanced-examples" title="Permanent link">&para;</a></h2>
+<h1 id="advanced-examples">Advanced examples<a class="headerlink" href="#advanced-examples" title="Permanent link">&para;</a></h1>
 <p>After going through our quick tutorial, we provide some more advances examples so you can test your knowledge.</p>
-<h3 id="block-domain-with-only-numbers">Block domain with only numbers<a class="headerlink" href="#block-domain-with-only-numbers" title="Permanent link">&para;</a></h3>
+<h2 id="block-domain-with-only-numbers">Block domain with only numbers<a class="headerlink" href="#block-domain-with-only-numbers" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><span class="err">^[0-9][^a-z]+\.((com)|(edu))$</span>
 </pre></div>
 
@@ -1607,7 +1539,7 @@
 </pre></div>
 
 <p>A domain name shall not start or end with a dash but can contain any number of them. It must be followed by a <abbr title="Top-level domain (domains at the highest level in the hierarchical Domain Name System of the Internet., e.g. &quot;.com&quot;, &quot;.org&quot;, etc.)">TLD</abbr> (we assume a valid <abbr title="Top-level domain (domains at the highest level in the hierarchical Domain Name System of the Internet., e.g. &quot;.com&quot;, &quot;.org&quot;, etc.)">TLD</abbr> length of two to seven characters)</p>
-<h2 id="cheatsheet">Cheatsheet<a class="headerlink" href="#cheatsheet" title="Permanent link">&para;</a></h2>
+<h1 id="cheatsheet">Cheatsheet<a class="headerlink" href="#cheatsheet" title="Permanent link">&para;</a></h1>
 <table>
 <thead>
 <tr>

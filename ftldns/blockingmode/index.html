@@ -1428,14 +1428,14 @@
 
 <p><strong>This blocking mode is the Pi-hole developers' recommendation.</strong></p>
 <p>Following <a href="https://tools.ietf.org/html/rfc3513#section-2.5.2">RFC 3513, Internet Protocol Version 6 (<abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr>) Addressing Architecture, section 2.5.2</a>, the address <code>0:0:0:0:0:0:0:0</code> (or <code>::</code> for short) is the unspecified address. It must never be assigned to any node and indicates the absence of an address. Following <a href="https://tools.ietf.org/html/rfc1122#section-3.2">RFC1122, section 3.2</a>, the address <code>0.0.0.0</code> can be understood as the <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> equivalent of <code>::</code>.</p>
-<h5 id="advantages">Advantages<a class="headerlink" href="#advantages" title="Permanent link">&para;</a></h5>
+<h3 id="advantages">Advantages<a class="headerlink" href="#advantages" title="Permanent link">&para;</a></h3>
 <ul>
 <li>The client does not even try to establish a connection for the requested website</li>
 <li>Speedup and less traffic</li>
 <li>Solves potential <abbr title="HTTP Secure (HTTPS), an extension of the Hypertext Transfer Protocol (HTTP) for secure communication over a computer network">HTTPS</abbr> timeouts as requests are never performed</li>
 <li>No need to run a webserver on your Pi-hole (reduces complexity when running other web services on the same machine)</li>
 </ul>
-<h5 id="disadvantage">Disadvantage<a class="headerlink" href="#disadvantage" title="Permanent link">&para;</a></h5>
+<h3 id="disadvantage">Disadvantage<a class="headerlink" href="#disadvantage" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Blocking page cannot be shown and whitelisting has to be performed from the dashboard or <abbr title="Command Line Interface">CLI</abbr></li>
 </ul>
@@ -1452,12 +1452,12 @@
 <span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>        <span class="mi">2</span>       <span class="k">IN</span>      <span class="n">A</span>       <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">11</span>
 </pre></div>
 
-<h5 id="advantage">Advantage<a class="headerlink" href="#advantage" title="Permanent link">&para;</a></h5>
+<h3 id="advantage">Advantage<a class="headerlink" href="#advantage" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Shows blocking page from which blocked domains can be whitelisted</li>
 <li>Serves <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr>-only replies and hence mitigates issues with rotating <abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> prefixes</li>
 </ul>
-<h5 id="disadvantages">Disadvantages<a class="headerlink" href="#disadvantages" title="Permanent link">&para;</a></h5>
+<h3 id="disadvantages">Disadvantages<a class="headerlink" href="#disadvantages" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Requires a webserver to run on your Pi-hole</li>
 <li>May cause time-outs for <abbr title="HTTP Secure (HTTPS), an extension of the Hypertext Transfer Protocol (HTTP) for secure communication over a computer network">HTTPS</abbr> content even with properly configured firewall rules</li>
@@ -1476,11 +1476,11 @@
 <span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>        <span class="mi">2</span>       <span class="k">IN</span>      <span class="n">AAAA</span>    <span class="n">fda2</span><span class="p">:</span><span class="mi">2001</span><span class="p">:</span><span class="mi">4756</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="n">ab27</span><span class="p">:</span><span class="n">beff</span><span class="p">:</span><span class="n">ef37</span><span class="p">:</span><span class="mi">4242</span>
 </pre></div>
 
-<h5 id="advantage_1">Advantage<a class="headerlink" href="#advantage_1" title="Permanent link">&para;</a></h5>
+<h3 id="advantage_1">Advantage<a class="headerlink" href="#advantage_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Shows blocking page from which blocked domains can be whitelisted</li>
 </ul>
-<h5 id="disadvantages_1">Disadvantages<a class="headerlink" href="#disadvantages_1" title="Permanent link">&para;</a></h5>
+<h3 id="disadvantages_1">Disadvantages<a class="headerlink" href="#disadvantages_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Requires a webserver to run on your Pi-hole</li>
 <li>May cause time-outs for <abbr title="HTTP Secure (HTTPS), an extension of the Hypertext Transfer Protocol (HTTP) for secure communication over a computer network">HTTPS</abbr> content even with properly configured firewall rules</li>
@@ -1496,7 +1496,7 @@
 <span class="err">;doubleclick.net.               IN      ANY</span>
 </pre></div>
 
-<h5 id="advantages-disadvantages">Advantages &amp; Disadvantages<a class="headerlink" href="#advantages-disadvantages" title="Permanent link">&para;</a></h5>
+<h3 id="advantages-disadvantages">Advantages &amp; Disadvantages<a class="headerlink" href="#advantages-disadvantages" title="Permanent link">&para;</a></h3>
 <p>Similar to <code>NULL</code> blocking, but experiments suggest that clients may try to resolve blocked domains more often compared to <code>NULL</code> blocking.</p>
 <h2 id="pi-holes-nodata-blocking">Pi-hole's NODATA blocking<a class="headerlink" href="#pi-holes-nodata-blocking" title="Permanent link">&para;</a></h2>
 <p><code>/etc/pihole/pihole-FTL.conf</code> setting:</p>
@@ -1508,7 +1508,7 @@
 <span class="err">;doubleclick.net.               IN      ANY</span>
 </pre></div>
 
-<h5 id="advantages-disadvantages_1">Advantages &amp; Disadvantages<a class="headerlink" href="#advantages-disadvantages_1" title="Permanent link">&para;</a></h5>
+<h3 id="advantages-disadvantages_1">Advantages &amp; Disadvantages<a class="headerlink" href="#advantages-disadvantages_1" title="Permanent link">&para;</a></h3>
 <p>Similar to <code>NXDOMAIN</code> blocking. Clients might have a better acceptance of <code>NODATA</code> replies compared to <code>NXDOMAIN</code> replies.</p>
                 
                   
