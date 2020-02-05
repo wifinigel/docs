@@ -681,8 +681,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../github/contributing/" title="Contributing on Github" class="md-nav__link">
-      Contributing on Github
+    <a href="../../github/contributing/" title="Contributing on GitHub" class="md-nav__link">
+      Contributing on GitHub
     </a>
   </li>
 
@@ -1188,16 +1188,16 @@
 <p>This tutorial is tailored for setting up OpenVPN on a cloud-hosted virtual server (such as <a href="https://www.digitalocean.com/?refcode=344d234950e1">Digital Ocean</a>). If you wish to have this working on your home network, you will need to tailor Pi-hole to listen on <code>eth0</code> (or similar), which we explain in <a href="../dual-operation/">this section of the tutorial</a>.</p>
 </blockquote>
 <h3 id="high-level-overview">High-level Overview<a class="headerlink" href="#high-level-overview" title="Permanent link">&para;</a></h3>
-<p>Using a VPN is a responsible, respectful, and safe way to access your Pi-hole's capabilities remotely.  Setting up a DNS server has become a simple task with Pi-hole's automated installer, which has resulted in many people knowingly--or unknowingly--creating an open resolver, which aids in DNS Amplification Attacks.</p>
-<p>We do not encourage open resolvers but there are always people wanting access to their ad-blocking capabilities outside of their home network, whether it's on their cellular network or on an unsecured wireless network.  This article aims to provide a step-by-step walk-through on setting up a server running Pi-hole and OpenVPN so you can connect to your Pi-hole's DNS from anywhere.  This guide should work for a private server installed on your private network, but it will also work for cloud servers, such as those created on <a href="https://www.digitalocean.com/?refcode=344d234950e1">Digital Ocean</a>.</p>
-<p><strong>This tutorial walks you through the installation of Pi-hole combined with an VPN server for secure access from remote clients</strong>.</p>
+<p>Using a VPN is a responsible, respectful, and safe way to access your Pi-hole's capabilities remotely. Setting up a DNS server has become a simple task with Pi-hole's automated installer, which has resulted in many people knowingly--or unknowingly--creating an open resolver, which aids in DNS Amplification Attacks.</p>
+<p>We do not encourage open resolvers but there are always people wanting access to their ad-blocking capabilities outside of their home network, whether it's on their cellular network or on an unsecured wireless network. This article aims to provide a step-by-step walk-through on setting up a server running Pi-hole and OpenVPN so you can connect to your Pi-hole's DNS from anywhere. This guide should work for a private server installed on your private network, but it will also work for cloud servers, such as those created on <a href="https://www.digitalocean.com/?refcode=344d234950e1">Digital Ocean</a>.</p>
+<p><strong>This tutorial walks you through the installation of Pi-hole combined with a VPN server for secure access from remote clients</strong>.</p>
 <p>Via this VPN, you can:</p>
 <ul>
 <li>use the DNS server and full filtering capabilities of your Pi-hole from everywhere around the globe</li>
 <li>access your admin interface remotely</li>
 <li>encrypt your Internet traffic</li>
 </ul>
-<p>If you don't want a full-tunnel, we provide a wiki of how to <a href="../only-dns-via-vpn/">set up your server to exclusively route DNS traffic, but nothing else via the VPN</a>.  On another optional page, we describe how to set up Pi-hole + VPN in such a way that it is <a href="../dual-operation/">usable both locally (no VPN) and from remote (through VPN)</a>, while preserving full functionality.</p>
+<p>If you don't want a full-tunnel, we provide a wiki of how to <a href="../only-dns-via-vpn/">set up your server to exclusively route DNS traffic, but nothing else via the VPN</a>. On another optional page, we describe how to set up Pi-hole + VPN in such a way that it is <a href="../dual-operation/">usable both locally (no VPN) and from remote (through VPN)</a> while preserving full functionality.</p>
 <p>In the end, you will have access to a VPN that uses Pi-hole for DNS and tunnels some or all of your network traffic</p>
 <hr />
 <p>This manual is partially based on this <a href="https://discourse.pi-hole.net/t/pi-hole-with-openvpn-vps-debian/861">HowTo</a> on <a href="https://discourse.pi-hole.net">Discourse</a>.</p>

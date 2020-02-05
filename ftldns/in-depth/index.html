@@ -642,7 +642,7 @@
       
         <li class="md-nav__item">
   <a href="#command-line-arguments" class="md-nav__link">
-    Command line arguments
+    Command-line arguments
   </a>
   
 </li>
@@ -745,8 +745,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../guides/github/contributing/" title="Contributing on Github" class="md-nav__link">
-      Contributing on Github
+    <a href="../../guides/github/contributing/" title="Contributing on GitHub" class="md-nav__link">
+      Contributing on GitHub
     </a>
   </li>
 
@@ -1191,7 +1191,7 @@
       
         <li class="md-nav__item">
   <a href="#command-line-arguments" class="md-nav__link">
-    Command line arguments
+    Command-line arguments
   </a>
   
 </li>
@@ -1239,12 +1239,12 @@
                   <h1>In-depth manual</h1>
                 
                 <h2 id="available-interfaces">Available interfaces<a class="headerlink" href="#available-interfaces" title="Permanent link">&para;</a></h2>
-<p>Pi-hole stats can be accessed via a standard Unix socket (<code>var/run/pihole/FTL.sock</code>), a telnet-like connection (<abbr title="Transmission Control Protocol (protocol providing reliable, ordered, and error-checked delivery of data between applications running on hosts communicating via an IP network)">TCP</abbr> socket on port <code>4711</code>) as well as indirectly via the Web <abbr title="Application Programming Interface (a set of subroutine definitions, protocols, and tools for building application software)">API</abbr> (<code>admin/api.php</code>), and command line (<code>pihole -c -j</code>). You can out find more details below.</p>
-<h2 id="command-line-arguments">Command line arguments<a class="headerlink" href="#command-line-arguments" title="Permanent link">&para;</a></h2>
+<p>Pi-hole stats can be accessed via a standard Unix socket (<code>var/run/pihole/FTL.sock</code>), a telnet-like connection (<abbr title="Transmission Control Protocol (protocol providing reliable, ordered, and error-checked delivery of data between applications running on hosts communicating via an IP network)">TCP</abbr> socket on port <code>4711</code>) as well as indirectly via the Web <abbr title="Application Programming Interface (a set of subroutine definitions, protocols, and tools for building application software)">API</abbr> (<code>admin/api.php</code>), and the command line (<code>pihole -c -j</code>). You can out find more details below.</p>
+<h2 id="command-line-arguments">Command-line arguments<a class="headerlink" href="#command-line-arguments" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>debug</code> - Don't go into daemon mode (stay in foreground) + more verbose logging</li>
-<li><code>test</code> - Start <code>FTL</code> and process everything, but shut down immediately afterwards</li>
-<li><code>version</code> - Don't start <code>FTL</code>, show only version</li>
+<li><code>test</code> - Start <code>FTL</code> and process everything, but shut down immediately afterward</li>
+<li><code>version</code> - Don't start <code>FTL</code>, only show the version</li>
 <li><code>tag</code> - Don't start <code>FTL</code>, show only git tag</li>
 <li><code>branch</code> - Don't start <code>FTL</code>, show only git branch <code>FTL</code> was compiled from</li>
 <li><code>no-daemon</code> or <code>-f</code> - Don't go into background (daemon mode)</li>
@@ -1252,7 +1252,7 @@
 <li><code>dnsmasq-test</code> - Test resolver config file syntax</li>
 <li><code>--</code> everything behind <code>--</code> will be passed as options to the internal resolver</li>
 </ul>
-<p>Command line arguments can be arbitrarily combined, e.g. <code>pihole-FTL debug test</code></p>
+<p>Command-line arguments can be arbitrarily combined, e.g. <code>pihole-FTL debug test</code></p>
 <h2 id="file-locations">File locations<a class="headerlink" href="#file-locations" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>/var/log/pihole-FTL.log</code> log file</li>
@@ -1261,10 +1261,10 @@
 <li><code>/var/run/pihole/FTL.sock</code> Unix socket</li>
 </ul>
 <h2 id="domain-lists-format">Domain lists format<a class="headerlink" href="#domain-lists-format" title="Permanent link">&para;</a></h2>
-<p>Since Pi-hole v4.0, we use a simpler domain list format for the two important block list files <code>gravity.list</code> and <code>black.list</code>. In contrast to the traditional <abbr title="The computer file /etc/hosts is an operating system file that maps hostnames to IP addresses">HOSTS</abbr> format (which caused a lot of overhead), the domain list format is the minimal possible solution for saving memory while still using plain text lists for your convenience. When <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> imports these two files, they are walked by our improved list parser speeding up the loading of block lists significantly. Regardless which blocking mode (<code>IP</code> or <code>NXDOMAIN</code>) is selected, <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> will always load the lists into its internal hashed cache to be able to determine the blocking status within a few milliseconds, even when you're using huge blocking lists on low-end devices. With everything we do, we design <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> for maximum efficiency also on low-performance devices.</p>
+<p>Since Pi-hole v4.0, we use a simpler domain list format for the two important blocklist files <code>gravity.list</code> and <code>black.list</code>. In contrast to the traditional <abbr title="The computer file /etc/hosts is an operating system file that maps hostnames to IP addresses">HOSTS</abbr> format (which caused a lot of overhead), the domain list format is the minimal possible solution for saving memory while still using plain text lists for your convenience. When <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> imports these two files, they are walked by our improved list parser speeding up the loading of blocklists significantly. Regardless of which blocking mode (<code>IP</code> or <code>NXDOMAIN</code>) is selected, <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> will always load the lists into its internal hashed cache to be able to determine the blocking status within a few milliseconds, even when you're using huge blocking lists on low-end devices. With everything we do, we design <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> for maximum efficiency also on low-performance devices.</p>
 <h2 id="linux-capabilities">Linux capabilities<a class="headerlink" href="#linux-capabilities" title="Permanent link">&para;</a></h2>
-<p>Capabilities (<abbr title="Portable Operating System Interface (a family of standards specified by the IEEE Computer Society for maintaining compatibility between operating systems)">POSIX</abbr> 1003.1e, <a href="http://man7.org/linux/man-pages/man7/capabilities.7.html">capabilities(7)</a>) provide fine-grained control over superuser permissions, allowing use of the <code>root</code> user to be avoided.
-For the purpose of performing permission checks, traditional UNIX implementations distinguish two categories of processes: <em>privileged processes</em> (superuser or <code>root</code>), and <em>unprivileged processes</em>. Privileged processes bypass all kernel permission checks, while unprivileged processes are subject to full permission checking based on the process's credentials (user and group permissions and supplementary process capabilities). Capabilities are implemented on Linux using extended attributes (<a href="http://man7.org/linux/man-pages/man5/attr.5.html">xattr(7)</a>) in the <code>security</code> namespace. Extended attributes are supported by all major Linux file systems, including <abbr title="second extended filesystem is a file system for the Linux kernel (introduced 1993)">Ext2</abbr>, <abbr title="third extended filesystem is a file system for the Linux kernel (introduced 2001)">Ext3</abbr>, <abbr title="fourth extended filesystem is a file system for the Linux kernel (stable as of 2008)">Ext4</abbr>, <abbr title="B-tree file system">Btrfs</abbr>, <abbr title="journaling file system by IBM">JFS</abbr>, <abbr title="journaling file system created by Silicon Graphics, Inc">XFS</abbr>, and <abbr title="general-purpose, journaled computer file system">ReiserFS</abbr>.</p>
+<p>Capabilities (<abbr title="Portable Operating System Interface (a family of standards specified by the IEEE Computer Society for maintaining compatibility between operating systems)">POSIX</abbr> 1003.1e, <a href="http://man7.org/linux/man-pages/man7/capabilities.7.html">capabilities(7)</a>) provide fine-grained control over superuser permissions, allowing the use of the <code>root</code> user to be avoided.
+To perform permission checks, traditional UNIX implementations distinguish two categories of processes: <em>privileged processes</em> (superuser or <code>root</code>), and <em>unprivileged processes</em>. Privileged processes bypass all kernel permission checks, while unprivileged processes are subject to full permission checking based on the process's credentials (user and group permissions and supplementary process capabilities). Capabilities are implemented on Linux using extended attributes (<a href="http://man7.org/linux/man-pages/man5/attr.5.html">xattr(7)</a>) in the <code>security</code> namespace. Extended attributes are supported by all major Linux file systems, including <abbr title="second extended filesystem is a file system for the Linux kernel (introduced 1993)">Ext2</abbr>, <abbr title="third extended filesystem is a file system for the Linux kernel (introduced 2001)">Ext3</abbr>, <abbr title="fourth extended filesystem is a file system for the Linux kernel (stable as of 2008)">Ext4</abbr>, <abbr title="B-tree file system">Btrfs</abbr>, <abbr title="journaling file system by IBM">JFS</abbr>, <abbr title="journaling file system created by Silicon Graphics, Inc">XFS</abbr>, and <abbr title="general-purpose, journaled computer file system">ReiserFS</abbr>.</p>
 <p>For your safety and comfort, <code>pihole-FTL</code> is run by the entirely unprivileged user <code>pihole</code>.
 Whereas <code>dnsmasq</code> is running as <code>root</code> process, we designed <code>pihole-FTL</code> to be run by the entirely unprivileged user <code>pihole</code>. As a consequence, <code>pihole-FTL</code> will not be able to access the files of any other user on this system or mess around with your system's configuration.</p>
 <p>However, this also implies that <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> cannot bind to ports 53 (<abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr>) among some other necessary capabilities related to <abbr title="Dynamic Host Configuration Protocol (network management protocol for configuring Internet Protocol version 4 (IPv4) hosts with IP addresses)">DHCP</abbr> services. To establish a strong security model, we explicitly grant the <code>pihole-FTL</code> process additional capabilities so that <code>pihole-FTL</code> (but no other processes which may be started by <code>pihole</code>) can bind to port 53, etc., without giving any additional permissions to the <code>pihole</code> user.</p>
@@ -1274,7 +1274,7 @@ Whereas <code>dnsmasq</code> is running as <code>root</code> process, we designe
 <li><code>CAP_NET_RAW</code>: use raw and packet sockets (we need a RAW socket for handling <abbr title="Dynamic Host Configuration Protocol version 6 (a network protocol for configuring Internet Protocol version 6 (IPv6) hosts with IP addresses)">DHCPv6</abbr> requests)</li>
 <li><code>CAP_NET_ADMIN</code>: modify routing tables and other network-related operations (to allow for handling <abbr title="Dynamic Host Configuration Protocol (network management protocol for configuring Internet Protocol version 4 (IPv4) hosts with IP addresses)">DHCP</abbr> requests)</li>
 </ul>
-<p>Users that cannot use Linux capabilities for various reasons (lacking kernel or file system support) can modify the startup scripts of <code>pihole-FTL</code> to ensure the daemon is started as <code>root</code>. However, be aware of that you do so on your own risk (although we don't expect problems to arise).</p>
+<p>Users that cannot use Linux capabilities for various reasons (lacking kernel or file system support) can modify the startup scripts of <code>pihole-FTL</code> to ensure the daemon is started as <code>root</code>. However, be aware that you do so on your own risk (although we don't expect problems to arise).</p>
                 
                   
                 

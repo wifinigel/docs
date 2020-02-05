@@ -681,8 +681,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../github/contributing/" title="Contributing on Github" class="md-nav__link">
-      Contributing on Github
+    <a href="../github/contributing/" title="Contributing on GitHub" class="md-nav__link">
+      Contributing on GitHub
     </a>
   </li>
 
@@ -1292,14 +1292,14 @@
                 
                 <h3 id="why-use-dns-over-https">Why use DNS-Over-HTTPS?<a class="headerlink" href="#why-use-dns-over-https" title="Permanent link">&para;</a></h3>
 <p>DNS-Over-HTTPS is a protocol for performing DNS lookups via the same protocol you use to browse the web securely: <strong>HTTPS</strong>.</p>
-<p>With standard DNS, requests are sent in plain-text, with no method to detect tampering or misbehaviour. This means that not only can a malicous actor look at all the DNS requests you are making (and therefore what websites you are visiting), they can also tamper with the response and redirect your device to resources in their control (such as a fake login page for internet banking).</p>
+<p>With standard DNS, requests are sent in plain-text, with no method to detect tampering or misbehavior. This means that not only can a malicious actor look at all the DNS requests you are making (and therefore what websites you are visiting), they can also tamper with the response and redirect your device to resources in their control (such as a fake login page for internet banking).</p>
 <p>DNS-Over-HTTPS prevents this by using standard HTTPS requests to retrieve DNS information. This means that the connection from the device to the DNS server is secure and can not easily be snooped, monitored, tampered with or blocked.
-It is worth noting however, that the upstream DNS-Over-HTTPS provider will still have this ability.</p>
+It is worth noting, however, that the upstream DNS-Over-HTTPS provider will still have this ability.</p>
 <h2 id="configuring-dns-over-https">Configuring DNS-Over-HTTPS<a class="headerlink" href="#configuring-dns-over-https" title="Permanent link">&para;</a></h2>
-<p>Along with releasing their DNS service <a href="https://blog.cloudflare.com/announcing-1111/">1.1.1.1</a>, Cloudflare implemented DNS-Over-HTTPS proxy functionality in to one of their tools: <code>cloudflared</code>.</p>
-<p>In the following sections we will be covering how to install and configure this tool on <code>Pi-hole</code>.</p>
+<p>Along with releasing their DNS service <a href="https://blog.cloudflare.com/announcing-1111/">1.1.1.1</a>, Cloudflare implemented DNS-Over-HTTPS proxy functionality into one of their tools: <code>cloudflared</code>.</p>
+<p>In the following sections, we will be covering how to install and configure this tool on <code>Pi-hole</code>.</p>
 <h3 id="installing-cloudflared">Installing <code>cloudflared</code><a class="headerlink" href="#installing-cloudflared" title="Permanent link">&para;</a></h3>
-<p>The installation is fairly straightforward, however be aware of what architecture you are installing on (<code>amd64</code> or <code>arm</code>).</p>
+<p>The installation is fairly straightforward, however, be aware of what architecture you are installing on (<code>amd64</code> or <code>arm</code>).</p>
 <h4 id="amd64-architecture-most-devices">AMD64 architecture (most devices)<a class="headerlink" href="#amd64-architecture-most-devices" title="Permanent link">&para;</a></h4>
 <p>Download the installer package, then use <code>apt-get</code> to install the package along with any dependencies. Proceed to run the binary with the <code>-v</code> flag to check it is all working:</p>
 <div class="codehilite"><pre><span></span><span class="c1"># For Debian/Ubuntu</span>
@@ -1338,7 +1338,7 @@ cloudflared -v
 sudo chown cloudflared:cloudflared /usr/local/bin/cloudflared
 </pre></div>
 
-<p>Then create the <code>systemd</code> script by copying the following in to <code>/etc/systemd/system/cloudflared.service</code>. This will control the running of the service and allow it to run on startup:</p>
+<p>Then create the <code>systemd</code> script by copying the following into <code>/etc/systemd/system/cloudflared.service</code>. This will control the running of the service and allow it to run on startup:</p>
 <div class="codehilite"><pre><span></span><span class="k">[Unit]</span>
 <span class="na">Description</span><span class="o">=</span><span class="s">cloudflared DNS over HTTPS proxy</span>
 <span class="na">After</span><span class="o">=</span><span class="s">syslog.target network-online.target</span>

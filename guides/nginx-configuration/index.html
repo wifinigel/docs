@@ -681,8 +681,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../github/contributing/" title="Contributing on Github" class="md-nav__link">
-      Contributing on Github
+    <a href="../github/contributing/" title="Contributing on GitHub" class="md-nav__link">
+      Contributing on GitHub
     </a>
   </li>
 
@@ -1293,19 +1293,19 @@
 
 </li>
 <li>
-<p>Create username for authentication for the admin - we don't want other people in our network change our black and whitelist ;)</p>
+<p>Create a username for authentication for the admin - we don't want other people in our network change our black and whitelist ;)</p>
 <div class="codehilite"><pre><span></span>htpasswd -c /etc/nginx/.htpasswd exampleuser
 </pre></div>
 
 </li>
 <li>
-<p>Change ownership of html directory to nginx user</p>
+<p>Change ownership of the html directory to nginx user</p>
 <div class="codehilite"><pre><span></span>chown -R www-data:www-data /var/www/html
 </pre></div>
 
 </li>
 <li>
-<p>Make sure html directory is writable</p>
+<p>Make sure the html directory is writable</p>
 <div class="codehilite"><pre><span></span>chmod -R <span class="m">755</span> /var/www/html
 </pre></div>
 
@@ -1317,7 +1317,7 @@
 
 </li>
 <li>
-<p>Start nginx webserver</p>
+<p>Start nginx web server</p>
 <div class="codehilite"><pre><span></span>service nginx start
 </pre></div>
 

@@ -744,8 +744,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../guides/github/contributing/" title="Contributing on Github" class="md-nav__link">
-      Contributing on Github
+    <a href="../../guides/github/contributing/" title="Contributing on GitHub" class="md-nav__link">
+      Contributing on GitHub
     </a>
   </li>
 
@@ -1246,7 +1246,7 @@
 <p>Number of total insertions into the cache. This number can be substantially larger than <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> cache size as expiring cache entries naturally make room for new insertions over time. Each lookup with a non-zero <abbr title="Time-To-Live is a mechanism that limits the lifespan or lifetime of data in a computer or network">TTL</abbr> will be cached.</p>
 <p>This information may also be queried using <code>dig +short chaos txt insertions.bind</code></p>
 <h4 id="dns-cache-evictions"><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> cache evictions<a class="headerlink" href="#dns-cache-evictions" title="Permanent link">&para;</a></h4>
-<p>Number of cache entries that had to be removed although the corresponding entries were <strong>not</strong> expired. Old cache entries get removed if the cache is full to make space for more recent domains. The cache size should be increased when this number is larger than zero.</p>
+<p>The number of cache entries that had to be removed although the corresponding entries were <strong>not</strong> expired. Old cache entries get removed if the cache is full to make space for more recent domains. The cache size should be increased when this number is larger than zero.</p>
 <p>This information may also be queried using <code>dig +short chaos txt evictions.bind</code></p>
                 
                   

@@ -686,8 +686,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../guides/github/contributing/" title="Contributing on Github" class="md-nav__link">
-      Contributing on Github
+    <a href="../../guides/github/contributing/" title="Contributing on GitHub" class="md-nav__link">
+      Contributing on GitHub
     </a>
   </li>
 
@@ -1122,7 +1122,7 @@
                 
                   <h1>Debugging FTLDNS</h1>
                 
-                <p>Once you are used to it, you can skip most of the steps. Debugging <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> is actually quite easy as <code>pihole-FTL</code> has been designed such that a debugger can be attached to an already running process. It can give you insights into how software (not limited to <code>pihole-FTL</code>) works.</p>
+                <p>Once you are used to it, you can skip most of the steps. Debugging <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> is quite easy. <code>pihole-FTL</code> has been designed so that a debugger can be attached to an already running process. This will give you insights into how software (not limited to <code>pihole-FTL</code>) works.</p>
 <ol>
 <li>Install <code>screen</code> and <code>gdb</code> using <code>sudo apt-get install screen gdb</code></li>
 <li>Start a screen session (it will allow you to come back even if the <abbr title="Secure Shell is a cryptographic network protocol for operating network services securely over an unsecured network">SSH</abbr> connection died)<ul>
@@ -1132,8 +1132,8 @@
 <li>Start a screen session using <code>screen</code></li>
 <li>Use <code>sudo gdb -p $(pidof pihole-FTL)</code> to attach the debugger to the already running <code>pihole-FTL</code> process</li>
 <li>Once loading of the symbols has finished (the <code>(gdb)</code> input prompt is shown), run <code>handle SIGHUP nostop SIGPIPE nostop</code></li>
-<li>Enter <code>continue</code> to continue operation of <code>pihole-FTL</code> inside the debugger. All debugger features are now available.</li>
-<li>When <code>pihole-FTL</code> has crashed, copy&amp;paste the terminal output into a (new) issue. Also type <code>backtrace</code> and include its output. We might ask for additional information in order to isolate your particular issue.</li>
+<li>Enter <code>continue</code> to continue the operation of <code>pihole-FTL</code> inside the debugger. All debugger features are now available.</li>
+<li>When <code>pihole-FTL</code> has crashed, copy &amp; paste the terminal output into a (new) issue. Also, type <code>backtrace</code> and include its output. We might ask for additional information in order to isolate your particular issue.</li>
 </ol>
 <!-- When you want to detach the debugger from `FTL` without terminating the process, you can hit `Ctrl+C` and enter `detach` followed by `quit`. -->
                 

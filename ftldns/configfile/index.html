@@ -561,8 +561,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#host-name-resolution" class="md-nav__link">
-    Host name resolution
+  <a href="#hostname-resolution" class="md-nav__link">
+    Hostname resolution
   </a>
   
     <nav class="md-nav">
@@ -1046,8 +1046,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../guides/github/contributing/" title="Contributing on Github" class="md-nav__link">
-      Contributing on Github
+    <a href="../../guides/github/contributing/" title="Contributing on GitHub" class="md-nav__link">
+      Contributing on GitHub
     </a>
   </li>
 
@@ -1579,8 +1579,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#host-name-resolution" class="md-nav__link">
-    Host name resolution
+  <a href="#hostname-resolution" class="md-nav__link">
+    Hostname resolution
   </a>
   
     <nav class="md-nav">
@@ -1868,12 +1868,12 @@
 <hr />
 <h4 id="ftlport"><code>FTLPORT=4711</code><a class="headerlink" href="#ftlport" title="Permanent link">&para;</a></h4>
 <p>On which port should <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> be listening?</p>
-<h3 id="host-name-resolution">Host name resolution<a class="headerlink" href="#host-name-resolution" title="Permanent link">&para;</a></h3>
+<h3 id="hostname-resolution">Hostname resolution<a class="headerlink" href="#hostname-resolution" title="Permanent link">&para;</a></h3>
 <h4 id="resolve_ipv6"><code>RESOLVE_IPV6=yes|no</code><a class="headerlink" href="#resolve_ipv6" title="Permanent link">&para;</a></h4>
-<p>Should <code>FTL</code> try to resolve <abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> addresses to host names?</p>
+<p>Should <code>FTL</code> try to resolve <abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> addresses to hostnames?</p>
 <hr />
 <h4 id="resolve_ipv4"><code>RESOLVE_IPV4=yes|no</code><a class="headerlink" href="#resolve_ipv4" title="Permanent link">&para;</a></h4>
-<p>Should <code>FTL</code> try to resolve <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> addresses to host names?</p>
+<p>Should <code>FTL</code> try to resolve <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> addresses to hostnames?</p>
 <h3 id="database-settings">Database settings<a class="headerlink" href="#database-settings" title="Permanent link">&para;</a></h3>
 <p><strong><a href="../database/">Further details concerning the database</a></strong></p>
 <h4 id="dbimport"><code>DBIMPORT=yes|no</code><a class="headerlink" href="#dbimport" title="Permanent link">&para;</a></h4>
@@ -1886,7 +1886,7 @@
 <p>How often do we store queries in <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr>'s database [minutes]?</p>
 <hr />
 <h4 id="dbfile"><code>DBFILE=/etc/pihole/pihole-FTL.db</code><a class="headerlink" href="#dbfile" title="Permanent link">&para;</a></h4>
-<p>Specify path and filename of <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr>'s <abbr title="Database engine that handles an SQL databases in a file">SQLite3</abbr> long-term database. Setting this to <code>DBFILE=</code> disables the database altogether</p>
+<p>Specify path and filename of <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr>'s <abbr title="Database engine that handles SQL databases in a file">SQLite3</abbr> long-term database. Setting this to <code>DBFILE=</code> disables the database altogether</p>
 <h3 id="file-options">File options<a class="headerlink" href="#file-options" title="Permanent link">&para;</a></h3>
 <h4 id="file_LOGFILE"><code>LOGFILE=/var/log/pihole-FTL.log</code><a class="headerlink" href="#file_LOGFILE" title="Permanent link">&para;</a></h4>
 <p>Location of <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr>'s log file. If you want to move the log file to a different place, also consider <a href="https://discourse.pi-hole.net/t/moving-the-pi-hole-log-to-another-location-device/2041">this FAQ article</a>.</p>
@@ -1910,7 +1910,7 @@
 <p>Print debugging information about database actions. This prints performed SQL statements as well as some general information such as the time it took to store the queries and how many have been saved to the database.</p>
 <hr />
 <h4 id="debug_networking"><code>DEBUG_NETWORKING=false|true</code><a class="headerlink" href="#debug_networking" title="Permanent link">&para;</a></h4>
-<p>Prints a list of the detected interfaces on startup of <code>pihole-FTL</code>. Also prints whether these interfaces are <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> or <abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> interfaces.</p>
+<p>Prints a list of the detected interfaces on startup of <code>pihole-FTL</code>. Also, prints whether these interfaces are <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> or <abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> interfaces.</p>
 <hr />
 <h4 id="debug_locks"><code>DEBUG_LOCKS=false|true</code><a class="headerlink" href="#debug_locks" title="Permanent link">&para;</a></h4>
 <p>Print information about shared memory locks. Messages will be generated when waiting, obtaining, and releasing a lock.</p>

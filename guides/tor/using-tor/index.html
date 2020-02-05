@@ -681,8 +681,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../github/contributing/" title="Contributing on Github" class="md-nav__link">
-      Contributing on Github
+    <a href="../../github/contributing/" title="Contributing on GitHub" class="md-nav__link">
+      Contributing on GitHub
     </a>
   </li>
 
@@ -1241,7 +1241,7 @@
                 <p><strong>This is an unsupported configuration created by the community</strong></p>
 <p>To enhance your privacy you might want to route all or part of your Browser Traffic over Tor.</p>
 <h3 id="tor-browser">Tor Browser<a class="headerlink" href="#tor-browser" title="Permanent link">&para;</a></h3>
-<p>The easiest and most reliable solution would be to use the <a href="https://www.torproject.org/download/">Tor Browser</a>. Though that won't use your Pi-hole DNS Server out of the box. You can however disable <code>Proxy DNS when using SOCKS v5</code> in Tor Browsers Preferences -&gt; Advanced -&gt; Network -&gt; Settings and <a href="#make-sure-it-works">make sure</a> to point your system to use Pi-hole with DNS over Tor activated.</p>
+<p>The easiest and most reliable solution would be to use the <a href="https://www.torproject.org/download/">Tor Browser</a>. Though that won't use your Pi-hole DNS Server out of the box. You can, however, disable <code>Proxy DNS when using SOCKS v5</code> in Tor Browsers Preferences -&gt; Advanced -&gt; Network -&gt; Settings and <a href="#make-sure-it-works">make sure</a> to point your system to use Pi-hole with DNS over Tor activated.</p>
 <h3 id="your-browser">Your Browser<a class="headerlink" href="#your-browser" title="Permanent link">&para;</a></h3>
 <p>Edit <code>/etc/tor/torrc</code> on your Pi-hole as root, include the following line at the end and save the changes</p>
 <div class="codehilite"><pre><span></span><span class="err">SocksPort 0.0.0.0:9050</span>

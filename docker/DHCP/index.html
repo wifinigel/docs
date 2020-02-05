@@ -764,8 +764,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../guides/github/contributing/" title="Contributing on Github" class="md-nav__link">
-      Contributing on Github
+    <a href="../../guides/github/contributing/" title="Contributing on GitHub" class="md-nav__link">
+      Contributing on GitHub
     </a>
   </li>
 
@@ -1273,7 +1273,7 @@
                 <h1 id="docker-dhcp-and-network-modes">Docker DHCP and Network Modes<a class="headerlink" href="#docker-dhcp-and-network-modes" title="Permanent link">&para;</a></h1>
 <p>Docker runs in a separate network by default called a docker bridge network, which makes DHCP want to serve addresses to that network and not your LAN network where you probably want it. This document details why Docker Pi-hole DHCP is different from normal Pi-hole and how to fix the problem.</p>
 <h2 id="technical-details">Technical details<a class="headerlink" href="#technical-details" title="Permanent link">&para;</a></h2>
-<p>Docker's bridge network mode is default and recommended as a more secure setting for containers because docker is all about isolation, they isolate processes by default and the bridge network isolates the networking by default too. You gain access to the isolated container's service ports by using port forwards in your container's runtime config; for example <code>-p 67:67</code> is DHCP. However DHCP protocol operates through a network 'broadcast' which cannot span multiple networks (docker's bridge, and your LAN network). In order to get DHCP on to your network there are a few approaches:</p>
+<p>Docker's bridge network mode is default and recommended as a more secure setting for containers because docker is all about isolation, they isolate processes by default and the bridge network isolates the networking by default too. You gain access to the isolated container's service ports by using port forwards in your container's runtime config; for example <code>-p 67:67</code> is DHCP. However, DHCP protocol operates through a network 'broadcast' which cannot span multiple networks (docker's bridge, and your LAN network). In order to get DHCP on to your network there are a few approaches:</p>
 <h2 id="working-network-modes">Working network modes<a class="headerlink" href="#working-network-modes" title="Permanent link">&para;</a></h2>
 <p>Here are details on setting up DHCP for Docker Pi-hole for various network modes available in docker.</p>
 <h3 id="docker-pi-hole-with-host-networking-mode">Docker Pi-hole with host networking mode<a class="headerlink" href="#docker-pi-hole-with-host-networking-mode" title="Permanent link">&para;</a></h3>
@@ -1289,12 +1289,12 @@
 <p>Having the container get its own IP not only solves the broadcast problem but avoids port conflicts you might have on devices such as NAS devices with web interfaces. Tony Lawrence detailed macvlan setup for Pi-hole first in the second part of his great blog series about <a href="http://tonylawrence.com/posts/unix/synology/running-pihole-inside-docker/">Running Pi-hole on Synology Docker</a>, check it out here: <a href="http://tonylawrence.com/posts/unix/synology/free-your-synology-ports/">Free your Synology ports with Macvlan</a></p>
 <h3 id="docker-pi-hole-with-a-bridge-networking">Docker Pi-hole with a bridge networking<a class="headerlink" href="#docker-pi-hole-with-a-bridge-networking" title="Permanent link">&para;</a></h3>
 <p><strong>Advantages</strong>: Works well with container web reverse proxies like Nginx or Traefik</p>
-<p>If you want to use docker's bridged network mode then you need to run a DHCP relay. A relay points to your containers forwarded port 67 and spreads the broadcast signal from isolated docker bridge onto your LAN network. Relays are very simple software, you just have to configure it to point to your Docker host's IP port 67.</p>
+<p>If you want to use docker's bridged network mode then you need to run a DHCP relay. A relay points to your containers forwarded port 67 and spreads the broadcast signal from an isolated docker bridge onto your LAN network. Relays are very simple software, you just have to configure it to point to your Docker host's IP port 67.</p>
 <p>Although uncommon, if your router is an advanced enough router it may support a DHCP relay. Try googling for your router manufacturer + DHCP relay or looking in your router's configuration around the DHCP settings or advanced areas.</p>
-<p>If your router doesn't support it, you can run a software / container based DHCP relay on your LAN instead. The author of DNSMasq made a very tiny simple one called <a href="http://thekelleys.org.uk/dhcp-helper/READ-ME">DHCP-helper</a>. <a href="https://discourse.pi-hole.net/t/dhcp-with-docker-compose-and-bridge-networking/17038">DerFetzer</a> kindly shared his great setup of a DHCP-helper container on the Pi-hole Discourse forums.</p>
+<p>If your router doesn't support it, you can run a software/container based DHCP relay on your LAN instead. The author of dnsmasq made a very tiny simple one called <a href="http://thekelleys.org.uk/dhcp-helper/READ-ME">DHCP-helper</a>. <a href="https://discourse.pi-hole.net/t/dhcp-with-docker-compose-and-bridge-networking/17038">DerFetzer</a> kindly shared his great setup of a DHCP-helper container on the Pi-hole Discourse forums.</p>
 <h3 id="warning-about-the-default-bridge-network">Warning about the Default bridge network<a class="headerlink" href="#warning-about-the-default-bridge-network" title="Permanent link">&para;</a></h3>
 <p>The out of the box <a href="https://docs.docker.com/network/bridge/#differences-between-user-defined-bridges-and-the-default-bridge">default bridge network has some limitations</a> that a user created bridge network won't have. These limitations make it painful to use especially when connecting multiple containers together.</p>
-<p>Avoid using the built in default docker bridge network, the simplest way to do this is just use a docker-compose setup since it creates its own network automatically. If compose isn't an option the <a href="https://docs.docker.com/network/bridge/">bridge network</a> docs should help you create your own.</p>
+<p>Avoid using the built-in default docker bridge network, the simplest way to do this is just use a docker-compose setup since it creates its own network automatically. If compose isn't an option the <a href="https://docs.docker.com/network/bridge/">bridge network</a> docs should help you create your own.</p>
                 
                   
                 
@@ -1331,13 +1331,13 @@
           </a>
         
         
-          <a href="../../guides/github/contributing/" title="Contributing on Github" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../guides/github/contributing/" title="Contributing on GitHub" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Contributing on Github
+                Contributing on GitHub
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

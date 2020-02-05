@@ -681,8 +681,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../github/contributing/" title="Contributing on Github" class="md-nav__link">
-      Contributing on Github
+    <a href="../../github/contributing/" title="Contributing on GitHub" class="md-nav__link">
+      Contributing on GitHub
     </a>
   </li>
 
@@ -1255,8 +1255,8 @@
                   <h1>General</h1>
                 
                 <h2 id="create-a-client-config-file-ovpn">Create a client config file (<code>.ovpn</code>)<a class="headerlink" href="#create-a-client-config-file-ovpn" title="Permanent link">&para;</a></h2>
-<p>Now that the server is configured, you'll want to connect some clients so you can make use of your Pi-hole wherever you are.  Doing so requires the use of a certificate.  You generate these and the resulting <code>.ovpn</code> file by running the installer and choosing <code>1) Add a new user</code> for each client that will connect to the VPN.</p>
-<p>You can repeat this process for as many clients as you need.  In this example, we'll "Add a new user" by naming the <code>.ovpn</code> file the same as the client's hostname but you may want to adopt your own naming strategy.</p>
+<p>Now that the server is configured, you'll want to connect some clients so you can make use of your Pi-hole wherever you are. Doing so requires the use of a certificate. You generate these and the resulting <code>.ovpn</code> file by running the installer and choosing <code>1) Add a new user</code> for each client that will connect to the VPN.</p>
+<p>You can repeat this process for as many clients as you need. In this example, we'll "Add a new user" by naming the <code>.ovpn</code> file the same as the client's hostname but you may want to adopt your own naming strategy.</p>
 <p>Run the OpenVPN installer again</p>
 <div class="codehilite"><pre><span></span>./openvpn-install.sh
 </pre></div>
@@ -1276,16 +1276,16 @@ Please, use one word only, no special characters
 Client name: iphone7
 </pre></div>
 
-<p>This will generate a <code>.ovpn</code> file, which needs to be copied to your client machine (often times using the OpenVPN app).  This process also generates a few other files found in <code>/etc/openvpn/server/easy-rsa/pki/</code>, which make public key authentication possible; you only need to worry about the <code>.ovpn</code> file, though.</p>
+<p>This will generate a <code>.ovpn</code> file, which needs to be copied to your client machine (oftentimes using the OpenVPN app). This process also generates a few other files found in <code>/etc/openvpn/server/easy-rsa/pki/</code>, which make public key authentication possible; you only need to worry about the <code>.ovpn</code> file, though.</p>
 <h2 id="connect-a-client-using-the-ovpn-file">Connect a client using the <code>.ovpn</code> file<a class="headerlink" href="#connect-a-client-using-the-ovpn-file" title="Permanent link">&para;</a></h2>
-<p>The OpenVPN documentation has some decent <a href="https://openvpn.net/vpn-server-resources/">guides on connecting desktop clients for Mac, Windows, and Linux</a>, so we'll instead explain how to connect a mobile device, since that provides the most usefulness in today's world--<strong>connecting to your ad-blocking VPN via a mobile device</strong>.  We'll go through two examples:</p>
+<p>The OpenVPN documentation has some decent <a href="https://openvpn.net/vpn-server-resources/">guides on connecting desktop clients for Mac, Windows, and Linux</a>, so we'll instead explain how to connect a mobile device since that provides the most usefulness in today's world--<strong>connecting to your ad-blocking VPN via a mobile device</strong>. We'll go through two examples:</p>
 <ol>
 <li>connect an iPhone using the OpenVPN Connect mobile app (see <a href="../android-client/">here</a> for Android)</li>
 <li>connect a Linux machine</li>
 </ol>
 <h3 id="ios">iOS<a class="headerlink" href="#ios" title="Permanent link">&para;</a></h3>
-<p>First make sure the OpenVPN connect app is installed on your phone or mobile device.</p>
-<p>Import the <code>.ovpn</code> file into iOS.  There are several ways to do this, but be careful about transferring it over an insecure medium.</p>
+<p>First, make sure the OpenVPN connect app is installed on your phone or mobile device.</p>
+<p>Import the <code>.ovpn</code> file into iOS. There are several ways to do this, but be careful about transferring it over an insecure medium.</p>
 <ol>
 <li>Airdrop the file from another device</li>
 <li>Store the file in a cloud app and open it ion your device</li>
@@ -1294,7 +1294,7 @@ Client name: iphone7
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Anyone who gets his hands on this configuration/certificate file can obtain full access to your VPN. Make sure that you use only trusted paths for transferring the file (e.g. never send it via an un-encrypted channel, e.g. email or FTP). Best strategy is to use an USB thumb drive to avoid any network transport at all (when possible). Make sure to delete the certificate on the USB drive afterwards.</p>
+<p>Anyone who gets his hands on this configuration/certificate file can obtain full access to your VPN. Make sure that you use only trusted paths for transferring the file (e.g. never send it via an unencrypted channel, e.g. email or FTP). The best strategy is to use a USB thumb drive to avoid any network transport at all (when possible). Make sure to delete the certificate on the USB drive afterward.</p>
 </div>
 <div class="admonition notice">
 <p class="admonition-title">Notice</p>

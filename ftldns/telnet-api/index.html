@@ -686,8 +686,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../guides/github/contributing/" title="Contributing on Github" class="md-nav__link">
-      Contributing on Github
+    <a href="../../guides/github/contributing/" title="Contributing on GitHub" class="md-nav__link">
+      Contributing on GitHub
     </a>
   </li>
 
@@ -1125,7 +1125,7 @@
                 <p>Connect via e.g. <code>telnet 127.0.0.1 4711</code> or use <code>echo "&gt;command" | nc 127.0.0.1 4711</code></p>
 <ul>
 <li>
-<p><code>&gt;quit</code>: Closes connection to client</p>
+<p><code>&gt;quit</code>: Closes the connection to the client</p>
 </li>
 <li>
 <p><code>&gt;stats</code> : Get current statistics</p>
@@ -1181,7 +1181,7 @@ status enabled
 <p>Variant: <code>&gt;top-ads (14)</code> to show (up to) 14 entries</p>
 </li>
 <li>
-<p><code>top-clients</code> : get recently active top clients (<abbr title="Internet protocol address">IP</abbr> addresses + host names (if available))</p>
+<p><code>top-clients</code> : get recently active top clients (<abbr title="Internet protocol address">IP</abbr> addresses + hostnames (if available))</p>
 <div class="codehilite"><pre><span></span>0 9373 192.168.2.1 router
 1 484 192.168.2.2 work-machine
 2 8 127.0.0.1 localhost
@@ -1190,7 +1190,7 @@ status enabled
 <p>Variant: <code>&gt;top-clients (9)</code> to show (up to) 9 client entries or <code>&gt;top-clients withzero (15)</code> to show (up to) 15 clients even if they have not been active recently (see PR #124 for further details)</p>
 </li>
 <li>
-<p><code>&gt;forward-dest</code> : get forward destinations (<abbr title="Internet protocol address">IP</abbr> addresses + host names (if available)) along with the percentage. The first result (<abbr title="Indentifier">ID</abbr> -2) will always be the percentage of domains answered from blocklists, whereas the second result (<abbr title="Indentifier">ID</abbr> -1) will be the queries answered from cache</p>
+<p><code>&gt;forward-dest</code> : get forward destinations (<abbr title="Internet protocol address">IP</abbr> addresses + hostnames (if available)) along with the percentage. The first result (<abbr title="Identifier">ID</abbr> -2) will always be the percentage of domains answered from blocklists, whereas the second result (<abbr title="Identifier">ID</abbr> -1) will be the queries answered from the cache</p>
 <div class="codehilite"><pre><span></span>-2 18.70 blocklist blocklist
 -1 67.10 cache cache
 0 14.20 127.0.0.1 localhost
@@ -1234,7 +1234,7 @@ TXT: 0.00
 <p>Variant: <code>&gt;recentBlocked (4)</code> show the four most recent blocked domains</p>
 </li>
 <li>
-<p><code>&gt;clientID</code> : Get <abbr title="Indentifier">ID</abbr> of currently connected client</p>
+<p><code>&gt;clientID</code> : Get <abbr title="Identifier">ID</abbr> of currently connected client</p>
 <div class="codehilite"><pre><span></span>6
 </pre></div>
 

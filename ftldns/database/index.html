@@ -766,8 +766,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../guides/github/contributing/" title="Contributing on Github" class="md-nav__link">
-      Contributing on Github
+    <a href="../../guides/github/contributing/" title="Contributing on GitHub" class="md-nav__link">
+      Contributing on GitHub
     </a>
   </li>
 
@@ -1280,7 +1280,7 @@
                 
                   <h1>Long-term database</h1>
                 
-                <p>Pi-hole <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> uses the well-known relational database management system <abbr title="Database engine that handles an SQL databases in a file">SQLite3</abbr> as its long-term storage of query data. In contrast to many other database management solutions, <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> does not need a server database engine as the database engine is directly embedded in <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr>. It seems an obvious choice as it is probably the most widely deployed database engine - it is used today by several widespread web browsers, operating systems, and embedded systems (such as mobile phones), among others. Hence, it is rich in supported platforms and offered features. SQLite implements most of the SQL-92 standard for SQL and can be used for high-level queries.</p>
+                <p>Pi-hole <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> uses the well-known relational database management system <abbr title="Database engine that handles SQL databases in a file">SQLite3</abbr> as its long-term storage of query data. In contrast to many other database management solutions, <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> does not need a server database engine as the database engine is directly embedded in <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr>. It seems an obvious choice as it is probably the most widely deployed database engine - it is used today by several widespread web browsers, operating systems, and embedded systems (such as mobile phones), among others. Hence, it is rich in supported platforms and offered features. SQLite implements most of the SQL-92 standard for SQL and can be used for high-level queries.</p>
 <p>We update the database file periodically and on exit of <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> (triggered e.g. by a <code>service pihole-FTL restart</code>). The updating frequency can be controlled by the parameter <a href="../configfile/#dbinterval"><code>DBINTERVAL</code></a> and defaults to once per minute. We think this interval is sufficient to protect against data losses due to power failure events. <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> needs the database to populate its internal history of the most recent 24 hours. If the database is disabled, <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> will show an empty query history after a restart.</p>
 <p>The location of the database can be configured by the config parameter <a href="../configfile/#dbfile"><code>DBFILE</code></a>. It defaults to <code>/etc/pihole/pihole-FTL.db</code>. If the given file does not exist, <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> will create a new (empty) database file.</p>
 <p>Another way of controlling the size of the long-term database is setting a maximum age for log queries to keep using the config parameter <a href="../configfile/#maxdbdays"><code>MAXDBDAYS</code></a>. It defaults to 365 days, i.e. queries that are older than one year get periodically removed to limit the growth of the long-term database file.</p>
@@ -1296,7 +1296,7 @@ sudo service pihole-FTL start
 
 <p>Note that <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> resolution will not be available as long as <code>pihole-FTL</code> is stopped.</p>
 <h3 id="backup-database">Backup database<a class="headerlink" href="#backup-database" title="Permanent link">&para;</a></h3>
-<p>The database can be backed up while <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> is running when using the <abbr title="Database engine that handles an SQL databases in a file">SQLite3</abbr> Online backup method, e.g.,</p>
+<p>The database can be backed up while <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> is running when using the <abbr title="Database engine that handles SQL databases in a file">SQLite3</abbr> Online backup method, e.g.,</p>
 <div class="codehilite"><pre><span></span>sqlite3 /etc/pihole/pihole-FTL.db <span class="s2">&quot;.backup /home/pi/pihole-FTL.db.backup&quot;</span>
 </pre></div>
 
@@ -1318,7 +1318,7 @@ sudo service pihole-FTL start
 <td><code>id</code></td>
 <td>integer</td>
 <td>No</td>
-<td>autoincrement <abbr title="Indentifier">ID</abbr> for the table, only used by <abbr title="Database engine that handles an SQL databases in a file">SQLite3</abbr>, not by <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr></td>
+<td>autoincrement <abbr title="Identifier">ID</abbr> for the table, only used by <abbr title="Database engine that handles SQL databases in a file">SQLite3</abbr>, not by <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr></td>
 </tr>
 <tr>
 <td><code>timestamp</code></td>
@@ -1358,7 +1358,7 @@ sudo service pihole-FTL start
 </tr>
 </tbody>
 </table>
-<p><abbr title="Database engine that handles an SQL databases in a file">SQLite3</abbr> syntax used to create this table:</p>
+<p><abbr title="Database engine that handles SQL databases in a file">SQLite3</abbr> syntax used to create this table:</p>
 <div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">queries</span> <span class="p">(</span> <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTOINCREMENT</span><span class="p">,</span> <span class="k">timestamp</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">type</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="n">status</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">domain</span> <span class="nb">TEXT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="n">client</span> <span class="nb">TEXT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">forward</span> <span class="nb">TEXT</span> <span class="p">);</span>
 <span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_queries_timestamps</span> <span class="k">ON</span> <span class="n">queries</span> <span class="p">(</span><span class="k">timestamp</span><span class="p">);</span>
 </pre></div>
@@ -1379,7 +1379,7 @@ sudo service pihole-FTL start
 <td><code>id</code></td>
 <td>integer</td>
 <td>No</td>
-<td><abbr title="Indentifier">ID</abbr> for the table used to select a counter (see below)</td>
+<td><abbr title="Identifier">ID</abbr> for the table used to select a counter (see below)</td>
 </tr>
 <tr>
 <td><code>value</code></td>
@@ -1392,7 +1392,7 @@ sudo service pihole-FTL start
 <table>
 <thead>
 <tr>
-<th>Counter <abbr title="Indentifier">ID</abbr></th>
+<th>Counter <abbr title="Identifier">ID</abbr></th>
 <th>Interpretation</th>
 </tr>
 </thead>
@@ -1407,13 +1407,13 @@ sudo service pihole-FTL start
 </tr>
 </tbody>
 </table>
-<p><abbr title="Database engine that handles an SQL databases in a file">SQLite3</abbr> syntax used to create this table:</p>
+<p><abbr title="Database engine that handles SQL databases in a file">SQLite3</abbr> syntax used to create this table:</p>
 <div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">counters</span> <span class="p">(</span> <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="n">value</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="p">);</span>
 </pre></div>
 
 <h3 id="ftl-table"><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> table<a class="headerlink" href="#ftl-table" title="Permanent link">&para;</a></h3>
 <p>The <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> table contains some data used by <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> for determining which queries to save to the database. This table does not contain any entries of general interest.</p>
-<p><abbr title="Database engine that handles an SQL databases in a file">SQLite3</abbr> syntax used to create this table:</p>
+<p><abbr title="Database engine that handles SQL databases in a file">SQLite3</abbr> syntax used to create this table:</p>
 <div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">ftl</span> <span class="p">(</span> <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="n">value</span> <span class="nb">BLOB</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="p">);</span>
 </pre></div>
 
@@ -1421,7 +1421,7 @@ sudo service pihole-FTL start
 <table>
 <thead>
 <tr>
-<th><abbr title="Indentifier">ID</abbr></th>
+<th><abbr title="Identifier">ID</abbr></th>
 <th>Query Type</th>
 </tr>
 </thead>
@@ -1466,7 +1466,7 @@ sudo service pihole-FTL start
 <table>
 <thead>
 <tr>
-<th><abbr title="Indentifier">ID</abbr></th>
+<th><abbr title="Identifier">ID</abbr></th>
 <th>Query Type</th>
 </tr>
 </thead>

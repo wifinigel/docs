@@ -904,8 +904,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../guides/github/contributing/" title="Contributing on Github" class="md-nav__link">
-      Contributing on Github
+    <a href="../../guides/github/contributing/" title="Contributing on GitHub" class="md-nav__link">
+      Contributing on GitHub
     </a>
   </li>
 
@@ -1556,7 +1556,7 @@
                 
                   <h1>The <samp>pihole</samp> command</h1>
                 
-                <p>Pi-hole makes use of many commands, and here we will break down those required to administer the program via the Command Line Interface.</p>
+                <p>Pi-hole makes use of many commands, and here we will break down those required to administer the program via the command-line Interface.</p>
 <table>
 <thead>
 <tr>
@@ -1682,7 +1682,7 @@
 </tr>
 </tbody>
 </table>
-<p>The core script of Pi-hole provides the ability to tie many DNS related functions into a simple and user friendly management system, so that one may easily block unwanted content such as advertisements. For both the Command Line Interface (CLI) and Web Interface, we achieve this through the <code>pihole</code> command (this helps minimise code duplication, and allows users to read exactly what's happening using <code>bash</code> scripting). This "wrapper" elevates the current user (whether it be your own user account, or <code>www-data</code>) using <code>sudo</code>, but restricts the elevation to solely what can be called through the wrapper.</p>
+<p>The core script of Pi-hole provides the ability to tie many DNS related functions into a simple and user-friendly management system, so that one may easily block unwanted content such as advertisements. For both the Command-line Interface (CLI) and Web Interface, we achieve this through the <code>pihole</code> command (this helps minimize code duplication, and allows users to read exactly what's happening using <code>bash</code> scripting). This "wrapper" elevates the current user (whether it be your own user account, or <code>www-data</code>) using <code>sudo</code>, but restricts the elevation to solely what can be called through the wrapper.</p>
 <h3 id="whitelisting-blacklisting-and-regex">Whitelisting, Blacklisting and Regex<a class="headerlink" href="#whitelisting-blacklisting-and-regex" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -1798,7 +1798,7 @@
 <ul>
 <li><a href="https://github.com/pi-hole/pi-hole/blob/master/automated%20install/basic-install.sh"><code>basic-install.sh</code></a> will be run<ul>
 <li><strong>Reconfigure</strong> will run through the first-time installation prompts, asking for upstream DNS provider, IP protocols, etc</li>
-<li><strong>Repair</strong> will retain your existing settings, and will attempt to repair any scripts or dependencies as necessary</li>
+<li><strong>Repair</strong> will retain your existing settings and will attempt to repair any scripts or dependencies as necessary</li>
 </ul>
 </li>
 <li>The rest of <code>basic-install.sh</code> will then run as appropriate</li>
@@ -1874,7 +1874,7 @@
 </tr>
 </tbody>
 </table>
-<p>Chronometer is a console dashboard of real-time stats, which can be displayed via <code>ssh</code> or on an LCD screen attached directly to your hardware. The script is capable of detecting the size of your screen, and adjusting output to try and best suit it.</p>
+<p>Chronometer is a console dashboard of real-time stats, which can be displayed via <code>ssh</code> or on an LCD screen attached directly to your hardware. The script is capable of detecting the size of your screen and adjusting output to try and best suit it.</p>
 <p><a href="../chronometer.jpg">
     <img srcset="../chronometer-thumb.jpg, ../chronometer-thumb@2x.jpg 2x" src="../chronometer-thumb.jpg" alt="Chronometer in action" width="450" height="600">
 </a>
@@ -2000,7 +2000,7 @@
 </tr>
 </tbody>
 </table>
-<p>Check Pi-hole Core, Web Interface and FTL repositories to determine what upgrade (if any) is required. It will then automatically update and reinstall if necessary.</p>
+<p>Check Pi-hole Core, Web Interface and FTL repositories to determine what upgrades (if any) are required. It will then automatically update and reinstall if necessary.</p>
 <p><strong>Basic Script Process</strong>:</p>
 <ul>
 <li>Script determines if updates are available by querying GitHub</li>
@@ -2030,7 +2030,7 @@
 </tr>
 </tbody>
 </table>
-<p>Shows installed versions of Pi-hole, Web Interface &amp; FTL. Also provides options to configure which details will be printed, such as current version, latest version, hash and subsystem.</p>
+<p>Shows installed versions of Pi-hole, Web Interface &amp; FTL. It also provides options to configure which details will be printed, such as the current version, latest version, hash and subsystem.</p>
 <h3 id="uninstall">Uninstall<a class="headerlink" href="#uninstall" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2234,7 +2234,7 @@
 </tr>
 </tbody>
 </table>
-<p>Set Web Interface password. Password can be entered as an option (e.g: <code>pihole -a -p secretpassword</code>), or separately as to not display on screen (e.g: <code>pihole -a -p</code>).</p>
+<p>Set the Web Interface password. Password can be entered as an option (e.g: <code>pihole -a -p secretpassword</code>), or separately as to not display on the screen (e.g: <code>pihole -a -p</code>).</p>
 <h3 id="temperature-unit">Temperature Unit<a class="headerlink" href="#temperature-unit" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2258,7 +2258,7 @@
 </tr>
 </tbody>
 </table>
-<p>Set specified temperature unit as preferred type. This preference will affect the Web Interface, as well as Chronometer.</p>
+<p>Set the specified temperature unit as the preferred type. This preference will affect the Web Interface, as well as Chronometer.</p>
 <h3 id="host-record">Host Record<a class="headerlink" href="#host-record" title="Permanent link">&para;</a></h3>
 <table>
 <thead>

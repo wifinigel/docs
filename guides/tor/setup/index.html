@@ -681,8 +681,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../github/contributing/" title="Contributing on Github" class="md-nav__link">
-      Contributing on Github
+    <a href="../../github/contributing/" title="Contributing on GitHub" class="md-nav__link">
+      Contributing on GitHub
     </a>
   </li>
 
@@ -1185,7 +1185,7 @@
                   <h1>Basic Setup</h1>
                 
                 <p><strong>This is an unsupported configuration created by the community</strong></p>
-<p>This guide should work for most recent Debian derivatives (raspbian, Ubuntu). Alternatively you can follow a Tor Installation Guide for your Host System.</p>
+<p>This guide should work for the most recent Debian derivatives (Raspbian, Ubuntu). Alternatively, you can follow a Tor Installation Guide for your Host System.</p>
 <div class="codehilite"><pre><span></span>sudo apt install tor
 </pre></div>
 
@@ -1205,9 +1205,9 @@
 </pre></div>
 
 <h2 id="testing-your-configuration">Testing your configuration<a class="headerlink" href="#testing-your-configuration" title="Permanent link">&para;</a></h2>
-<p>To see which DNS servers you're using, you can use a DNS Server Leak Test. Some of them don't work with DNS over Tor, <a href="https://dns-leak.com/">this one</a> does work tho. It should show random DNS Servers. Tor rotates the circuit approximately every 10minutes in default configuration, so it might take 10minutes for you to see a new set of random DNS servers in the Leak Test.</p>
+<p>To see which DNS servers you're using, you can use a DNS Server Leak Test. Some of them don't work with DNS over Tor, <a href="https://dns-leak.com/">this one</a> does work tho. It should show random DNS Servers. Tor rotates the circuit approximately every 10minutes in the default configuration, so it might take 10minutes for you to see a new set of random DNS servers in the Leak Test.</p>
 <p>You can also check the "Forward Destinations over Time" Graph (enabled per default) in your Pi-hole WebGUI - the latest Forward Destinations should only include "local" and "tor.dns.local" (if you updated the <code>/etc/hosts</code> file).</p>
-<p>To absolutely make sure that you always use the Pi-hole as DNS Server and to make sure that it handles IPv4 and/or IPv6 blocking if you configured it to do so, you should check which DNS Servers your client is using: <code>nmcli device show &lt;interface&gt; | grep .DNS</code> (Linux) or <code>ipconfig /all</code> (Windows, and look for <strong>DNS Servers</strong> on your <strong>LAN Adapter</strong>). You should then issue a IPv4 (A) and/or IPv6 (AAAA) DNS query to every IPv4 and/or IPv6 DNS Server that shows up:</p>
+<p>To make sure that you always use the Pi-hole as DNS Server and to make sure that it handles IPv4 and/or IPv6 blocking if you configured it to do so, you should check which DNS Servers your client is using: <code>nmcli device show &lt;interface&gt; | grep .DNS</code> (Linux) or <code>ipconfig /all</code> (Windows, and look for <strong>DNS Servers</strong> on your <strong>LAN Adapter</strong>). You should then issue an IPv4 (A) and/or IPv6 (AAAA) DNS query to every IPv4 and/or IPv6 DNS Server that shows up:</p>
 <p>For Linux:</p>
 <div class="codehilite"><pre><span></span>dig @&lt;IPv4/6-dns-server-address&gt; api.mixpanel.com &lt;A/AAAA&gt;
 </pre></div>
@@ -1217,7 +1217,7 @@
 </pre></div>
 
 <p>That should give you the Pi-hole IPv4 and/or IPv6 address as Answer and show up as "Pi-holed" in the WebGUI Query Log (assuming you have the default blocklist, otherwise replace <code>api.mixpanel.com</code> with any domain on your blocklist).</p>
-<p>If any of the queries doesn't show up in the Query Log you should make sure to configure your Pi-hole/network setup properly (<a href="https://www.reddit.com/r/pihole/comments/7e0jg9/dns_over_tor/dq4kkvg/">this thread might help</a>).</p>
+<p>If any of the queries don't show up in the Query Log you should make sure to configure your Pi-hole/network setup properly (<a href="https://www.reddit.com/r/pihole/comments/7e0jg9/dns_over_tor/dq4kkvg/">this thread might help</a>).</p>
                 
                   
                 

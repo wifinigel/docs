@@ -831,8 +831,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../guides/github/contributing/" title="Contributing on Github" class="md-nav__link">
-      Contributing on Github
+    <a href="../../guides/github/contributing/" title="Contributing on GitHub" class="md-nav__link">
+      Contributing on GitHub
     </a>
   </li>
 
@@ -1433,18 +1433,18 @@
 <li>The client does not even try to establish a connection for the requested website</li>
 <li>Speedup and less traffic</li>
 <li>Solves potential <abbr title="HTTP Secure (HTTPS), an extension of the Hypertext Transfer Protocol (HTTP) for secure communication over a computer network">HTTPS</abbr> timeouts as requests are never performed</li>
-<li>No need to run a webserver on your Pi-hole (reduces complexity when running other web services on the same machine)</li>
+<li>No need to run a web server on your Pi-hole (reduces complexity when running other web services on the same machine)</li>
 </ul>
 <h3 id="disadvantage">Disadvantage<a class="headerlink" href="#disadvantage" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Blocking page cannot be shown and whitelisting has to be performed from the dashboard or <abbr title="Command Line Interface">CLI</abbr></li>
+<li>Blocking page cannot be shown and whitelisting has to be performed from the dashboard or <abbr title="Command-line Interface">CLI</abbr></li>
 </ul>
 <h2 id="pi-holes-ip-ipv6-nodata-blocking">Pi-hole's <abbr title="Internet protocol address">IP</abbr> (<abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> NODATA) blocking<a class="headerlink" href="#pi-holes-ip-ipv6-nodata-blocking" title="Permanent link">&para;</a></h2>
 <p><code>/etc/pihole/pihole-FTL.conf</code> setting:</p>
 <div class="codehilite"><pre><span></span><span class="err">BLOCKINGMODE=IP-NODATA-AAAA</span>
 </pre></div>
 
-<p>Blocked queries will be answered with the local <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> addresses of your Pi-hole (as configured in your <code>setupVars.conf</code> file). Blocked AAAA queries will answered with <code>NODATA-IPV6</code> and clients will only try to reach your Pi-hole over its static <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> address</p>
+<p>Blocked queries will be answered with the local <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> addresses of your Pi-hole (as configured in your <code>setupVars.conf</code> file). Blocked AAAA queries will be answered with <code>NODATA-IPV6</code> and clients will only try to reach your Pi-hole over its static <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> address</p>
 <div class="codehilite"><pre><span></span><span class="p">;;</span> <span class="n">QUESTION</span> <span class="n">SECTION</span><span class="p">:</span>
 <span class="p">;</span><span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>               <span class="k">IN</span>      <span class="k">ANY</span>
 
@@ -1454,12 +1454,12 @@
 
 <h3 id="advantage">Advantage<a class="headerlink" href="#advantage" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Shows blocking page from which blocked domains can be whitelisted</li>
+<li>Shows a blocking page from which blocked domains can be whitelisted</li>
 <li>Serves <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr>-only replies and hence mitigates issues with rotating <abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> prefixes</li>
 </ul>
 <h3 id="disadvantages">Disadvantages<a class="headerlink" href="#disadvantages" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Requires a webserver to run on your Pi-hole</li>
+<li>Requires a web server to run on your Pi-hole</li>
 <li>May cause time-outs for <abbr title="HTTP Secure (HTTPS), an extension of the Hypertext Transfer Protocol (HTTP) for secure communication over a computer network">HTTPS</abbr> content even with properly configured firewall rules</li>
 </ul>
 <h2 id="pi-holes-full-ip-blocking">Pi-hole's full <abbr title="Internet protocol address">IP</abbr> blocking<a class="headerlink" href="#pi-holes-full-ip-blocking" title="Permanent link">&para;</a></h2>
@@ -1478,11 +1478,11 @@
 
 <h3 id="advantage_1">Advantage<a class="headerlink" href="#advantage_1" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Shows blocking page from which blocked domains can be whitelisted</li>
+<li>Shows a blocking page from which blocked domains can be whitelisted</li>
 </ul>
 <h3 id="disadvantages_1">Disadvantages<a class="headerlink" href="#disadvantages_1" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Requires a webserver to run on your Pi-hole</li>
+<li>Requires a web server to run on your Pi-hole</li>
 <li>May cause time-outs for <abbr title="HTTP Secure (HTTPS), an extension of the Hypertext Transfer Protocol (HTTP) for secure communication over a computer network">HTTPS</abbr> content even with properly configured firewall rules</li>
 <li>May cause problems with alternating prefixes on <abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> addresses (see <code>IP-AAAA-NODATA</code>)</li>
 </ul>

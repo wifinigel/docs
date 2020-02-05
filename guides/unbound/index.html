@@ -681,8 +681,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../github/contributing/" title="Contributing on Github" class="md-nav__link">
-      Contributing on Github
+    <a href="../github/contributing/" title="Contributing on GitHub" class="md-nav__link">
+      Contributing on GitHub
     </a>
   </li>
 
@@ -1283,18 +1283,18 @@
 <p>Furthermore, from the point of an attacker, the DNS servers of larger providers are very worthwhile targets, as they only need to poison one DNS server, but millions of users might be affected. Instead of your bank's actual IP address, you could be sent to a phishing site hosted on some island. This scenario has <a href="https://www.zdnet.com/article/dns-cache-poisoning-attacks-exploited-in-the-wild/">already happened</a> and it isn't unlikely to happen again...</p>
 <p>When you operate your own (tiny) recursive DNS server, then the likeliness of getting affected by such an attack is greatly reduced.</p>
 <h3 id="what-is-a-recursive-dns-server">What <em>is</em> a recursive DNS server?<a class="headerlink" href="#what-is-a-recursive-dns-server" title="Permanent link">&para;</a></h3>
-<p>The first distinction we have to be aware of is whether a DNS server is <em>authoritative</em> or not.  If I'm the authoritative server for, e.g., <code>pi-hole.net</code>, then I know which IP is the correct answer for a query. Recursive name servers, in contrast, resolve any query they receive by consulting the servers authoritative for this query by traversing the domain.
+<p>The first distinction we have to be aware of is whether a DNS server is <em>authoritative</em> or not. If I'm the authoritative server for, e.g., <code>pi-hole.net</code>, then I know which IP is the correct answer for a query. Recursive name servers, in contrast, resolve any query they receive by consulting the servers authoritative for this query by traversing the domain.
 Example: We want to resolve <code>pi-hole.net</code>. On behalf of the client, the recursive DNS server will traverse the path of the domain across the Internet to deliver the answer to the question.</p>
 <h3 id="what-does-this-guide-provide">What does this guide provide?<a class="headerlink" href="#what-does-this-guide-provide" title="Permanent link">&para;</a></h3>
 <p>In only a few simple steps, we will describe how to set up your own recursive DNS server. It will run on the same device you're already using for your Pi-hole. There are no additional hardware requirements.</p>
-<p>This guide assumes a fairly recent Debian/Ubuntu based system and will use the maintainer provided packages for installation to make it an incredibly simple process. It assumes only very basic knowledge of how DNS works.</p>
+<p>This guide assumes a fairly recent Debian/Ubuntu-based system and will use the maintainer provided packages for installation to make it an incredibly simple process. It assumes only a very basic knowledge of how DNS work.</p>
 <p>A <em>standard</em> Pi-hole installation will do it as follows:</p>
 <ol>
 <li>Your client asks the Pi-hole <code>Who is pi-hole.net</code>?</li>
 <li>Your Pi-hole will check its cache and reply if the answer is already known.</li>
 <li>Your Pi-hole will check the blocking lists and reply if the domain is blocked.</li>
 <li>Since neither 2. nor 3. is true in our example, the Pi-hole forwards the request to the configured <em>external</em> upstream DNS server(s).</li>
-<li>Upon receiving the answer, your Pi-hole will reply to your client and tell it the answer of its request.</li>
+<li>Upon receiving the answer, your Pi-hole will reply to your client and tell it the answer to its request.</li>
 <li>Lastly, your Pi-hole will save the answer in its cache to be able to respond faster if <em>any</em> of your clients queries the same domain again.</li>
 </ol>
 <p>After you set up your Pi-hole as described in this guide, this procedure changes notably:</p>
@@ -1309,7 +1309,7 @@ Example: We want to resolve <code>pi-hole.net</code>. On behalf of the client, t
 <li>The TLD server answers with a referral to the authoritative name servers for <code>pi-hole.net</code>.</li>
 <li>Your recursive server will send a query to the authoritative name servers: "What is the IP of <code>pi-hole.net</code>?"</li>
 <li>The authoritative server will answer with the IP address of the domain <code>pi-hole.net</code>.</li>
-<li>Your recursive server will send the reply to your Pi-hole which will, in turn, reply to your client and tell it the answer of its request.</li>
+<li>Your recursive server will send the reply to your Pi-hole which will, in turn, reply to your client and tell it the answer to its request.</li>
 <li>Lastly, your Pi-hole will save the answer in its cache to be able to respond faster if <em>any</em> of your clients queries the same domain again.</li>
 </ol>
 <p>You can easily imagine even longer chains for subdomains as the query process continues until your recursive resolver reaches the authoritative server for the zone that contains the queried domain name. It is obvious that the methods are very different and the own recursion is more involved than "just" asking some upstream server. This has benefits and drawbacks:</p>
@@ -1318,12 +1318,12 @@ Example: We want to resolve <code>pi-hole.net</code>. On behalf of the client, t
 <p>Benefit: Privacy - as you're directly contacting the responsive servers, no server can fully log the exact paths you're going, as e.g. the Google DNS servers will only be asked if you want to visit a Google website, but not if you visit the website of your favorite newspaper, etc.</p>
 </li>
 <li>
-<p>Drawback: Traversing the path may be slow, especially for the first time you visit a website - while the bigger DNS providers always have answers for commonly used domains in their cache, you will have to transverse the path if you visit a page for the first time time. A first request to a formerly unknown TLD may take up to a second (or even more if you're also using DNSSEC). Subsequent requests to domains under the same TLD usually complete in <code>&lt; 0.1s</code>.
+<p>Drawback: Traversing the path may be slow, especially for the first time you visit a website - while the bigger DNS providers always have answers for commonly used domains in their cache, you will have to transverse the path if you visit a page for the first time. The first request to a formerly unknown TLD may take up to a second (or even more if you're also using DNSSEC). Subsequent requests to domains under the same TLD usually complete in <code>&lt; 0.1s</code>.
 Fortunately, both your Pi-hole as well as your recursive server will be configured for efficient caching to minimize the number of queries that will actually have to be performed.</p>
 </li>
 </ul>
 <h2 id="setting-up-pi-hole-as-a-recursive-dns-server-solution">Setting up Pi-hole as a recursive DNS server solution<a class="headerlink" href="#setting-up-pi-hole-as-a-recursive-dns-server-solution" title="Permanent link">&para;</a></h2>
-<p>We will use <a href="https://github.com/NLnetLabs/unbound"><code>unbound</code></a>, a secure open source recursive DNS server primarily developed by NLnet Labs, VeriSign Inc., Nominet, and Kirei.
+<p>We will use <a href="https://github.com/NLnetLabs/unbound"><code>unbound</code></a>, a secure open-source recursive DNS server primarily developed by NLnet Labs, VeriSign Inc., Nominet, and Kirei.
 The first thing you need to do is to install the recursive DNS resolver:</p>
 <div class="codehilite"><pre><span></span>sudo apt install unbound
 </pre></div>
@@ -1358,7 +1358,7 @@ sudo mv root.hints /var/lib/unbound/
     <span class="c1"># Use this only when you downloaded the list of primary root servers!</span>
     <span class="na">root-hints: &quot;/var/lib/unbound/root.hints&quot;</span>
 
-    <span class="c1"># Trust glue only if it is within the servers authority</span>
+    <span class="c1"># Trust glue only if it is within the server&#39;s authority</span>
     <span class="na">harden-glue: yes</span>
 
     <span class="c1"># Require DNSSEC data for trust-anchored zones, if such data is absent, the zone becomes BOGUS</span>
@@ -1376,7 +1376,7 @@ sudo mv root.hints /var/lib/unbound/
     <span class="c1"># This only applies to domains that have been frequently queried</span>
     <span class="na">prefetch: yes</span>
 
-    <span class="c1"># One thread should be sufficient, can be increased on beefy machines. In reality for most users running on small networks or on a single machine it should be unnecessary to seek performance enhancement by increasing num-threads above 1.</span>
+    <span class="c1"># One thread should be sufficient, can be increased on beefy machines. In reality for most users running on small networks or on a single machine, it should be unnecessary to seek performance enhancement by increasing num-threads above 1.</span>
     <span class="na">num-threads: 1</span>
 
     <span class="c1"># Ensure kernel buffer is large enough to not lose messages in traffic spikes</span>
