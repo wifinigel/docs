@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.2">
     
     
       
@@ -42,12 +42,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
       
       
     
     
-      <script src="../../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
@@ -81,7 +81,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#modifying-lighttpd-configuration" tabindex="1" class="md-skip">
+      <a href="#modifying-lighttpd-configuration" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -90,9 +90,9 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-header-nav__button md-logo">
+        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" aria-label="Pi-hole documentation" class="md-header-nav__button md-logo">
           
-            <img src="../../images/logo.svg" width="24" height="24">
+            <img alt="logo" src="../../images/logo.svg" width="24" height="24">
           
         </a>
       </div>
@@ -121,7 +121,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -184,7 +184,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-nav__button md-logo">
       
-        <img src="../../images/logo.svg" width="48" height="48">
+        <img alt="logo" src="../../images/logo.svg" width="48" height="48">
       
     </a>
     Pi-hole documentation
@@ -1214,21 +1214,21 @@
 <p>If you'd like to use <a href="https://caddyserver.com/">Caddy</a> as your main web server with Pi-hole, you'll need to make a few changes.</p>
 <h2 id="modifying-lighttpd-configuration">Modifying lighttpd configuration<a class="headerlink" href="#modifying-lighttpd-configuration" title="Permanent link">&para;</a></h2>
 <p>First, change the listen port in this file: <code>/etc/lighttpd/lighttpd.conf:</code></p>
-<div class="codehilite"><pre><span></span><span class="k">server.port</span> <span class="o">=</span> <span class="m">1080</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="k">server.port</span> <span class="o">=</span> <span class="m">1080</span>
+</code></pre></div>
 
 <p>In this case, port 1080 was chosen at random. You can use a custom port.</p>
 <p>Next, restart the lighttpd server with either of these commands:</p>
-<div class="codehilite"><pre><span></span>sudo systemctl restart lighttpd
-</pre></div>
+<div class="codehilite"><pre><span></span><code>sudo systemctl restart lighttpd
+</code></pre></div>
 
 <p>or</p>
-<div class="codehilite"><pre><span></span>sudo service lighttpd restart
-</pre></div>
+<div class="codehilite"><pre><span></span><code>sudo service lighttpd restart
+</code></pre></div>
 
 <h2 id="setting-up-your-caddyfile">Setting up your Caddyfile<a class="headerlink" href="#setting-up-your-caddyfile" title="Permanent link">&para;</a></h2>
 <p>Now set up a "virtual host" in your Caddyfile (default <code>/etc/caddy/Caddyfile</code>). There are many options you can add, but at a minimum, you need to make a "default" host by binding <code>0.0.0.0:80</code>. This will accept requests for any interface.</p>
-<div class="codehilite"><pre><span></span><span class="n">blackhole</span><span class="o">:</span><span class="mi">80</span><span class="o">,</span> <span class="n">pi</span><span class="o">.</span><span class="na">hole</span><span class="o">:</span><span class="mi">80</span><span class="o">,</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="o">:</span><span class="mi">80</span> <span class="o">{</span>
+<div class="codehilite"><pre><span></span><code><span class="n">blackhole</span><span class="o">:</span><span class="mi">80</span><span class="o">,</span> <span class="n">pi</span><span class="o">.</span><span class="na">hole</span><span class="o">:</span><span class="mi">80</span><span class="o">,</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="o">:</span><span class="mi">80</span> <span class="o">{</span>
   <span class="n">root</span> <span class="sr">/var/www/html/</span><span class="n">pihole</span>
   <span class="n">log</span> <span class="sr">/var/log/caddy/</span><span class="n">blackhole</span><span class="o">.</span><span class="na">log</span>
 
@@ -1241,7 +1241,7 @@
     <span class="n">transparent</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</pre></div>
+</code></pre></div>
 
 <p>In this case, I've chosen to also add blackhole and pi.hole as valid names to open the admin page with.</p>
 <p>Finally, restart your Caddy server: <code>sudo service caddy restart</code></p>
@@ -1249,7 +1249,7 @@
 <p>First, make sure that any other sites you're serving from caddy are still functioning. For example, if you have a block for <code>myawesomesite.com:80</code> in your Caddyfile, open up a browser to <code>http://myawesomesite.com</code> and verify it still loads.</p>
 <p>Next, verify you can load the admin page. Open up <code>http://pi.hole/admin</code> (or use the IP address of your server) and verify that you can access the admin page.</p>
 <p>Finally, verify that requests for ads are being black holed:</p>
-<div class="codehilite"><pre><span></span>$ curl -H <span class="s2">&quot;Host: badhost&quot;</span> pi.hole/
+<div class="codehilite"><pre><span></span><code>$ curl -H <span class="s2">&quot;Host: badhost&quot;</span> pi.hole/
 &lt;html&gt;
 &lt;head&gt;
 &lt;script&gt;window.close<span class="o">()</span><span class="p">;</span>&lt;/script&gt;
@@ -1257,13 +1257,13 @@
 &lt;body&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Replace the URL <code>pi.hole</code> with the IP address or alternate DNS name you're using if necessary.</p>
 <p>Lastly, ensure that requests for JavaScript files from advertisement domains are being served properly:</p>
-<div class="codehilite"><pre><span></span>curl -H <span class="s2">&quot;Host: badhost&quot;</span> pi.hole/malicious.js
+<div class="codehilite"><pre><span></span><code>curl -H <span class="s2">&quot;Host: badhost&quot;</span> pi.hole/malicious.js
 var <span class="nv">x</span> <span class="o">=</span> <span class="s2">&quot;Pi-hole: A black hole for Internet advertisements.&quot;</span>
-</pre></div>
+</code></pre></div>
                 
                   
                 
@@ -1326,18 +1326,18 @@ var <span class="nv">x</span> <span class="o">=</span> <span class="s2">&quot;Pi
           </div>
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
   <div class="md-footer-social">
     <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
-      <a href="https://pi-hole.net/" class="md-footer-social__link fa fa-globe"></a>
+      <a href="https://pi-hole.net/" target="_blank" rel="noopener" title="globe" class="md-footer-social__link fa fa-globe"></a>
     
-      <a href="https://github.com/pi-hole" class="md-footer-social__link fa fa-github-alt"></a>
+      <a href="https://github.com/pi-hole" target="_blank" rel="noopener" title="github-alt" class="md-footer-social__link fa fa-github-alt"></a>
     
   </div>
 
@@ -1347,7 +1347,7 @@ var <span class="nv">x</span> <span class="o">=</span> <span class="s2">&quot;Pi
       
     </div>
     
-      <script src="../../assets/javascripts/application.808e90bb.js"></script>
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       

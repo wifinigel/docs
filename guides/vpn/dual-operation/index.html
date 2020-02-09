@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.2">
     
     
       
@@ -42,12 +42,12 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
       
       
     
     
-      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
@@ -81,7 +81,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#important-last-step" tabindex="1" class="md-skip">
+      <a href="#important-last-step" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -90,9 +90,9 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-header-nav__button md-logo">
+        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" aria-label="Pi-hole documentation" class="md-header-nav__button md-logo">
           
-            <img src="../../../images/logo.svg" width="24" height="24">
+            <img alt="logo" src="../../../images/logo.svg" width="24" height="24">
           
         </a>
       </div>
@@ -121,7 +121,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -184,7 +184,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-nav__button md-logo">
       
-        <img src="../../../images/logo.svg" width="48" height="48">
+        <img alt="logo" src="../../../images/logo.svg" width="48" height="48">
       
     </a>
     Pi-hole documentation
@@ -1193,14 +1193,14 @@
 <li>devices in 192.168.123.1 - 192.168.123.254 -&gt; <code>route 192.168.123.0</code></li>
 </ul>
 <p>Edit your <code>/etc/openvpn/server/server.conf</code>:</p>
-<div class="codehilite"><pre><span></span><span class="err">push &quot;route 192.168.2.0 255.255.255.0&quot;</span>
+<div class="codehilite"><pre><span></span><code><span class="err">push &quot;route 192.168.2.0 255.255.255.0&quot;</span>
 <span class="err">push &quot;dhcp-option DNS 192.168.2.123&quot;</span>
-</pre></div>
+</code></pre></div>
 
 <p>As you can see, we change the address of the DNS server to the local IP address of our Pi-hole (which is <strong>192.168.2.123</strong> in this example).</p>
 <p>Afterward, we change the interface of <code>Pi-hole</code> to <code>eth0</code> (your local network adapter instead of the VPN adapter <code>tun0</code>). This can conveniently be done by using <code>pihole -r</code> + <code>Reconfigure</code>.</p>
 <p>After a restart of the OpenVPN server, all clients should be able to see all devices within your (at home) local network. This is an example running on a distant server, which is connected through the VPN and can successfully communicate with all internal devices:</p>
-<div class="codehilite"><pre><span></span>me@client ~ $ ifconfig
+<div class="codehilite"><pre><span></span><code>me@client ~ $ ifconfig
 eth0      Link encap:Ethernet  HWaddr e0:xx:xx:xx:xx:xx
           inet addr:134.x.x.x  Bcast:134.x.x.x  Mask:255.x.x.x
           inet6 addr: X:X:X:X::X/64 Scope:Link
@@ -1239,7 +1239,7 @@ PING <span class="m">192</span>.168.2.123 <span class="o">(</span><span class="m
 --- <span class="m">192</span>.168.2.123 ping statistics ---
 <span class="m">6</span> packets transmitted, <span class="m">6</span> received, <span class="m">0</span>% packet loss, <span class="nb">time</span> 5007ms
 rtt min/avg/max/mdev <span class="o">=</span> <span class="m">18</span>.740/18.894/19.017/0.189 ms
-</pre></div>
+</code></pre></div>
 
 <h3 id="important-last-step">Important last step<a class="headerlink" href="#important-last-step" title="Permanent link">&para;</a></h3>
 <p>The undocumented <code>pihole -a -i all</code> command is simply what runs when you choose <em>Listen on all interfaces, permit all origins (make sure your Pi-hole is firewalled)</em>, which if you've read this far in the tutorial, you should understand that we don't want you to knowingly or unknowing set up an open resolver.</p>
@@ -1306,18 +1306,18 @@ rtt min/avg/max/mdev <span class="o">=</span> <span class="m">18</span>.740/18.8
           </div>
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
   <div class="md-footer-social">
     <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
     
-      <a href="https://pi-hole.net/" class="md-footer-social__link fa fa-globe"></a>
+      <a href="https://pi-hole.net/" target="_blank" rel="noopener" title="globe" class="md-footer-social__link fa fa-globe"></a>
     
-      <a href="https://github.com/pi-hole" class="md-footer-social__link fa fa-github-alt"></a>
+      <a href="https://github.com/pi-hole" target="_blank" rel="noopener" title="github-alt" class="md-footer-social__link fa fa-github-alt"></a>
     
   </div>
 
@@ -1327,7 +1327,7 @@ rtt min/avg/max/mdev <span class="o">=</span> <span class="m">18</span>.740/18.8
       
     </div>
     
-      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
+      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       

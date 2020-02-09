@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.2">
     
     
       
@@ -42,12 +42,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
       
       
     
     
-      <script src="../../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
@@ -81,7 +81,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#pi-holes-unspecified-ip-blocking-default" tabindex="1" class="md-skip">
+      <a href="#pi-holes-unspecified-ip-blocking-default" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -90,9 +90,9 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-header-nav__button md-logo">
+        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" aria-label="Pi-hole documentation" class="md-header-nav__button md-logo">
           
-            <img src="../../images/logo.svg" width="24" height="24">
+            <img alt="logo" src="../../images/logo.svg" width="24" height="24">
           
         </a>
       </div>
@@ -121,7 +121,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -184,7 +184,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-nav__button md-logo">
       
-        <img src="../../images/logo.svg" width="48" height="48">
+        <img alt="logo" src="../../images/logo.svg" width="48" height="48">
       
     </a>
     Pi-hole documentation
@@ -1414,17 +1414,17 @@
 <p>This setting can be updated by sending <code>SIGHUP</code> to <code>pihole-FTL</code> (<code>sudo killall -SIGHUP pihole-FTL</code>).</p>
 <h2 id="pi-holes-unspecified-ip-blocking-default">Pi-hole's unspecified <abbr title="Internet protocol address">IP</abbr> blocking (default)<a class="headerlink" href="#pi-holes-unspecified-ip-blocking-default" title="Permanent link">&para;</a></h2>
 <p><code>/etc/pihole/pihole-FTL.conf</code> setting:</p>
-<div class="codehilite"><pre><span></span><span class="err">BLOCKINGMODE=NULL</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">BLOCKINGMODE=NULL</span>
+</code></pre></div>
 
 <p>Blocked queries will be answered with the unspecified address</p>
-<div class="codehilite"><pre><span></span><span class="p">;;</span> <span class="n">QUESTION</span> <span class="n">SECTION</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span><code><span class="p">;;</span> <span class="n">QUESTION</span> <span class="n">SECTION</span><span class="p">:</span>
 <span class="p">;</span><span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>               <span class="k">IN</span>      <span class="k">ANY</span>
 
 <span class="p">;;</span> <span class="n">ANSWER</span> <span class="n">SECTION</span><span class="p">:</span>
 <span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>        <span class="mi">2</span>       <span class="k">IN</span>      <span class="n">A</span>       <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
 <span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>        <span class="mi">2</span>       <span class="k">IN</span>      <span class="n">AAAA</span>    <span class="p">::</span>
-</pre></div>
+</code></pre></div>
 
 <p><strong>This blocking mode is the Pi-hole developers' recommendation.</strong></p>
 <p>Following <a href="https://tools.ietf.org/html/rfc3513#section-2.5.2">RFC 3513, Internet Protocol Version 6 (<abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr>) Addressing Architecture, section 2.5.2</a>, the address <code>0:0:0:0:0:0:0:0</code> (or <code>::</code> for short) is the unspecified address. It must never be assigned to any node and indicates the absence of an address. Following <a href="https://tools.ietf.org/html/rfc1122#section-3.2">RFC1122, section 3.2</a>, the address <code>0.0.0.0</code> can be understood as the <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> equivalent of <code>::</code>.</p>
@@ -1441,16 +1441,16 @@
 </ul>
 <h2 id="pi-holes-ip-ipv6-nodata-blocking">Pi-hole's <abbr title="Internet protocol address">IP</abbr> (<abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> NODATA) blocking<a class="headerlink" href="#pi-holes-ip-ipv6-nodata-blocking" title="Permanent link">&para;</a></h2>
 <p><code>/etc/pihole/pihole-FTL.conf</code> setting:</p>
-<div class="codehilite"><pre><span></span><span class="err">BLOCKINGMODE=IP-NODATA-AAAA</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">BLOCKINGMODE=IP-NODATA-AAAA</span>
+</code></pre></div>
 
 <p>Blocked queries will be answered with the local <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> addresses of your Pi-hole (as configured in your <code>setupVars.conf</code> file). Blocked AAAA queries will be answered with <code>NODATA-IPV6</code> and clients will only try to reach your Pi-hole over its static <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> address</p>
-<div class="codehilite"><pre><span></span><span class="p">;;</span> <span class="n">QUESTION</span> <span class="n">SECTION</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span><code><span class="p">;;</span> <span class="n">QUESTION</span> <span class="n">SECTION</span><span class="p">:</span>
 <span class="p">;</span><span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>               <span class="k">IN</span>      <span class="k">ANY</span>
 
 <span class="p">;;</span> <span class="n">ANSWER</span> <span class="n">SECTION</span><span class="p">:</span>
 <span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>        <span class="mi">2</span>       <span class="k">IN</span>      <span class="n">A</span>       <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">11</span>
-</pre></div>
+</code></pre></div>
 
 <h3 id="advantage">Advantage<a class="headerlink" href="#advantage" title="Permanent link">&para;</a></h3>
 <ul>
@@ -1464,17 +1464,17 @@
 </ul>
 <h2 id="pi-holes-full-ip-blocking">Pi-hole's full <abbr title="Internet protocol address">IP</abbr> blocking<a class="headerlink" href="#pi-holes-full-ip-blocking" title="Permanent link">&para;</a></h2>
 <p><code>/etc/pihole/pihole-FTL.conf</code> setting:</p>
-<div class="codehilite"><pre><span></span><span class="err">BLOCKINGMODE=IP</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">BLOCKINGMODE=IP</span>
+</code></pre></div>
 
 <p>Blocked queries will be answered with the local <abbr title="Internet protocol address">IP</abbr> addresses of your Pi-hole (as configured in your <code>setupVars.conf</code> file)</p>
-<div class="codehilite"><pre><span></span><span class="p">;;</span> <span class="n">QUESTION</span> <span class="n">SECTION</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span><code><span class="p">;;</span> <span class="n">QUESTION</span> <span class="n">SECTION</span><span class="p">:</span>
 <span class="p">;</span><span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>               <span class="k">IN</span>      <span class="k">ANY</span>
 
 <span class="p">;;</span> <span class="n">ANSWER</span> <span class="n">SECTION</span><span class="p">:</span>
 <span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>        <span class="mi">2</span>       <span class="k">IN</span>      <span class="n">A</span>       <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">11</span>
 <span class="n">doubleclick</span><span class="p">.</span><span class="n">net</span><span class="p">.</span>        <span class="mi">2</span>       <span class="k">IN</span>      <span class="n">AAAA</span>    <span class="n">fda2</span><span class="p">:</span><span class="mi">2001</span><span class="p">:</span><span class="mi">4756</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="n">ab27</span><span class="p">:</span><span class="n">beff</span><span class="p">:</span><span class="n">ef37</span><span class="p">:</span><span class="mi">4242</span>
-</pre></div>
+</code></pre></div>
 
 <h3 id="advantage_1">Advantage<a class="headerlink" href="#advantage_1" title="Permanent link">&para;</a></h3>
 <ul>
@@ -1488,25 +1488,25 @@
 </ul>
 <h2 id="pi-holes-nxdomain-blocking">Pi-hole's NXDOMAIN blocking<a class="headerlink" href="#pi-holes-nxdomain-blocking" title="Permanent link">&para;</a></h2>
 <p><code>/etc/pihole/pihole-FTL.conf</code> setting:</p>
-<div class="codehilite"><pre><span></span><span class="err">BLOCKINGMODE=NXDOMAIN</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">BLOCKINGMODE=NXDOMAIN</span>
+</code></pre></div>
 
 <p>Blocked queries will be answered with an empty response (no answer section) and status <code>NXDOMAIN</code> (<em>no such domain</em>)</p>
-<div class="codehilite"><pre><span></span><span class="err">;; QUESTION SECTION:</span>
+<div class="codehilite"><pre><span></span><code><span class="err">;; QUESTION SECTION:</span>
 <span class="err">;doubleclick.net.               IN      ANY</span>
-</pre></div>
+</code></pre></div>
 
 <h3 id="advantages-disadvantages">Advantages &amp; Disadvantages<a class="headerlink" href="#advantages-disadvantages" title="Permanent link">&para;</a></h3>
 <p>Similar to <code>NULL</code> blocking, but experiments suggest that clients may try to resolve blocked domains more often compared to <code>NULL</code> blocking.</p>
 <h2 id="pi-holes-nodata-blocking">Pi-hole's NODATA blocking<a class="headerlink" href="#pi-holes-nodata-blocking" title="Permanent link">&para;</a></h2>
 <p><code>/etc/pihole/pihole-FTL.conf</code> setting:</p>
-<div class="codehilite"><pre><span></span><span class="err">BLOCKINGMODE=NODATA</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">BLOCKINGMODE=NODATA</span>
+</code></pre></div>
 
 <p>Blocked queries will be answered with an empty response (no answer section) and status <code>NODATA</code> (domain exists but there is no record for the requested query type)</p>
-<div class="codehilite"><pre><span></span><span class="err">;; QUESTION SECTION:</span>
+<div class="codehilite"><pre><span></span><code><span class="err">;; QUESTION SECTION:</span>
 <span class="err">;doubleclick.net.               IN      ANY</span>
-</pre></div>
+</code></pre></div>
 
 <h3 id="advantages-disadvantages_1">Advantages &amp; Disadvantages<a class="headerlink" href="#advantages-disadvantages_1" title="Permanent link">&para;</a></h3>
 <p>Similar to <code>NXDOMAIN</code> blocking. Clients might have a better acceptance of <code>NODATA</code> replies compared to <code>NXDOMAIN</code> replies.</p>
@@ -1572,18 +1572,18 @@
           </div>
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
   <div class="md-footer-social">
     <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
-      <a href="https://pi-hole.net/" class="md-footer-social__link fa fa-globe"></a>
+      <a href="https://pi-hole.net/" target="_blank" rel="noopener" title="globe" class="md-footer-social__link fa fa-globe"></a>
     
-      <a href="https://github.com/pi-hole" class="md-footer-social__link fa fa-github-alt"></a>
+      <a href="https://github.com/pi-hole" target="_blank" rel="noopener" title="github-alt" class="md-footer-social__link fa fa-github-alt"></a>
     
   </div>
 
@@ -1593,7 +1593,7 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application.808e90bb.js"></script>
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       

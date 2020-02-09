@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.2">
     
     
       
@@ -42,12 +42,12 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
       
       
     
     
-      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
@@ -81,7 +81,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#dual-vpn-setup-separate-dns-and-vpn-traffic" tabindex="1" class="md-skip">
+      <a href="#dual-vpn-setup-separate-dns-and-vpn-traffic" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -90,9 +90,9 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-header-nav__button md-logo">
+        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" aria-label="Pi-hole documentation" class="md-header-nav__button md-logo">
           
-            <img src="../../../images/logo.svg" width="24" height="24">
+            <img alt="logo" src="../../../images/logo.svg" width="24" height="24">
           
         </a>
       </div>
@@ -121,7 +121,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -184,7 +184,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-nav__button md-logo">
       
-        <img src="../../../images/logo.svg" width="48" height="48">
+        <img alt="logo" src="../../../images/logo.svg" width="48" height="48">
       
     </a>
     Pi-hole documentation
@@ -1229,35 +1229,35 @@
 <h4 id="prerequisites-and-configuration">Prerequisites and Configuration<a class="headerlink" href="#prerequisites-and-configuration" title="Permanent link">&para;</a></h4>
 <p>You should have an existing OpenVPN server configured and running. We are going to use the original configuration file located at <code>/etc/openvpn/server/server.conf</code>.</p>
 <p>First, copy the file:</p>
-<div class="codehilite"><pre><span></span>sudo cp /etc/openvpn/server/server.conf /etc/openvpn/server/server2.conf
-</pre></div>
+<div class="codehilite"><pre><span></span><code>sudo cp /etc/openvpn/server/server.conf /etc/openvpn/server/server2.conf
+</code></pre></div>
 
 <p>Next, exit the new copy of the configuration. We use the <code>nano</code> editor in this example, but any editor will work. Remember to edit under the root account via <code>sudo</code>.</p>
-<div class="codehilite"><pre><span></span>sudo nano /etc/openvpn/server/server2.conf
-</pre></div>
+<div class="codehilite"><pre><span></span><code>sudo nano /etc/openvpn/server/server2.conf
+</code></pre></div>
 
 <p>We will need to change the port to one different from the original so that it does not conflict with the first instance of OpenVPN. Assuming you used the default port configuration, you should have 1194 as the port. You need to change this to a different value, making sure the port is available - 1195 should be.</p>
 <p>Next, if needed, port forward the newly configured port from your router to your device. You will also need to assign a different class of IP addresses that will serve this connection only.</p>
 <p>Your server line should look like this:</p>
-<div class="codehilite"><pre><span></span><span class="err">server 10.9.0.0 255.255.255.0</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">server 10.9.0.0 255.255.255.0</span>
+</code></pre></div>
 
 <p>Make sure that the DNS requests go through the instance of OpenVPN:</p>
-<div class="codehilite"><pre><span></span><span class="err">push &quot;dhcp-option DNS 10.9.0.1&quot;</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">push &quot;dhcp-option DNS 10.9.0.1&quot;</span>
+</code></pre></div>
 
 <p>One other setting that we need to change is to comment out the <code>bypass-dhcp</code> instruction so that it looks like:</p>
-<div class="codehilite"><pre><span></span><span class="err"># push &quot;redirect-gateway def1 bypass-dhcp&quot;`.</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err"># push &quot;redirect-gateway def1 bypass-dhcp&quot;`.</span>
+</code></pre></div>
 
 <p>Commenting out this line ensures that no traffic is routed via the VPN server.</p>
 <p>Save the file and start the second instance of OpenVPN:</p>
-<div class="codehilite"><pre><span></span>systemctl start openvpn@server2.service
-</pre></div>
+<div class="codehilite"><pre><span></span><code>systemctl start openvpn@server2.service
+</code></pre></div>
 
 <p><em>If your distribution does not have <code>systemctl</code> you may use the command below to start an OpenVPN daemon with your second configuration:</em></p>
-<div class="codehilite"><pre><span></span>/usr/sbin/openvpn --daemon --writepid /var/run/openvpn/server2.pid --cd /etc/openvpn --config server2.conf --script-security <span class="m">2</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code>/usr/sbin/openvpn --daemon --writepid /var/run/openvpn/server2.pid --cd /etc/openvpn --config server2.conf --script-security <span class="m">2</span>
+</code></pre></div>
 
 <p>Finally, edit the existing <code>.ovpn</code> file used for the client connection. Update the port from the previous value to the port you used for the second instance of OpenVPN.</p>
 <h4 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h4>
@@ -1330,18 +1330,18 @@
           </div>
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
   <div class="md-footer-social">
     <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
     
-      <a href="https://pi-hole.net/" class="md-footer-social__link fa fa-globe"></a>
+      <a href="https://pi-hole.net/" target="_blank" rel="noopener" title="globe" class="md-footer-social__link fa fa-globe"></a>
     
-      <a href="https://github.com/pi-hole" class="md-footer-social__link fa fa-github-alt"></a>
+      <a href="https://github.com/pi-hole" target="_blank" rel="noopener" title="github-alt" class="md-footer-social__link fa fa-github-alt"></a>
     
   </div>
 
@@ -1351,7 +1351,7 @@
       
     </div>
     
-      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
+      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       

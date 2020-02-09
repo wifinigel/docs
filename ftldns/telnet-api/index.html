@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.2">
     
     
       
@@ -42,12 +42,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
       
       
     
     
-      <script src="../../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
@@ -86,9 +86,9 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-header-nav__button md-logo">
+        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" aria-label="Pi-hole documentation" class="md-header-nav__button md-logo">
           
-            <img src="../../images/logo.svg" width="24" height="24">
+            <img alt="logo" src="../../images/logo.svg" width="24" height="24">
           
         </a>
       </div>
@@ -117,7 +117,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -180,7 +180,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-nav__button md-logo">
       
-        <img src="../../images/logo.svg" width="48" height="48">
+        <img alt="logo" src="../../images/logo.svg" width="48" height="48">
       
     </a>
     Pi-hole documentation
@@ -1129,7 +1129,7 @@
 </li>
 <li>
 <p><code>&gt;stats</code> : Get current statistics</p>
-<div class="codehilite"><pre><span></span>domains_being_blocked 116007
+<div class="codehilite"><pre><span></span><code>domains_being_blocked 116007
 dns_queries_today 30163
 ads_blocked_today 5650
 ads_percentage_today 18.731558
@@ -1139,80 +1139,80 @@ queries_cached 20238
 clients_ever_seen 11
 unique_clients 9
 status enabled
-</pre></div>
+</code></pre></div>
 
 </li>
 <li>
 <p><code>&gt;overTime</code> : over time data (10 min intervals)</p>
-<div class="codehilite"><pre><span></span>1525546500 163 0
+<div class="codehilite"><pre><span></span><code>1525546500 163 0
 1525547100 154 1
 1525547700 164 0
 1525548300 167 0
 1525548900 151 0
 1525549500 143 0
 [...]
-</pre></div>
+</code></pre></div>
 
 </li>
 <li>
 <p><code>&gt;top-domains</code> : get top domains</p>
-<div class="codehilite"><pre><span></span>0 8462 x.y.z.de
+<div class="codehilite"><pre><span></span><code>0 8462 x.y.z.de
 1 236 safebrowsing-cache.google.com
 2 116 pi.hole
 3 109 z.y.x.de
 4 93 safebrowsing.google.com
 5 96 plus.google.com
 [...]
-</pre></div>
+</code></pre></div>
 
 <p>Variant: <code>&gt;top-domains (15)</code> to show (up to) 15 entries</p>
 </li>
 <li>
 <p><code>&gt;top-ads</code> : get top ad domains</p>
-<div class="codehilite"><pre><span></span>0 8 googleads.g.doubleclick.net
+<div class="codehilite"><pre><span></span><code>0 8 googleads.g.doubleclick.net
 1 6 www.googleadservices.com
 2 1 cdn.mxpnl.com
 3 1 collector.githubapp.com
 4 1 www.googletagmanager.com
 5 1 s.zkcdn.net
 [...]
-</pre></div>
+</code></pre></div>
 
 <p>Variant: <code>&gt;top-ads (14)</code> to show (up to) 14 entries</p>
 </li>
 <li>
 <p><code>top-clients</code> : get recently active top clients (<abbr title="Internet protocol address">IP</abbr> addresses + hostnames (if available))</p>
-<div class="codehilite"><pre><span></span>0 9373 192.168.2.1 router
+<div class="codehilite"><pre><span></span><code>0 9373 192.168.2.1 router
 1 484 192.168.2.2 work-machine
 2 8 127.0.0.1 localhost
-</pre></div>
+</code></pre></div>
 
 <p>Variant: <code>&gt;top-clients (9)</code> to show (up to) 9 client entries or <code>&gt;top-clients withzero (15)</code> to show (up to) 15 clients even if they have not been active recently (see PR #124 for further details)</p>
 </li>
 <li>
 <p><code>&gt;forward-dest</code> : get forward destinations (<abbr title="Internet protocol address">IP</abbr> addresses + hostnames (if available)) along with the percentage. The first result (<abbr title="Identifier">ID</abbr> -2) will always be the percentage of domains answered from blocklists, whereas the second result (<abbr title="Identifier">ID</abbr> -1) will be the queries answered from the cache</p>
-<div class="codehilite"><pre><span></span>-2 18.70 blocklist blocklist
+<div class="codehilite"><pre><span></span><code>-2 18.70 blocklist blocklist
 -1 67.10 cache cache
 0 14.20 127.0.0.1 localhost
-</pre></div>
+</code></pre></div>
 
 <p>Variant: <code>&gt;forward-dest unsorted</code> to show forward destinations in unsorted order (equivalent to using <code>&gt;forward-names</code>)</p>
 </li>
 <li>
 <p><code>&gt;querytypes</code> : get collected query types percentage</p>
-<div class="codehilite"><pre><span></span>A (IPv4): 53.45
+<div class="codehilite"><pre><span></span><code>A (IPv4): 53.45
 AAAA (IPv6): 45.32
 ANY: 0.00
 SRV: 0.64
 SOA: 0.05
 PTR: 0.54
 TXT: 0.00
-</pre></div>
+</code></pre></div>
 
 </li>
 <li>
 <p><code>&gt;getallqueries</code> : get all queries that <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> has in memory</p>
-<div class="codehilite"><pre><span></span>1525554586 A fonts.googleapis.com 192.168.2.100 3 0 4 6
+<div class="codehilite"><pre><span></span><code>1525554586 A fonts.googleapis.com 192.168.2.100 3 0 4 6
 1525554586 AAAA fonts.googleapis.com 192.168.2.100 3 0 4 5
 1525554586 A www.mkdocs.org 192.168.2.100 3 0 4 7
 1525554586 AAAA www.mkdocs.org 192.168.2.100 2 0 3 21
@@ -1222,56 +1222,56 @@ TXT: 0.00
 1525554586 AAAA pi-hole.net 192.168.2.100 2 0 1 18
 1525554586 A github.com 192.168.2.100 3 0 4 5
 1525554586 AAAA github.com 192.168.2.100 2 0 1 18
-</pre></div>
+</code></pre></div>
 
 <p>Variants: <code>&gt;getallqueries (37)</code> show (up to) 37 latest entries, <code>&gt;getallqueries-time 1483964295 1483964312</code> gets all queries that <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> has in its database in a limited time interval, <code>&gt;getallqueries-time 1483964295 1483964312 (17)</code> show matches in the (up to) 17 latest entries, <code>&gt;getallqueries-domain www.google.com</code> gets all queries that <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> has in its database for a specific domain name, <code>&gt;getallqueries-client 2.3.4.5</code> : gets all queries that <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> has in its database for a specific client name <em>or</em> <abbr title="Internet protocol address">IP</abbr></p>
 </li>
 <li>
 <p><code>&gt;recentBlocked</code> : get most recently pi-holed domain name</p>
-<div class="codehilite"><pre><span></span>www.googleadservices.com
-</pre></div>
+<div class="codehilite"><pre><span></span><code>www.googleadservices.com
+</code></pre></div>
 
 <p>Variant: <code>&gt;recentBlocked (4)</code> show the four most recent blocked domains</p>
 </li>
 <li>
 <p><code>&gt;clientID</code> : Get <abbr title="Identifier">ID</abbr> of currently connected client</p>
-<div class="codehilite"><pre><span></span>6
-</pre></div>
+<div class="codehilite"><pre><span></span><code>6
+</code></pre></div>
 
 </li>
 <li>
 <p><code>&gt;version</code> : Get version information of the currently running <abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> instance</p>
-<div class="codehilite"><pre><span></span>version v1.6-3-g106498d-dirty
+<div class="codehilite"><pre><span></span><code>version v1.6-3-g106498d-dirty
 tag v1.6
 branch master
 hash 106498d
 date 2017-03-26 13:10:43 +0200
-</pre></div>
+</code></pre></div>
 
 </li>
 <li>
 <p><code>&gt;dbstats</code> : Get some statistics about <code>FTL</code>'s' long-term storage database (this request may take some time for processing in case of a large database file)</p>
-<div class="codehilite"><pre><span></span>queries in database: 2700304
+<div class="codehilite"><pre><span></span><code>queries in database: 2700304
 database filesize: 199.20 MB
 SQLite version: 3.23.1
-</pre></div>
+</code></pre></div>
 
 </li>
 <li>
 <p><code>&gt;domain pi-hole.net</code>: Get detailed information about domain (if available)</p>
-<div class="codehilite"><pre><span></span>Domain &quot;pi-hole.net&quot;, ID: 254
+<div class="codehilite"><pre><span></span><code>Domain &quot;pi-hole.net&quot;, ID: 254
 Total: 179
 Blocked: 0
 Wildcard blocked: false
-</pre></div>
+</code></pre></div>
 
 </li>
 <li>
 <p><code>&gt;cacheinfo</code>: Get <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> server cache size and usage information</p>
-<div class="codehilite"><pre><span></span>cache-size: 500000
+<div class="codehilite"><pre><span></span><code>cache-size: 500000
 cache-live-freed: 0
 cache-inserted: 15529
-</pre></div>
+</code></pre></div>
 
 </li>
 </ul>
@@ -1337,18 +1337,18 @@ cache-inserted: 15529
           </div>
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
   <div class="md-footer-social">
     <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
-      <a href="https://pi-hole.net/" class="md-footer-social__link fa fa-globe"></a>
+      <a href="https://pi-hole.net/" target="_blank" rel="noopener" title="globe" class="md-footer-social__link fa fa-globe"></a>
     
-      <a href="https://github.com/pi-hole" class="md-footer-social__link fa fa-github-alt"></a>
+      <a href="https://github.com/pi-hole" target="_blank" rel="noopener" title="github-alt" class="md-footer-social__link fa fa-github-alt"></a>
     
   </div>
 
@@ -1358,7 +1358,7 @@ cache-inserted: 15529
       
     </div>
     
-      <script src="../../assets/javascripts/application.808e90bb.js"></script>
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       

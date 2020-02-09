@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.2">
     
     
       
@@ -42,12 +42,12 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
       
       
     
     
-      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
@@ -81,7 +81,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#testing-your-configuration" tabindex="1" class="md-skip">
+      <a href="#testing-your-configuration" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -90,9 +90,9 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-header-nav__button md-logo">
+        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" aria-label="Pi-hole documentation" class="md-header-nav__button md-logo">
           
-            <img src="../../../images/logo.svg" width="24" height="24">
+            <img alt="logo" src="../../../images/logo.svg" width="24" height="24">
           
         </a>
       </div>
@@ -121,7 +121,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -184,7 +184,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-nav__button md-logo">
       
-        <img src="../../../images/logo.svg" width="48" height="48">
+        <img alt="logo" src="../../../images/logo.svg" width="48" height="48">
       
     </a>
     Pi-hole documentation
@@ -1186,35 +1186,35 @@
                 
                 <p><strong>This is an unsupported configuration created by the community</strong></p>
 <p>This guide should work for the most recent Debian derivatives (Raspbian, Ubuntu). Alternatively, you can follow a Tor Installation Guide for your Host System.</p>
-<div class="codehilite"><pre><span></span>sudo apt install tor
-</pre></div>
+<div class="codehilite"><pre><span></span><code>sudo apt install tor
+</code></pre></div>
 
 <p>Edit <code>/etc/tor/torrc</code> as root, include the following line at the end and save the changes</p>
-<div class="codehilite"><pre><span></span><span class="err">DNSPort 127.0.10.1:53</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">DNSPort 127.0.10.1:53</span>
+</code></pre></div>
 
 <p>Restart Tor with: <code>sudo service tor restart</code></p>
 <p>Change your Pi-hole upstream DNS server to use <code>127.0.10.1</code> in the Pi-hole WebGUI (Settings) under "Upstream DNS Servers" and click "Save".</p>
 <p><strong>Note:</strong> It's currently not possible to change the Upstream DNS Server directly in the <code>/etc/pihole/setupVars.conf</code> file, the Pi-hole DNS Server won't pick up the change.</p>
 <p>If you want a recognizable hostname for the Tor DNS in your Pi-hole GUI statistics, edit <code>/etc/hosts</code> as root, include the following line at the end and save the changes</p>
-<div class="codehilite"><pre><span></span><span class="err">127.0.10.1     tor.dns.local</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">127.0.10.1     tor.dns.local</span>
+</code></pre></div>
 
 <p>Restart Pi-hole DNS Server for the <code>/etc/hosts</code> changes to take effect</p>
-<div class="codehilite"><pre><span></span>sudo pihole restartdns
-</pre></div>
+<div class="codehilite"><pre><span></span><code>sudo pihole restartdns
+</code></pre></div>
 
 <h2 id="testing-your-configuration">Testing your configuration<a class="headerlink" href="#testing-your-configuration" title="Permanent link">&para;</a></h2>
 <p>To see which DNS servers you're using, you can use a DNS Server Leak Test. Some of them don't work with DNS over Tor, <a href="https://dns-leak.com/">this one</a> does work tho. It should show random DNS Servers. Tor rotates the circuit approximately every 10minutes in the default configuration, so it might take 10minutes for you to see a new set of random DNS servers in the Leak Test.</p>
 <p>You can also check the "Forward Destinations over Time" Graph (enabled per default) in your Pi-hole WebGUI - the latest Forward Destinations should only include "local" and "tor.dns.local" (if you updated the <code>/etc/hosts</code> file).</p>
 <p>To make sure that you always use the Pi-hole as DNS Server and to make sure that it handles IPv4 and/or IPv6 blocking if you configured it to do so, you should check which DNS Servers your client is using: <code>nmcli device show &lt;interface&gt; | grep .DNS</code> (Linux) or <code>ipconfig /all</code> (Windows, and look for <strong>DNS Servers</strong> on your <strong>LAN Adapter</strong>). You should then issue an IPv4 (A) and/or IPv6 (AAAA) DNS query to every IPv4 and/or IPv6 DNS Server that shows up:</p>
 <p>For Linux:</p>
-<div class="codehilite"><pre><span></span>dig @&lt;IPv4/6-dns-server-address&gt; api.mixpanel.com &lt;A/AAAA&gt;
-</pre></div>
+<div class="codehilite"><pre><span></span><code>dig @&lt;IPv4/6-dns-server-address&gt; api.mixpanel.com &lt;A/AAAA&gt;
+</code></pre></div>
 
 <p>For Windows:</p>
-<div class="codehilite"><pre><span></span>nslookup -server<span class="o">=</span>&lt;IPv4/6-dns-server-address&gt; -q<span class="o">=</span>&lt;A/AAAA&gt; api.mixpanel.com
-</pre></div>
+<div class="codehilite"><pre><span></span><code>nslookup -server<span class="o">=</span>&lt;IPv4/6-dns-server-address&gt; -q<span class="o">=</span>&lt;A/AAAA&gt; api.mixpanel.com
+</code></pre></div>
 
 <p>That should give you the Pi-hole IPv4 and/or IPv6 address as Answer and show up as "Pi-holed" in the WebGUI Query Log (assuming you have the default blocklist, otherwise replace <code>api.mixpanel.com</code> with any domain on your blocklist).</p>
 <p>If any of the queries don't show up in the Query Log you should make sure to configure your Pi-hole/network setup properly (<a href="https://www.reddit.com/r/pihole/comments/7e0jg9/dns_over_tor/dq4kkvg/">this thread might help</a>).</p>
@@ -1280,18 +1280,18 @@
           </div>
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
   <div class="md-footer-social">
     <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
     
-      <a href="https://pi-hole.net/" class="md-footer-social__link fa fa-globe"></a>
+      <a href="https://pi-hole.net/" target="_blank" rel="noopener" title="globe" class="md-footer-social__link fa fa-globe"></a>
     
-      <a href="https://github.com/pi-hole" class="md-footer-social__link fa fa-github-alt"></a>
+      <a href="https://github.com/pi-hole" target="_blank" rel="noopener" title="github-alt" class="md-footer-social__link fa fa-github-alt"></a>
     
   </div>
 
@@ -1301,7 +1301,7 @@
       
     </div>
     
-      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
+      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       

@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.2">
     
     
       
@@ -42,12 +42,12 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
       
       
     
     
-      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
@@ -81,7 +81,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#how-to-use-regular-expressions-for-blocking" tabindex="1" class="md-skip">
+      <a href="#how-to-use-regular-expressions-for-blocking" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -90,9 +90,9 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-header-nav__button md-logo">
+        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" aria-label="Pi-hole documentation" class="md-header-nav__button md-logo">
           
-            <img src="../../../images/logo.svg" width="24" height="24">
+            <img alt="logo" src="../../../images/logo.svg" width="24" height="24">
           
         </a>
       </div>
@@ -121,7 +121,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -184,7 +184,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-nav__button md-logo">
       
-        <img src="../../../images/logo.svg" width="48" height="48">
+        <img alt="logo" src="../../../images/logo.svg" width="48" height="48">
       
     </a>
     Pi-hole documentation
@@ -1211,13 +1211,13 @@ To tell <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abb
 </ul>
 <h2 id="pi-hole-regex-debugging-mode">Pi-hole <abbr title="Regular expression">Regex</abbr> debugging mode<a class="headerlink" href="#pi-hole-regex-debugging-mode" title="Permanent link">&para;</a></h2>
 <p>To ease the usage of regular expression filters in <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr>, we offer a <abbr title="Regular expression">regex</abbr> debugging mode. Set</p>
-<div class="codehilite"><pre><span></span><span class="err">DEBUG_REGEX=true</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">DEBUG_REGEX=true</span>
+</code></pre></div>
 
 <p>in your <code>/etc/pihole/pihole-FTL.conf</code> and restart <code>pihole-FTL</code> to enable or disable this mode.</p>
 <p>Once the debugging mode is enabled, each match will be logged to <code>/var/log/pihole-FTL.log</code> in the following format:</p>
-<div class="codehilite"><pre><span></span>[2018-07-17 17:40:51.304] Regex in line 2 &quot;((^)|(\.))twitter\.&quot; matches &quot;whatever.twitter.com&quot;
-</pre></div>
+<div class="codehilite"><pre><span></span><code>[2018-07-17 17:40:51.304] Regex in line 2 &quot;((^)|(\.))twitter\.&quot; matches &quot;whatever.twitter.com&quot;
+</code></pre></div>
 
 <p>The given line number corresponds to the line in the file <code>/etc/pihole/regex.list</code>.</p>
 <p>Note that validation is only done on the first occurrence of a domain to increase the computational efficiency of <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr>.</p>
@@ -1283,18 +1283,18 @@ To tell <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abb
           </div>
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
   <div class="md-footer-social">
     <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
     
-      <a href="https://pi-hole.net/" class="md-footer-social__link fa fa-globe"></a>
+      <a href="https://pi-hole.net/" target="_blank" rel="noopener" title="globe" class="md-footer-social__link fa fa-globe"></a>
     
-      <a href="https://github.com/pi-hole" class="md-footer-social__link fa fa-github-alt"></a>
+      <a href="https://github.com/pi-hole" target="_blank" rel="noopener" title="github-alt" class="md-footer-social__link fa fa-github-alt"></a>
     
   </div>
 
@@ -1304,7 +1304,7 @@ To tell <em><abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></em><abb
       
     </div>
     
-      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
+      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       

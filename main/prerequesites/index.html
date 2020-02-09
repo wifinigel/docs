@@ -36,7 +36,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.2">
     
     
       
@@ -44,12 +44,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
       
       
     
     
-      <script src="../../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
@@ -83,7 +83,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#hardware" tabindex="1" class="md-skip">
+      <a href="#hardware" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -92,9 +92,9 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-header-nav__button md-logo">
+        <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" aria-label="Pi-hole documentation" class="md-header-nav__button md-logo">
           
-            <img src="../../images/logo.svg" width="24" height="24">
+            <img alt="logo" src="../../images/logo.svg" width="24" height="24">
           
         </a>
       </div>
@@ -123,7 +123,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -186,7 +186,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="https://docs.pi-hole.net/" title="Pi-hole documentation" class="md-nav__button md-logo">
       
-        <img src="../../images/logo.svg" width="48" height="48">
+        <img alt="logo" src="../../images/logo.svg" width="48" height="48">
       
     </a>
     Pi-hole documentation
@@ -1398,40 +1398,40 @@ The use of dnsmasq on ports <em>67</em> or <em>547</em> is optional, but require
 <h4 id="iptables">IPTables<a class="headerlink" href="#iptables" title="Permanent link">&para;</a></h4>
 <p>IPTables uses two sets of tables. One set is for <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> chains, and the second is for <abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> chains. If only <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> blocking is used for the Pi-hole installation, only apply the rules for IP4Tables. Full Stack (<abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> and <abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr>) require both sets of rules to be applied. <em>Note: These examples insert the rules at the front of the chain. Please see your distribution's documentation for the exact proper command to use.</em></p>
 <p>IPTables (<abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr>)</p>
-<div class="codehilite"><pre><span></span>iptables -I INPUT <span class="m">1</span> -p tcp -m tcp --dport <span class="m">80</span> -j ACCEPT
+<div class="codehilite"><pre><span></span><code>iptables -I INPUT <span class="m">1</span> -p tcp -m tcp --dport <span class="m">80</span> -j ACCEPT
 iptables -I INPUT <span class="m">1</span> -p tcp -m tcp --dport <span class="m">53</span> -j ACCEPT
 iptables -I INPUT <span class="m">1</span> -p udp -m udp --dport <span class="m">53</span> -j ACCEPT
 iptables -I INPUT <span class="m">1</span> -p tcp -m tcp --dport <span class="m">67</span> -j ACCEPT
 iptables -I INPUT <span class="m">1</span> -p udp -m udp --dport <span class="m">67</span> -j ACCEPT
 iptables -I INPUT <span class="m">1</span> -p tcp -m tcp --dport <span class="m">4711</span> -i lo -j ACCEPT
-</pre></div>
+</code></pre></div>
 
 <p>IP6Tables (<abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr>)</p>
-<div class="codehilite"><pre><span></span>ip6tables -I INPUT -p udp -m udp --sport <span class="m">546</span>:547 --dport <span class="m">546</span>:547 -j ACCEPT
-</pre></div>
+<div class="codehilite"><pre><span></span><code>ip6tables -I INPUT -p udp -m udp --sport <span class="m">546</span>:547 --dport <span class="m">546</span>:547 -j ACCEPT
+</code></pre></div>
 
 <h4 id="firewalld">FirewallD<a class="headerlink" href="#firewalld" title="Permanent link">&para;</a></h4>
 <p>Using the <code>--permanent</code> argument will ensure the firewall rules persist reboots. If only <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> blocking is used for the Pi-hole installation, the <code>dhcpv6</code> service can be removed from the commands below. Create a new zone for the local interface (<code>lo</code>) for the pihole-<abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr> ports to ensure the <abbr title="Application Programming Interface (a set of subroutine definitions, protocols, and tools for building application software)">API</abbr> is only accessible locally. Finally <code>--reload</code> to have the new firewall configuration take effect immediately.</p>
-<div class="codehilite"><pre><span></span>firewall-cmd --permanent --add-service<span class="o">=</span>http --add-service<span class="o">=</span>dns --add-service<span class="o">=</span>dhcp --add-service<span class="o">=</span>dhcpv6
+<div class="codehilite"><pre><span></span><code>firewall-cmd --permanent --add-service<span class="o">=</span>http --add-service<span class="o">=</span>dns --add-service<span class="o">=</span>dhcp --add-service<span class="o">=</span>dhcpv6
 firewall-cmd --permanent --new-zone<span class="o">=</span>ftl
 firewall-cmd --permanent --zone<span class="o">=</span>ftl --add-interface<span class="o">=</span>lo
 firewall-cmd --permanent --zone<span class="o">=</span>ftl --add-port<span class="o">=</span><span class="m">4711</span>/tcp
 firewall-cmd --reload
-</pre></div>
+</code></pre></div>
 
 <h4 id="ufw">ufw<a class="headerlink" href="#ufw" title="Permanent link">&para;</a></h4>
 <p>ufw stores all rules persistent, so you just need to execute the commands below.</p>
 <p><abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr>:</p>
-<div class="codehilite"><pre><span></span>ufw allow <span class="m">80</span>/tcp
+<div class="codehilite"><pre><span></span><code>ufw allow <span class="m">80</span>/tcp
 ufw allow <span class="m">53</span>/tcp
 ufw allow <span class="m">53</span>/udp
 ufw allow <span class="m">67</span>/tcp
 ufw allow <span class="m">67</span>/udp
-</pre></div>
+</code></pre></div>
 
 <p><abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> (include above <abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> rules):</p>
-<div class="codehilite"><pre><span></span>ufw allow <span class="m">546</span>:547/udp
-</pre></div>
+<div class="codehilite"><pre><span></span><code>ufw allow <span class="m">546</span>:547/udp
+</code></pre></div>
                 
                   
                 
@@ -1494,18 +1494,18 @@ ufw allow <span class="m">67</span>/udp
           </div>
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
   <div class="md-footer-social">
     <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
-      <a href="https://pi-hole.net/" class="md-footer-social__link fa fa-globe"></a>
+      <a href="https://pi-hole.net/" target="_blank" rel="noopener" title="globe" class="md-footer-social__link fa fa-globe"></a>
     
-      <a href="https://github.com/pi-hole" class="md-footer-social__link fa fa-github-alt"></a>
+      <a href="https://github.com/pi-hole" target="_blank" rel="noopener" title="github-alt" class="md-footer-social__link fa fa-github-alt"></a>
     
   </div>
 
@@ -1515,7 +1515,7 @@ ufw allow <span class="m">67</span>/udp
       
     </div>
     
-      <script src="../../assets/javascripts/application.808e90bb.js"></script>
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
