@@ -16,11 +16,6 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://docs.pi-hole.net/main/presentations/</loc>
-     <lastmod>2020-02-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
      <loc>https://docs.pi-hole.net/main/coverage/</loc>
      <lastmod>2020-02-10</lastmod>
      <changefreq>daily</changefreq>
