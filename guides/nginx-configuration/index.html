@@ -1265,7 +1265,8 @@
     <span class="p">}</span>
 
     <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php$</span> <span class="p">{</span>
-        <span class="kn">include</span> <span class="s">snippets/fastcgi-php.conf</span><span class="p">;</span>
+        <span class="kn">include</span> <span class="s">fastcgi_params</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="nv">$document_root/$fastcgi_script_name</span><span class="p">;</span>
         <span class="kn">fastcgi_pass</span> <span class="s">unix:/run/php/php7.0-fpm.sock</span><span class="p">;</span>
         <span class="kn">fastcgi_param</span> <span class="s">FQDN</span> <span class="s">true</span><span class="p">;</span>
         <span class="kn">auth_basic</span> <span class="s">&quot;Restricted&quot;</span><span class="p">;</span> <span class="c1"># For Basic Auth</span>
