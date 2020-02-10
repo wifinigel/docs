@@ -1,7 +1,6 @@
 ---
 title: Community Projects
 description: Things built with Pi-hole
-last_updated: Sun Jan 13 19:45:40 2019 UTC
 ---
 
 - [The Big Blocklist Collection](https://firebog.net/)
