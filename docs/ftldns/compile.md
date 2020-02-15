@@ -20,7 +20,8 @@ sudo dnf install gcc gmp-devel gmp-static m4
 ---
 
 You'll also need to compile `nettle` as *FTL*DNS uses `libnettle` for handling DNSSEC. Compile and install a recent version of `nettle` (we recommend 3.5):
-```
+
+```bash
 wget https://ftp.gnu.org/gnu/nettle/nettle-3.5.tar.gz
 tar -xvzf nettle-3.5.tar.gz
 cd nettle-3.5

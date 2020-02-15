@@ -4,6 +4,7 @@ We implement the POSIX Extended Regular Expressions similar to the one used by t
 Our implementation is light and fast as each domain is only checked once for a match (if you query `google.com`, it will be checked against your RegEx. Any subsequent query to the same domain will not be checked again until you restart `pihole-FTL`).
 
 ## Hierarchy of regex filters in *FTL*DNS
+
 *FTL*DNS uses a specific hierarchy to ensure regex filters work as you expect them to. Whitelisting always has priority over blacklisting.
 There are two locations where regex filters are important:
 
@@ -11,6 +12,7 @@ There are two locations where regex filters are important:
 2. When a queried domain matches a blacklist regex filter, the query will *not* be blocked if the domain *also* matches an exact or a regex whitelist entry.
 
 ## How to use regular expressions for filtering domains
+
 *FTL*DNS reads in regular expression filters from the two [`regex` database views](../../database/gravity/index.md).
 To tell *FTL*DNS to reload the list of regex filters, either:
 
@@ -35,6 +37,7 @@ Once the debugging mode is enabled, each match will be logged to `/var/log/pihol
 ```text
 [2018-07-17 17:40:51.304] Regex blacklist (DB ID 15) >> MATCH: "whatever.twitter.com" vs. "((^)|(\.))twitter\."
 ```
+
 The given DB ID corresponds to the ID of the corresponding row in the `domainlist` database table.
 
 Note that validation is only done on the first occurrence of a domain to increase the computational efficiency of *FTL*DNS. The result of this evaluation is stored in an internal DNS cache that is separate from `dnsmasq`'s own DNS cache. This allows us to only flush this special cache when modifying the black- and whitelists *without* having to flush the entire DNS cache collected so far.

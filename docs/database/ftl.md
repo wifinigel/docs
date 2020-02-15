@@ -87,6 +87,7 @@ ID | Query Type
 <!-- Query | A | AAAA | ANY | SRV | SOA | PTR | TXT -->
 
 ### Supported status types
+
 ID | Status | | Details
 --- | --- | --- | ---
 0 | Unknown | &#x2754; | was not answered by forward destination
@@ -103,8 +104,10 @@ ID | Status | | Details
 11 | Blocked | &#x274C; | Domain contained in [exact blacklist](../database/gravity/index.md#blacklist-table-blacklist)<br>*Blocked during deep CNAME inspection*
 
 ### Example for interaction with the long-term query database
+
 In addition to the interactions the Pi-hole database API offers, you can also run your own SQL commands against the database. If you want to obtain the three most queries domains for all time, you could use
-```
+
+```bash
 sqlite3 "/etc/pihole/pihole-FTL.db" "SELECT domain,count(domain) FROM queries WHERE (STATUS == 2 OR STATUS == 3) GROUP BY domain ORDER BY count(domain) DESC LIMIT 3"
 ```
 

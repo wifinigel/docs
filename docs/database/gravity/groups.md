@@ -1,4 +1,5 @@
 ## Group management
+
 Any blocklist or domain on the white-/black-/regex-lists can be managed through groups. This allows not only grouping them together to highlight their relationship, but also enabling/disabling them together if one, for instance, wants to visit a specific service only temporarily.
 
 Groups are defined in the `group` table and can have an optional description in addition to a mandatory name of the group.
@@ -11,6 +12,7 @@ Label | Type | Uniqueness enforced | Content
 `comment` | text | No | Optional field for arbitrary user comments
 
 Group management is implemented using so called linking tables. Hence, it is possible to
+
 - associate domains (and clients!) with any number of groups,
 - manage adlists together with groups,
 - use the same groups for black- and whitelisted domains at the same time.
@@ -25,6 +27,7 @@ Label | Type | Content
 Group `0` is special as it is automatically assigned to domains and clients not being member of other groups. Each newly added client or domain gets assigned to group zero when being added.
 
 ## Effect of group management
+
 The great flexibility to manage domains in no, one, or multiple groups may result in unexpected behavior when, e.g., the domains are enabled in some but disabled in other groups. For the sake of convenience, we describe the possible configurations and whether *FTL*DNS uses these domains (&#10004;) or not (&#10008;) in such cases.
 
 - Domain disabled: &#10008;<br>Note that the domain is never imported by *FTL*DNS, even if it is contained in an enabled group.

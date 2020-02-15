@@ -65,6 +65,7 @@ Should `FTL` try to resolve IPv6 addresses to hostnames?
 Should `FTL` try to resolve IPv4 addresses to hostnames?
 
 ### Database settings
+
 **[Further details concerning the database](../database/index.md)**
 
 #### `DBIMPORT=yes|no` {#dbimport data-toc-label='DB Import'}
