@@ -22,7 +22,8 @@
       "strong",
       "p",
       "sub",
-      "table", "tbody", "th", "tr", "td"
+      "table", "tbody", "th", "tr", "td",
+      "details", "summary"
     ]
   },
   "MD035": {
