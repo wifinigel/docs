@@ -16,7 +16,7 @@ after your database modifications to have FTL flush it's internal domain-blockin
 
     The `Unassociated` group has a special meaning and cannot be deleted. All domains, clients, and adlists without a specific group assignment are automatically managed through this group. Disabling this group will disable Pi-hole blocking for all unmanaged devices.
 
-    ![](example-groups.png)
+    ![Adding three groups](example-groups.png)
 
     <details><summary>Raw database instructions</summary>
     ```sql
@@ -30,7 +30,7 @@ after your database modifications to have FTL flush it's internal domain-blockin
 
     Add three clients at your will, their IP addresses might differ from the ones in this example.
 
-    ![](example-clients-1.png)
+    ![Adding three clients](example-clients-1.png)
 
     <details><summary>Raw database instructions</summary>
     ```sql
@@ -42,7 +42,7 @@ after your database modifications to have FTL flush it's internal domain-blockin
 
 3. **Link the clients to the created groups.** Don't forget to save each assignment by clicking on the corresponding green pen icon in the same row.
 
-    ![](example-clients-2.png)
+    ![Link groups and clients](example-clients-2.png)
 
     <details><summary>Raw database instructions</summary>
     ```sql
@@ -56,7 +56,7 @@ after your database modifications to have FTL flush it's internal domain-blockin
 
 **Task:** Exclude client 1 from Pi-hole's blocking by removing client 1 from the `Unassociated` group (see comment above).
 
-![](example-clients-3.png)
+![Change client groups assignment](example-clients-3.png)
 
 <details><summary>Raw database instructions</summary>
 ```sql
@@ -81,7 +81,7 @@ All three client got automatically assigned to the default (`Unassociated`) grou
 
 **Task:** Assign adlist with ID 1 to group 1 (in addition to the default assignment to group 0). This results in client `192.168.0.101` using *only this* adlist (we removed the default association in the last step).
 
-![](example-adlists-1.png)
+![Change blocklist group assignment](example-adlists-1.png)
 
 <details><summary>Raw database instructions</summary>
 ```sql
@@ -110,9 +110,9 @@ Client        | Group | Domain | Blocked
 
 Add the domain to be blocked
 
-![](example-new-black.png)
+![Add new exact blacklist domain](example-new-black.png)
 
-![](example-domain-1.png)
+![Resulting row in list of domains](example-domain-1.png)
 
 <details><summary>Raw database instructions</summary>
 ```sql
@@ -137,7 +137,7 @@ Note that Pi-hole is *not* blocking this domain for client `192.168.0.101` as we
 
 Assign this domain to group 1
 
-![](example-domain-2.png)
+![Assign group to new domain](example-domain-2.png)
 
 <details><summary>Raw database instructions</summary>
 ```sql
@@ -162,7 +162,7 @@ All clients see this domain as being blocked. Client 1 due to a direct assignmen
 
 Remove default assignment to all clients not belonging to a group
 
-![](example-domain-3.png)
+![Remove unassociated group from new domain](example-domain-3.png)
 
 <details><summary>Raw database instructions</summary>
 ```sql
@@ -191,9 +191,9 @@ While client 1 keeps its explicit assignment through group 1, the remaining clie
 
 Add the domain to be whitelisted
 
-![](example-new-white.png)
+![Add a new exact whitelist domain](example-new-white.png)
 
-![](example-domain-4.png)
+![Resulting row in list of domains](example-domain-4.png)
 
 <details><summary>Raw database instructions</summary>
 ```sql
@@ -217,7 +217,7 @@ Client `192.168.0.101` is not whitelisting this domain as we removed the default
 
 Remove default group assignment
 
-![](example-domain-5.png)
+![Remove default group assignment](example-domain-5.png)
 
 <details><summary>Raw database instructions</summary>
 ```sql
@@ -241,7 +241,7 @@ Requests from all clients are blocked as the new whitelist entry is not associat
 
 Assign this domain to group 2
 
-![](example-domain-6.png)
+![Assign group to new domain](example-domain-6.png)
 
 <details><summary>Raw database instructions</summary>
 ```sql
