@@ -3,30 +3,35 @@ Pi-hole *FTL*DNS uses the well-known relational database management system SQLit
 The long-term query database was the first database that was added to the Pi-hole project.
 We update this database periodically and on exit of *FTL*DNS (triggered e.g. by a `service pihole-FTL restart`). The updating frequency can be controlled by the parameter [`DBINTERVAL`](../ftldns/configfile.md#dbinterval) and defaults to once per minute. We think this interval is sufficient to protect against data losses due to power failure events. *FTL*DNS needs the database to populate its internal history of the most recent 24 hours. If the database is disabled, *FTL*DNS will show an empty query history after a restart.
 
-The location of the database can be configures by the config parameter [`DBFILE`](../ftldns/configfile.md#dbfile). It defaults to `/etc/pihole/pihole-FTL.db`. If the given file does not exist, *FTL*DNS will create a new (empty) database file.
+The location of the database can be configured by the config parameter [`DBFILE`](../ftldns/configfile.md#dbfile). It defaults to `/etc/pihole/pihole-FTL.db`. If the given file does not exist, *FTL*DNS will create a new (empty) database file.
 
 Another way of controlling the size of the long-term database is setting a maximum age for log queries to keep using the config parameter [`MAXDBDAYS`](../ftldns/configfile.md#maxdbdays). It defaults to 365 days, i.e. queries that are older than one year get periodically removed to limit the growth of the long-term database file.
 
-The config parameter [`DBIMPORT`](../ftldns/configfile.md#dbimport) controls whether `FTL` loads information from the database on startup. It need to do this to populate the internal datastructure with the most recent history. However, as importing from the database on disk can delay FTL on very large deploys, it can be disabled using this option.
+The config parameter [`DBIMPORT`](../ftldns/configfile.md#dbimport) controls whether `FTL` loads information from the database on startup. It needs to do this to populate the internal data structure with the most recent history. However, as importing from the database on disk can delay FTL on very large deploys, it can be disabled using this option.
 
 ---
+
 ### Split database
 
 You can split your long-term database by periodically rotating the database file (do this only when `pihole-FTL` is *not* running). The individual database contents can easily be merged when required.
 This could be implemented by running a monthly `cron` job such as:
-```
+
+```bash
 sudo service pihole-FTL stop
 sudo mv /etc/pihole/pihole-FTL.db /media/backup/pihole-FTL_$(date +"%m-%y").db
 sudo service pihole-FTL start
 ```
+
 Note that DNS resolution will not be available as long as `pihole-FTL` is stopped.
 
 ### Backup database
 
 The database can be backed up while FTL is running when using the SQLite3 Online backup method, e.g.,
-```
+
+```bash
 sqlite3 /etc/pihole/pihole-FTL.db ".backup /home/pi/pihole-FTL.db.backup"
 ```
+
 will create `/home/pi/pihole-FTL.db.backup` which is a copy of your long-term database.
 
 ---
@@ -46,6 +51,7 @@ Label | Type | Allowed to by empty | Content
 `forward` | text | Yes | Forward destination used for this query (only set if `status == 2`)
 
 ### Counters table
+
 This table contains counter values integrated over the entire lifetime of the table
 
 Label | Type | Allowed to by empty | Content
@@ -59,14 +65,13 @@ ID | Interpretation
 1 | Total number of blocked queries
 
 ### FTL table
-The FTL tables contains some data used by *FTL*DNS for determining which queries to save to the database. This table does not contain any entries of general interest.
+
+The FTL table contains some data used by *FTL*DNS for determining which queries to save to the database. This table does not contain any entries of general interest.
 
 SQLite3 syntax used to create this table:
-```
-CREATE TABLE ftl ( id INTEGER PRIMARY KEY NOT NULL, value BLOB NOT NULL );
-```
 
 ### Supported query types
+
 ID | Query Type
 --- | ---
 1 | A
@@ -85,26 +90,32 @@ ID | Query Type
 ID | Status | | Details
 --- | --- | --- | ---
 0 | Unknown | &#x2754; | was not answered by forward destination
-1 | Blocked | &#x274C; | Domain contained in [gravity database](gravity/lists.md#gravity-table-gravity)
+1 | Blocked | &#x274C; | Domain contained in [gravity database](../database/gravity/index.md#gravity-table-gravity)
 2 | Allowed | &#x2705; | Forwarded
 3 | Allowed | &#x2705; | Known, replied to from cache
-4 | Blocked | &#x274C; | Domain matched by a [regex](gravity/lists.md#regex-table-regex) filter
-5 | Blocked | &#x274C; | Domain contained in [blacklist](gravity/lists.md#blacklist-table-blacklist)
+4 | Blocked | &#x274C; | Domain matched by a [regex blacklist](../database/gravity/index.md#regex-table-regex) filter
+5 | Blocked | &#x274C; | Domain contained in [exact blacklist](../database/gravity/index.md#blacklist-table-blacklist)
 6 | Blocked | &#x274C; | By upstream server (known blocking page IP address)
 7 | Blocked | &#x274C; | By upstream server (`0.0.0.0` or `::`)
 8 | Blocked | &#x274C; | By upstream server (`NXDOMAIN` with `RA` bit unset)
+9 | Blocked | &#x274C; | Domain contained in [gravity database](../database/gravity/index.md#gravity-table-gravity)<br>*Blocked during deep CNAME inspection*
+10 | Blocked | &#x274C; | Domain matched by a [regex blacklist](../database/gravity/index.md#regex-table-regex) filter<br>*Blocked during deep CNAME inspection*
+11 | Blocked | &#x274C; | Domain contained in [exact blacklist](../database/gravity/index.md#blacklist-table-blacklist)<br>*Blocked during deep CNAME inspection*
 
 ### Example for interaction with the long-term query database
 In addition to the interactions the Pi-hole database API offers, you can also run your own SQL commands against the database. If you want to obtain the three most queries domains for all time, you could use
 ```
 sqlite3 "/etc/pihole/pihole-FTL.db" "SELECT domain,count(domain) FROM queries WHERE (STATUS == 2 OR STATUS == 3) GROUP BY domain ORDER BY count(domain) DESC LIMIT 3"
 ```
+
 which would return something like
-```
+
+```text
 discourse.pi-hole.net|421095
 www.pi-hole.net|132483
 posteo.de|130243
 ```
+
 showing the domain and the number of times it was found in the long-term database. Note that such a request might take very long for computation as the entire history of queries have to be processed for this.
 
 {!abbreviations.md!}

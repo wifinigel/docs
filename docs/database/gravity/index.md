@@ -30,7 +30,7 @@ Label | Type | Uniqueness enforced | Content
 `comment` | text | No | Optional field for arbitrary user comments
 
 ## Gravity Table (`gravity`)
-The `gravity` table consists of the domains that have been processed by Pi-hole's `gravity` (`pihole -g`) command. The domain in this list are the collection of domains sourced from the configured sources (see the [`adlist` table](lists.md#adlist-table-adlist).
+The `gravity` table consists of the domains that have been processed by Pi-hole's `gravity` (`pihole -g`) command. The domain in this list are the collection of domains sourced from the configured sources (see the [`adlist` table](index.md#adlist-table-adlist).
 
 During each run of `pihole -g`, this table is flushed and completely rebuilt from the newly obtained set of domains to be blocked.
 
@@ -48,7 +48,10 @@ Clients are identified by their IP addresses. Each client automatically gets a u
 Label | Type | Content
 ----- | ---- | -------
 `id` | integer | Client ID (autoincrementing)
-`ip` | text | IP address of the client (IPv4 or IPv6)
+`ip` | text | IP address of the client (IPv4 or IPv6), Uniqueness is enforced
+`date_added` | integer | Timestamp when client was added
+`date_modified` | integer | Timestamp when client was last modified, automatically updated when a record is changed
+`comment` | text | Optional field for arbitrary user comments, only field that is allowed to be `NULL`
 
 ## Audit Table (`domain_audit`)
 The `domain_audit` table contains domains that have been audited by the user on the web interface.
