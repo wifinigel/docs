@@ -90,18 +90,18 @@ ID | Query Type
 
 ID | Status | | Details
 --- | --- | --- | ---
-0 | Unknown | &#x2754; | was not answered by forward destination
-1 | Blocked | &#x274C; | Domain contained in [gravity database](../database/gravity/index.md#gravity-table-gravity)
-2 | Allowed | &#x2705; | Forwarded
-3 | Allowed | &#x2705; | Known, replied to from cache
-4 | Blocked | &#x274C; | Domain matched by a [regex blacklist](../database/gravity/index.md#regex-table-regex) filter
-5 | Blocked | &#x274C; | Domain contained in [exact blacklist](../database/gravity/index.md#blacklist-table-blacklist)
-6 | Blocked | &#x274C; | By upstream server (known blocking page IP address)
-7 | Blocked | &#x274C; | By upstream server (`0.0.0.0` or `::`)
-8 | Blocked | &#x274C; | By upstream server (`NXDOMAIN` with `RA` bit unset)
-9 | Blocked | &#x274C; | Domain contained in [gravity database](../database/gravity/index.md#gravity-table-gravity)<br>*Blocked during deep CNAME inspection*
-10 | Blocked | &#x274C; | Domain matched by a [regex blacklist](../database/gravity/index.md#regex-table-regex) filter<br>*Blocked during deep CNAME inspection*
-11 | Blocked | &#x274C; | Domain contained in [exact blacklist](../database/gravity/index.md#blacklist-table-blacklist)<br>*Blocked during deep CNAME inspection*
+0 | Unknown | ❔ | was not answered by forward destination
+1 | Blocked | ❌ | Domain contained in [gravity database](../database/gravity/index.md#gravity-table-gravity)
+2 | Allowed | ✅ | Forwarded
+3 | Allowed | ✅ | Known, replied to from cache
+4 | Blocked | ❌ | Domain matched by a [regex blacklist](../database/gravity/index.md#regex-table-regex) filter
+5 | Blocked | ❌ | Domain contained in [exact blacklist](../database/gravity/index.md#blacklist-table-blacklist)
+6 | Blocked | ❌ | By upstream server (known blocking page IP address)
+7 | Blocked | ❌ | By upstream server (`0.0.0.0` or `::`)
+8 | Blocked | ❌ | By upstream server (`NXDOMAIN` with `RA` bit unset)
+9 | Blocked | ❌ | Domain contained in [gravity database](../database/gravity/index.md#gravity-table-gravity)<br>*Blocked during deep CNAME inspection*
+10 | Blocked | ❌ | Domain matched by a [regex blacklist](../database/gravity/index.md#regex-table-regex) filter<br>*Blocked during deep CNAME inspection*
+11 | Blocked | ❌ | Domain contained in [exact blacklist](../database/gravity/index.md#blacklist-table-blacklist)<br>*Blocked during deep CNAME inspection*
 
 ### Example for interaction with the long-term query database
 
