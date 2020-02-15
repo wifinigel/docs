@@ -28,11 +28,11 @@ Group `0` is special as it is automatically assigned to domains and clients not 
 
 ## Effect of group management
 
-The great flexibility to manage domains in no, one, or multiple groups may result in unexpected behavior when, e.g., the domains are enabled in some but disabled in other groups. For the sake of convenience, we describe the possible configurations and whether *FTL*DNS uses these domains (&#10004;) or not (&#10008;) in such cases.
+The great flexibility to manage domains in no, one, or multiple groups may result in unexpected behavior when, e.g., the domains are enabled in some but disabled in other groups. For the sake of convenience, we describe the possible configurations and whether *FTL*DNS uses these domains (✔) or not (✘) in such cases.
 
-- Domain disabled: &#10008;<br>Note that the domain is never imported by *FTL*DNS, even if it is contained in an enabled group.
+- Domain disabled: ✘<br>Note that the domain is never imported by *FTL*DNS, even if it is contained in an enabled group.
 
 - Domain enabled: It depends...
-    - Not managed by a group: &#10004;
-    - Contained in one or more groups (at least one enabled): &#10004;
-    - Contained in one or more groups (all disabled): &#10008;
+    - Not managed by a group: ✔
+    - Contained in one or more groups (at least one enabled): ✔
+    - Contained in one or more groups (all disabled): ✘
