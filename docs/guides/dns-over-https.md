@@ -127,7 +127,7 @@ google.com.             299     IN      A       243.65.127.221
 
 Finally, configure Pi-hole to use the local `cloudflared` service as the upstream DNS server:
 
-![Screenshot of Pi-hole configuration](../images/DoHConfig.png)
+![Screenshot of Pi-hole configuration](/assets/img/guides/doh/DoHConfig.png)
 
 (don't forget to hit Return or click on `Save`)
 

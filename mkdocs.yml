@@ -6,8 +6,8 @@ copyright: 'Copyright &copy; 2019 Pi-hole LLC'
 remote_branch: gh-pages
 theme:
   name: 'material'
-  favicon: 'images/favicon.ico'
-  logo: 'images/logo.svg'
+  favicon: '/assets/img/favicon.ico'
+  logo: '/assets/img/logo.svg'
   language: 'en'
   font:
     text: 'Source Sans Pro'
@@ -117,7 +117,7 @@ extra:
       link: https://github.com/pi-hole
 
 extra_css:
-  - extra.css
+  - /assets/extra.css
 
 plugins:
   - search

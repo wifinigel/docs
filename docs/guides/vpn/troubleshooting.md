@@ -11,7 +11,7 @@ Wed Apr 24 11:19:07 2019 Restart pause, 5 second(s)
 
 Android clients simply report: "Transport error, trying to reconnect..."
 
-> ![](Android-Transport-Error.png)
+> ![](/assets/img/guides/vpn/Android-Transport-Error.png)
 
 On the OpenVPN server, the following messages are logged:
 

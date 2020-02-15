@@ -18,7 +18,7 @@ Remember to replace the locations of your keys and the address/hostname of your 
 
 When using the Network Manager, you will have to do some additional setting on the client's side of things:
 
-![](NetworkManager1.png)
+![](/assets/img/guides/vpn/NetworkManager1.png)
 
 #### Alternative 1: Disable Network Manager's internal DNS server
 
@@ -40,7 +40,7 @@ When connecting your DNS server will now be properly picked up and used by your 
 
 You can also set the address of the DNS server manually (use the device which actually connects to the internet, e.g. `eth0`):
 
-![](NetworkManager2.png)
+![](/assets/img/guides/vpn/NetworkManager2.png)
 
 After doing either alternative, you should see:
 
@@ -51,7 +51,7 @@ pi.hole has IPv6 address A:B:C:D:E:F (outside address of your VPN server)
 
 The web interface of your Pi-hole will be visible at `http://pi.hole/admin/` (even with the recommended firewall configuration mentioned on another subpage)
 
-![](VPNdashboard.png)
+![](/assets/img/guides/vpn/VPNdashboard.png)
 
 ---
 

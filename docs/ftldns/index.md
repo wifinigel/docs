@@ -1,5 +1,5 @@
 <p class="text-center">
-    <img src="../images/FTLDNS.png" alt="FTLDNS" width="690" height="184">
+    <img src="/assets/img/ftldns/FTLDNS.png" alt="FTLDNS" width="690" height="184">
     <br>
     <strong>powered by Pi-hole®</strong>
 </p>

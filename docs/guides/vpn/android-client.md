@@ -36,18 +36,18 @@ Client android added, configuration is available at /root/android.ovpn
 
 - Copy the mentioned file (`/root/android.ovpn`) to your Android device (e.g. SD card) and import it in the app:
 
-    ![](Android-Import-1.png)
+    ![](/assets/img/guides/vpn/Android-Import-1.png)
 
-    ![](Android-Import-2.png)
+    ![](/assets/img/guides/vpn/Android-Import-2.png)
 
-    ![](Android-Import-3.png)
+    ![](/assets/img/guides/vpn/Android-Import-3.png)
 
-    ![](Android-Import-4.png)
+    ![](/assets/img/guides/vpn/Android-Import-4.png)
 
 - Connect to your OpenVPN server
 
-    ![](Android-Connected.png)
+    ![](/assets/img/guides/vpn/Android-Connected.png)
 
 - You are ready to go!
 
-    ![](Android-Pi-hole.png)
+    ![](/assets/img/guides/vpn/Android-Pi-hole.png)

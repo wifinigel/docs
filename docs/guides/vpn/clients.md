@@ -82,15 +82,15 @@ You will need:
 
 Further details can be found in the screenshots provided below:
 
-![](NetworkManager3.png)
-![](NetworkManager4.png)
-![](NetworkManager5.png)
-![](NetworkManager6.png)
-![](NetworkManager7.png)
+![](/assets/img/guides/vpn/NetworkManager3.png)
+![](/assets/img/guides/vpn/NetworkManager4.png)
+![](/assets/img/guides/vpn/NetworkManager5.png)
+![](/assets/img/guides/vpn/NetworkManager6.png)
+![](/assets/img/guides/vpn/NetworkManager7.png)
 
 Your whole network traffic will now securely be transferred to your Pi-hole.
 
-![](VPNclients.png)
+![](/assets/img/guides/vpn/VPNclients.png)
 
 ### Windows
 

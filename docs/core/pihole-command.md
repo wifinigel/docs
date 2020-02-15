@@ -133,8 +133,8 @@ Example Usage   | [`pihole -c -e`](https://discourse.pi-hole.net/t/the-pihole-co
 
 Chronometer is a console dashboard of real-time stats, which can be displayed via `ssh` or on an LCD screen attached directly to your hardware. The script is capable of detecting the size of your screen and adjusting output to try and best suit it.
 
-<a href="../chronometer.jpg">
-    <img srcset="../chronometer-thumb.jpg, ../chronometer-thumb@2x.jpg 2x" src="../chronometer-thumb.jpg" alt="Chronometer in action" width="450" height="600">
+<a href="/assets/img/core/chronometer.jpg">
+    <img srcset="/assets/img/core/chronometer-thumb.jpg, /assets/img/core/chronometer-thumb@2x.jpg 2x" src="/asstes/img/core/chronometer-thumb.jpg" alt="Chronometer in action" width="450" height="600">
 </a>
 <br/>
 <sub>

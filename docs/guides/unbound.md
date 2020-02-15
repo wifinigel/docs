@@ -149,6 +149,6 @@ The first command should give a status report of `SERVFAIL` and no IP address. T
 
 Finally, configure Pi-hole to use your recursive DNS server:
 
-![screenshot at 2018-04-18](../images/RecursiveResolver.png)
+![Recursive resolver screenshot](/assets/img/guides/unbound/RecursiveResolver.png)
 
 (don't forget to hit Return or click on `Save`)

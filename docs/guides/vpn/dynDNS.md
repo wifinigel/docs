@@ -69,15 +69,15 @@ daemon_interval="300"
 
 In the following, we give an example of how to set up `ddclient` using the German Internet hosting provider Strato. First, you need to create a subdomain. Then you need to enable DnyDNS for this domain:
 
-![](Strato-DynDNS-Domain.png)
+![](/assets/img/guides/vpn/Strato-DynDNS-Domain.png)
 
 ---
 
-![](Strato-DynDNS-Enable.png)
+![](/assets/img/guides/vpn/Strato-DynDNS-Enable.png)
 
 ---
 
-![](Strato-DynDNS-Password.png)
+![](/assets/img/guides/vpn/Strato-DynDNS-Password.png)
 
 Afterwards, modify your `ddclient` config file to look like:
 
