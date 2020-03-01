@@ -2,7 +2,7 @@ Pi-hole uses the well-known relational database management system SQLite3 for ma
 
 ## Domain tables (`domainlist`)
 
-The database stores white-, and blacklists which are directly relevant for Pi-hole's domain blocking behavior. The `domainlist` table contains all domains on the white- and blacklists. It has a few extra fields to store data related to a given domain such as the `enabled` state, the dates when the domain were added and when it has last been modified, and an optional comment.
+The database stores white-, and blacklists which are directly relevant for Pi-hole's domain blocking behavior. The `domainlist` table contains all domains on the white- and blacklists. It has a few extra fields to store data related to a given domain such as the `enabled` state, the dates when the domain was added and when it was last modified, and an optional comment.
 
 The date fields are defined as `INTEGER` fields as they expect numerical timestamps also known as *UNIX time*. The `date_added` and `date_modified` fields are initialized with the current timestamp converted to UNIX time. The `comment` field is optional and can be empty.
 
@@ -20,7 +20,7 @@ Label | Type | Uniqueness enforced | Content
 
 ## Adlist Table (`adlist`)
 
-The `adlist` table contains all sources for domains to be collected by `pihole -g`. Just like the other tables, it has a few extra fields to store meta data related to a given source.
+The `adlist` table contains all sources for domains to be collected by `pihole -g`. Just like the other tables, it has a few extra fields to store metadata related to a given source.
 
 Label | Type | Uniqueness enforced | Content
 ----- | ---- | ------------------- | --------
@@ -33,7 +33,7 @@ Label | Type | Uniqueness enforced | Content
 
 ## Gravity Table (`gravity`)
 
-The `gravity` table consists of the domains that have been processed by Pi-hole's `gravity` (`pihole -g`) command. The domain in this list are the collection of domains sourced from the configured sources (see the [`adlist` table](index.md#adlist-table-adlist).
+The `gravity` table consists of the domains that have been processed by Pi-hole's `gravity` (`pihole -g`) command. The domains in this list are the collection of domains sourced from the configured sources (see the [`adlist` table](index.md#adlist-table-adlist).
 
 During each run of `pihole -g`, this table is flushed and completely rebuilt from the newly obtained set of domains to be blocked.
 
@@ -52,9 +52,9 @@ Label | Type | Content
 ----- | ---- | -------
 `id` | integer | Client ID (autoincrementing)
 `ip` | text | IP address of the client (IPv4 or IPv6), Uniqueness is enforced
-`date_added` | integer | Timestamp when client was added
-`date_modified` | integer | Timestamp when client was last modified, automatically updated when a record is changed
-`comment` | text | Optional field for arbitrary user comments, only field that is allowed to be `NULL`
+`date_added` | integer | Timestamp when a client was added
+`date_modified` | integer | Timestamp when a client was last modified, automatically updated when a record is changed
+`comment` | text | Optional field for arbitrary user comments, the only field that is allowed to be `NULL`
 
 ## Audit Table (`domain_audit`)
 

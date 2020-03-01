@@ -1,11 +1,11 @@
 Pi-hole *FTL*DNS uses the well-known relational database management system SQLite3 as its long-term storage of query data. In contrast to many other database management solutions, *FTL*DNS does not need a server database engine as the database engine is directly embedded in *FTL*DNS. It seems an obvious choice as it is probably the most widely deployed database engine - it is used today by several widespread web browsers, operating systems, and embedded systems (such as mobile phones), among others. Hence, it is rich in supported platforms and offered features. SQLite implements most of the SQL-92 standard for SQL and can be used for high-level queries.
 
 The long-term query database was the first database that was added to the Pi-hole project.
-We update this database periodically and on exit of *FTL*DNS (triggered e.g. by a `service pihole-FTL restart`). The updating frequency can be controlled by the parameter [`DBINTERVAL`](../ftldns/configfile.md#dbinterval) and defaults to once per minute. We think this interval is sufficient to protect against data losses due to power failure events. *FTL*DNS needs the database to populate its internal history of the most recent 24 hours. If the database is disabled, *FTL*DNS will show an empty query history after a restart.
+We update this database periodically and on the exit of *FTL*DNS (triggered e.g. by a `service pihole-FTL restart`). The updating frequency can be controlled by the parameter [`DBINTERVAL`](../ftldns/configfile.md#dbinterval) and defaults to once per minute. We think this interval is sufficient to protect against data losses due to power failure events. *FTL*DNS needs the database to populate its internal history of the most recent 24 hours. If the database is disabled, *FTL*DNS will show an empty query history after a restart.
 
 The location of the database can be configured by the config parameter [`DBFILE`](../ftldns/configfile.md#dbfile). It defaults to `/etc/pihole/pihole-FTL.db`. If the given file does not exist, *FTL*DNS will create a new (empty) database file.
 
-Another way of controlling the size of the long-term database is setting a maximum age for log queries to keep using the config parameter [`MAXDBDAYS`](../ftldns/configfile.md#maxdbdays). It defaults to 365 days, i.e. queries that are older than one year get periodically removed to limit the growth of the long-term database file.
+Another way of controlling the size of the long-term database is by setting a maximum age for log queries to keep using the config parameter [`MAXDBDAYS`](../ftldns/configfile.md#maxdbdays). It defaults to 365 days, i.e. queries that are older than one year get periodically removed to limit the growth of the long-term database file.
 
 The config parameter [`DBIMPORT`](../ftldns/configfile.md#dbimport) controls whether `FTL` loads information from the database on startup. It needs to do this to populate the internal data structure with the most recent history. However, as importing from the database on disk can delay FTL on very large deploys, it can be disabled using this option.
 
@@ -119,6 +119,6 @@ www.pi-hole.net|132483
 posteo.de|130243
 ```
 
-showing the domain and the number of times it was found in the long-term database. Note that such a request might take very long for computation as the entire history of queries have to be processed for this.
+showing the domain and the number of times it was found in the long-term database. Note that such a request might take a very long time for computation as the entire history of queries has to be processed for this.
 
 {!abbreviations.md!}

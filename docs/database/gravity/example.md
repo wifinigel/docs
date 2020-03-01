@@ -1,6 +1,6 @@
 # Per-client blocking example
 
-In this example, we describe how to set up blocking rule for three specific clients. All remaining (and newly added) clients in the network are "unmanaged", i.e., they use the Pi-hole as usual. The examples shown here built upon each other, i.e., example 5 might make no sense without the context of example 3.
+In this example, we describe how to set up a blocking rule for three specific clients. All remaining (and newly added) clients in the network are "unmanaged", i.e., they use Pi-hole as usual. The examples shown here are built upon each other, i.e., example 5 might make no sense without the context of example 3.
 
 Don't forget to run
 
@@ -8,7 +8,7 @@ Don't forget to run
 pihole restartdns reload-lists
 ```
 
-after your database modifications to have FTL flush it's internal domain-blocking cache (separate from the DNS cache).
+after your database modifications to have FTL flush its internal domain-blocking cache (separate from the DNS cache).
 
 ## Prerequisites
 
@@ -75,7 +75,7 @@ Client        | Group | Domain | Blocked
 192.168.0.104 |   4   | doubleclick.net | Yes
 
 
-All three client got automatically assigned to the default (`Unassociated`) group when they were added. The default group includes all adlists and list domains (if not already changed by the user). When we remove the default group for client `192.168.0.101`, we effectively remove all associations to any adlists and domains. This leaves this client completely unblocked.
+All three clients got automatically assigned to the default (`Unassociated`) group when they were added. The default group includes all adlists and list domains (if not already changed by the user). When we remove the default group for client `192.168.0.101`, we effectively remove all associations to any adlists and domains. This leaves this client completely unblocked.
 
 ## Example 2: Blocklist management
 
@@ -137,7 +137,7 @@ Note that Pi-hole is *not* blocking this domain for client `192.168.0.101` as we
 
 Assign this domain to group 1
 
-![Assign group to new domain](example-domain-2.png)
+![Assign group to a new domain](example-domain-2.png)
 
 <details><summary>Raw database instructions</summary>
 ```sql
@@ -235,13 +235,13 @@ Client        | Group | Domain | Blocked
 192.168.0.103 |   3   | doubleclick.net | **Yes**
 192.168.0.104 |   4   | doubleclick.net | **Yes**
 
-Requests from all clients are blocked as the new whitelist entry is not associated to any group and, hence, is not used by any client.
+Requests from all clients are blocked as the new whitelist entry is not associated with any group and, hence, is not used by any client.
 
 ### Step 3
 
 Assign this domain to group 2
 
-![Assign group to new domain](example-domain-6.png)
+![Assign group to a new domain](example-domain-6.png)
 
 <details><summary>Raw database instructions</summary>
 ```sql
@@ -261,4 +261,4 @@ Client        | Group | Domain | Blocked
 192.168.0.103 |   3   | doubleclick.net | Yes
 192.168.0.104 |   4   | doubleclick.net | Yes
 
-Client 2 got the whitelist entry explicitly assigned to. Accordingly, client 2 does not get the domain blocked whereas all remaining client still see this domain as blocked.
+Client 2 got the whitelist entry explicitly assigned to. Accordingly, client 2 does not get the domain blocked whereas all remaining clients still see this domain as blocked.

@@ -20,7 +20,7 @@ To tell *FTL*DNS to reload the list of regex filters, either:
 - Send `SIGHUP` to `pihole-FTL` (`sudo killall -SIGHUP pihole-FTL`) or
 - Restart the service (`sudo service pihole-FTL restart`)
 
-The first command is to be prefered as it ensures that the DNS cache itself remains intact. Hence, it is also the fastest of the available options.
+The first command is to be preferred as it ensures that the DNS cache itself remains intact. Hence, it is also the fastest of the available options.
 
 ## Pi-hole Regex debugging mode
 

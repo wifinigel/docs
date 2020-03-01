@@ -2,7 +2,7 @@
 
 Any blocklist or domain on the white-/black-/regex-lists can be managed through groups. This allows not only grouping them together to highlight their relationship, but also enabling/disabling them together if one, for instance, wants to visit a specific service only temporarily.
 
-Groups are defined in the `group` table and can have an optional description in addition to a mandatory name of the group.
+Groups are defined in the `group` table and can have an optional description in addition to the mandatory name of the group.
 
 Label | Type | Uniqueness enforced | Content
 ----- | ---- | ------------------- | --------
@@ -11,7 +11,7 @@ Label | Type | Uniqueness enforced | Content
 `name` | text | No | Mandatory group name
 `comment` | text | No | Optional field for arbitrary user comments
 
-Group management is implemented using so called linking tables. Hence, it is possible to
+Group management is implemented using so-called linking tables. Hence, it is possible to
 
 - associate domains (and clients!) with any number of groups,
 - manage adlists together with groups,
@@ -24,7 +24,7 @@ Label | Type | Content
 `domainlist_id` | integer | `id` of domain in the `domainlist` table
 `group_id` | integer | `id` of associated group in the `group` table
 
-Group `0` is special as it is automatically assigned to domains and clients not being member of other groups. Each newly added client or domain gets assigned to group zero when being added.
+Group `0` is special as it is automatically assigned to domains and clients not being a member of other groups. Each newly added client or domain gets assigned to group zero when being added.
 
 ## Effect of group management
 
