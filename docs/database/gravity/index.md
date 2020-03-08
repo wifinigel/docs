@@ -11,7 +11,7 @@ Pi-hole's *FTL*DNS reads the tables through the various view, omitting any disab
 Label | Type | Uniqueness enforced | Content
 ----- | ---- | ------------------- | --------
 `id` | integer | Yes | Unique ID for database operations
-`type` | integer | No | `0` = exact whitelist,<br> `1` = exact blacklist,<br> `2` = regex whitelist,<br> `3` = regex whitelist
+`type` | integer | No | `0` = exact whitelist,<br> `1` = exact blacklist,<br> `2` = regex whitelist,<br> `3` = regex blacklist
 `domain` | text | Yes | Domain
 `enabled` | boolean | No | Flag whether domain should be used by `pihole-FTL`<br>(`0` = disabled, `1` = enabled)
 `date_added` | integer | No | Timestamp when domain was added
